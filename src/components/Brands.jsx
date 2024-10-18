@@ -26,7 +26,7 @@ export const Brands = () => (
               <h2 className=" text-5xl  sm:text-6xl 2xl:text-7xl font-bold tracking-normal text-secondaryColor font-NotoSerif">
                 Denver Metro
               </h2>
-              <p class="text-secondaryText mt-3">
+              <p className="text-secondaryText mt-3">
                 Whether you are an active adult, body builder, or weekend warrior, we will develop a personalized to you help you reach your goals.
                 <br></br>
                 <br></br>

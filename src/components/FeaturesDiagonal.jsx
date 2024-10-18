@@ -61,12 +61,12 @@ export const FeaturesDiagonal = () => {
                 className="rounded-xl  main-border-gray"
               >
               </iframe>
-              <div class="pt-16 justify-center mx-auto">
-                <span class="block-subtitle">VISIT US AT:</span>
-                <p class="text-secondaryText leading-loose"><a id="address" href="https://maps.app.goo.gl/Ng3fLwf8KgRr15k29"
+              <div className="pt-16 justify-center mx-auto">
+                <span className="block-subtitle">VISIT US AT:</span>
+                <p className="text-secondaryText leading-loose"><a id="address" href="https://maps.app.goo.gl/Ng3fLwf8KgRr15k29"
                   target="_blank">8085 South Chester Street
                   Unit #240, Centennial, CO 80112</a></p>
-                <p class="text-secondaryText leading-loose">(Located inside of Factum Performance and Wellness)</p>
+                <p className="text-secondaryText leading-loose">(Located inside of Factum Performance and Wellness)</p>
               </div>
             </div>
           </div>
