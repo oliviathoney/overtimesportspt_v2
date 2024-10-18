@@ -43,7 +43,7 @@ export const AppointmentForm = () => {
             </p>
           </div>
           <div className="mb-11 flex flex-wrap -m-1">
-            <form className="w-full">
+            <form className="w-full" action="/actions/send-appointment-confirm" method="POST">
               <div className="space-y-12">
                 <div className="border-b border-gray-900/10 pb-12">
                   <div className="sm:col-span-3">
@@ -57,6 +57,7 @@ export const AppointmentForm = () => {
                         type="text"
                         autoComplete="name"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        required
                       />
                     </div>
                   </div>
@@ -74,11 +75,11 @@ export const AppointmentForm = () => {
                       <input
                         type="text"
                         id="phone"
+                        name="phone"
                         aria-describedby="helper-text-explanation"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-600 dark:focus:border-indigo-600"
                         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                         placeholder="123-456-7890"
-                        required
                       />
                     </div>
                   </div>
@@ -87,7 +88,7 @@ export const AppointmentForm = () => {
                       Email address
                     </label>
                     <div className="mt-1 mb-3">
-                      <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required />
+                      <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required />
                     </div>
                   </div>
                   <div className="col-span-full">

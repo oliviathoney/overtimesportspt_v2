@@ -28,7 +28,7 @@ export const Features1 = () => {
                 Rehab, Recover, Perform
               </h2>
               <p className="mb-10 text-secondaryText leading-loose">
-                At OVERTIME Sports Physical Therapy and Performance, our Doctor of Physical Therapy offers a unique approach to health and wellness.Whether you are injured, looking to stay healthy throughout the season, or wanting to take your game to the next level, we are here to support you throughout your journey.
+                At OVERTIME Sports Physical Therapy and Performance, our Doctor of Physical Therapy offers a unique approach to health and wellness.Whether you are injured, looking to stay healthy throughout the season or your day-to-day life, or wanting to take your performance to the next level, we are here to support you throughout your journey.
               </p>
               <ul className="mb-6 text-primaryText">
                 <li className="mb-4 flex">

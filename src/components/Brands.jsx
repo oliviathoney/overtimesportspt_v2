@@ -6,6 +6,7 @@ import { MLBLogo } from "../assets/logos/MLBLogo";
 import { XFLLogo } from "../assets/logos/XFLLogo";
 import { USATFLogo } from "../assets/logos/USATFLogo";
 import { FIFALogo } from "../assets/logos/FIFALogo";
+import { CrossFitLogo } from "../assets/logos/CrossFitLogo";
 
 export const Brands = () => (
   <section className=" bg-bgDark1 w-full  lg:pt-32">
@@ -25,8 +26,11 @@ export const Brands = () => (
               <h2 className=" text-5xl  sm:text-6xl 2xl:text-7xl font-bold tracking-normal text-secondaryColor font-NotoSerif">
                 Denver Metro
               </h2>
-              <p class="text-secondaryText">
-                Our physical therapists have extensive experience treating high level athletes from middle to high school to collegiate level as well as professional athletes ranging from a variety of sports including the NFL, NBA, MLB, XFL, USATF, FIFA, SRA, CrossFit and IFBB Pro. We also take pride in helping the tactical athlete and military personnel return to work duties.
+              <p class="text-secondaryText mt-3">
+                Whether you are an active adult, body builder, or weekend warrior, we will develop a personalized to you help you reach your goals.
+                <br></br>
+                <br></br>
+                We take pride in treating a variety of collegiate and professional athletes. In addition we also support tactical athletes and miliatry personnel returning to work duties.
               </p>
             </div>
           </div>
@@ -42,7 +46,7 @@ export const Brands = () => (
                 <MLBLogo />
               </div>
               <div className="w-1/2 sm:w-1/3  py-6 flex  justify-center">
-                <XFLLogo />
+                <CrossFitLogo />
               </div>
               <div className="w-1/2 sm:w-1/3 py-6 flex justify-center">
                 <USATFLogo />

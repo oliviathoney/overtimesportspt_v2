@@ -41,7 +41,7 @@ export const MeetTheTeam = () => (
               Dr. Edward Benitez PT, DPT is originally from Dallas, Texas. Edward played various sports throughout his life at a competitive level. He became interested in physical therapy after experiencing the positive results he received throughout his personal injury rehabilitation.
               <br></br>
               <br></br>
-              With a unique blend of manual therapy and strength training, Edward has been able to elevate elite athletic performance by addressing athletic injury and movement dysfunction.
+              With a unique blend of manual therapy and strength training, Edward has been able to elevate athletic performance by addressing injury and movement dysfunction. He continues to develop a passion for sports medicine and enjoys helping athletes of all ages through their rehabilitation process.
               <br></br>
               <br></br>
               Edward received a Bachelor of Science degree in Exercise Science with a Minor in Psychology from The University of Texas at Arlington. He continued his education at the University of Colorado - Anschutz Medical Campus and received his Doctorate of Physical Therapy.

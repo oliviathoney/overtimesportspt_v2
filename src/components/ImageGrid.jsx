@@ -20,15 +20,16 @@ const services = [
     'title': 'Physical Therapy',
   },
   {
-    'image': performance.src,
-    'desc': 'Performance therapy provides athletes with targeted interventions to optimize their physical capabilities and enhance overall athletic performance. It goes beyond traditional rehabilitation, focusing on improving strength, agility, and sport-specific skills. Additionally, performance therapy emphasizes injury prevention strategies, ensuring athletes can sustain peak performance levels and longevity in their respective sports.',
-    'title': 'Performance Training',
-  },
-  {
     'image': recovery.src,
     'desc': 'Proper recovery is essential for athletes and individuals engaged in physical activities, promoting faster healing and reducing the risk of future injuries. It allows muscles and tissues to repair and regenerate, leading to improved overall physical function.',
     'title': 'Recovery',
   },
+  {
+    'image': performance.src,
+    'desc': 'Performance therapy provides athletes with targeted interventions to optimize their physical capabilities and enhance overall athletic performance. It goes beyond traditional rehabilitation, focusing on improving strength, agility, and sport-specific skills. Additionally, performance therapy emphasizes injury prevention strategies, ensuring athletes can sustain peak performance levels and longevity in their respective sports.',
+    'title': 'Performance Training',
+  },
+
   {
     'image': mobility.src,
     'desc': 'Mobility exercises help prevent injuries by promoting proper movement patterns and ensuring joints function optimally. Additionally, increased mobility facilitates efficient athletic performance, enabling athletes to reach their full potential in terms of strength, speed, and agility.',
