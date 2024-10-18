@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 import { CloseIcon } from "../assets/icons/CloseIcon";
 import logo from "../assets/images/logo.png"
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 
 
 export const InvitationModal = ({ setIsOpen }) => {

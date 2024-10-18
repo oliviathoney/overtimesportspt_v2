@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 
 import { InvitationModal } from "./InvitationModal";
 
