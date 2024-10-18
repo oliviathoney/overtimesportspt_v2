@@ -1,0 +1,35 @@
+
+#address:link {
+  color: var(--bs-light);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+#address:hover {
+  color: #4d734f;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.overlay { 
+  position: absolute;
+  margin: auto;
+  opacity: 1;
+  transition: .5s ease;
+  background-color: #243625;
+}
+
+.service:hover .overlay {
+  opacity: 0.9;
+  border-radius: 1%;
+}
+
+@media only screen and (max-width: 600px) {
+  .service:active .overlay {
+    opacity: 0.9;
+    border-radius: 1%;
+    .text {
+      font-size: 0.8em;
+    }
+  }
+}
