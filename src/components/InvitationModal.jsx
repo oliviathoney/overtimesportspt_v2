@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 import { CloseIcon } from "../assets/icons/CloseIcon";
@@ -6,6 +7,35 @@ import logo from "../assets/images/logo.png"
 
 
 export const InvitationModal = ({ setIsOpen }) => {
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch('/api/sendConsultation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email, phone: phone }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Handle success, e.g., display a success message
+      console.log('Form submitted successfully!');
+      setIsOpen(false)
+    } catch (error) {
+      // Handle error, e.g., display an error message
+      console.error('Error submitting form:', error);
+    }
+    // alert(`Name: ${name}, Email: ${email}, Phone: ${phone}, About: ${about}`)
+  }
+
+
   return (
     <AnimatePresence>
       <motion.div
@@ -58,7 +88,7 @@ export const InvitationModal = ({ setIsOpen }) => {
                 <h3 className="mb-7 text-2xl text-primaryText font-bold leading-snug text-center">
                   Rehab, Recover, Perform
                 </h3>
-                <form action="/actions/send-consult-confirm" method="POST">
+                <form onSubmit={handleSubmit}>
                   <div className="flex flex-wrap -m-2">
                     <div className="w-full sm:w-4/5 p-2 mx-auto">
                       <input
@@ -66,7 +96,14 @@ export const InvitationModal = ({ setIsOpen }) => {
                         id="recipient_email"
                         type="text"
                         name="recipient_email"
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          setIsOpen(true)
+                        }
+                        }
                         placeholder="Your email address"
+                        required
                       />
                     </div>
                     <div className="w-full sm:w-4/5 p-2 mx-auto">
@@ -78,6 +115,12 @@ export const InvitationModal = ({ setIsOpen }) => {
                         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                         placeholder="Phone (123-456-7890) - optional"
                         name="recipient_phone"
+                        value={phone}
+                        onChange={(e) => {
+                          setPhone(e.target.value);
+                          setIsOpen(true)
+                        }
+                        }
                       />
                     </div>
                     <div className="hidden">

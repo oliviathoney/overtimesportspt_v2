@@ -1,10 +1,36 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-import { InvitationModal } from "./InvitationModal";
 
 export const AppointmentForm = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [about, setAbout] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: name, email: email, phone: phone, about: about }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Handle success, e.g., display a success message
+      console.log('Form submitted successfully!');
+    } catch (error) {
+      // Handle error, e.g., display an error message
+      console.error('Error submitting form:', error);
+    }
+    // alert(`Name: ${name}, Email: ${email}, Phone: ${phone}, About: ${about}`)
+  }
 
   return (
     <section className="lg:mb-16 w-full flex flex-col justify-center items-center bg-bgDark1" id="request">
@@ -42,7 +68,7 @@ export const AppointmentForm = () => {
             </p>
           </div>
           <div className="mb-11 flex flex-wrap -m-1">
-            <form className="w-full" action="/actions/send-appointment-confirm" method="POST">
+            <form className="w-full" onSubmit={handleSubmit}>
               <div className="space-y-12">
                 <div className="border-b border-gray-900/10 pb-12">
                   <div className="sm:col-span-3">
@@ -55,6 +81,10 @@ export const AppointmentForm = () => {
                         name="name"
                         type="text"
                         autoComplete="name"
+
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         required
                       />
@@ -75,6 +105,8 @@ export const AppointmentForm = () => {
                         type="text"
                         id="phone"
                         name="phone"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
                         aria-describedby="helper-text-explanation"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-600 dark:focus:border-indigo-600"
                         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
@@ -87,7 +119,14 @@ export const AppointmentForm = () => {
                       Email address
                     </label>
                     <div className="mt-1 mb-3">
-                      <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required />
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com"
+                        required />
                     </div>
                   </div>
                   <div className="col-span-full">
@@ -98,9 +137,10 @@ export const AppointmentForm = () => {
                       <textarea
                         id="about"
                         name="about"
+                        value={about}
+                        onChange={(e) => setAbout(e.target.value)}
                         rows={3}
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        defaultValue={''}
                       />
                     </div>
                   </div>
@@ -150,11 +190,6 @@ export const AppointmentForm = () => {
           ></path>
         </svg>
       </div>
-      {
-        isModalOpen && (
-          <InvitationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-        )
-      }
     </section >
   );
 };

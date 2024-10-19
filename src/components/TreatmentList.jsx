@@ -85,7 +85,7 @@ const items = [
 
 export const TreatmentList = () => {
   return (
-    <section className=" bg-bgDark1 w-full lg:pt-32">
+    <section className=" bg-bgDark1 w-full lg:pt-24">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -93,9 +93,9 @@ export const TreatmentList = () => {
         transition={{ duration: 0.5, delay: 0.2 }}
       ></motion.div>
       <div className="container px-4 mx-auto 2xl:w-[1200px] xl:w-[1100px] lg:w-[1000px] md:w-4/5">
-        <div className="w-full mx-auto items-center">
+        <div className="w-full mx-auto text-center">
           <span className="block-subtitle">We're Here to Help</span>
-          <h2 className="mb-8 text-5xl lg:text-6xl block-big-title font-NotoSerif">
+          <h2 className="mb-12 text-5xl lg:text-6xl font-bold font-heading text-primaryText font-NotoSerif">
             What We Treat
           </h2>
           <div className="flex lg:flex-row flex-col items-center -mx-4 justify-center lg:text-left text-center">

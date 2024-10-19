@@ -1,4 +1,22 @@
-<!DOCTYPE html
+export const prerender = false;
+
+import type { APIRoute } from "astro";
+import { Resend } from "resend";
+
+const resend = new Resend(import.meta.env.RESEND_API_KEY);
+
+export const POST: APIRoute = async ({ request, redirect }) => {
+  // Get the form data submitted by the user on the home page
+  // const formData = await request.formData();
+  const body = await request.json();
+  console.log(body)
+  console.log(body.email)
+  console.log(body['email'])
+  const to = body.email as string | null;
+  const phone = body.phone as string | null;
+  const subject = "Welcome to OVERTIME Sports PT and Performance"
+  const html = `
+    <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html dir="ltr" lang="en">
 
@@ -87,5 +105,67 @@
         </tbody>
     </table>
 </body>
-
 </html>
+  `
+  // Throw an error if we're missing any of the needed fields.
+  if (!to) {
+    return new Response(
+      JSON.stringify({
+        message: `Fill out all fields.`,
+      }),
+      {
+        status: 404,
+        statusText: "Did not provide the right data",
+      },
+    );
+  }
+
+  const sendResend = await resend.emails.send({
+    from: "no-reply@overtimesportspt.com",
+    to: to,
+    subject: subject,
+    html: html,
+  }); // If the message was sent successfully, return a 200 response
+
+  const sendNotif = await resend.emails.send({
+    from: "new-consultation-request@overtimesportspt.com",
+    to: "info@overtimesportspt.com",
+    subject: `New Consultation Request`,
+    html: `
+    <div style="margin-bottom: 32px">
+        <p>New Consultation Request</p>
+    </div>
+    <!-- Main Content -->
+    <div style="margin-bottom: 32px; color: #222">
+    Someone has expressed interest on overtimesportspt.com <br>
+    <p>Email: ${to}<br>Phone Number: ${phone}</p>
+    </div>
+    <!-- Footer -->
+    <div style="color: #5f5f5f">
+        <p>overtimesports.com</p>
+    </div>
+    `,
+  })
+
+  if (sendResend.data && sendNotif.data) {
+    return new Response(
+      JSON.stringify({
+        message: `Message successfully sent!`,
+      }),
+      {
+        status: 200,
+        statusText: "OK",
+      },
+    ); // If there was an error sending the message, return a 500 response
+  } else {
+    return new Response(
+      JSON.stringify({
+        message: `Message failed to send: ${sendResend.error}`,
+      }),
+      {
+        status: 500,
+        statusText: `Internal Server Error: ${sendResend.error}`,
+      },
+    );
+  }
+};

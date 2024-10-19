@@ -1,4 +1,21 @@
-<!DOCTYPE html
+export const prerender = false;
+
+import type { APIRoute } from "astro";
+import { Resend } from "resend";
+
+const resend = new Resend(import.meta.env.RESEND_API_KEY);
+
+export const POST: APIRoute = async ({ request, redirect }) => {
+  // Get the form data submitted by the user on the home page
+  // const formData = await request.formData();
+  const body = await request.json();
+  const to = body.email as string | null;
+  const name = body.name as string | null;
+  const phone = body.phone as string | null;
+  const about = body.about as string | null;
+  const subject = "OVERTIME Sports PT and Performance - Appointment Request"
+  const html = `
+    <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html dir="ltr" lang="en">
 
@@ -60,7 +77,7 @@
                                 <td align="center" style="padding:40px;text-align:center">
                                     <p
                                         style="font-size:14px;line-height:24px;margin:0px;font-weight:600;color:rgb(229,231,235)">
-                                        Hello <%- name %>!</p>
+                                        Hello ${name}! </p>
                                     <h1 style="margin:0px;margin-top:4px;font-weight:700;color:rgb(255,255,255)">
                                         Welcome to OVERTIME!</h1>
                                     <p
@@ -88,5 +105,67 @@
         </tbody>
     </table>
 </body>
-
 </html>
+  `
+  // Throw an error if we're missing any of the needed fields.
+  if (!to || !name) {
+    return new Response(
+      JSON.stringify({
+        message: `Fill out all fields.`,
+      }),
+      {
+        status: 404,
+        statusText: "Did not provide the right data",
+      },
+    );
+  }
+
+  const sendResend = await resend.emails.send({
+    from: "no-reply@overtimesportspt.com",
+    to: to,
+    subject: subject,
+    html: html,
+  }); // If the message was sent successfully, return a 200 response
+
+  const sendNotif = await resend.emails.send({
+    from: "new-appointment-request@overtimesportspt.com",
+    to: "info@overtimesportspt.com",
+    subject: `New Appointment Request From ${name}`,
+    html: `
+    <div style="margin-bottom: 32px">
+        <p>New Appointment Request</p>
+    </div>
+    <!-- Main Content -->
+    <div style="margin-bottom: 32px; color: #222">
+    ${name} has requested an appointment on overtimesportspt.com <br>
+    <p>Email: ${to}<br>Phone Number: ${phone}<br>Comments: ${about}</p>
+    </div>
+    <!-- Footer -->
+    <div style="color: #5f5f5f">
+        <p>overtimesports.com</p>
+    </div>
+    `,
+  })
+
+  if (sendResend.data && sendNotif.data) {
+    return new Response(
+      JSON.stringify({
+        message: `Message successfully sent!`,
+      }),
+      {
+        status: 200,
+        statusText: "OK",
+      },
+    ); // If there was an error sending the message, return a 500 response
+  } else {
+    return new Response(
+      JSON.stringify({
+        message: `Message failed to send: ${sendResend.error}`,
+      }),
+      {
+        status: 500,
+        statusText: `Internal Server Error: ${sendResend.error}`,
+      },
+    );
+  }
+};

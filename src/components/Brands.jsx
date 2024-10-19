@@ -9,7 +9,7 @@ import { FIFALogo } from "../assets/logos/FIFALogo";
 import { CrossFitLogo } from "../assets/logos/CrossFitLogo";
 
 export const Brands = () => (
-  <section className=" bg-bgDark1 w-full  lg:pt-32">
+  <section className=" bg-bgDark1 w-full pt-24 ">
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
