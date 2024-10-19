@@ -10,7 +10,7 @@ import vfp from "../assets/images/force-plates.png"
 import manipulation from "../assets/images/Manipulation.JPG"
 import cupping from "../assets/images/Cupping.jpeg"
 import stm from "../assets/images/Instrument ASTM.JPG"
-import bfr from "../assets/images/Blood Flow Rest.jpeg"
+import bfr from "../assets/images/BFR ST.jpeg"
 
 
 const services = [
