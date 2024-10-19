@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { Toast } from "flowbite-react";
+import { FaPlane, FaTelegramPlane } from "react-icons/fa";
 
 export const AppointmentForm = () => {
   const [name, setName] = useState("");
@@ -8,8 +9,27 @@ export const AppointmentForm = () => {
   const [phone, setPhone] = useState("");
   const [about, setAbout] = useState("");
 
+  const [showToast, setShowToast] = useState(false);
+
+  const handleShowToast = () => {
+    setShowToast(true);
+  };
+
+  useEffect(() => {
+    let timeoutId;
+    if (showToast) {
+      timeoutId = setTimeout(() => {
+        setShowToast(false);
+      }, 3000); // Adjust the timeout duration as needed (in milliseconds)
+    }
+
+    return () => clearTimeout(timeoutId); // Clear the timeout on unmount or when showToast becomes false
+  }, [showToast]);
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
       const response = await fetch('/api/sendEmail', {
         method: 'POST',
@@ -22,14 +42,17 @@ export const AppointmentForm = () => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-
       // Handle success, e.g., display a success message
       console.log('Form submitted successfully!');
     } catch (error) {
       // Handle error, e.g., display an error message
       console.error('Error submitting form:', error);
     }
-    // alert(`Name: ${name}, Email: ${email}, Phone: ${phone}, About: ${about}`)
+    handleShowToast()
+    setName("")
+    setEmail("")
+    setPhone("")
+    setAbout("")
   }
 
   return (
@@ -190,6 +213,15 @@ export const AppointmentForm = () => {
           ></path>
         </svg>
       </div>
+      {showToast && (
+        <Toast className="fixed inset-x-5 bottom-5 z-30 bg-indigo-500">
+          <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-700 text-gray-100 dark:bg-gray-800 dark:text-gray-100">
+            <FaTelegramPlane className="h-5 w-5" />
+          </div>
+          <div className="ml-3 text-sm font-normal text-gray-100">Your appointment request has been sent.</div>
+          <Toast.Toggle className="bg-indigo-700 text-gray-100" onDismiss={() => setShowToast(false)} />
+        </Toast>
+      )}
     </section >
   );
 };
