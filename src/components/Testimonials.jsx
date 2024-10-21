@@ -11,9 +11,9 @@ const testimonialsData = [
   },
   {
     customerName: "Blaise R.",
-    customerTitle: "Collegite Soccer Athelete",
+    customerTitle: "Collegiate Soccer Athlete",
     content:
-      "This past March, I partially tore one of my MCL's. I was struggling to find quality P';s, when out of the blue Edward reached out to me on instagram DM's. This was a blessing in disguise. I went to see him, and instantly could tell that he knew what he was doing. Every exercise we performed had a detailed explanation behind why we were doing it, and the progress that I saw was truly amazing. I am now completely healthy and feeling great, and I credit a lot of that to Edward. But, my favorite part has been getting to know him personally. I have truly loved getting to know him and all the laughs shared. He truly cares about your journey both as an athlete as well as a person, and I am grateful to have met him. He still can’t beat me in cross bar challenge though:)"
+      "This past March, I partially tore one of my MCL's. I was struggling to find quality PTs, when out of the blue Edward reached out to me on instagram DM's. This was a blessing in disguise. I went to see him, and instantly could tell that he knew what he was doing. Every exercise we performed had a detailed explanation behind why we were doing it, and the progress that I saw was truly amazing. I am now completely healthy and feeling great, and I credit a lot of that to Edward. But, my favorite part has been getting to know him personally. I have truly loved getting to know him and all the laughs shared. He truly cares about your journey both as an athlete as well as a person, and I am grateful to have met him. He still can’t beat me in cross bar challenge though:)"
   },
   {
     customerName: "Joe R.",
@@ -35,7 +35,7 @@ export const Testimonials = () => (
       >
         <div className="block-subtitle text-center mb-6">Testimonials</div>
         <div className="block-big-title text-center mb-20 px-8 sm:px-24 md:px-48 font-NotoSerif">
-          Atheletes like you love OVERTIME
+          Athletes like you love OVERTIME
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-5 xl:gap-10 px-6 xl:px-0 items-center">
