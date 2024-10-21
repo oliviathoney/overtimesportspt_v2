@@ -30,7 +30,7 @@ export const Brands = () => (
                 Whether you are an active adult, body builder, or weekend warrior, we will develop a personalized to you help you reach your goals.
                 <br></br>
                 <br></br>
-                We take pride in treating a variety of collegiate and professional athletes. In addition we also support tactical athletes and miliatry personnel returning to work duties.
+                We take pride in treating a variety of high school, collegiate and professional athletes. In addition we also support tactical athletes and miliatry personnel returning to work duties.
               </p>
             </div>
           </div>
