@@ -47,7 +47,7 @@ export const Hero = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <h2 className="text-secondaryText text-sm lg:text-base xl:text-lg sm:text-base mt-10 px-12 sm:px-48 ">
-            Bridging the gap between physical therapy and sports performace.
+            Bridging the gap between physical therapy and sports performance.
           </h2>
         </motion.div>
         <motion.div
