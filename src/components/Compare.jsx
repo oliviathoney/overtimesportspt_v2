@@ -4,10 +4,6 @@ import { motion } from "framer-motion";
 import { InvitationModal } from "./InvitationModal";
 import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 
-import dryneedling from "../assets/images/Dry Needling.jpeg";
-import performance from "../assets/images/Performance.jpg";
-import recovery from "../assets/images/Recovery.jpeg";
-
 export const Compare = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
