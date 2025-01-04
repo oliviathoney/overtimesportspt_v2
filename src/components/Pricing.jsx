@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { InvitationModal } from "./InvitationModal";
 import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 
-import dryneedling from "../assets/images/Dry Needling.jpeg";
-import performance from "../assets/images/Performance.jpg";
-import recovery from "../assets/images/Recovery.jpeg";
+import pt from "../assets/images/PT Home.jpg"
+import performance from "../assets/images/Performance Home.jpg";
+import recovery from "../assets/images/Recovery Home.jpg";
 
 const pricingData = [
   "Seamless integration",
@@ -72,7 +72,7 @@ export const Pricing = () => {
                   <div className="flex justify-start items-end">
                     <div className="rounded">
                       <img
-                        src={dryneedling.src}
+                        src={pt.src}
                         alt="Feature image 1"
                         className="rounded-xl  main-border-gray mx-auto sm:mx-unset"
                         aria-label="Feature image 1"
