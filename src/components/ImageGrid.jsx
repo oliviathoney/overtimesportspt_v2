@@ -114,7 +114,7 @@ const services = [
 
 export const ImageGrid = () => {
   return (
-    <section className="w-screen flex justify-center bg-bgDark2 relative pt-32">
+    <section className="w-full flex justify-center bg-bgDark2 relative pt-32">
       <div className="pb-20 pt-12 bg-bgDark2  2xl:w-[1150px] lg:w-[1050px]  md:w-4/5 ">
         <motion.div
           initial={{ opacity: 0 }}
