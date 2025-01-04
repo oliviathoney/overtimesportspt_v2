@@ -63,6 +63,12 @@ const services = [
     'display': 'none'
   },
   {
+    'image': dst.src,
+    'desc': 'Dynamo strength testing provides precise measurements of a patient’s muscle strength, allowing therapists to assess imbalances, track progress, and tailor rehabilitation programs. This objective data ensures targeted treatment, optimizes recovery, and helps prevent re-injury by addressing specific weaknesses.',
+    'title': 'Dynamo Strength Testing',
+    'display': 'none'
+  },
+  {
     'image': manipulation.src,
     'desc': 'Manipulation, performed by skilled physical therapists, involves hands-on techniques to manipulate joints and soft tissues, providing immediate relief from pain and stiffness. This approach improves joint mobility, reduces muscle tension, and enhances overall flexibility. PT manipulation is particularly effective in treating musculoskeletal conditions such as back pain, neck pain, and joint restrictions.',
     'title': 'Manipulation',
@@ -88,26 +94,21 @@ const services = [
   },
   {
     'image': ni.src,
-    'desc': 'Near-infrared (NIR) technology benefits athlete recovery by penetrating deep into muscles and tissues to enhance blood flow, reduce inflammation, and stimulate cellular repair at the mitochondrial level. This process accelerates healing, alleviates soreness, improves flexibility, and reduces recovery time, enabling athletes to perform at their best more consistently.',
+    'desc': 'Near-infrared (NIR) technology benefits athlete recovery by penetrating deep into muscles and tissues to enhance blood flow, reduce inflammation, and stimulate cellular repair at the mitochondrial level. This process accelerates healing, alleviates soreness and reduces recovery time, enabling athletes to perform at their best more consistently.',
     'title': 'Near Infrared',
     'display': 'none'
   },
   {
     'image': education.src,
-    'desc': 'Education empowers physical therapy patients by helping them understand their condition, treatment plan, and the importance of proper movement techniques. This knowledge fosters active participation, reduces the risk of re-injury, and enhances long-term outcomes by encouraging patients to take ownership of their recovery process.',
+    'desc': 'Education empowers physical therapy patients by helping them understand their condition, treatment plan, and the importance of proper movement techniques. This knowledge fosters active participation, reduces the risk of re-injury, and enhances long-term outcomes by encouraging patients to take ownership of their rehab and recovery process.',
     'title': 'Education',
     'display': 'none'
   },
-  {
-    'image': dst.src,
-    'desc': 'Dynamo strength testing provides precise measurements of a patient’s muscle strength, allowing therapists to assess imbalances, track progress, and tailor rehabilitation programs. This objective data ensures targeted treatment, optimizes recovery, and helps prevent re-injury by addressing specific weaknesses.',
-    'title': 'Dynamo Strength Testing',
-    'display': 'none'
-  },
+
   {
     'image': compression.src,
-    'desc': 'This technique enhances circulation by applying controlled pressure to limbs, reducing swelling, improving oxygen delivery, and flushing out metabolic waste. This accelerates recovery, decreases muscle soreness, and supports overall performance and healing for athletes and patients alike.',
-    'title': 'Comprssion Therapy',
+    'desc': 'This technique enhances circulation by applying controlled pressure to limbs, reducing swelling, improving oxygen delivery, and flushing out metabolic waste. This accelerates recovery, decreases muscle soreness, and supports overall performance and healing for athletes.',
+    'title': 'Compression Therapy',
     'display': 'none'
   },
 ];
