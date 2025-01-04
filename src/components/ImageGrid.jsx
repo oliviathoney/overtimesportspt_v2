@@ -1,16 +1,31 @@
 import { motion } from "framer-motion";
 import { Card } from "flowbite-react";
 
-import dryneedling from "../assets/images/Dry Needling.jpeg";
-import pt from "../assets/images/Physical Therapy.JPG";
-import performance from "../assets/images/Performance.jpg";
-import recovery from "../assets/images/Recovery.jpeg";
-import mobility from "../assets/images/Mobility.JPG";
-import vfp from "../assets/images/force-plates.png"
-import manipulation from "../assets/images/Manipulation.JPG"
-import cupping from "../assets/images/Cupping.jpeg"
-import stm from "../assets/images/Instrument ASTM.JPG"
-import bfr from "../assets/images/BFR ST.jpeg"
+// import dryneedling from "../assets/images/Dry Needling.jpeg";
+// import pt from "../assets/images/Physical Therapy.JPG";
+// import performance from "../assets/images/Performance.jpg";
+// import recovery from "../assets/images/Recovery.jpeg";
+// import mobility from "../assets/images/Mobility.JPG";
+// import vfp from "../assets/images/force-plates.png"
+// import manipulation from "../assets/images/Manipulation.JPG"
+// import cupping from "../assets/images/Cupping.jpeg"
+// import stm from "../assets/images/Instrument ASTM.JPG"
+// import bfr from "../assets/images/BFR ST.jpeg"
+
+import pt from "../assets/images/services/PT.jpg"
+import recovery from "../assets/images/services/Recovery.jpg"
+import performance from "../assets/images/services/Performance.jpg"
+import mobility from "../assets/images/services/Mobility.jpg"
+import dryneedling from "../assets/images/services/Dry Needling.jpg"
+import vfp from "../assets/images/services/Force Plates.jpg"
+import manipulation from "../assets/images/services/Manipulation.jpg"
+import cupping from "../assets/images/services/Cupping.jpg"
+import stm from "../assets/images/services/IASTM.jpg"
+import bfr from "../assets/images/services/BFR.jpg"
+import ni from "../assets/images/services/Near Infrared.jpg"
+import education from "../assets/images/services/Education.jpg"
+import dst from "../assets/images/services/Dynamo Strength Testing.jpg"
+import compression from "../assets/images/services/Compression Therapy.jpg"
 
 
 const services = [
@@ -48,6 +63,12 @@ const services = [
     'display': 'none'
   },
   {
+    'image': dst.src,
+    'desc': 'Dynamo strength testing provides precise measurements of a patient’s muscle strength, allowing therapists to assess imbalances, track progress, and tailor rehabilitation programs. This objective data ensures targeted treatment, optimizes recovery, and helps prevent re-injury by addressing specific weaknesses.',
+    'title': 'Dynamo Strength Testing',
+    'display': 'none'
+  },
+  {
     'image': manipulation.src,
     'desc': 'Manipulation, performed by skilled physical therapists, involves hands-on techniques to manipulate joints and soft tissues, providing immediate relief from pain and stiffness. This approach improves joint mobility, reduces muscle tension, and enhances overall flexibility. PT manipulation is particularly effective in treating musculoskeletal conditions such as back pain, neck pain, and joint restrictions.',
     'title': 'Manipulation',
@@ -71,11 +92,30 @@ const services = [
     'title': 'Blood Flow Restriction',
     'display': 'none'
   },
+  {
+    'image': ni.src,
+    'desc': 'Near-infrared (NIR) technology benefits athlete recovery by penetrating deep into muscles and tissues to enhance blood flow, reduce inflammation, and stimulate cellular repair at the mitochondrial level. This process accelerates healing, alleviates soreness and reduces recovery time, enabling athletes to perform at their best more consistently.',
+    'title': 'Near Infrared',
+    'display': 'none'
+  },
+  {
+    'image': education.src,
+    'desc': 'Education empowers physical therapy patients by helping them understand their condition, treatment plan, and the importance of proper movement techniques. This knowledge fosters active participation, reduces the risk of re-injury, and enhances long-term outcomes by encouraging patients to take ownership of their rehab and recovery process.',
+    'title': 'Education',
+    'display': 'none'
+  },
+
+  {
+    'image': compression.src,
+    'desc': 'This technique enhances circulation by applying controlled pressure to limbs, reducing swelling, improving oxygen delivery, and flushing out metabolic waste. This accelerates recovery, decreases muscle soreness, and supports overall performance and healing for athletes.',
+    'title': 'Compression Therapy',
+    'display': 'none'
+  },
 ];
 
 export const ImageGrid = () => {
   return (
-    <section className="w-screen flex justify-center bg-bgDark2 relative pt-32">
+    <section className="w-full flex justify-center bg-bgDark2 relative pt-32">
       <div className="pb-20 pt-12 bg-bgDark2  2xl:w-[1150px] lg:w-[1050px]  md:w-4/5 ">
         <motion.div
           initial={{ opacity: 0 }}
@@ -93,12 +133,13 @@ export const ImageGrid = () => {
                 OVERTIME offers the best cutting-edge techniques to get you to your best self.
               </p>
             </div>
-            {services.map(service => (
-              <div className="w-100 py-3">
+            {services.map((service, i) => (
+              <div className="w-100 py-3" key={i}>
                 <Card
                   className="!max-w-full bg-bgDark1 main-border-gray shadow-lg"
                   renderImage={() => <img width={400} src={service.image} className="rounded-lg" />}
                   horizontal
+                  key={i}
                 >
                   <h3 className="text-3xl font-bold  text-secondaryColor font-NotoSerif">
                     {service.title}

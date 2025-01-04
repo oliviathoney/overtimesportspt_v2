@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { InvitationModal } from "./InvitationModal";
 import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 
-import dryneedling from "../assets/images/Dry Needling.jpeg";
-import performance from "../assets/images/Performance.jpg";
-import recovery from "../assets/images/Recovery.jpeg";
+import pt from "../assets/images/PT Home.jpg"
+import performance from "../assets/images/Performance Home.jpg";
+import recovery from "../assets/images/Recovery Home.jpg";
 
 const pricingData = [
   "Seamless integration",
@@ -25,7 +25,7 @@ export const Pricing = () => {
   // };
 
   return (
-    <section className="w-screen flex justify-center bg-bgDark2 relative">
+    <section className="w-full flex justify-center bg-bgDark2 relative">
       <div className="absolute -top-16" id="pricing" />
       <div className="pb-20 pt-12 bg-bgDark2  2xl:w-[1150px] lg:w-[1050px]  md:w-4/5 ">
         <motion.div
@@ -72,7 +72,7 @@ export const Pricing = () => {
                   <div className="flex justify-start items-end">
                     <div className="rounded">
                       <img
-                        src={dryneedling.src}
+                        src={pt.src}
                         alt="Feature image 1"
                         className="rounded-xl  main-border-gray mx-auto sm:mx-unset"
                         aria-label="Feature image 1"

@@ -4,15 +4,11 @@ import { motion } from "framer-motion";
 import { InvitationModal } from "./InvitationModal";
 import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 
-import dryneedling from "../assets/images/Dry Needling.jpeg";
-import performance from "../assets/images/Performance.jpg";
-import recovery from "../assets/images/Recovery.jpeg";
-
 export const Compare = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="w-screen flex justify-center bg-bgDark2 relative">
+    <section className="w-full flex justify-center bg-bgDark2 relative">
       <div className="absolute -top-16" id="pricing" />
       <div className="pb-20 pt-12 bg-bgDark2  2xl:w-[1150px] lg:w-[1050px]  md:w-4/5 ">
         <motion.div
