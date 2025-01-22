@@ -1,5 +1,7 @@
 export const XFLLogo = () => (
-  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 102.23706 26.486265">
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 102.23706 26.486265" role="img" aria-labelledby="title desc">
+    <title id="title">XFL Logo</title>
+    <desc id="desc">The logo for the XFL, a professional American football minor league.</desc>
     <g transform="matrix(1.3333333,0,0,-1.3333333,-356.88159,79.250398)">
       <path fill="#fff" d="m 301.7387,58.8761 -2.943,-2.934 c -0.351,-0.35 -0.548,-0.827 -0.546,-1.323 l 0.008,-2.434 c 9.8e-4,-0.246 0.099,-0.482 0.274,-0.656 l 1.984,-1.974 -2.039,-1.997 c -0.179,-0.175 -0.279,-0.415 -0.279,-0.665 v -7.32 h 4.122 v 8.222 h 15.403 v 3.526 h -15.403 v 4.567 h 18.048 v 3.531 h -17.316 c -0.492,0 -0.964,-0.195 -1.313,-0.543" />
       <path fill="#fff" d="m 326.933,43.1095 -0.016,1.043 v 15.275 h -3.969 v -15.433 c 0,-0.526 0.223,-1.028 0.613,-1.381 l 2.533,-2.553 c 0.341,-0.308 0.786,-0.479 1.246,-0.479 h 16.999 v 3.528 H 327.96 Z" />

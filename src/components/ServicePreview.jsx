@@ -1,28 +1,21 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { getImage } from "astro:assets";
 
-import { InvitationModal } from "./InvitationModal";
+import { ConsultationModal } from "./ConsultationModal";
 import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 
 import pt from "../assets/images/PT Home.jpg"
 import performance from "../assets/images/Performance Home.jpg";
 import recovery from "../assets/images/Recovery Home.jpg";
 
-const pricingData = [
-  "Seamless integration",
-  "Real-time data visualization",
-  "Advanced predictive analytics",
-  "Collaborative environment",
-  "Responsive customer support",
-];
+const optPT = await getImage({ src: pt })
+const optPerformance = await getImage({ src: performance })
+const optRecovery = await getImage({ src: recovery })
 
-export const Pricing = () => {
-  // const [isMonthly, setIsMonthly] = useState(true);
+export const ServicePreview = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const handleChange = () => {
-  //   setIsMonthly(!isMonthly);
-  // };
 
   return (
     <section className="w-full flex justify-center bg-bgDark2 relative">
@@ -43,25 +36,6 @@ export const Pricing = () => {
               <p className="mb-6 text-secondaryText">
                 OVERTIME offers the best cutting-edge techniques to get you to your best self.
               </p>
-              {/* <label className="mx-auto bg-bgDark3 relative flex justify-between items-center group text-xl w-44 h-12 rounded-lg pr-36 pl-1 cursor-pointer">
-                <input
-                  type="checkbox"
-                  className="peer appearance-none"
-                  checked={!isMonthly}
-                  onChange={handleChange}
-                />
-                <span className="h-8 w-[5.5rem] flex items-center pr-2 bg-bgDark3 after:rounded-lg duration-300 ease-in-out  after:w-[30rem] after:h-10  after:bg-primaryColor   after:shadow-md after:duration-300 peer-checked:after:translate-x-[5.5rem] cursor-pointer"></span>
-                <div className="flex absolute text-primaryText text-sm font-bold">
-                  <div
-                    className={
-                      isMonthly ? "mr-9 ml-3" : "mr-9 ml-3 text-gray-400"
-                    }
-                  >
-                    Monthly
-                  </div>
-                  <div className={isMonthly ? "text-gray-400" : ""}>Yearly</div>
-                </div>
-              </label> */}
             </div>
             <div className="flex flex-wrap flex-col lg:flex-row -mx-4 items-center mt-20">
               <div className="w-[350px] sm:w-[380px] lg:w-1/3 px-2 mb-8 lg:mb-0">
@@ -72,10 +46,9 @@ export const Pricing = () => {
                   <div className="flex justify-start items-end">
                     <div className="rounded">
                       <img
-                        src={pt.src}
-                        alt="Feature image 1"
+                        src={optPT.src}
+                        alt="Dr. Benitez works with a young woman to improve lower body strength through physical therapy."
                         className="rounded-xl  main-border-gray mx-auto sm:mx-unset"
-                        aria-label="Feature image 1"
                       />
                     </div>
                   </div>
@@ -97,15 +70,6 @@ export const Pricing = () => {
                       <span>Gain insight into proper techniques for sustained physical health</span>
                     </li>
                   </ul>
-
-
-                  {/* <button
-                    className="inline-block text-center py-2 px-4 w-full rounded-xl rounded-t-xl contained-button font-bold leading-loose mt-16"
-                    onClick={() => setIsModalOpen(true)}
-                    aria-label="Get started"
-                  >
-                    Get Started
-                  </button> */}
                 </div>
               </div>
               <div className="w-[350px] sm:w-[380px] lg:w-1/3 px-2 mb-8 lg:mb-0">
@@ -116,10 +80,9 @@ export const Pricing = () => {
                   <div className="flex justify-start items-end">
                     <div className="rounded">
                       <img
-                        src={performance.src}
-                        alt="Feature image 1"
+                        src={optPerformance.src}
+                        alt="Dr. Benitez monitors a client performing weighted deadlifts in the OVERTIME gym."
                         className="rounded-xl  main-border-gray mx-auto sm:mx-unset"
-                        aria-label="Feature image 1"
                       />
                     </div>
                   </div>
@@ -141,13 +104,6 @@ export const Pricing = () => {
                       <span>Optimize athletic potential, improve endurance, speed, and overall performance</span>
                     </li>
                   </ul>
-                  {/* <button
-                    className="inline-block text-center py-2 px-4 w-full rounded-xl rounded-t-xl contained-button font-bold leading-loose mt-16"
-                    onClick={() => setIsModalOpen(true)}
-                    aria-label="Get started"
-                  >
-                    Get Started
-                  </button> */}
                 </div>
               </div>
               <div className="w-[350px] sm:w-[380px] lg:w-1/3 px-2 mb-8 lg:mb-0">
@@ -158,10 +114,9 @@ export const Pricing = () => {
                   <div className="flex justify-start items-end">
                     <div className="rounded">
                       <img
-                        src={recovery.src}
-                        alt="Feature image 1"
+                        src={optRecovery.src}
+                        alt="Dr. Benitez massages a client's shoulder to assist in muscular recovery."
                         className="rounded-xl  main-border-gray mx-auto sm:mx-unset"
-                        aria-label="Feature image 1"
                       />
                     </div>
                   </div>
@@ -183,16 +138,8 @@ export const Pricing = () => {
                       <span>Optimize physical healing and mental well-being</span>
                     </li>
                   </ul>
-                  {/* <button
-                    className="inline-block text-center py-2 px-4 w-full rounded-xl rounded-t-xl contained-button font-bold leading-loose mt-16"
-                    onClick={() => setIsModalOpen(true)}
-                    aria-label="Get started"
-                  >
-                    Get Started
-                  </button> */}
                 </div>
               </div>
-              {/* <a className="pt-8 mx-auto justify-center block-subtitle text-secondaryColor" id="address" href="/about">View More</a> */}
               <div className="pt-8 justify-center mx-auto">
                 <p className="text-secondaryText block-subtitle leading-loose">
                   <a id="address" href="/about">View More</a>
@@ -204,7 +151,7 @@ export const Pricing = () => {
         </motion.div>
       </div>
       {isModalOpen && (
-        <InvitationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
       )}
     </section>
   );

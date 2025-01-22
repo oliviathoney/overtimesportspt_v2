@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { NFLLogo } from "../assets/logos/NFLLogo";
 import { NBALogo } from "../assets/logos/NBALogo";
 import { MLBLogo } from "../assets/logos/MLBLogo";
-import { XFLLogo } from "../assets/logos/XFLLogo";
 import { USATFLogo } from "../assets/logos/USATFLogo";
 import { FIFALogo } from "../assets/logos/FIFALogo";
 import { CrossFitLogo } from "../assets/logos/CrossFitLogo";
@@ -27,10 +26,13 @@ export const Brands = () => (
                 Denver Metro
               </h2>
               <p className="text-secondaryText mt-3">
-                Whether you are an active adult, body builder, or weekend warrior, we will develop a personalized to you help you reach your goals.
+                Whether you are an active adult, body builder, or weekend warrior, we will develop a personalized plan to you help you reach your goals.
                 <br></br>
                 <br></br>
                 We take pride in treating a variety of high school, collegiate and professional athletes. In addition we also support tactical athletes and miliatry personnel returning to work duties.
+                <br></br>
+                <br></br>
+                <a className="text-secondaryText block-subtitle" id="address" href="/services">See what services we offer</a>
               </p>
             </div>
           </div>

@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { getImage } from "astro:assets";
 
-import { InvitationModal } from "./InvitationModal";
+import { ConsultationModal } from "./ConsultationModal";
 import edward from "../assets/images/edward.JPG";
-import manualtherapy from "../assets/images/manualtherapy.jpeg";
+const optEdward = await getImage({ src: edward })
 
 export const MeetTheTeam = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,18 +22,11 @@ export const MeetTheTeam = () => {
             <div className="mb-8 lg:mb-0 w-full px-2 lg:pl-16 flex flex-col justify-center md:pl-8">
               <div className="mb-4 py-3 md:pl-3 md:pr-20 lg:pr-12 rounded">
                 <img
-                  src={edward.src}
-                  alt="Dr. Edward Profile Pic"
+                  src={optEdward.src}
+                  alt="Dr. Edward Benitez, founder of OVERTIME Sports Physical Therapy and Performance. "
                   className="rounded-xl  main-border-gray"
                 />
               </div>
-              {/* <div className="py-3 md:pl-20 lg:pl-12 md:pr-2 rounded ">
-              <img
-                src={manualtherapy.src}
-                alt="Manual Therapy"
-                className="rounded-xl main-border-gray"
-              />
-            </div> */}
             </div>
           </div>
 
@@ -66,7 +60,7 @@ export const MeetTheTeam = () => {
       </motion.div>
       {
         isModalOpen && (
-          <InvitationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+          <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
         )
       }
     </section >

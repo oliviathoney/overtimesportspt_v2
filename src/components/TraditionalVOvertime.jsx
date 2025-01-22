@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-import { InvitationModal } from "./InvitationModal";
+import { ConsultationModal } from "./ConsultationModal";
 import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 
-export const Compare = () => {
+export const TraditionalVOvertime = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -148,7 +148,7 @@ export const Compare = () => {
         </motion.div>
       </div >
       {isModalOpen && (
-        <InvitationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
       )}
     </section >
   );

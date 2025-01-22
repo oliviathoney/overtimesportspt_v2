@@ -2,8 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import { Navbar } from "../components/Navbar.jsx";
 import { MeetTheTeam } from "../components/MeetTheTeam.jsx";
-import { Compare } from "../components/Compare.jsx";
-import { FeaturesDiagonal } from "../components/FeaturesDiagonal.jsx";
+import { TraditionalVOvertime } from "../components/TraditionalVOvertime.jsx";
+import { AboutOurPractice } from "../components/About.jsx";
 import { Brands } from "../components/Brands.jsx";
 import { TreatmentList } from "../components/TreatmentList.jsx";
 import { Footer } from "../components/Footer.jsx";
@@ -11,13 +11,20 @@ import { ScrollUpButton } from "../components/ScrollUpButton.jsx";
 import "../styles/Theme.css";
 import "../styles/Diagonals.css";
 import "../styles/custom.css";
+import SiteData from "../constants/siteData.json";
 ---
 
-<Layout title="OVERTIME Sports - About">
+<Layout
+  title="OVERTIME Sports - About"
+  seo={{
+    title: SiteData.pages.about.title,
+    description: SiteData.pages.about.description,
+  }}
+>
   <Navbar client:load />
   <MeetTheTeam client:load />
-  <FeaturesDiagonal client:load />
-  <Compare client:load />
+  <AboutOurPractice client:load />
+  <TraditionalVOvertime client:load />
   <Brands client:load />
   <TreatmentList client:load />
   <Footer />

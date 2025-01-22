@@ -100,8 +100,8 @@ export const TreatmentList = () => {
           </h2>
           <div className="flex lg:flex-row flex-col items-center -mx-4 justify-center lg:text-left text-center">
             <ul role="list" className="divide-y divide-gray-100">
-              {items.map((item) => (
-                <li className="flex justify-between gap-x-2 py-5">
+              {items.map((item, i) => (
+                <li className="flex justify-between gap-x-2 py-5" key={i}>
                   <div className="flex min-w-0 gap-x-2">
                     <div className="min-w-0 flex-auto">
                       <p className="text-md font-semibold leading-6 text-secondaryColor">{item.name}</p>

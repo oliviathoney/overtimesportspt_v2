@@ -61,6 +61,11 @@ export const Testimonials = () => (
             </div>
           ))}
         </div>
+        <div className="w-full pt-8 text-center mx-auto">
+          <p className="text-secondaryText block-subtitle leading-loose">
+            <a id="address" href="/resources/#request">Book Now</a>
+          </p>
+        </div>
       </motion.div>
     </div>
   </section>

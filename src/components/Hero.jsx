@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { getImage } from "astro:assets";
 
-import { InvitationModal } from "./InvitationModal";
+import { ConsultationModal } from "./ConsultationModal";
 import gym2 from "../assets/images/gym-2.jpg";
 import background from "../assets/images/background.jpg";
+
+const optGym = await getImage({ src: gym2 })
+const optBG = await getImage({ src: background })
 
 export const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,7 +16,7 @@ export const Hero = () => {
     <section
       className="w-full flex justify-center items-center bg-bgDark1 mb-[28vw] md:mb-[18vw] lg:mb-[10vw] xl:mb-[13vw] 2xl:mb-60 hero-bg-gradient pb-24 sm:pb-32 md:pb-44 lg:pb-0"
       id="home"
-      style={{ backgroundImage: `url(${background.src})`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}
+      style={{ backgroundImage: `url(${optBG.src})`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}
     >
       <div
         className="w-full md:w-[1500px] xl:w-[1500px] flex flex-col justify-center items-center pt-16 md:pt-16 lg:pt-20 text-center"
@@ -37,9 +41,6 @@ export const Hero = () => {
             <h1 className="lg:hidden">PERFORM</h1>
             <h1 className="hidden lg:inline">Discover <span>&#183;</span> Optimize <span>&#183;</span> Perform</h1>
           </div>
-          {/* <h1 className="mt-2 sm:mt-2 text-4xl sm:text-6xl lg:text-7xl xl:text-7xl font-bold tracking-wide  text-primaryText  px-8 sm:px-20 md:px-24 lg:px-24">
-            for developers
-          </h1> */}
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -63,13 +64,6 @@ export const Hero = () => {
             >
               Get Started
             </button>
-            {/* <button
-              className="w-64 sm:w-52 h-12 rounded-xl font-bold text-primaryText border border-solid  flex justify-center items-center cursor-pointer bg-bgDark2 hover:bg-bgDark3 border-primaryColor transition"
-              onClick={() => setIsModalOpen(true)}
-              aria-label="Live demo"
-            >
-              Live demo
-            </button> */}
           </div>
         </motion.div>
         <motion.div
@@ -79,8 +73,8 @@ export const Hero = () => {
         >
           <div className="relative w-screen flex justify-center ">
             <img
-              src={gym2.src}
-              alt="Dashboard image"
+              src={optGym.src}
+              alt="A picture of the OVERTIME Sports Physical Therapy gym containing multiple types of equipment such as dumbells, benches, squat racks and a turf area."
               className="w-4/5 2xl:w-[1200px] mx-auto absolute z-10 rounded-xl main-border-gray hero-dashboard-border-gradient lg:top-6 xl:top-0"
             />
           </div>
@@ -103,7 +97,7 @@ export const Hero = () => {
         </div>
       </div>
       {isModalOpen && (
-        <InvitationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
       )}
     </section>
   );

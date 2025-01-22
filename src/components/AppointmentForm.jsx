@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Toast } from "flowbite-react";
-import { FaPlane, FaTelegramPlane } from "react-icons/fa";
+import { FaTelegramPlane } from "react-icons/fa";
 
 export const AppointmentForm = () => {
   const [name, setName] = useState("");
