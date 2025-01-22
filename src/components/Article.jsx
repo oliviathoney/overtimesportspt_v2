@@ -11,7 +11,7 @@ export const Article = ({ articleData }) => {
             <h1 className="text-[2rem] xs:text-[2.8rem] lg:text-[3.5rem] font-bold text-primaryText mb-4">{title}</h1>
             <p className="text-lg text-secondaryText mb-4">{subtitle}</p>
           </header>
-          <img
+          {/* <img
             src={image}
             alt={title}
             className="rounded-3xl mb-8 w-10/12 md:w-3/4 mx-auto mt-8"
@@ -21,7 +21,7 @@ export const Article = ({ articleData }) => {
             className="text-secondaryText !leading-8 sm:!leading-10 sm:text-xl text-left sm:text-justify mx-auto w-full md:w-10/12 lg:w-2/3 mt-16"
             aria-labelledby="content-title"
             dangerouslySetInnerHTML={{ __html: content }}
-          />
+          /> */}
           <div className="w-4/5 lg:w-2/3 text-right mx-auto mt-8 text-primaryText text-xl">
             {footer}
           </div>
