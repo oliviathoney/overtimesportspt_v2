@@ -142,7 +142,7 @@ export const ServicePreview = () => {
               </div>
               <div className="pt-8 justify-center mx-auto">
                 <p className="text-secondaryText block-subtitle leading-loose">
-                  <a id="address" href="/about">View More</a>
+                  <a id="address" href="/services">View More</a>
                 </p>
               </div>
 
