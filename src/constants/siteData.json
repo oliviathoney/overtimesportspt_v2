@@ -1,0 +1,33 @@
+{
+    "default": {
+        "name": "OVERTIME Sports PT + Performance",
+        "title": "OVERTIME Sports Physical Therapy and Performance",
+        "description": "OVERTIME Sports PT + Performance offers expert physical therapy services to help you recover, manage pain, and improve mobility. Our skilled team specializes in orthopedic rehabilitation, sports injury recovery, post-surgery therapy, and chronic pain management. Whether you're looking for manual therapy, stretching exercises, or personalized treatment plans, we provide compassionate care tailored to your needs. Serving patients with professional physical therapy services to enhance wellness and improve quality of life. We support the Denver Metropolitan area, include Centennial, Highlands Ranch, Lone Tree, Castle Pines, Parker, Dever, Cherry Creek, Greenwood Village and Littleton. Schedule your consultation today!",
+        "openGraph": {
+            "title": "OVERTIME Sports Physical Therapy and Performance | Serving Denver Metro",
+            "description": "OVERTIME Sports PT + Performance offers expert physical therapy services to help you recover, manage pain, and improve mobility. Our skilled team specializes in orthopedic rehabilitation, sports injury recovery, post-surgery therapy, and chronic pain management. Whether you're looking for manual therapy, stretching exercises, or personalized treatment plans, we provide compassionate care tailored to your needs. Serving patients with professional physical therapy services to enhance wellness and improve quality of life. Schedule your consultation today!",
+            "type": "website",
+            "url": "https://overtimesportspt.com",
+            "image": "https://www.overtimesportspt.com/_astro/edward.DqauH5SB.JPG"
+        },
+        "twitter": {
+            "title": "OVERTIME Sports Physical Therapy and Performance | Serving Denver Metro",
+            "description": "OVERTIME Sports PT + Performance offers expert physical therapy services to help you recover, manage pain, and improve mobility. Our skilled team specializes in orthopedic rehabilitation, sports injury recovery, post-surgery therapy, and chronic pain management. Whether you're looking for manual therapy, stretching exercises, or personalized treatment plans, we provide compassionate care tailored to your needs. Serving patients with professional physical therapy services to enhance wellness and improve quality of life. We support the Denver Metropolitan area, include Centennial, Highlands Ranch, Lone Tree, Castle Pines, Parker, Dever, Cherry Creek, Greenwood Village and Littleton. Schedule your consultation today!",
+            "creator": "@overtimesportspt"
+        }
+    },
+    "pages": {
+        "about": {
+            "title": "OVERTIME Sports PT and Performance | About",
+            "description": "Discover OVERTIME Sports Physical Therapy and Performance in Centennial, CO. Led by Dr. Edward Benitez PT, DPT, we offer personalized rehabilitation, injury prevention, and performance training for athletes in running, soccer, basketball, football, volleyball, crossfit, baseball, golf, rugby and more. Our unique approach combines manual therapy and strength training to elevate athletic performance for all ages. We specialize in ACL PT, meniscus tear rehabilitation, physical therapy for muscle strains, along with any other physical therapy need including: knee pain, shoulder pain, hip pain, ankle pain, back pain, neck pain, headaches, concussions and achilles pain. Located at 8085 South Chester Street, we serve the Denver metro area, including Highlands Ranch, Centennial, Lone Tree, Castle Pines, Parker, Cherry Creek, Greedwood Village, Littleton and surrounding communities. Schedule your appointment today for expert care and education to maximize your health and athletic potential."
+        },
+        "resources": {
+            "title": "OVERTIME Sports PT and Performance | Resources",
+            "description": "OVERTIME Sports PT + Performance offers specialized physical therapy services for athletes and active individuals. The website provides information on sports rehabilitation, injury prevention, and performance enhancement. It features a FAQ section addressing common questions about physical therapy sessions and their benefits for athletes. The site emphasizes personalized care and comprehensive assessments to help clients excel in their sports and minimize injury risks. Sign up now for a free consultation, reach out to a physical therapist with any questions, or schedule a session today."
+        },
+        "services": {
+            "title": "OVERTIME Sports PT and Performance | Services",
+            "description": "Explore the range of services offered by OVERTIME Sports Physical Therapy, including physical therapy, recovery, performance training, mobility enhancement, and advanced techniques like dry needling, cupping, VALD force plate analysis and red light therapy. Achieve your best self with cutting-edge solutions tailored to optimize health, recovery, athletic performance and pain management."
+        }
+    }
+}

@@ -1,27 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Navbar } from "../components/Navbar.jsx";
-import { ImageGrid } from "../components/ImageGrid.jsx";
+import { ServiceList } from "../components/ServiceList.jsx";
 import { Footer } from "../components/Footer.jsx";
 import { ScrollUpButton } from "../components/ScrollUpButton.jsx";
 import "../styles/Theme.css";
 import "../styles/Diagonals.css";
 import "../styles/custom.css";
+import SiteData from "../constants/siteData.json";
 ---
 
-<Layout title="OVERTIME Sports - Services">
+<Layout
+  title="OVERTIME Sports - Services"
+  seo={{
+    title: SiteData.pages.services.title,
+    description: SiteData.pages.services.description,
+  }}
+>
   <Navbar client:load />
-  <!-- <Hero client:load /> -->
-  <!-- <Features1 client:load /> -->
-  <!-- <MeetTheTeam client:load /> -->
-  <!-- <FeaturesDiagonal client:load /> -->
-  <!-- <Compare client:load /> -->
-  <ImageGrid client:load />
-  <!-- <Brands client:load /> -->
-  <!-- <TreatmentList client:load /> -->
-  <!-- <Testimonials client:load /> -->
-  <!-- <Blog client:load /> -->
-  <!-- <FAQ client:load />  -->
+  <ServiceList client:load />
   <Footer />
   <ScrollUpButton client:load />
 </Layout>

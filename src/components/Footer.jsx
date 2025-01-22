@@ -1,8 +1,7 @@
-import { FacebookIcon } from "../assets/icons/FacebookIcon";
-import { InstagramIcon } from "../assets/icons/InstagramIcon";
-import { TailcastLogo } from "../assets/logos/TailcastLogo";
-import { TwitterIcon } from "../assets/icons/TwitterIcon";
+import { getImage } from "astro:assets";
+
 import logo from "../assets/images/logo.png";
+const optLogo = await getImage({ src: logo })
 
 const footerData = [
   {
@@ -33,8 +32,8 @@ export const Footer = () => {
               <div className="flex justify-center lg:justify-start items-center grow basis-0">
                 <div className="text-white mr-2 text-6xl">
                   <img
-                    src={logo.src}
-                    alt="Logo"
+                    src={optLogo.src}
+                    alt="eOVERTIME Sports Physical Therapy and Performance Logo"
                     className="w-4/5 mb-6"
                   />
                 </div>

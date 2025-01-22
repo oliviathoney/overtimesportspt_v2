@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { getImage } from "astro:assets";
 
-import { InvitationModal } from "./InvitationModal";
+import { ConsultationModal } from "./ConsultationModal";
+import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 import runnerHome from "../assets/images/runner-home.jpg";
 import soccerHome from "../assets/images/soccer-home.jpg";
-import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 
-export const Features1 = () => {
+
+const optRunner = await getImage({ src: runnerHome })
+const optSoccer = await getImage({ src: soccerHome })
+
+export const Introduction = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -28,7 +33,7 @@ export const Features1 = () => {
                 Rehab, Recover, Perform
               </h2>
               <p className="mb-10 text-secondaryText leading-loose">
-                At OVERTIME Sports Physical Therapy and Performance, our Doctor of Physical Therapy offers a unique approach to health and wellness.Whether you are injured, looking to stay healthy throughout the season or your day-to-day life, or wanting to take your performance to the next level, we are here to support you throughout your journey.
+                At OVERTIME Sports Physical Therapy and Performance, our Doctor of Physical Therapy offers a unique approach to health and wellness. Whether you are injured, looking to stay healthy throughout the season or your day-to-day life, or wanting to take your performance to the next level, we are here to support you throughout your journey. <a className="text-secondaryText block-subtitle" id="address" href="/about">Want to learn more?</a>
               </p>
               <ul className="mb-6 text-primaryText">
                 <li className="mb-4 flex">
@@ -43,6 +48,10 @@ export const Features1 = () => {
                   <CheckArrowIcon />
                   <span>Performance training</span>
                 </li>
+                <li className="mb-4 flex">
+                  <CheckArrowIcon />
+                  <span><a id="address" href="/services">And more!</a></span>
+                </li>
               </ul>
             </div>
             <div className="flex flex-col gap-2 sm:flex-row mt-8 px-16 justify-center">
@@ -53,49 +62,24 @@ export const Features1 = () => {
               >
                 Get Started
               </button>
-              {/* <button
-                className="w-64 sm:w-52 h-12 rounded-xl font-bold text-primaryText border border-solid  flex justify-center items-center cursor-pointer bg-bgDark2 hover:bg-bgDark3 border-primaryColor transition"
-                onClick={() => setIsModalOpen(true)}
-                aria-label="Live demo"
-              >
-                Live demo
-              </button> */}
             </div>
           </div>
           <div className="w-3/4 mx-auto lg:w-1/2 flex flex-wrap lg:-mx-4 sm:pr-8 lg:pt-10 justify-center lg:pl-4 xl:pl-4">
             <div className="mb-8 lg:mb-0 w-full sm:w-1/2 px-2 lg:px-0">
               <div className="mb-4 py-3 pl-3 pr-2 rounded">
                 <img
-                  src={runnerHome.src}
-                  alt="Feature image 1"
+                  src={optRunner.src}
+                  alt="A runner competeing in a race for their school."
                   className="rounded-xl  main-border-gray mx-auto sm:mx-unset"
-                  aria-label="Feature image 1"
                 />
               </div>
-              {/* <div className="py-3 pl-3 pr-2 rounded ">
-                <img
-                  src={feature2.src}
-                  alt="Feature image 2"
-                  className="rounded-xl  main-border-gray mx-auto sm:mx-unset"
-                  aria-label="Feature image 2"
-                />
-              </div> */}
             </div>
             <div className="w-1/2 lg:mt-20  pt-12 lg:pt-0 px-2 hidden sm:inline-block">
-              {/* <div className="mb-4 py-3 pl-3 pr-2 rounded-lg ">
-                <img
-                  src={feature3.src}
-                  alt="Feature image 3"
-                  className="rounded-xl  main-border-gray"
-                  aria-label="Feature image 3"
-                />
-              </div> */}
               <div className="py-3 pl-3 pr-2 rounded-lg ">
                 <img
-                  src={soccerHome.src}
-                  alt="Feature image 4"
+                  src={optSoccer.src}
+                  alt="A soccer player about to kick the ball to his teammates."
                   className="rounded-xl  main-border-gray"
-                  aria-label="Feature image 4"
                 />
               </div>
             </div>
@@ -103,7 +87,7 @@ export const Features1 = () => {
         </div>
       </motion.div>
       {isModalOpen && (
-        <InvitationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
       )}
     </section>
   );

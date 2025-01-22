@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { getImage } from "astro:assets";
 
-import { InvitationModal } from "./InvitationModal";
+import { ConsultationModal } from "./ConsultationModal";
 import gym from "../assets/images/gym-2.jpg";
+const optGym = await getImage({ src: gym })
 
-export const FeaturesDiagonal = () => {
+export const AboutOurPractice = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -46,11 +48,10 @@ export const FeaturesDiagonal = () => {
 
             </p>
           </div>
-          {/* <div className="w-3/5 mb-4 py-3 md:pl-3 md:pr-20 lg:pr-12 rounded"> */}
           <div className="w-4/5 lg:w-1/2 lg:pl-16 justify-center mx-auto">
             <img
-              src={gym.src}
-              alt="OVERTIME Gym"
+              src={optGym.src}
+              alt="A picture of the OVERTIME Sports PT gym containing multiple types of equipement such as dumbells, benches, squat racks and a turf area."
               className="rounded-xl  main-border-gray"
             />
             <div className="pt-16">
@@ -94,7 +95,7 @@ export const FeaturesDiagonal = () => {
         </svg>
       </div>
       {isModalOpen && (
-        <InvitationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
       )}
     </section>
   );

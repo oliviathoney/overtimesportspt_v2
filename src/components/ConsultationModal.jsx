@@ -3,10 +3,9 @@ import { useState } from "react";
 
 import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 import { CloseIcon } from "../assets/icons/CloseIcon";
-import logo from "../assets/images/logo.png"
 
 
-export const InvitationModal = ({ setIsOpen }) => {
+export const ConsultationModal = ({ setIsOpen }) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
@@ -121,13 +120,6 @@ export const InvitationModal = ({ setIsOpen }) => {
                           setIsOpen(true)
                         }
                         }
-                      />
-                    </div>
-                    <div className="hidden">
-                      <input
-                        type="text"
-                        name="image"
-                        value={logo.src}
                       />
                     </div>
                     <div className="w-full sm:w-4/5 p-2 mt-4 mx-auto">

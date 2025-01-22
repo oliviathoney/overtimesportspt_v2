@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { getImage } from "astro:assets";
 
-import { GithubIcon } from "../assets/icons/GithubIcon";
 import { InstagramIcon } from "../assets/icons/InstagramIcon";
 import logo from "../assets/images/logo.png";
+const optLogo = await getImage({ src: logo })
 
 const navbarLinks = [
   { label: "Home", href: "/#home", ariaLabel: "Home" },
@@ -31,8 +32,8 @@ export const Navbar = () => {
             <div className="flex justify-start items-center grow basis-0">
               <div className="text-white mr-2 text-6xl">
                 <img
-                  src={logo.src}
-                  alt="Logo"
+                  src={optLogo.src}
+                  alt="OVERTIME Sports Physical Therpay and Performance logo"
                   className="w-4/5"
                 />
               </div>
