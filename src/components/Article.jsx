@@ -16,12 +16,12 @@ export const Article = ({ articleData }) => {
             alt={title}
             className="rounded-3xl mb-8 w-10/12 md:w-3/4 mx-auto mt-8"
             aria-label={title}
-          />
+          /> */}
           <section
             className="text-secondaryText !leading-8 sm:!leading-10 sm:text-xl text-left sm:text-justify mx-auto w-full md:w-10/12 lg:w-2/3 mt-16"
             aria-labelledby="content-title"
             dangerouslySetInnerHTML={{ __html: content }}
-          /> */}
+          />
           <div className="w-4/5 lg:w-2/3 text-right mx-auto mt-8 text-primaryText text-xl">
             {footer}
           </div>
