@@ -85,7 +85,7 @@ export const AppointmentForm = () => {
               Request an Appointment
             </h2>
             <p className="w-full mb-2  text-secondaryText leading-loose">
-              Fill out the form below what you're hoping to accomplish at OVERTIME
+              Fill out the form below with what you're hoping to accomplish at OVERTIME
             </p>
             <p className="w-1/2 flex mx-auto text-center mb-8 block-subtitle !text-primaryColor leading-loose">
               Did you know that we offer special discounts for MILITARY PERSONNEL and FIRST RESPONDERS? Simply ask our team about our exclusive offers.

@@ -121,11 +121,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      {
-        isModalOpen && (
-          <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-        )
-      }
+
     </footer>
   );
 };

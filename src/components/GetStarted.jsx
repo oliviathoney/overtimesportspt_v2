@@ -34,8 +34,8 @@ export const GetStarted = () => {
                     <div className="flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                   </div>
                   <div className="mt-5 sm:pe-8">
-                    <h3 class="block-subtitle">Schedule a Free Consultation</h3>
-                    <p class="text-gray-400">Book a no pressure consultation to discuss your goals, challenges and needs.
+                    <h3 className="block-subtitle">Schedule a Free Consultation</h3>
+                    <p className="text-gray-400">Book a no pressure consultation to discuss your goals, challenges and needs.
                     </p>
                   </div>
                 </li>
@@ -47,8 +47,8 @@ export const GetStarted = () => {
                     <div className="flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                   </div>
                   <div className="mt-5 sm:pe-8">
-                    <h3 class="block-subtitle">Get Your Personalized Assessment</h3>
-                    <p class="text-gray-400">Our Doctor of Physical Therapy will help uncover the root cause of your pain, injury, or performance issue.
+                    <h3 className="block-subtitle">Get Your Personalized Assessment</h3>
+                    <p className="text-gray-400">Our Doctor of Physical Therapy will help uncover the root cause of your pain, injury, or performance issue.
                     </p>
                   </div>
                 </li>
@@ -61,8 +61,8 @@ export const GetStarted = () => {
 
                   </div>
                   <div className="mt-5 sm:pe-8">
-                    <h3 class="block-subtitle">Start Your Custom Program</h3>
-                    <p class="text-gray-400"> Experience tailored solutions designed to help you move better, feel better and stay better.
+                    <h3 className="block-subtitle">Start Your Custom Program</h3>
+                    <p className="text-gray-400"> Experience tailored solutions designed to help you move better, feel better and stay better.
                     </p>
                   </div>
                 </li>
