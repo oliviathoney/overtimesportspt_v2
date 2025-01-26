@@ -16,7 +16,7 @@ export const Introduction = () => {
 
   return (
     <section
-      className="w-full bg-bgDark2 pt-24 mt-8  mb-8 sm:-mt-8 sm:mb-24 xl:-mt-8 2xl:mt-0    md:pt-[12vw] lg:pt-24"
+      className="w-full bg-bgDark2 mb-8 sm:-mt-8 sm:mb-24 2xl:mt-0"
       id="features"
     >
       <motion.div
@@ -29,7 +29,7 @@ export const Introduction = () => {
           <div className="w-full lg:w-1/2 mb-12 lg:mb-0">
             <div className="mx-auto lg:mx-auto w-11/12 sm:w-4/5 md:w-3/4 lg:w-unset">
               <span className="block-subtitle">Maximize your potential</span>
-              <h2 className="mt-6 mb-3 text-base lg:text-base block-big-title font-NotoSerif">
+              <h2 className="mb-3 text-base lg:text-base block-big-title font-NotoSerif">
                 Rehab, Recover, Perform
               </h2>
               <p className="mb-10 text-secondaryText leading-loose">
@@ -60,7 +60,7 @@ export const Introduction = () => {
                 onClick={() => setIsModalOpen(true)}
                 aria-label="Request"
               >
-                Get Started
+                BOOK A FREE CONSULTATION
               </button>
             </div>
           </div>

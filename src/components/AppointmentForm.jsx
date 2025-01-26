@@ -4,6 +4,7 @@ import { Toast } from "flowbite-react";
 import { FaTelegramPlane } from "react-icons/fa";
 
 export const AppointmentForm = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -221,6 +222,9 @@ export const AppointmentForm = () => {
           <div className="ml-3 text-sm font-normal text-gray-100">Your appointment request has been sent.</div>
           <Toast.Toggle className="bg-indigo-700 text-gray-100" onDismiss={() => setShowToast(false)} />
         </Toast>
+      )}
+      {isModalOpen && (
+        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
       )}
     </section >
   );

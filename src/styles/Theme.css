@@ -32,6 +32,9 @@
 .contained-button {
   @apply rounded-lg font-bold bg-primaryColor text-primaryText flex justify-center items-center hover:bg-[#7274f3] cursor-pointer transition;
 }
+.contained-button-reverse {
+  @apply rounded-lg font-bold bg-[#7274f3] text-primaryText flex justify-center items-center hover:bg-primaryColor cursor-pointer transition;
+}
 .outlined-button {
   @apply text-primaryText main-border-gray rounded-xl bg-bgDark2 hover:bg-bgDark3  border-gray-700 text-sm;
 }

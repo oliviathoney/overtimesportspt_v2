@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Card } from "flowbite-react";
 import { getImage } from "astro:assets";
+import { useState } from "react";
+
+import { ConsultationModal } from "./ConsultationModal";
 
 import pt from "../assets/images/services/PT.jpg"
 import recovery from "../assets/images/services/Recovery.jpg"
@@ -107,6 +110,7 @@ const services = [
 ];
 
 export const ServiceList = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <section className="w-full flex justify-center bg-bgDark2 relative pt-32">
       <div className="pb-20 pt-12 bg-bgDark2  2xl:w-[1150px] lg:w-[1050px]  md:w-4/5 ">
@@ -146,6 +150,9 @@ export const ServiceList = () => {
           </div>
         </motion.div>
       </div>
+      {isModalOpen && (
+        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+      )}
     </section>
   );
 };

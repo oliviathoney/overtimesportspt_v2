@@ -9,11 +9,10 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   // Get the form data submitted by the user on the home page
   // const formData = await request.formData();
   const body = await request.json();
-  console.log(body)
-  console.log(body.email)
-  console.log(body['email'])
   const to = body.email as string | null;
   const phone = body.phone as string | null;
+  const firstname = body.firstname as string | null;
+  const lastname = body.lastname as string | null;
   const subject = "Welcome to OVERTIME Sports PT and Performance"
   const html = `
     <!DOCTYPE html
@@ -83,7 +82,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
                                         OVERTIME Sports PT and Performance</h1>
                                     <p
                                         style="font-size:16px;line-height:24px;margin:0px;margin-top:8px;color:rgb(255,255,255)">
-                                        Thank you for your interest in OVERTIME. We will be in touch soon and look
+                                        Hi ${firstname}! Thank you for your interest in OVERTIME. We will be in touch soon and look
                                         forward to dicussing how our team can improve your life.
                                     </p>
                                     <a href="https://overtimesportspt.com"
@@ -138,6 +137,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     <!-- Main Content -->
     <div style="margin-bottom: 32px; color: #222">
     Someone has expressed interest on overtimesportspt.com <br>
+    <p>Name: ${firstname} ${lastname}</p>
     <p>Email: ${to}<br>Phone Number: ${phone}</p>
     </div>
     <!-- Footer -->

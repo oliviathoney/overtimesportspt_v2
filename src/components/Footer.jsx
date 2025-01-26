@@ -1,4 +1,6 @@
 import { getImage } from "astro:assets";
+import { useState } from "react";
+import { ConsultationModal } from "./ConsultationModal";
 
 import logo from "../assets/images/logo.png";
 const optLogo = await getImage({ src: logo })
@@ -23,6 +25,7 @@ const footerData = [
 ];
 
 export const Footer = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <footer aria-label="Site footer">
       <div className="pt-10  lg:pt-20 lg:pb-16 bg-bgDark1 radius-for-skewed ">
@@ -118,6 +121,11 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+      {
+        isModalOpen && (
+          <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        )
+      }
     </footer>
   );
 };

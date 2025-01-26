@@ -5,6 +5,8 @@ import { Navbar } from "../components/Navbar.jsx";
 import { Introduction } from "../components/Introduction.jsx";
 import { Testimonials } from "../components/Testimonials.jsx";
 import { ServicePreview } from "../components/ServicePreview.jsx";
+import { GetStarted } from "../components/GetStarted";
+import { SignOff } from "../components/SignOff";
 import { Footer } from "../components/Footer.jsx";
 import { ScrollUpButton } from "../components/ScrollUpButton";
 import "../styles/Theme.css";
@@ -17,8 +19,10 @@ import SiteData from "../constants/siteData.json";
   <Navbar client:load />
   <Hero client:load />
   <Introduction client:load />
+  <GetStarted client:load />
   <ServicePreview client:load />
   <Testimonials client:load />
+  <SignOff client:load />
   <Footer />
   <ScrollUpButton client:load />
 </Layout>
