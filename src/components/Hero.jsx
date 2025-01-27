@@ -19,12 +19,12 @@ export const Hero = () => {
   return (
     <div>
       <section
-        className="hidden lg:flex w-full justify-center items-center bg-bgDark1 mb-[28vw] md:mb-[18vw] lg:mb-[10vw] xl:mb-[13vw] 2xl:mb-60 hero-bg-gradient pb-24 sm:pb-32 md:pb-44 lg:pb-0"
+        className="hidden lg:flex w-screen justify-center items-center bg-bgDark1 mb-[28vw] md:mb-[18vw] lg:mb-[10vw] xl:mb-[13vw] 2xl:mb-60 hero-bg-gradient pb-24 sm:pb-32 md:pb-44 lg:pb-0"
         id="home"
-        style={{ backgroundImage: `url(${optOT.src})`, backgroundSize: "fit", backgroundRepeat: "no-repeat", backgroundPositionX: "0%" }}
+        style={{ backgroundImage: `url(${optOT.src})`, backgroundSize: "fit", backgroundRepeat: "no-repeat" }}
       >
         <div
-          className="w-full flex flex-col justify-left items-start pt-16 md:pt-16 lg:pt-20 text-start"
+          className="w-screen flex flex-col justify-left items-start pt-16 md:pt-16 lg:pt-20 text-start"
         >
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -41,7 +41,7 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 0.05 }}
           >
             <div className="md:w-1/2 xl:w-2/5 text-5xl sm:text-4xl lg:text-4xl xl:text-4xl font-bold tracking-wide font-NotoSerif uppercase text-primaryText sm:px-8 md:px-20 lg:px-20">
-              <h1>Bridging the gap between physical therapy and sports performance: <br></br>
+              <h1>Bridging the gap between physical therapy and sports performance: <br></br><br></br>
                 We help people feel better, and stay better.
               </h1>
             </div>
@@ -107,7 +107,7 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="w-full text-secondaryColor text-center text-md mt-[75px] p-5 font-bold uppercase backdrop-blur-lg" style={{ backgroundColor: "#4D734F30" }}>
+            <h2 className="w-screen text-secondaryColor text-center text-md mt-[75px] p-5 font-bold uppercase backdrop-blur-lg" style={{ backgroundColor: "#4D734F30" }}>
               THE BEST PHYSICAL THERAPY IN CENTENNIAL / HIGHLANDS RANCH, CO.
             </h2>
           </motion.div>
@@ -117,7 +117,7 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 0.05 }}
           >
             <div className="w-full text-center text-primaryText py-24">
-              <h1 className="font-bold text-3xl tracking-wide font-NotoSerif uppercase mx-5">Bridging the gap between physical therapy and sports performance: <br></br>
+              <h1 className="font-bold text-3xl tracking-wide font-NotoSerif uppercase mx-5">Bridging the gap between physical therapy and sports performance: <br></br><br></br>
                 We help people feel better, and stay better.
               </h1>
               <h2 className="text-primaryText text-sm mt-10 px-12 text-center ">

@@ -11,6 +11,7 @@ const navbarLinks = [
   { label: "About", href: "/about", ariaLabel: "About" },
   { label: "Services", href: "/services", ariaLabel: "Services" },
   { label: "Resources", href: "/resources", ariaLabel: "Resources" },
+  { label: "Blog", href: "/blog", ariaLabel: "Blog" },
 ];
 
 export const Navbar = () => {

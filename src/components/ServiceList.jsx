@@ -61,7 +61,7 @@ const services = [
   },
   {
     'image': await getImage({ src: dst }),
-    'desc': 'Dynamo strength testing provides precise measurements of a patient’s muscle strength, allowing therapists to assess imbalances, track progress, and tailor rehabilitation programs. This objective data ensures targeted treatment, optimizes recovery, and helps prevent re-injury by addressing specific weaknesses.',
+    'desc': 'Dynamo strength testing provides precise measurements of a patient\'s muscle strength, allowing therapists to assess imbalances, track progress, and tailor rehabilitation programs.This objective data ensures targeted treatment, optimizes recovery, and helps prevent re- injury by addressing specific weaknesses.',
     'title': 'Dynamo Strength Testing',
     'alt': "Dr. Benitez shows a client how to perform Dyanamo strength testing."
   },

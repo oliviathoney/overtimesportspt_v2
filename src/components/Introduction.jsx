@@ -16,7 +16,7 @@ export const Introduction = () => {
 
   return (
     <section
-      className="w-full bg-bgDark2 mb-8 sm:-mt-8 sm:mb-24 2xl:mt-0"
+      className="w-full bg-bgDark2 -mt-48 mb-8 sm:mb-24 2xl:-mt-32"
       id="features"
     >
       <motion.div

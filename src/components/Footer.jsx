@@ -10,7 +10,7 @@ const footerData = [
     title: "Company",
     items: [
       { name: "About Us", href: "/about" },
-      { name: "Contact Us", href: "resources/#request" },
+      { name: "Contact Us", href: "mailto:info@overtimesports.com" },
       { name: "Our Services", href: "/services" }
     ],
   },
