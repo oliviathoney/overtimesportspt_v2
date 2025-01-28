@@ -1,0 +1,256 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Navbar } from "../../components/Navbar.jsx";
+import { Article } from "../../components/Article.jsx";
+import { Footer } from "../../components/Footer.jsx";
+import "../../styles/Theme.css";
+import { ScrollUpButton } from "../../components/ScrollUpButton";
+
+import SignsYou from "../../assets/images/blog/signs-you.jpg";
+import SoccerInjuries from "../../assets/images/blog/soccer-injuries.jpg";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const pages = [
+    {
+      title: "5 Signs You Need A New PT",
+      subtitle: "A guide to feeling confident and secure in your recovery.",
+      slug: "5-signs-you-need-a-new-pt",
+      text: `
+       <p>
+              Choosing the right physical therapist can be overwhelming, especially when dealing with pain or injury. I's important to feel comfortable, heard, and confident in the care you're receiving. Here are 5 signs that it might be time to find a new PT: <br></br>
+              <span class="text-secondaryColor uppercase font-bold">
+                1. They're Distracted During Your Session
+              </span>
+              <br></br>
+              If your PT is busy with emails or documentation during your appointment, it's a sign they're not fully focused on your care. At Overtime, you get their undivided attention for the entire session.
+              <br></br>
+              <span class="text-secondaryColor uppercase font-bold">
+                2. You Spend More Time with Aides Than Your PT
+              </span>
+              <br></br>
+              If you're seeing a student, aide, or spending most of your session on your own, it's time to find a new provider. At Overtime, you'll always work one-on-one with a Doctor of Physical Therapy for the full hour.
+              <br></br>
+              <span class="text-secondaryColor uppercase font-bold">
+                3. They're Not Available for Questions
+              </span>
+              <br></br>
+              You need guidance between sessions. If your PT isn't available to answer your questions outside of appointments, consider a provider who offers accessible communication—like at Overtime, where you can reach us anytime.
+              <br></br>
+              <span class="text-secondaryColor uppercase font-bold">
+                4. They Can't Explain “Why” Behind Your Treatment
+              </span>
+              <br></br>
+              If your PT can't explain why they're recommending certain exercises, it's time to look elsewhere. At Overtime, we ensure you understand the purpose behind every treatment and exercise.
+              <br></br>
+              <span class="text-secondaryColor uppercase font-bold">
+                5. They Don't Focus on Strength and Stability
+              </span>
+              <br></br>
+              While manual therapy can reduce pain temporarily, without a focus on strength training, your progress may not last. At Overtime, we combine manual therapy with personalized strength programs to get you back to what you love.
+              <br></br>
+              <br></br>
+              At Overtime, we're committed to your recovery and long-term well-being, offering personalized, one-on-one care and education. Your success is our priority, and we're here to support you every step of the way.
+              <br></br>
+              Questions? Reach out—we'd love to help!
+            </p>
+      `,
+      image: SignsYou,
+    },
+    {
+      slug: "the-5-most-common-soccer-injuries",
+      title: "The 5 Most Common Soccer Injuries and How to Prevent Them",
+      subtitle: "A guide to getting and staying healthy on the pitch.",
+      text: `
+        <p>
+              Soccer is an exhilarating sport, known for its fast pace, thrilling goals, and incredible athleticism.
+              However, like all physical activities, it comes with its risks. Injuries are a part of the game, and
+              understanding the most common ones can help you take the necessary steps to prevent them. In
+              this blog, we'll break down the five most common soccer injuries and share tips on how to stay
+              injury-free.
+              <br></br>
+              <span class="text-secondaryColor uppercase font-bold">
+                1. Ankle Sprains: A Common Setback in Soccer
+              </span>
+              <br></br>
+              Ankle sprains are one of the most frequent injuries seen in soccer. They occur when a player
+              twists or rolls their ankle during a tackle, a quick pivot, or while making a sharp turn. The
+              ligaments in the ankle stretch beyond their normal range, causing pain, swelling, and sometimes
+              bruising.
+              <br></br>
+              <span class="text-secondaryColor">
+                How to Prevent It:
+              </span>
+              <ul>
+                <li>
+                  <strong>Strengthen your ankles:</strong> Perform exercises like Single leg balance and strengthening,
+                  and resistance band work at the ankle to improve ankle stability.
+                </li>
+                <li>
+                  <strong>Proper footwear:</strong> Wear cleats that fit well and provide adequate support for your foot
+                  and ankle.
+                </li>
+                <li>
+                  <strong>Warm up properly:</strong> Focus on stretching and mobility exercises for the lower body
+                  before playing.
+                </li>
+              </ul>
+              <br></br>
+              <span class="text-secondaryColor uppercase font-bold">
+                2. Hamstring Strains: When Speed Meets Injury
+              </span>
+              <br></br>
+              The hamstring muscles, located at the back of your thigh, are heavily involved in soccer
+              movements like sprinting, kicking, and rapid deceleration. A hamstring strain occurs when these
+              muscles are overstretched or torn, leading to pain and limited mobility.
+              <br></br>
+              <span class="text-secondaryColor">
+                How to Prevent It:
+              </span>
+              <ul>
+                <li>
+                  <strong>Warm up and cool down: </strong>Make sure to incorporate dynamic stretches (A-skips, high
+                  knees).
+                </li>
+                <li>
+                  <strong>Strengthen your hamstrings: </strong>Regularly engage in strength training exercises such as
+                  hamstring curls, deadlifts, and lunges to improve muscle flexibility and endurance.
+                </li>
+                <li>
+                  <strong>Increase mobility: </strong>Incorporate mobility drills for the hips and foam rolling into your
+                  routine to improve muscle length and minimize tightness.
+                </li>
+              </ul>
+              <br></br>
+              <span class="text-secondaryColor uppercase font-bold">
+                3. Knee Injuries (ACL/MCL Tears): A Game-Changer
+              </span>
+              <br></br>
+              Knee injuries, especially tears to the ACL (anterior cruciate ligament) and MCL (medial
+              collateral ligament), are significant setbacks in soccer. These injuries occur when a player
+              changes direction suddenly, experiences a hard tackle, or twists their knee awkwardly. ACL tears
+              are serious and stressful and often requiring surgery and long recovery periods.
+              <br></br>
+              <span class="text-secondaryColor">
+                How to Prevent It:
+              </span>
+              <ul>
+                <li>
+                  <strong>Strengthen the quadriceps and hamstrings: </strong>Focus on strengthening the muscles around
+                  the knee to provide better support and stability.
+                </li>
+                <li>
+                  <strong>Improve balance and proprioception: </strong>Exercises like single-leg stands and balance
+                  boards help you improve body awareness and coordination, reducing the risk of awkward
+                  movements.
+                </li>
+                <li>
+                  <strong>Gather proper objective measurements from your Sport PT: </strong>At Overtime, we have
+                  tools such as Force Plates and Dynamometer Strength Testing to ensure we are strong on
+                  both limbs and prepared to stay at peak shape during the season.
+                </li>
+              </ul>
+              <br></br>
+              <span class="text-secondaryColor uppercase font-bold">
+                4. Groin Strain: The Inner Thigh Injury
+              </span>
+              <br></br>
+              The groin muscle group (the adductors) plays a key role in movements like passing, shooting,
+              and changing direction. A groin strain happens when these muscles are overstretched or torn,
+              leading to pain in the inner thigh. This is particularly common in soccer players due to frequent
+              lateral movements.
+              <br></br>
+              <span class="text-secondaryColor">
+                How to Prevent It:
+              </span>
+              <ul>
+                <li>
+                  <strong>Warm up and stretch: </strong>A proper warm-up, especially with dynamic stretches targeting
+                  the groin area, can reduce the risk of injury.
+                </li>
+                <li>
+                  <strong>Strengthen the inner thighs: </strong>Perform exercises like adductor squeezes, side lunges, and
+                  leg lifts to build strength in the groin muscles.
+                </li>
+                <li>
+                  <strong>Increase mobility: </strong>Incorporate mobility drills for the hips and foam rolling into your
+                  routine to improve muscle length and minimize tightness.
+                </li>
+              </ul>
+              <br></br>
+              <span class="text-secondaryColor uppercase font-bold">
+                5. Concussions: The Head Injury
+              </span>
+              <br></br>
+              Concussions are one of the most serious injuries in soccer, affecting players at all levels. Though
+              the sport is known for its skill and athleticism, the risk of head injuries is always
+              present—especially when players collide, fall, or head the ball. A concussion occurs when a
+              blow to the head or body causes the brain to move rapidly inside the skull, leading to temporary
+              brain function disruption.
+              <br></br>
+              <span class="text-secondaryColor">
+                How to Prevent It:
+              </span>
+              <ul>
+                <li>
+                  <strong>Concussion Protocols: </strong>Make sure players follow strict concussion protocols. If a
+                  concussion is suspected, remove the player from the field immediately and have them
+                  assessed by a healthcare professional. Never allow a player to return to the game before
+                  they're fully cleared.
+                </li>
+                <li>
+                  <strong>Strengthening and Conditioning: </strong>A strong neck and shoulder area helps absorb and distribute impact, which can reduce the
+                  severity of head injuries. Regular exercises targeting neck stability and core strength can
+                  help protect against concussions.
+                </li>
+              </ul>
+              <br></br>
+              <span class="text-secondaryColor uppercase font-bold">
+                Conclusion: Stay Safe and Play Strong
+              </span>
+              <br></br>
+              While injuries are an inevitable part of sports, taking preventive measures can significantly
+              reduce your risk of getting hurt on the field. Incorporating proper warm-up routines, strength
+              training, and mobility exercises into your regular routine can keep you playing at your best.
+              Remember, always listen to your body, and don't push through pain—early injury detection and
+              recovery are crucial for a full recovery and for maintaining long-term performance.
+              Whether you&#39;re a competitive player or a weekend warrior, take care of your body, and keep
+              enjoying the beautiful game!
+              <br></br>
+              At Overtime, we are experts in soccer. Our Physical Therapist and Owner, Edward Benitez,
+              played soccer with FC Dallas and Dallas Texans and he understands your sport's in's and out's.
+              <br></br>
+              <br></br>
+              Questions? Let us know! We would love to help.
+            </p>
+      `,
+      image: SoccerInjuries,
+    },
+  ];
+  return pages.map(({ slug, title, subtitle, text, image }) => {
+    return {
+      params: { slug },
+      props: { title, subtitle, text, image },
+    };
+  });
+}
+
+const { title, subtitle, text, image } = Astro.props;
+
+const articleData = {
+  title: title,
+  subtitle: subtitle,
+  date: "January 27, 2025",
+  image: image,
+  content: text,
+  footer: "",
+};
+---
+
+<Layout title={articleData.title}>
+  <Navbar client:load />
+  <Article articleData={articleData} />
+  <Footer />
+  <ScrollUpButton client:load />
+</Layout>

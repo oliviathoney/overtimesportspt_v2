@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+import { ConsultationModal } from "./ConsultationModal";
+
 const FAQData = [
   {
     question: "Do I need physical therapy?",
@@ -80,37 +82,43 @@ const FAQData = [
   },
 ];
 
-export const FAQ = () => (
-  <section className="w-full bg-bgDark2 mb-12 lg:mb-24 pt-12">
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-    >
-      <div className="relative z-10 container px-2 sm:px-8 lg:px-4 mx-auto w-11/12 sm:w-full">
-        <div className="md:max-w-4xl mx-auto">
-          <p className="mb-2 mt-32 block-subtitle text-center">Have any questions?</p>
-          <h2 className="mb-16 block-big-title text-center font-NotoSerif">
-            Frequently Asked Questions
-          </h2>
-          <div className="mb-11 flex flex-wrap -m-1">
-            {FAQData.map((item, index) => (
-              <div className="w-full p-1" key={`${item.question}-${index}`}>
-                <FAQBox
-                  title={item.question}
-                  content={item.answer}
-                  key={`${item.question}-${item.answer}`}
-                  defaultOpen={index === 0}
-                />
-              </div>
-            ))}
+export const FAQ = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  return (
+    <section className="w-full bg-bgDark2 mb-12 lg:mb-24 pt-12">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <div className="relative z-10 container px-2 sm:px-8 lg:px-4 mx-auto w-11/12 sm:w-full">
+          <div className="md:max-w-4xl mx-auto">
+            <p className="mb-2 mt-32 block-subtitle text-center">Have any questions?</p>
+            <h2 className="mb-16 block-big-title text-center font-NotoSerif">
+              Frequently Asked Questions
+            </h2>
+            <div className="mb-11 flex flex-wrap -m-1">
+              {FAQData.map((item, index) => (
+                <div className="w-full p-1" key={`${item.question}-${index}`}>
+                  <FAQBox
+                    title={item.question}
+                    content={item.answer}
+                    key={`${item.question}-${item.answer}`}
+                    defaultOpen={index === 0}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </motion.div>
-  </section>
-);
+      </motion.div>
+      {isModalOpen && (
+        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+      )}
+    </section>
+  )
+};
 
 const FAQBox = ({ defaultOpen, title, content }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);

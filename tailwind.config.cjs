@@ -13,6 +13,7 @@ module.exports = {
       colors: {
         primaryColor: "#4D734F",
         secondaryColor: "#75AE78",
+        highlightColor: "#7274F3",
         primaryText: "rgb(255,255,255)",
         secondaryText: "rgb(174, 178, 183)",
         bgDark1: "rgb(31, 32, 35)",

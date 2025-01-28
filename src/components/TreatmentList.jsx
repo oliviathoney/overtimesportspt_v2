@@ -1,4 +1,7 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
+
+import { ConsultationModal } from "./ConsultationModal";
 
 const items = [
   {
@@ -84,6 +87,7 @@ const items = [
 ]
 
 export const TreatmentList = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <section className=" bg-bgDark1 w-full lg:pt-24">
       <motion.div
@@ -116,6 +120,9 @@ export const TreatmentList = () => {
           </div>
         </div >
       </div >
+      {isModalOpen && (
+        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+      )}
     </section>
   )
-}
+};

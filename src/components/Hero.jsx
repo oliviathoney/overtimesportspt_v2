@@ -5,100 +5,138 @@ import { getImage } from "astro:assets";
 import { ConsultationModal } from "./ConsultationModal";
 import gym2 from "../assets/images/gym-2.jpg";
 import background from "../assets/images/background.jpg";
+import OT from "../assets/images/OT-9-copy.jpg";
+import OTcp from "../assets/images/OT-9.jpg";
 
 const optGym = await getImage({ src: gym2 })
 const optBG = await getImage({ src: background })
+const optOT = await getImage({ src: OT })
+const optOTcp = await getImage({ src: OTcp })
 
 export const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section
-      className="w-full flex justify-center items-center bg-bgDark1 mb-[28vw] md:mb-[18vw] lg:mb-[10vw] xl:mb-[13vw] 2xl:mb-60 hero-bg-gradient pb-24 sm:pb-32 md:pb-44 lg:pb-0"
-      id="home"
-      style={{ backgroundImage: `url(${optBG.src})`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}
-    >
-      <div
-        className="w-full md:w-[1500px] xl:w-[1500px] flex flex-col justify-center items-center pt-16 md:pt-16 lg:pt-20 text-center"
+    <div>
+      <section
+        className="hidden lg:flex w-screen justify-center items-center bg-bgDark1 mb-[28vw] md:mb-[18vw] lg:mb-[10vw] xl:mb-[13vw] 2xl:mb-60 hero-bg-gradient pb-24 sm:pb-32 md:pb-44 lg:pb-0"
+        id="home"
+        style={{ backgroundImage: `url(${optOT.src})`, backgroundSize: "fit", backgroundRepeat: "no-repeat" }}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+        <div
+          className="w-screen flex flex-col justify-left items-start pt-16 md:pt-16 lg:pt-20 text-start"
         >
-          <h3 className="text-secondaryColor text-sm sm:text-base  mb-6 sm:mt-32 mt-16  font-bold uppercase">
-            Discover a new you
-          </h3>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.05 }}
-        >
-          <div className="text-5xl sm:text-6xl lg:text-6xl xl:text-6xl font-bold tracking-wide font-NotoSerif uppercase text-primaryText sm:px-8 md:px-2 lg:px-2">
-            <h1 className="lg:hidden">DISCOVER</h1>
-            <h1 className="lg:hidden">OPTIMIZE</h1>
-            <h1 className="lg:hidden">PERFORM</h1>
-            <h1 className="hidden lg:inline">Discover <span>&#183;</span> Optimize <span>&#183;</span> Perform</h1>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <h2 className="text-secondaryText text-sm lg:text-base xl:text-lg sm:text-base mt-10 px-12 sm:px-48 ">
-            Bridging the gap between physical therapy and sports performance.
-          </h2>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-        >
-          <div className="flex flex-col gap-2 sm:flex-row mt-14 mb-24 sm:mb-40 justify-center">
-            <button
-              className="contained-button w-64 sm:w-52 h-12 mr-0"
-              onClick={() => setIsModalOpen(true)}
-              aria-label="Get started"
-            >
-              Get Started
-            </button>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 10, zIndex: 20 }}
-          animate={{ opacity: 1, y: 0, zIndex: 20 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-        >
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-secondaryColor text-sm sm:text-sm  mb-6 sm:mt-24 mt-12 p-5 pl-20 font-bold uppercase backdrop-blur-lg rounded-lg" style={{ backgroundColor: "#4D734F30" }}>
+              THE BEST PHYSICAL THERAPY IN CENTENNIAL / HIGHLANDS RANCH, CO.
+            </h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
+          >
+            <div className="md:w-1/2 xl:w-2/5 text-5xl sm:text-4xl lg:text-4xl xl:text-4xl font-bold tracking-wide font-NotoSerif uppercase text-primaryText sm:px-8 md:px-20 lg:px-20">
+              <h1>Bridging the gap between physical therapy and sports performance: <br></br><br></br>
+                We help people feel better, and stay better.
+              </h1>
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <h2 className="text-secondaryText text-sm lg:text-base xl:text-lg sm:text-base mt-2 px-12 sm:px-20 ">
+              DISCOVER - OPTIMIZE - PERFORM
+            </h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            <div className="w-full mt-10 mb-24 sm:mb-40 justify-center">
+              <button
+                className="contained-button w-full sm:w-full h-16 mx-20"
+                onClick={() => setIsModalOpen(true)}
+                aria-label="Get started"
+              >
+                BOOK A FREE CONSULTATION
+              </button>
+            </div>
+          </motion.div>
+
           <div className="relative w-screen flex justify-center ">
-            <img
-              src={optGym.src}
-              alt="A picture of the OVERTIME Sports Physical Therapy gym containing multiple types of equipment such as dumbells, benches, squat racks and a turf area."
-              className="w-4/5 2xl:w-[1200px] mx-auto absolute z-10 rounded-xl main-border-gray hero-dashboard-border-gradient lg:top-6 xl:top-0"
-            />
-          </div>
-        </motion.div>
-        <div className="relative w-screen flex justify-center ">
-          <div className="shape-divider-bottom-1665343298 mt-4 sm:mt-16 md:mt-52 hidden lg:block">
-            <svg
-              data-name="Layer 1"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 1200 120"
-              preserveAspectRatio="none"
-              className="bg-bgDark2"
-            >
-              <path
-                d="M1200 0L0 0 598.97 114.72 1200 0z"
-                className="shape-fill bg-bgDark1  fill-bgDark1"
-              ></path>
-            </svg>
+            <div className="shape-divider-bottom-1665343298 mt-4 sm:mt-8 md:mt-10 lg:mt-30 xl:mt-30 hidden lg:block">
+              <svg
+                data-name="Layer 1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1200 120"
+                preserveAspectRatio="none"
+                className="bg-bgDark2"
+              >
+                <path
+                  d="M1200 0L0 0 598.97 114.72 1200 0z"
+                  className="shape-fill bg-bgDark1  fill-bgDark1"
+                ></path>
+              </svg>
+            </div>
           </div>
         </div>
-      </div>
-      {isModalOpen && (
-        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-      )}
-    </section>
+        {isModalOpen && (
+          <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        )}
+      </section>
+
+
+      <section
+        className="flex lg:hidden w-full justify-center items-center bg-bgDark1 mb-[28vw] md:mb-[18vw] lg:mb-[10vw] xl:mb-[13vw] 2xl:mb-60 hero-bg-gradient pb-0"
+        id="home"
+        style={{ backgroundImage: `url(${optOTcp.src})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPositionY: "80%", backgroundPositionX: "50%" }}
+      >
+        <div
+          className="w-full backdrop-blur-sm flex flex-col justify-left items-start pt-16 md:pt-16 lg:pt-20 text-start"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="w-screen text-secondaryColor text-center text-md mt-[75px] p-5 font-bold uppercase backdrop-blur-lg" style={{ backgroundColor: "#4D734F30" }}>
+              THE BEST PHYSICAL THERAPY IN CENTENNIAL / HIGHLANDS RANCH, CO.
+            </h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
+          >
+            <div className="w-full text-center text-primaryText py-24">
+              <h1 className="font-bold text-3xl tracking-wide font-NotoSerif uppercase mx-5">Bridging the gap between physical therapy and sports performance: <br></br><br></br>
+                We help people feel better, and stay better.
+              </h1>
+              <h2 className="text-primaryText text-sm mt-10 px-12 text-center ">
+                DISCOVER - OPTIMIZE - PERFORM
+              </h2>
+              <button
+                className="contained-button h-16 mx-auto mt-10 p-10"
+                onClick={() => setIsModalOpen(true)}
+                aria-label="Get started"
+              >
+                BOOK A FREE CONSULTATION
+              </button>
+            </div>
+          </motion.div>
+        </div>
+        {isModalOpen && (
+          <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        )}
+      </section>
+    </div>
   );
 };
