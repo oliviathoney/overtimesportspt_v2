@@ -107,7 +107,7 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="w-screen text-secondaryColor text-center text-md mt-[75px] p-5  font-bold uppercase backdrop-blur-lg" style={{ backgroundColor: "#4D734F30" }}>
+            <h2 className="w-screen text-secondaryColor text-center text-md mt-[75px] p-5 font-bold uppercase backdrop-blur-lg" style={{ backgroundColor: "#4D734F30" }}>
               THE BEST PHYSICAL THERAPY IN CENTENNIAL / HIGHLANDS RANCH, CO.
             </h2>
           </motion.div>
