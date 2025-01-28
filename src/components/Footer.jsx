@@ -32,24 +32,23 @@ export const Footer = () => {
         <div className="container mx-auto px-4 w-4/5 md:w-11/12 lg:w-10/12 xl:w-4/5 2xl:w-2/3">
           <div className="flex flex-wrap">
             <div className="w-full lg:w-1/2 mb-16 lg:mb-0">
-              <div className="flex justify-center lg:justify-start items-center grow basis-0">
+              <div className="flex justify-center lg:justify-start items-center text-center grow basis-0">
                 <div className="text-white mr-2 text-6xl">
                   <img
                     src={optLogo.src}
-                    alt="eOVERTIME Sports Physical Therapy and Performance Logo"
-                    className="w-4/5 mb-6"
+                    alt="OVERTIME Sports Physical Therapy and Performance Logo"
+                    className="w-4/5 mb-6 lg:mx-0 mx-auto"
                   />
                 </div>
-
               </div>
-              <div className="w-full mx-auto lg:mx-0 mb-4 sm:text-xs">
+              <div className="flex justify-center lg:justify-start items-center text-center">
                 <p
                   className="text-gray-400 text-sm sm:text-base"
                 >
                   info@overtimesportspt.com | 469-274-0232
                 </p>
               </div>
-              <div className="w-full mx-auto lg:mx-0 mb-4 sm:text-xs">
+              <div className="flex justify-center lg:justify-start items-center text-center">
                 <a
                   className="text-gray-400 text-sm sm:text-base"
                   href="https://maps.app.goo.gl/Ng3fLwf8KgRr15k29"
@@ -58,7 +57,7 @@ export const Footer = () => {
                   8085 South Chester St. #240, Centennial, CO 80112
                 </a>
               </div>
-              <div className="w-full mx-auto lg:mx-0 mb-4 sm:text-xs">
+              <div className="flex justify-center lg:justify-start items-center text-center">
                 <p
                   className="text-gray-400 text-sm sm:text-base"
                 >
