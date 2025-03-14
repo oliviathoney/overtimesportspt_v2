@@ -3,8 +3,29 @@ import { Card } from "flowbite-react";
 
 import SignsYou from "../assets/images/blog/signs-you.jpg";
 import SoccerInjuries from "../assets/images/blog/soccer-injuries.jpg";
+import BestPT from "../assets/images/blog/best-pt.jpg";
+import DryNeedling from "../assets/images/blog/dry-needling.jpg";
+import DOP from "../assets/images/blog/dop.jpg";
 
 const blogData = [
+  {
+    title: "What Do We Mean By DISCOVER, OPTIMIZE, PERFORM?",
+    subtitle: "At Overtime, we follow a 3-Step process to get you back from pain to not only achieving but exceeding your goals...",
+    image: DOP.src,
+    slug: "/blog/discover-optimize-perform",
+  },
+  {
+    title: "Why Do We Dry Needle?",
+    subtitle: "Dry needling is a technique used by physical therapists and other healthcare providers to treat muscular pain and dysfunction...",
+    image: DryNeedling.src,
+    slug: "/blog/dry-needling",
+  },
+  {
+    title: "How To Find the Best Physical Therapist in South Denver",
+    subtitle: "You've decided that physical therapy is the right choice for your health and are ready to take the next step in improving your quality of life...",
+    image: BestPT.src,
+    slug: "/blog/best-physical-therapist",
+  },
   {
     title: "The 5 Most Common Soccer Injuries and How to Prevent Them",
     subtitle: "Soccer is an exhilarating sport, known for its fast pace, thrilling goals, and incredible athleticism. However, like all physical activities, it comes with its risks. Injuries are a part of the game, and understanding...",
@@ -18,6 +39,7 @@ const blogData = [
     image: SignsYou.src,
     slug: "/blog/5-signs-you-need-a-new-pt"
   },
+
 
 ];
 

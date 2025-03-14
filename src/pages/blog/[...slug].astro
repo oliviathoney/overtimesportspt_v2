@@ -8,14 +8,237 @@ import { ScrollUpButton } from "../../components/ScrollUpButton";
 
 import SignsYou from "../../assets/images/blog/signs-you.jpg";
 import SoccerInjuries from "../../assets/images/blog/soccer-injuries.jpg";
+import BestPT from "../../assets/images/blog/best-pt.jpg";
+import DryNeedle from "../../assets/images/blog/dry-needling.jpg";
+import DOP from "../../assets/images/blog/dop.jpg";
+import { date } from "astro:schema";
 
 export const prerender = true;
 
 export async function getStaticPaths() {
   const pages = [
     {
+      slug: "discover-optimize-perform",
+      title: "What do we mean by DISCOVER-OPTIMIZE-PERFORM ?",
+      subtitle:
+        "At Overtime, we follow a 3-Step process to get you back from pain to not only achieving but exceeding your goals.",
+      date: "March 14, 2025",
+      text: `
+        <span class="text-secondaryColor uppercase font-bold font-4xl">DISCOVER: </span>
+        <br></br>
+        Before and during your first appointment, we will conduct a thorough sport specific assessment
+        to DISCOVER functional movement dysfunctions and impairments looking at the body globally.
+        We will ask questions, answer your questions and concerns, take you through a thorough, sport-
+        specific assessments and educate you on what we found during our examination.
+        <br></br>
+        <span class="text-secondaryColor uppercase font-bold">OPTIMIZE: </span>
+        <br></br>
+        We will correct and OPTIMIZE dysfunctions, injuries and impairments with experienced
+        physical therapists using evidence-based rehabilitation.
+        <br></br>
+        Taking an evidence-based approach, we will take all the information that we gathered during our
+        initial appointment and create a program for you to work on not only your main issue, but also
+        the root cause of the issue. We will reduce your pain, address mobility impairments, strength
+        limitations, and write you a program realistic to your time and goals.
+        <br></br>
+        Forget about generic exercise sheets—everything we give you is individualized for YOU.
+        <br></br>
+        <span class="text-secondaryColor uppercase font-bold">PERFORM: </span>
+        <br></br>
+        Return to sport or activity pain free using our individualized plan tailored for you to PERFORM
+        and exceed peak performance in your sport or activity.
+        <br></br>
+        Once you're pain-free, our focus shifts to keeping you healthy and preventing future injury. In
+        our state-of-the-art facility, we'll work on recovery and ensure you stay at your best throughout
+        your season or activity. And if you have performance goals, we'll help you reach them as well!
+        <br></br>
+        Questions? Send us a DM! Join the Overtime Family!
+      `,
+      image: DOP,
+    },
+    {
+      slug: "dry-needling",
+      title: "Why Do We Dry Needle?",
+      subtitle: "Everything you need to know about dry needling.",
+      date: "March 14, 2025",
+      text: `
+          <p>
+              Dry needling is a technique used by physical therapists and other healthcare providers to treat
+              muscular pain and dysfunction. It involves inserting very thin, solid needles into specific areas of
+              muscle tissue, such as trigger points, or muscle knots. When dry needling is applied to your
+              muscles and tissues, it can decrease tightness, increase blood flow and reduce local and referred
+              pain.
+              <br></br>
+              Stimulating a trigger point with a needle helps draw normal blood supply back to flush out the
+              area and release tension. The prick sensation can also fire off nerve fibers that stimulate your
+              brain to release endorphins, your body’s homemade pain medication.
+              <br></br>
+              <span class="text-secondaryColor uppercase font-bold">Is it Painful?</span>
+              <br></br>
+              Dry Needling is considered painless by many people. It consists of a very thin needle, a lot
+              thinner than a shot. Sometimes, when highly irritable, or when hitting a trigger point, you may
+              feel discomfort, after all we are inserting a needle in your body. But often, the idea of the needle
+              being inserted in your body is worse than the actual process.
+              <br></br>
+              <span class="text-secondaryColor uppercase font-bold">What Can Dry Needling Do?</span>
+              <br></br>
+              <ul>
+                <li>
+                  <span class="uppercase font-bold">1. Pain Relief: </span>
+                  Dry needling can reduce pain by targeting muscle knots or trigger points that
+                  may be causing discomfort. The process helps release tension and may lead to improved
+                  blood flow to the affected area.
+              <br></br>
+                </li>
+                <li>
+                  <span class="uppercase font-bold">2. Improved Range of Motion:</span>
+                  By relieving muscle tightness and releasing trigger points,
+                  dry needling can help improve flexibility and joint movement, making it easier to
+                  perform daily activities.
+              <br></br>
+                </li>
+                <li>
+                  <span class="uppercase font-bold">3. Increased Muscle Function: </span>
+                  The technique can help improve muscle function by
+                  addressing muscular imbalances and promoting better coordination between muscles.
+                  This can enhance overall strength and performance.
+              <br></br>
+                </li>
+                <li>
+                  <span class="uppercase font-bold">4. Reduced Muscle Spasms: </span>
+                  Dry needling helps reduce muscle spasms by stimulating the
+                  muscle fibers and encouraging relaxation.
+              <br></br>
+                </li>
+                <li>
+                  <span class="uppercase font-bold">5. Accelerated Healing: </span>
+                  The insertion of needles can stimulate the body’s healing
+                  processes by encouraging blood flow to the area. This can promote faster tissue repair
+                  and recovery.
+                </li>
+                <li>
+                  <span class="uppercase font-bold">6. Decreased Inflammation: </span>
+                  Dry needling may help reduce inflammation in muscles,
+                  which can contribute to pain relief and recovery.
+              <br></br>
+                </li>
+                <li>
+                  <span class="uppercase font-bold">7. Chronic Pain Management: </span>
+                  For conditions like fibromyalgia, tension headaches, or
+                  chronic back pain, dry needling can be a helpful treatment option to reduce ongoing pain
+                  and discomfort.
+              <br></br>
+                </li>
+              </ul>
+              It is important to note that Dry needling is not the only answer. Dry needling helps reduce your
+              pain experience which means that we can begin loading you with strength training and create
+              true meaningful change in your recovery.
+              <br></br>
+              Contact us if you are having:
+              <ul class="text-secondaryColor ml-12">
+                <li>
+                  Hip Pain
+                </li>
+                <li>
+                  Headache
+                </li>
+                <li>
+                  Neck Pain
+                </li>
+                <li>
+                  Shoulder Pain
+                </li>
+                <li>
+                  Low Back Pain
+                </li>
+                <li>
+                  Myofasical Pain
+                </li>
+                <li>
+                  Knee Pain
+                </li>
+              </ul>
+              <br></br>
+              Questions? Send us a DM, we’d love to help!
+            </p>
+      `,
+      image: DryNeedle,
+    },
+    {
+      slug: "best-physical-therapist",
+      title: "How To Find the Best Physical Therapist in South Denver",
+      subtitle: "A guide to finding the best care in your area.",
+      date: "March 14, 2025",
+      text: `
+            <p>
+              You've decided that physical therapy is the right choice for your health and are ready to take the
+              next step in improving your quality of life.
+              <br></br>
+              So, you turn to Google and search for terms like:
+              <ul class="text-secondaryColor list-disc ml-12">
+                <li>
+                  Best Physical Therapist in Centennial
+                </li>
+                <li>
+                  Best Physical Therapist in Highlands Ranch
+                </li>
+                <li>
+                  Best Physical Therapist in Castle Pines
+                </li>
+                <li>
+                  Best Physical Therapist in Lone Tree
+                </li>
+                <li>
+                  Best Physical Therapy Clinic near me
+                </li>
+              </ul>
+              <br></br>
+              But then, you're overwhelmed by the sheer number of clinics that pop up...
+              Before you book your appointment, take a moment to ask yourself a few key questions:
+              <ul class="text-secondaryColor list-disc ml-12">
+                <li>
+                  What makes this physical therapy clinic stand out from the others?
+                </li>
+                <li>
+                  Why should I trust this practice with my injury?
+                </li>
+              </ul>
+              <br></br>
+              One important thing to consider is whether the physical therapist specializes in treating your
+              specific needs or population. For example, if you're a 30-year-old marathoner with Achilles pain,
+              you want a clinic that understands your sport and goals and has the right equipment to support
+              your recovery.
+              <br></br>
+              At Overtime, we make sure all of your questions are answered before your first session. We'll
+              start with a discovery call or phone consultation to learn more about you, your goals, and
+              whether we're a good fit.
+              <br></br>
+              This is your chance to share your story, ask any questions, and address any concerns. Tell us
+              about your pain, what you enjoy doing, and what you hope to achieve.
+              <br></br>
+              Once we've gotten to know each other better, we'll schedule your first appointment and let you
+              know exactly what to expect.
+              <br></br>
+              When dealing with pain that's affecting your performance, it's crucial that you feel comfortable
+              with your physical therapist and trust their expertise. At Overtime, we pride ourselves on
+              providing the highest quality care in South Denver. Your experience with us will be unlike any
+              other PT practice—you'll have fun, receive education, and experience real improvements that
+              last. Our goal is to help you feel better, stay better, and exceed your goals so you can live your
+              best life.
+              <br></br>
+              Take your time finding the right physical therapist. Do your research, communicate your goals
+              clearly, and make sure the person you&#39;re trusting with your recovery understands what’s required
+              to get you back on track.
+              <br></br>
+              Take the first step, we'll help you with the rest.
+            </p>
+      `,
+      image: BestPT,
+    },
+    {
       title: "5 Signs You Need A New PT",
       subtitle: "A guide to feeling confident and secure in your recovery.",
+      date: "January 28, 2025",
       slug: "5-signs-you-need-a-new-pt",
       text: `
        <p>
@@ -62,6 +285,7 @@ export async function getStaticPaths() {
       slug: "the-5-most-common-soccer-injuries",
       title: "The 5 Most Common Soccer Injuries and How to Prevent Them",
       subtitle: "A guide to getting and staying healthy on the pitch.",
+      date: "January 26, 2025",
       text: `
         <p>
               Soccer is an exhilarating sport, known for its fast pace, thrilling goals, and incredible athleticism.
@@ -241,7 +465,7 @@ const { title, subtitle, text, image } = Astro.props;
 const articleData = {
   title: title,
   subtitle: subtitle,
-  date: "January 27, 2025",
+  date: date,
   image: image,
   content: text,
   footer: "",

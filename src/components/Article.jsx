@@ -33,6 +33,6 @@ export const Article = ({ articleData }) => {
           </div>
         </article>
       </div>
-    </div>
+    </div >
   );
 };
