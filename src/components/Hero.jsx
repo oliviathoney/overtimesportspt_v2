@@ -40,7 +40,7 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.05 }}
           >
-            <div className="md:w-1/2 xl:w-2/5 text-5xl sm:text-4xl lg:text-4xl xl:text-4xl font-bold tracking-wide font-NotoSerif uppercase text-primaryText sm:px-8 md:px-20 lg:px-20">
+            <div className="md:w-1/2 xl:w-2/5 text-5xl sm:text-4xl lg:text-4xl xl:text-4xl font-bold uppercase tracking-wide font-LeagueSpartan text-primaryText sm:px-8 md:px-20 lg:px-20">
               <h1>Bridging the gap between physical therapy and sports performance: <br></br><br></br>
                 We help people feel better, and stay better.
               </h1>
@@ -117,7 +117,7 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 0.05 }}
           >
             <div className="w-full text-center text-primaryText py-24">
-              <h1 className="font-bold text-3xl tracking-wide font-NotoSerif uppercase mx-5">Bridging the gap between physical therapy and sports performance: <br></br><br></br>
+              <h1 className="font-bold text-5xl tracking-wide  uppercase mx-5">Bridging the gap between physical therapy and sports performance: <br></br><br></br>
                 We help people feel better, and stay better.
               </h1>
               <h2 className="text-primaryText text-sm mt-10 px-12 text-center ">

@@ -19,7 +19,7 @@ import ni from "../assets/images/services/Near Infrared.jpg"
 import education from "../assets/images/services/Education.jpg"
 import dst from "../assets/images/services/Dynamo Strength Testing.jpg"
 import compression from "../assets/images/services/Compression Therapy.jpg"
-
+import alterg from "../assets/images/services/alterG.png"
 
 const services = [
   {
@@ -40,18 +40,17 @@ const services = [
     'title': 'Performance Training',
     'alt': "Dr. Benitez works in the OVERTIME Sports gym to improve a client's performance levels."
   },
-
-  {
-    'image': await getImage({ src: mobility }),
-    'desc': 'Mobility exercises help prevent injuries by promoting proper movement patterns and ensuring joints function optimally. Additionally, increased mobility facilitates efficient athletic performance, enabling athletes to reach their full potential in terms of strength, speed, and agility.',
-    'title': 'Mobility',
-    'alt': "Dr. Benitez works with a client to improve mobility."
-  },
   {
     'image': await getImage({ src: dryneedling }),
     'desc': 'Functional dry needling can enhance blood flow to the targeted muscles, promoting the delivery of nutrients and oxygen for optimal healing. Many individuals experience reduced pain and improved mobility after undergoing functional dry needling sessions, making it a valuable adjunct to comprehensive physical therapy interventions.',
     'title': 'Functional Dry Needling',
     'alt': "An athlete relaxes while undergoing dry needle therapy."
+  },
+  {
+    'image': await getImage({ src: alterg }),
+    'desc': 'Designed for athletes interested in rehabbing faster, training while protecting or recovering from an injury or surgery, or increasing volume while minimzing stress and load in the joints, the AlterG allow you to achieve your goals sooner and smarter. The AlterG uses air pressure techonology to unweigh up to 80% of your body weight so that you can walk/run pain free.',
+    'title': 'Anti-Gravity Treadmill AlterG',
+    'alt': 'The AlterG ant-gravity treadmil infront of a multi-colored wall.'
   },
   {
     'image': await getImage({ src: vfp }),
@@ -66,10 +65,22 @@ const services = [
     'alt': "Dr. Benitez shows a client how to perform Dyanamo strength testing."
   },
   {
+    'image': await getImage({ src: bfr }),
+    'desc': 'This technique involves using cuffs or bands to partially restrict blood flow during exercise, leading to increased metabolic stress and muscle growth. BFR has been shown to enhance muscle hypertrophy and strength, making it a time-efficient and effective method for rehabilitation and performance improvement.',
+    'title': 'Blood Flow Restriction',
+    'alt': "A client performs physical therapy with a band to partial restrict blood flow."
+  },
+  {
     'image': await getImage({ src: manipulation }),
     'desc': 'Manipulation, performed by skilled physical therapists, involves hands-on techniques to manipulate joints and soft tissues, providing immediate relief from pain and stiffness. This approach improves joint mobility, reduces muscle tension, and enhances overall flexibility. PT manipulation is particularly effective in treating musculoskeletal conditions such as back pain, neck pain, and joint restrictions.',
     'title': 'Manipulation',
     'alt': "Dr. Benitez performs manipulation therapy on a client to improve shoulder pain."
+  },
+  {
+    'image': await getImage({ src: mobility }),
+    'desc': 'Mobility exercises help prevent injuries by promoting proper movement patterns and ensuring joints function optimally. Additionally, increased mobility facilitates efficient athletic performance, enabling athletes to reach their full potential in terms of strength, speed, and agility.',
+    'title': 'Mobility',
+    'alt': "Dr. Benitez works with a client to improve mobility."
   },
   {
     'image': await getImage({ src: cupping }),
@@ -84,18 +95,6 @@ const services = [
     'alt': "A client relaxes while receiving Instrument-Assisted STM therapy."
   },
   {
-    'image': await getImage({ src: bfr }),
-    'desc': 'This technique involves using cuffs or bands to partially restrict blood flow during exercise, leading to increased metabolic stress and muscle growth. BFR has been shown to enhance muscle hypertrophy and strength, making it a time-efficient and effective method for rehabilitation and performance improvement.',
-    'title': 'Blood Flow Restriction',
-    'alt': "A client performs physical therapy with a band to partial restrict blood flow."
-  },
-  {
-    'image': await getImage({ src: ni }),
-    'desc': 'Near-infrared (NIR) technology benefits athlete recovery by penetrating deep into muscles and tissues to enhance blood flow, reduce inflammation, and stimulate cellular repair at the mitochondrial level. This process accelerates healing, alleviates soreness and reduces recovery time, enabling athletes to perform at their best more consistently.',
-    'title': 'Near Infrared',
-    'alt': "A client relaxes while receiving near infrared therapy."
-  },
-  {
     'image': await getImage({ src: education }),
     'desc': 'Education empowers physical therapy patients by helping them understand their condition, treatment plan, and the importance of proper movement techniques. This knowledge fosters active participation, reduces the risk of re-injury, and enhances long-term outcomes by encouraging patients to take ownership of their rehab and recovery process.',
     'title': 'Education',
@@ -108,6 +107,7 @@ const services = [
     'alt': "A client relaxes while receiving compression therapy withy Normatec boots."
   },
 ];
+
 
 export const ServiceList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

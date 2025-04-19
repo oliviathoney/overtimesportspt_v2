@@ -76,7 +76,7 @@ const FAQData = [
     question: "How do I schedule an appointment?",
     answer:
       `
-      Please feel free to call or text (469) 274-0232, email us at info@overtimesportspt.com, or use
+      Please feel free to call or text (720) 771-9677, email us at info@overtimesportspt.com, or use
       the form below.
       `
   },

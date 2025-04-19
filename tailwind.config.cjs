@@ -29,7 +29,8 @@ module.exports = {
       },
       fontFamily: {
         Inter: "Inter",
-        NotoSerif: "noto-serif, serif",
+        NotoSerif: ["Noto Serif", "serif"],
+        LeagueSpartan: ["League Spartan", "sans-serif"],
       },
       screens: {
         xs: "530px",
