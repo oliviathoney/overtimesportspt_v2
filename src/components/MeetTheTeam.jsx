@@ -13,11 +13,13 @@ const profiles = [
     image: await getImage({ src: edward }),
     name: 'Edward Benitez',
     position: 'Founder, Physical Therapist',
-    bio: `Dr. Edward Benitez PT, DPT is originally from Dallas, Texas. Edward played various sports throughout his life at a competitive level. He became interested in physical therapy after experiencing the positive results he received throughout his personal injury rehabilitation.
+    bio: `Dr. Edward Benitez is originally from Dallas, Texas. Edward played various sports throughout his life at a competitive level. He became interested in physical therapy after experiencing the positive results he received throughout his personal injury rehabilitation.
 
-    With a unique blend of manual therapy and strength training, Edward has been able to elevate athletic performance by addressing injury and movement dysfunction. He continues to develop a passion for sports medicine and enjoys helping athletes of all ages through their rehabilitation process.
+With a unique blend of manual therapy and strength training, Edward has been able to help individuals return to their sport and athletic performance by addressing athletic injury and movement dysfunction. He continues to develop a passion for sports medicine and enjoys helping athletes of all ages throughout their rehabilitation process. He has worked with professional athletes in the NFL, MLB, NBA, XFL, SRA, USATF, Pro Crossfit, and military personnel.
 
-    Edward received a Bachelor of Science degree in Exercise Science with a Minor in Psychology from The University of Texas at Arlington. He continued his education at the University of Colorado - Anschutz Medical Campus and received his Doctorate of Physical Therapy.`
+Edward received a Bachelor of Science degree in Exercise Science with a Minor in Psychology from The University of Texas at Arlington. He continued his education at the University of Colorado - Anschutz Medical Campus and received his Doctorate of Physical Therapy.
+
+`
   },
   {
     id: 1,
@@ -53,9 +55,10 @@ export const MeetTheTeam = () => {
   return (
     <section className="w-full bg-bgDark2 mb-12 lg:mb-24 pt-32">
       <p className="block-subtitle mx-auto text-center pt-16">About Our Practice</p>
-      <h2 className="mt-2 mb-8 text-5xl lg:text-6xl block-big-title font-NotoSerif text-center">
+      <h2 className="mt-2 text-5xl lg:text-6xl block-big-title font-NotoSerif text-center">
         Meet The Team
       </h2>
+      <p className="text-xs mb-8 mt-4 mx-auto text-center text-[#7274f3]">(click on a team member to learn more about them)</p>
 
       {/* DESKTOP VERSION */}
       <div className="hidden lg:flex items-center 2xl:w-[1450px] xl:w-[1300px] w-11/12 mx-auto md:pl-4 xl:pr-16 xl:pl-16">
@@ -81,7 +84,7 @@ export const MeetTheTeam = () => {
         </div>
 
       </div>
-      <div className="hidden lg:flex-wrap items-center 2xl:w-[1450px] xl:w-[1300px] w-11/12 mx-auto md:pl-4 xl:pr-16 xl:pl-16">
+      <div className="hidden lg:flex flex-wrap items-center 2xl:w-[1450px] xl:w-[1300px] w-11/12 mx-auto md:pl-4 xl:pr-16 xl:pl-16">
         {expandedId != null &&
           <p className="w-2/3 mx-auto text-secondaryText leading-loose text-center">
             {profiles[expandedId].bio}
