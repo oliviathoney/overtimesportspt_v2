@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* Typography */
 .block-title {
   @apply text-primaryText text-3xl font-bold tracking-normal;
@@ -35,6 +37,10 @@
 .contained-button-reverse {
   @apply rounded-lg font-bold bg-[#7274f3] text-primaryText flex justify-center items-center hover:bg-primaryColor cursor-pointer transition;
 }
+
+.contained-button-reverse-clicked {
+  @apply rounded-lg font-bold bg-primaryColor text-primaryText flex justify-center items-center;
+}
 .outlined-button {
   @apply text-primaryText main-border-gray rounded-xl bg-bgDark2 hover:bg-bgDark3  border-gray-700 text-sm;
 }
@@ -43,3 +49,4 @@
 @font-face {
   font-display: var(--fontsource-Inter-font-display, optional);
 }
+

@@ -45,7 +45,7 @@ export const Footer = () => {
                 <p
                   className="text-gray-400 text-sm sm:text-base"
                 >
-                  info@overtimesportspt.com | 469-274-0232
+                  info@overtimesportspt.com | (720) 771-9677
                 </p>
               </div>
               <div className="flex justify-center lg:justify-start items-center text-center">

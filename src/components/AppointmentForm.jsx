@@ -195,7 +195,9 @@ export const AppointmentForm = () => {
                   Schedule Appointment
                 </a>
               </button>
-
+              <p className="w-3/4 mt-5 mx-auto text-secondaryText leading-loose text-xs">
+                If you do not find an available time for you, give us a call and we will do our best to find a time that works best for you!
+              </p>
             </div>
           </div>
         </div>
