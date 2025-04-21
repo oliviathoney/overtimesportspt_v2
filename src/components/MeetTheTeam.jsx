@@ -58,7 +58,6 @@ export const MeetTheTeam = () => {
       <h2 className="mt-2 text-5xl lg:text-6xl block-big-title font-NotoSerif text-center">
         Meet The Team
       </h2>
-      <p className="text-xs mb-8 mt-4 mx-auto text-center text-[#7274f3]">(click on a team member to learn more about them)</p>
 
       {/* DESKTOP VERSION */}
       <div className="hidden lg:flex items-center 2xl:w-[1450px] xl:w-[1300px] w-11/12 mx-auto md:pl-4 xl:pr-16 xl:pl-16">
@@ -66,7 +65,6 @@ export const MeetTheTeam = () => {
           {profiles.map((profile) => (
             <div
               key={profile.id}
-              onClick={() => handleCardClick(profile.id)}
               className="flex-shrink-0 w-64 cursor-pointer rounded-2xl transition-all duration-300"
             >
               <div className="flex flex-col items-center text-center p-4">
@@ -78,6 +76,13 @@ export const MeetTheTeam = () => {
                 />
                 <h2 className="text-xl font-semibold text-gray-100">{profile.name}</h2>
                 <p className="text-gray-400">{profile.position}</p>
+                <button
+                  className={` w-1/2 mt-2 h-8 ${expandedId === profile.id ? 'contained-button-reverse-clicked' : 'contained-button-reverse'}`}
+                  aria-label="Learn More"
+                  onClick={() => handleCardClick(profile.id)}
+                >
+                  <a href="#" className="text-xs">Learn More</a>
+                </button>
               </div>
             </div>
           ))}
@@ -86,7 +91,7 @@ export const MeetTheTeam = () => {
       </div>
       <div className="hidden lg:flex flex-wrap items-center 2xl:w-[1450px] xl:w-[1300px] w-11/12 mx-auto md:pl-4 xl:pr-16 xl:pl-16">
         {expandedId != null &&
-          <p className="w-2/3 mx-auto text-secondaryText leading-loose text-center">
+          <p className="w-2/3 mx-auto text-secondaryText leading-loose text-center bg-gradient-to-br from-[#7274F320] from-25% to-[#7274F305] to-90% rounded-lg p-5">
             {profiles[expandedId].bio}
           </p>
         }
@@ -96,7 +101,6 @@ export const MeetTheTeam = () => {
         {profiles.map((profile) => (
           <div
             key={profile.id}
-            onClick={() => handleCardClick(profile.id)}
             className="flex-shrink-0 cursor-pointer rounded-2xl transition-all duration-300 mx-auto"
           >
             <div className="flex flex-col items-center text-center py-4">
@@ -108,8 +112,15 @@ export const MeetTheTeam = () => {
               />
               <h2 className="text-xl font-semibold text-gray-100">{profile.name}</h2>
               <p className="text-gray-400">{profile.position}</p>
+              <button
+                className={` w-1/2 mt-2 h-8 ${expandedId === profile.id ? 'contained-button-reverse-clicked' : 'contained-button-reverse'}`}
+                aria-label="Learn More"
+                onClick={() => handleCardClick(profile.id)}
+              >
+                <a href="#" className="text-xs">Learn More</a>
+              </button>
               {expandedId === profile.id &&
-                <p className="w-full mx-auto text-secondaryText leading-loose text-center mt-5 px-2">
+                <p className="w-11/12 mx-auto p-2 text-secondaryText leading-loose text-center mt-5 bg-gradient-to-br from-[#7274F320] from-25% to-[#7274F305] to-90% rounded-lg">
                   {profiles[expandedId].bio}
                 </p>
               }
