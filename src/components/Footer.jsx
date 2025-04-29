@@ -54,7 +54,7 @@ export const Footer = () => {
                   href="https://maps.app.goo.gl/Ng3fLwf8KgRr15k29"
                   aria-label="Google Maps"
                 >
-                  8085 South Chester St. #240, Centennial, CO 80112
+                  327 South Inverness Dr, Centennial, CO 80112
                 </a>
               </div>
               <div className="flex justify-center lg:justify-start items-center text-center">

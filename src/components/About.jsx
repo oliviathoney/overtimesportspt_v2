@@ -56,7 +56,7 @@ export const AboutOurPractice = () => {
             />
             <div className="pt-16">
               <iframe
-                src="https://snazzymaps.com/embed/583225"
+                src="https://snazzymaps.com/embed/704402"
                 width="100%"
                 height="400px"
                 className="rounded-xl  main-border-gray"
@@ -65,9 +65,7 @@ export const AboutOurPractice = () => {
               <div className="pt-16 justify-center mx-auto">
                 <span className="block-subtitle">VISIT US AT:</span>
                 <p className="text-secondaryText leading-loose"><a id="address" href="https://maps.app.goo.gl/Ng3fLwf8KgRr15k29"
-                  target="_blank">8085 South Chester Street
-                  Unit #240, Centennial, CO 80112</a></p>
-                <p className="text-secondaryText leading-loose">(Located inside of Factum Performance and Wellness)</p>
+                  target="_blank">327 South Inverness Dr, Centennial, CO 80112</a></p>
               </div>
             </div>
           </div>
