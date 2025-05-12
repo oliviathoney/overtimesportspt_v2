@@ -64,7 +64,7 @@ const DelayedModal = () => {
                 ref={modalRef}
                 className="bg-gray-100 bg-opacity-90 sm:bg-opacity-75 rounded-xl shadow-xl p-6 w-full h-auto sm:w-3/4 md:w-3/5 lg:w-1/2 sm:rounded-2xl sm:my-auto mx-4 animate-fadeIn"
             >
-                <h2 className="text-[#322F31] text-4xl  text-center font-LeagueSpartan font-bold mb-4">Welcome! Claim your 50% OFF INITIAL EVALUATION now!</h2>
+                <h2 className="text-[#322F31] text-4xl  text-center font-LeagueSpartan font-bold mb-4">Welcome! Claim your 40% OFF INITIAL EVALUATION now!</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-wrap -m-2">
                         <div className="w-full sm:w-4/5 p-2 mx-auto">
@@ -125,7 +125,7 @@ const DelayedModal = () => {
                             <button
                                 onClick={() => setIsOpen(false)}
                                 className="bg-gray-400 text-white mx-auto px-4 py-2 rounded-xl hover:bg-gray-600 transition"
-                            >No thanks, I don't want 50% off</button>
+                            >No thanks, I don't want 40% off</button>
                         </div>
                     </div>
                 </form>

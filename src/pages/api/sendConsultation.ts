@@ -116,7 +116,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
         <!-- Main Content -->
         <div style="margin-bottom: 32px; color: #222">
         Someone has expressed interest on overtimesportspt.com <br>
-        IMPORTANT: They should receive 50% off their initial evaluation.
+        IMPORTANT: They should receive 40% off their initial evaluation.
         <p>Name: ${firstname} ${lastname}</p>
         <p>Email: ${to}<br>Phone Number: ${phone}</p>
         </div>
