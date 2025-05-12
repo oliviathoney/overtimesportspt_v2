@@ -62,7 +62,7 @@ const DelayedModal = () => {
         >
             <div
                 ref={modalRef}
-                className="bg-gray-100 bg-opacity-75 rounded-xl shadow-xl p-6 w-full h-auto sm:w-3/4 md:w-3/5 lg:w-1/2 sm:rounded-2xl sm:my-auto mx-4 animate-fadeIn"
+                className="bg-gray-100 bg-opacity-90 sm:bg-opacity-75 rounded-xl shadow-xl p-6 w-full h-auto sm:w-3/4 md:w-3/5 lg:w-1/2 sm:rounded-2xl sm:my-auto mx-4 animate-fadeIn"
             >
                 <h2 className="text-[#322F31] text-4xl  text-center font-LeagueSpartan font-bold mb-4">Welcome! Claim your 50% OFF INITIAL EVALUATION now!</h2>
                 <form onSubmit={handleSubmit}>
