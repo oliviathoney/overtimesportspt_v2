@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { getImage } from "astro:assets";
+import DelayedModal from "./DelayedModal";
 
 import { ConsultationModal } from "./ConsultationModal";
 import gym2 from "../assets/images/gym-2.jpg";
@@ -95,7 +96,7 @@ export const Hero = () => {
 
 
       <section
-        className="flex lg:hidden w-full justify-center items-center bg-bgDark1 mb-[28vw] md:mb-[18vw] lg:mb-[10vw] xl:mb-[13vw] 2xl:mb-60 hero-bg-gradient pb-0"
+        className="flex w-full justify-center items-center bg-bgDark1 mb-[28vw] md:mb-[18vw] lg:mb-[10vw] xl:mb-[13vw] 2xl:mb-60 hero-bg-gradient pb-0"
         id="home"
         style={{ backgroundImage: `url(${optOTcp.src})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPositionY: "80%", backgroundPositionX: "50%" }}
       >
@@ -136,6 +137,8 @@ export const Hero = () => {
         {isModalOpen && (
           <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
         )}
+        <DelayedModal />
+
       </section>
     </div>
   );
