@@ -96,7 +96,7 @@ export const Hero = () => {
 
 
       <section
-        className="flex w-full justify-center items-center bg-bgDark1 mb-[28vw] md:mb-[18vw] lg:mb-[10vw] xl:mb-[13vw] 2xl:mb-60 hero-bg-gradient pb-0"
+        className="flex lg:hidden w-full justify-center items-center bg-bgDark1 mb-[28vw] md:mb-[18vw] lg:mb-[10vw] xl:mb-[13vw] 2xl:mb-60 hero-bg-gradient pb-0"
         id="home"
         style={{ backgroundImage: `url(${optOTcp.src})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPositionY: "80%", backgroundPositionX: "50%" }}
       >
