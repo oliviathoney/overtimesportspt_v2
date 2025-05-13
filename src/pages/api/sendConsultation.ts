@@ -12,8 +12,9 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const to = body.email as string | null;
   const phone = body.phone as string | null;
   const firstname = body.firstname as string | null;
-  const lastname = body.lastname as string | null;
-  const subject = "Welcome to OVERTIME Sports PT and Performance"
+  var lastname = body.lastname as string | null;
+  const deal = body.deal as boolean | null;
+  const subject = "Welcome to OVERTIME Sports PT and Performance";
   const html = `
     <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -82,8 +83,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
                                         OVERTIME Sports PT and Performance</h1>
                                     <p
                                         style="font-size:16px;line-height:24px;margin:0px;margin-top:8px;color:rgb(255,255,255)">
-                                        Hi ${firstname}! Thank you for your interest in OVERTIME. We will be in touch soon and look
-                                        forward to dicussing how our team can improve your life.
+                                        Hi ${firstname}! Thank you for your interest in OVERTIME. We will be in touch soon! <br> We Look forward to getting to know you better and discussing how our team can help you get back to doing the things you love.
                                     </p>
                                     <a href="https://overtimesportspt.com"
                                         style="line-height:100%;text-decoration:none;display:inline-block;max-width:100%;mso-padding-alt:0px;margin-top:24px;border-radius:8px;border-width:1px;border-style:solid;border-color:rgb(229,231,235);background-color:rgb(255,255,255);padding-left:40px;padding-right:40px;padding-top:12px;padding-bottom:12px;font-weight:600;color:rgb(17,24,39);padding:12px 40px 12px 40px"
@@ -106,6 +106,41 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 </body>
 </html>
   `
+
+  if (deal) {
+    var othtml = `
+      <div style="margin-bottom: 32px">
+            <p>New Consultation Request</p>
+        </div>
+        <!-- Main Content -->
+        <div style="margin-bottom: 32px; color: #222">
+        Someone has expressed interest on overtimesportspt.com <br>
+        IMPORTANT: They should receive 40% off their initial evaluation.
+        <p>Name: ${firstname} ${lastname}</p>
+        <p>Email: ${to}<br>Phone Number: ${phone}</p>
+        </div>
+        <!-- Footer -->
+        <div style="color: #5f5f5f">
+            <p>overtimesports.com</p>
+        </div>
+      `
+  } else {
+    var othtml = `
+      <div style="margin-bottom: 32px">
+            <p>New Consultation Request</p>
+        </div>
+        <!-- Main Content -->
+        <div style="margin-bottom: 32px; color: #222">
+        Someone has expressed interest on overtimesportspt.com <br>
+        <p>Name: ${firstname} ${lastname}</p>
+        <p>Email: ${to}<br>Phone Number: ${phone}</p>
+        </div>
+        <!-- Footer -->
+        <div style="color: #5f5f5f">
+            <p>overtimesports.com</p>
+        </div>
+      `
+  }
   // Throw an error if we're missing any of the needed fields.
   if (!to) {
     return new Response(
@@ -119,6 +154,10 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     );
   }
 
+  if (!lastname) {
+    lastname = ""
+  }
+
   const sendResend = await resend.emails.send({
     from: "no-reply@overtimesportspt.com",
     to: to,
@@ -130,21 +169,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     from: "new-consultation-request@overtimesportspt.com",
     to: "info@overtimesportspt.com",
     subject: `New Consultation Request`,
-    html: `
-    <div style="margin-bottom: 32px">
-        <p>New Consultation Request</p>
-    </div>
-    <!-- Main Content -->
-    <div style="margin-bottom: 32px; color: #222">
-    Someone has expressed interest on overtimesportspt.com <br>
-    <p>Name: ${firstname} ${lastname}</p>
-    <p>Email: ${to}<br>Phone Number: ${phone}</p>
-    </div>
-    <!-- Footer -->
-    <div style="color: #5f5f5f">
-        <p>overtimesports.com</p>
-    </div>
-    `,
+    html: othtml,
   })
 
   if (sendResend.data && sendNotif.data) {

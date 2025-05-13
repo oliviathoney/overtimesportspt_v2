@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { getImage } from "astro:assets";
+import DelayedModal from "./DelayedModal";
 
 import { ConsultationModal } from "./ConsultationModal";
 import gym2 from "../assets/images/gym-2.jpg";
@@ -91,6 +92,7 @@ export const Hero = () => {
         {isModalOpen && (
           <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
         )}
+        <DelayedModal />
       </section>
 
 
@@ -136,6 +138,8 @@ export const Hero = () => {
         {isModalOpen && (
           <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
         )}
+        <DelayedModal />
+
       </section>
     </div>
   );

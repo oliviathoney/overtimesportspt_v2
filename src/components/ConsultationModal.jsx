@@ -19,7 +19,7 @@ export const ConsultationModal = ({ setIsOpen }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email: email, phone: phone, firstname: firstname, lastname: lastname }),
+        body: JSON.stringify({ email: email, phone: phone, firstname: firstname, lastname: lastname, deal: false }),
       });
 
       if (!response.ok) {
