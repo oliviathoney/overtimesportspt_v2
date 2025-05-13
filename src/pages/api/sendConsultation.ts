@@ -83,8 +83,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
                                         OVERTIME Sports PT and Performance</h1>
                                     <p
                                         style="font-size:16px;line-height:24px;margin:0px;margin-top:8px;color:rgb(255,255,255)">
-                                        Hi ${firstname}! Thank you for your interest in OVERTIME. We will be in touch soon and look
-                                        forward to dicussing how our team can improve your life.
+                                        Hi ${firstname}! Thank you for your interest in OVERTIME. We will be in touch soon! <br> We Look forward to getting to know you better and discussing how our team can help you get back to doing the things you love.
                                     </p>
                                     <a href="https://overtimesportspt.com"
                                         style="line-height:100%;text-decoration:none;display:inline-block;max-width:100%;mso-padding-alt:0px;margin-top:24px;border-radius:8px;border-width:1px;border-style:solid;border-color:rgb(229,231,235);background-color:rgb(255,255,255);padding-left:40px;padding-right:40px;padding-top:12px;padding-bottom:12px;font-weight:600;color:rgb(17,24,39);padding:12px 40px 12px 40px"
