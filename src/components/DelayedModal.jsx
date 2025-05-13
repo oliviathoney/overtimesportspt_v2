@@ -103,8 +103,8 @@ const DelayedModal = () => {
                                 id="phone"
                                 aria-describedby="helper-text-explanation"
                                 className="px-4 py-4 w-full text-gray-500 font-medium text-center placeholder-gray-500 outline-none border bg-gray-300 border-gray-300 rounded-lg focus:ring focus:ring-indigo-300"
-                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                                placeholder="PHONE NUMBER (123-456-7890)"
+                                pattern="[0-9]{10}"
+                                placeholder="PHONE NUMBER"
                                 name="recipient_phone"
                                 value={phone}
                                 onChange={(e) => {

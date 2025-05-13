@@ -92,6 +92,7 @@ export const Hero = () => {
         {isModalOpen && (
           <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
         )}
+        <DelayedModal />
       </section>
 
 
