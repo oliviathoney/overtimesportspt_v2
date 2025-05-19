@@ -3,7 +3,7 @@ import { useState } from "react";
 import { getImage } from "astro:assets";
 
 import { ConsultationModal } from "./ConsultationModal";
-import gym from "../assets/images/gym-2.jpg";
+import gym from "../assets/images/overtime-gym.jpg";
 const optGym = await getImage({ src: gym })
 
 export const AboutOurPractice = () => {

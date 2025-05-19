@@ -20,6 +20,7 @@ const footerData = [
       "Schedule Appointment",
       { name: "Scheule Appointment", href: "resources/#request" },
       { name: "Frequently Asked Questions", href: "/resources" },
+      { name: "Privacy Policy", href: "/privacy-policy" },
     ],
   },
 ];

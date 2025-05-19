@@ -4,7 +4,7 @@ import { getImage } from "astro:assets";
 import DelayedModal from "./DelayedModal";
 
 import { ConsultationModal } from "./ConsultationModal";
-import gym2 from "../assets/images/gym-2.jpg";
+import gym2 from "../assets/images/overtime-gym.jpg";
 import background from "../assets/images/background.jpg";
 import OT from "../assets/images/OT-9-copy.jpg";
 import OTcp from "../assets/images/OT-9.jpg";
