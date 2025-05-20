@@ -97,9 +97,10 @@ export const Hero = () => {
 
 
       <section
-        className="flex lg:hidden w-full justify-center items-center bg-bgDark1 mb-[28vw] md:mb-[18vw] lg:mb-[10vw] xl:mb-[13vw] 2xl:mb-60 hero-bg-gradient pb-0"
+        className="lg:hidden w-full justify-center items-center bg-bgDark1 mb-[28vw] md:mb-[18vw] lg:mb-[10vw] xl:mb-[13vw] 2xl:mb-60 hero-bg-gradient pb-0"
+        // className="hidden lg:flex w-screen justify-center items-center bg-bgDark1 mb-[28vw] md:mb-[18vw] lg:mb-[10vw] xl:mb-[13vw] 2xl:mb-60 hero-bg-gradient pb-24 sm:pb-32 md:pb-44 lg:pb-0"
         id="home"
-        style={{ backgroundImage: `url(${optOTcp.src})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPositionY: "80%", backgroundPositionX: "50%" }}
+        style={{ backgroundImage: `url(${optOTcp.src})`, backgroundSize: "fit", backgroundRepeat: "no-repeat", backgroundPositionY: "80%", backgroundPositionX: "50%" }}
       >
         <div
           className="w-full backdrop-blur-sm flex flex-col justify-left items-start pt-16 md:pt-16 lg:pt-20 text-start"
@@ -118,15 +119,15 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.05 }}
           >
-            <div className="w-full text-center text-primaryText py-24">
-              <h1 className="font-bold text-5xl tracking-wide  uppercase mx-5">Bridging the gap between physical therapy and sports performance: <br></br><br></br>
+            <div className="w-full text-center text-primaryText pt-12 pb-24">
+              <h1 className="font-bold text-4xl uppercase mx-2">Bridging the gap between physical therapy and sports performance: <br></br><br></br>
                 We help people feel better, and stay better.
               </h1>
-              <h2 className="text-primaryText text-sm mt-10 px-12 text-center ">
+              <h2 className="text-primaryText text-sm mt-5 px-12 text-center ">
                 DISCOVER - OPTIMIZE - PERFORM
               </h2>
               <button
-                className="contained-button h-16 mx-auto mt-10 p-10"
+                className="contained-button h-16 mx-auto mt-5 p-10"
                 onClick={() => setIsModalOpen(true)}
                 aria-label="Get started"
               >
