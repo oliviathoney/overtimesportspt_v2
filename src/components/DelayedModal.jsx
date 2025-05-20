@@ -57,12 +57,12 @@ const DelayedModal = () => {
 
     return (
         <div
-            className="h-[120vh] fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
+            className="fixed h-full inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
             onClick={handleOverlayClick}
         >
             <div
                 ref={modalRef}
-                className="absolute top-40 bg-gray-100 bg-opacity-90 sm:bg-opacity-75 rounded-xl shadow-xl p-6 mt-0 px-3 sm:w-3/4 md:w-3/5 lg:w-1/2 sm:rounded-2xl sm:my-auto mx-4 animate-fadeIn"
+                className="bg-gray-100 bg-opacity-90 sm:bg-opacity-75 rounded-xl shadow-xl p-6 w-full h-auto sm:w-3/4 md:w-3/5 lg:w-1/2 sm:rounded-2xl sm:my-auto mx-4 animate-fadeIn"
             >
                 <h2 className="text-[#322F31] text-4xl  text-center font-LeagueSpartan font-bold mb-4">Welcome! Claim your 40% OFF INITIAL EVALUATION now!</h2>
                 <form onSubmit={handleSubmit}>
