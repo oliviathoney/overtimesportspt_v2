@@ -30,19 +30,6 @@ Edward received a Bachelor of Science degree in Exercise Science with a Minor in
 
     Macy is a “Double Gator” - she graduated  from the University of Florida with her Doctorate of Physical Therapy Degree and a Bachelor of Science Degree in Applied Physiology and Kinesiology with a specialization in exercise physiology. `
   },
-  {
-    id: 2,
-    image: await getImage({ src: evelyn }),
-    name: 'Evelyn Brindl',
-    position: 'Office Manager',
-    bio: `Evelyn (Evie) Brindl is a clinical exercise physiologist with a strong focus on sports rehabilitation and performance optimization, shaped by her background in competitive volleyball. 
-
-    Her experience includes inpatient trauma rehab at Denver Health Hospital, where she worked with spinal cord injuries, traumatic brain injuries, and post-surgical recovery, as well as outpatient therapy at Colorado State University Health Network, assisting in orthopedic care and therapeutic modalities.
-
-    Outside of work, Evelyn loves running with her pup, Red, and hiking in Golden Gate Canyon State Park. She is an avid hockey fan and has recently been immersed in the world of the professional women's hockey league (PWHL).
-
-    Evie will help us with making sure that everything is running smoothly on your end and ours. She has a tremendous amount of experience in health and wellness and brings in such an energetic personality to our team!`
-  },
 ]
 
 export const MeetTheTeam = () => {
