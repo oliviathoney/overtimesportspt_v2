@@ -4,8 +4,7 @@ import { getImage } from "astro:assets";
 
 import { ConsultationModal } from "./ConsultationModal";
 import edward from "../assets/images/edward.JPG";
-import macy from "../assets/images/macy.jpg";
-import evelyn from "../assets/images/evelyn.jpeg";
+import kristen from "../assets/images/kristen.jpg";
 
 const profiles = [
   {
@@ -23,12 +22,14 @@ Edward received a Bachelor of Science degree in Exercise Science with a Minor in
   },
   {
     id: 1,
-    image: await getImage({ src: macy }),
-    name: 'Macy Scanlan',
+    image: await getImage({ src: kristen }),
+    name: 'Kristen Belisairo',
     position: 'Physical Therapist',
-    bio: `Dr. Macy Scanlan, PT, DPT is from Tampa, Florida, where she did a variety of sports including cross country, track, gymnastics, cheer, dance and lacrosse. Macy is excited to blend her past sports experience with personalized rehabilitation treatments including manual therapy, movement re-education, and activity-focused training to achieve the best optimal outcomes for patients tailored towards their own goals. She is certified in Dry Needling, passionate about strength and conditioning, and experienced with providing care and education to patients of all ages.
+    bio: `Dr. Kristen Belisairo is originally from Colorado Springs, Colorado. Kristen played soccer her whole life, and continues to play on weekends. Her interest in physical therapy came from multiple back injuries and an ACL tear during her years of soccer. She also enjoys playing golf, snowboarding, hiking, and being active however she can. 
 
-    Macy is a “Double Gator” - she graduated  from the University of Florida with her Doctorate of Physical Therapy Degree and a Bachelor of Science Degree in Applied Physiology and Kinesiology with a specialization in exercise physiology. `
+Kristen truly enjoys working with athletes and active individuals with the goal of using manual therapy, prescriptive exercise, and an emphasis on performance to help them continue to do what they love. She is passionate about learning the demands of different sports and how to help patients not only return to their sport, but also exceed their talents and minimize the risk of re-injury. She has a special interest in soccer, baseball, basketball, lacrosse and gymnasts athletes! She has worked with athletes in a wide variety of sports at multiple levels including high school, college, semi-professional, and professional. 
+
+Kristen received a Bachelor of Science degree in Sport and Exercise Science with a Minor in Psychology from The University of Northern Colorado and a Doctorate of Physical Therapy at the University of Colorado - Anschutz Medical Campus. `
   },
 ]
 
