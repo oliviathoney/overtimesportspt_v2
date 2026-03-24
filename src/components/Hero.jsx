@@ -92,7 +92,7 @@ export const Hero = () => {
         {isModalOpen && (
           <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
         )}
-        <DelayedModal />
+        {/* <DelayedModal /> */}
       </section>
 
 
@@ -139,7 +139,7 @@ export const Hero = () => {
         {isModalOpen && (
           <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
         )}
-        <DelayedModal />
+        {/* <DelayedModal /> */}
 
       </section>
     </div>
