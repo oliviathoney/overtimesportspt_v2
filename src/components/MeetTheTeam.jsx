@@ -4,7 +4,7 @@ import { getImage } from "astro:assets";
 
 import { ConsultationModal } from "./ConsultationModal";
 import edward from "../assets/images/edward.JPG";
-import kristen from "../assets/images/kristen.jpg";
+import john_b from "../assets/images/john_b.jpeg"
 
 const profiles = [
   {
@@ -22,14 +22,13 @@ Edward received a Bachelor of Science degree in Exercise Science with a Minor in
   },
   {
     id: 1,
-    image: await getImage({ src: kristen }),
-    name: 'Kristen Belisairo',
+    image: await getImage({ src: john_b }),
+    name: 'John Bunnell',
     position: 'Physical Therapist',
-    bio: `Dr. Kristen Belisairo is originally from Colorado Springs, Colorado. Kristen played soccer her whole life, and continues to play on weekends. Her interest in physical therapy came from multiple back injuries and an ACL tear during her years of soccer. She also enjoys playing golf, snowboarding, hiking, and being active however she can. 
+    bio: `John is originally from San Diego, California, and earned his Doctorate of Physical Therapy from Midwestern University. He has experience working with athletes at all levels, including professional (NFL, MLB, NBA), Division I, and youth athletes across a variety of sports.
+John specializes in ACL rehabilitation, with a focus on restoring confidence and helping athletes safely and successfully return to sport. He utilizes a data-driven approach, incorporating force plate and sport science testing, and is certified in running gait analysis to guide individualized treatment and performance progression.
 
-Kristen truly enjoys working with athletes and active individuals with the goal of using manual therapy, prescriptive exercise, and an emphasis on performance to help them continue to do what they love. She is passionate about learning the demands of different sports and how to help patients not only return to their sport, but also exceed their talents and minimize the risk of re-injury. She has a special interest in soccer, baseball, basketball, lacrosse and gymnasts athletes! She has worked with athletes in a wide variety of sports at multiple levels including high school, college, semi-professional, and professional. 
-
-Kristen received a Bachelor of Science degree in Sport and Exercise Science with a Minor in Psychology from The University of Northern Colorado and a Doctorate of Physical Therapy at the University of Colorado - Anschutz Medical Campus. `
+In addition to his clinical work, John has a strong background in strength and conditioning. He has developed sport-specific and in-season training programs, including for a nationally ranked high school lacrosse team. As a former track and field and soccer athlete, he understands the demands of sport firsthand and continues to train with a focus on strength, speed, and power development.`
   },
 ]
 
