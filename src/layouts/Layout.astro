@@ -34,6 +34,21 @@ const { seo } = Astro.props;
 
       gtag("config", "G-FMS4RHE8PJ");
     </script>
+    <!-- Google tag (gtag.js) for Google Ads -->
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-17580190165"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "AW-17580190165");
+    </script>
+    <!-- Clicky analytics -->
+    <script async data-id="101509781" src="//static.getclicky.com/js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
 

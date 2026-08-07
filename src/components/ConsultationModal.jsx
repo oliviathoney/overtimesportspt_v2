@@ -28,6 +28,14 @@ export const ConsultationModal = ({ setIsOpen }) => {
 
       // Handle success, e.g., display a success message
       console.log('Form submitted successfully!');
+      if (typeof window.gtag === 'function') {
+        const phoneE164 = phone ? '+1' + phone.replace(/-/g, '') : undefined;
+        window.gtag('set', 'user_data', {
+          ...(email && { email }),
+          ...(phoneE164 && { phone_number: phoneE164 }),
+        });
+        window.gtag('event', 'conversion', { 'send_to': 'AW-17580190165/XXXXXXXXXXX' });
+      }
       setIsOpen(false)
     } catch (error) {
       // Handle error, e.g., display an error message
