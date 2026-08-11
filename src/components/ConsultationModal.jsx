@@ -34,7 +34,7 @@ export const ConsultationModal = ({ setIsOpen }) => {
           ...(email && { email }),
           ...(phoneE164 && { phone_number: phoneE164 }),
         });
-        window.gtag('event', 'conversion', { 'send_to': 'AW-17580190165/XXXXXXXXXXX' });
+        window.gtag('event', 'conversion', { 'send_to': 'AW-17580190165/QZyqCIudr98cENXT8b5B' });
       }
       setIsOpen(false)
     } catch (error) {
