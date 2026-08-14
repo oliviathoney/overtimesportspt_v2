@@ -66,6 +66,9 @@ export const AboutOurPractice = () => {
                 <span className="block-subtitle">VISIT US AT:</span>
                 <p className="text-secondaryText leading-loose"><a id="address" href="https://maps.app.goo.gl/Ng3fLwf8KgRr15k29"
                   target="_blank">327 South Inverness Dr, Centennial, CO 80112</a></p>
+                <span className="block-subtitle">and</span>
+                <p className="text-secondaryText leading-loose"><a id="address" href="https://maps.app.goo.gl/fQELNxp2jEhLMJP6A"
+                  target="_blank">8995 S Ridgeline Blvd #800, Highlands Ranch, CO 80129</a></p>
               </div>
             </div>
           </div>
