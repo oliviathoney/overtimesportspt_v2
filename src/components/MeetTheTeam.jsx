@@ -5,6 +5,8 @@ import { getImage } from "astro:assets";
 import { ConsultationModal } from "./ConsultationModal";
 import edward from "../assets/images/edward.JPG";
 import john_b from "../assets/images/john_b.jpeg"
+import emily from "../assets/images/emily.jpg"
+import kendall from "../assets/images/kendall.jpg"
 
 const profiles = [
   {
@@ -29,6 +31,26 @@ Edward received a Bachelor of Science degree in Exercise Science with a Minor in
 John specializes in ACL rehabilitation, with a focus on restoring confidence and helping athletes safely and successfully return to sport. He utilizes a data-driven approach, incorporating force plate and sport science testing, and is certified in running gait analysis to guide individualized treatment and performance progression.
 
 In addition to his clinical work, John has a strong background in strength and conditioning. He has developed sport-specific and in-season training programs, including for a nationally ranked high school lacrosse team. As a former track and field and soccer athlete, he understands the demands of sport firsthand and continues to train with a focus on strength, speed, and power development.`
+  },
+  {
+    id: 2,
+    image: await getImage({ src: emily }),
+    name: 'Emily Tully',
+    position: 'Physical Therapist',
+    bio: `Emily is originally from Charlotte, North Carolina. She earned her Bachelor of Science in Human Biology with a minor in Sports Science from North Carolina State University prior to receiving her Doctorate of Physical Therapy from the University of Colorado, Anschutz Medical Campus.
+
+Emily is passionate about helping athletes and active individuals return to the activities they love through individualized, evidence-based rehabilitation. As a former competitive soccer player, she understands the physical and mental demands of injury recovery and returning to sport.
+
+She enjoys helping athletes build confidence throughout the rehabilitation process while optimizing movement, strength, and performance to reduce future injury risk.
+
+Emily has a special interest in working with youth and adolescent athletes and is dedicated to creating an encouraging environment where patients feel empowered to achieve their goals.`
+  },
+  {
+    id: 3,
+    image: await getImage({ src: kendall }),
+    name: 'Kendall Crepeau',
+    position: 'Clinic Manager',
+    bio: `Kendall is a Colorado native, and went to Colorado State for undergrad in Health and Exercise Science. Growing up, she mostly played soccer and also played softball, basketball, and track & field. Currently, Kendall works for the City of Aurora, overseeing youth programs in recreation centers. In her free time, she enjoys anything outdoors; camping, hiking, and skiing are at the top of my list. She also loves cooking and baking! She is so excited to join the Overtime Family and help Overtime continue to run smoothly to give you an awesome experience. `
   },
 ]
 
