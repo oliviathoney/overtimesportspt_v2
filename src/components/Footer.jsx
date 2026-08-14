@@ -42,12 +42,9 @@ export const Footer = () => {
                   />
                 </div>
               </div>
+
               <div className="flex justify-center lg:justify-start items-center text-center">
-                <p
-                  className="text-gray-400 text-sm sm:text-base"
-                >
-                  info@overtimesportspt.com | (720) 771-9677
-                </p>
+                <p className="text-secondaryColor text:sm sm:text-base">Centennial Location</p>
               </div>
               <div className="flex justify-center lg:justify-start items-center text-center">
                 <a
@@ -57,6 +54,25 @@ export const Footer = () => {
                 >
                   327 South Inverness Dr, Centennial, CO 80112
                 </a>
+              </div>
+              <div className="flex justify-center lg:justify-start items-center text-center">
+                <p className="text-secondaryColor text:sm sm:text-base">Highlands Ranch Location</p>
+              </div>
+              <div className="flex justify-center lg:justify-start items-center text-center">
+                <a
+                  className="text-gray-400 text-sm sm:text-base"
+                  href="https://maps.app.goo.gl/fQELNxp2jEhLMJP6A"
+                  aria-label="Google Maps"
+                >
+                  8995 S Ridgeline Blvd #800, Highlands Ranch, CO 80129
+                </a>
+              </div>
+              <div className="flex justify-center lg:justify-start items-center text-center mt-3">
+                <p
+                  className="text-gray-400 text-sm sm:text-base"
+                >
+                  info@overtimesportspt.com | (720) 771-9677
+                </p>
               </div>
               <div className="flex justify-center lg:justify-start items-center text-center">
                 <p
