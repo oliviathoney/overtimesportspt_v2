@@ -64,7 +64,7 @@ export const Footer = () => {
                   href="https://maps.app.goo.gl/fQELNxp2jEhLMJP6A"
                   aria-label="Google Maps"
                 >
-                  8995 S Ridgeline Blvd #800, Highlands Ranch, CO 80129
+                  8955 S Ridgeline Blvd #800, Highlands Ranch, CO 80129
                 </a>
               </div>
               <div className="flex justify-center lg:justify-start items-center text-center mt-3">
