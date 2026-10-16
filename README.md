@@ -63,6 +63,15 @@ setting should also be 24.x. Astro 5 and `@astrojs/vercel` 9 support this runtim
 the older `@astrojs/vercel/serverless` adapter falls back to the discontinued
 Node.js 18 runtime when built with Node.js 24.
 
+`security.allowedDomains` in `astro.config.mjs` trusts the site's production
+domains, the current `site_refresh` preview alias, and HTTP localhost previews.
+Vercel's `VERCEL_URL`, `VERCEL_BRANCH_URL`, and `VERCEL_PROJECT_PRODUCTION_URL`
+system variables add the exact deployment hosts at build time. Keep Vercel's
+system environment variables exposed for new deployment/branch aliases. Astro's
+production image endpoint uses the validated request origin to fetch local image
+assets, so new custom domains must be added here. Do not use a blanket
+`*.vercel.app` allowlist.
+
 All commands are run from the root of the project, from a terminal:
 
 | Command                | Action                                             |
