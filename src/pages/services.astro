@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import { Navbar } from "../components/Navbar.jsx";
 import { ServiceList } from "../components/ServiceList.jsx";
 import { Footer } from "../components/Footer.jsx";
-import { ScrollUpButton } from "../components/ScrollUpButton.jsx";
 import "../styles/Theme.css";
 import "../styles/Diagonals.css";
 import "../styles/custom.css";
@@ -18,7 +17,6 @@ import SiteData from "../constants/siteData.json";
   }}
 >
   <Navbar client:load />
-  <ServiceList client:load />
+  <ServiceList />
   <Footer />
-  <ScrollUpButton client:load />
 </Layout>

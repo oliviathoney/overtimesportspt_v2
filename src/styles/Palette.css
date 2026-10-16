@@ -1,0 +1,116 @@
+:root {
+  color-scheme: dark;
+  --accent: 117 174 120;
+  --highlight: 114 116 243;
+  --text: 255 255 255;
+  --text-muted: 174 178 183;
+  --surface-night: 13 19 18;
+  --surface-1: 31 32 35;
+  --surface-2: 38 39 43;
+  --surface-3: 48 49 54;
+  --surface-hover: 55 56 62;
+  --surface-translucent-opacity: 0.7;
+  --border: 255 255 255;
+  --border-opacity: 0.15;
+  --border-subtle-opacity: 0.07;
+  --quote: 178 184 205;
+  --gold: #f3ca63;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --accent: 55 96 58;
+  --highlight: 89 75 190;
+  --text: 23 35 26;
+  --text-muted: 75 90 78;
+  --surface-night: 250 251 248;
+  --surface-1: 255 255 255;
+  --surface-2: 238 241 236;
+  --surface-3: 226 231 223;
+  --surface-hover: 215 222 212;
+  --surface-translucent-opacity: 0.95;
+  --border: 23 35 26;
+  --border-opacity: 0.2;
+  --border-subtle-opacity: 0.12;
+  --quote: 75 90 78;
+  --gold: #8a6000;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(var(--border) / var(--border-opacity));
+  border-radius: 10px;
+  background: rgb(var(--surface-2));
+  color: rgb(var(--text));
+  cursor: pointer;
+}
+
+.theme-toggle:not(:disabled):hover {
+  background: rgb(var(--surface-3));
+}
+
+.theme-toggle:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 4px;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-toggle__to-dark {
+  display: none;
+}
+
+[data-theme="light"] .theme-toggle__to-light {
+  display: none;
+}
+
+[data-theme="light"] .theme-toggle__to-dark {
+  display: block;
+}
+
+.theme-toggle__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.site-nav__logo {
+  width: clamp(140px, 18vw, 210px);
+}
+
+[data-theme="light"] .site-logo {
+  filter: brightness(0.25);
+}
+
+[data-theme="light"] .brand-logos > div {
+  border-radius: 12px;
+  background: #1f2023;
+}
+
+@media (max-width: 1023px) {
+  .site-nav__logo {
+    width: 140px;
+  }
+}

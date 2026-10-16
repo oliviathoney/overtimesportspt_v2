@@ -1,6 +1,7 @@
 const flowbite = require("flowbite-react/tailwind");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
     flowbite.content(),
@@ -12,25 +13,25 @@ module.exports = {
     extend: {
       colors: {
         primaryColor: "#4D734F",
-        secondaryColor: "#75AE78",
-        highlightColor: "#7274F3",
-        primaryText: "rgb(255,255,255)",
-        secondaryText: "rgb(174, 178, 183)",
-        bgDark1: "rgb(31, 32, 35)",
-        bgDark2: "rgb(38, 39, 43)",
-        bgDark3: "rgb(48, 49, 54)",
-        bgDark3Hover: "rgb(55, 56, 62)",
-        bgDarkTransparent: "rgb(31, 32, 35, 0.7)",
+        secondaryColor: "rgb(var(--accent) / <alpha-value>)",
+        highlightColor: "rgb(var(--highlight) / <alpha-value>)",
+        primaryText: "rgb(var(--text) / <alpha-value>)",
+        secondaryText: "rgb(var(--text-muted) / <alpha-value>)",
+        bgNight: "rgb(var(--surface-night) / <alpha-value>)",
+        bgDark1: "rgb(var(--surface-1) / <alpha-value>)",
+        bgDark2: "rgb(var(--surface-2) / <alpha-value>)",
+        bgDark3: "rgb(var(--surface-3) / <alpha-value>)",
+        bgDark3Hover: "rgb(var(--surface-hover) / <alpha-value>)",
+        bgDarkTransparent: "rgb(var(--surface-1) / 0.7)",
         bgDarkTransparentDarker: "rgb(0,0,0,0.5)",
-        bgDarkTransparentLighter: "rgb(48, 49, 54, 0.7)",
-        mainBorder: "rgb(255,255,255,0.15)",
-        mainBorderDarker: "rgb(255,255,255,0.07)",
-        quoteIconColor: "rgb(178, 184, 205)"
+        bgDarkTransparentLighter: "rgb(var(--surface-3) / var(--surface-translucent-opacity))",
+        mainBorder: "rgb(var(--border) / var(--border-opacity))",
+        mainBorderDarker: "rgb(var(--border) / var(--border-subtle-opacity))",
+        quoteIconColor: "rgb(var(--quote) / <alpha-value>)"
       },
       fontFamily: {
-        Inter: "Inter",
-        NotoSerif: ["Noto Serif", "serif"],
-        LeagueSpartan: ["League Spartan", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
+        Inter: ["Inter", "sans-serif"],
       },
       screens: {
         xs: "530px",
@@ -52,4 +53,3 @@ module.exports = {
     },
   },
 };
-

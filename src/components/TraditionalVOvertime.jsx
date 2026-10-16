@@ -8,9 +8,9 @@ export const TraditionalVOvertime = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="w-full flex justify-center bg-bgDark2 relative">
+    <section className="w-full flex justify-center bg-bgNight relative">
       <div className="absolute -top-16" id="pricing" />
-      <div className="pb-20 pt-12 bg-bgDark2  2xl:w-[1150px] lg:w-[1050px]  md:w-4/5 ">
+      <div className="pb-20 pt-12 2xl:w-[1150px] lg:w-[1050px] md:w-4/5">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -20,7 +20,7 @@ export const TraditionalVOvertime = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center mb-16">
               <span className="block-subtitle">Traditional PT VS. OVERTIME PT</span>
-              <h2 className="mt-2 mb-6 text-5xl lg:text-6xl font-bold font-heading text-primaryText font-NotoSerif">
+              <h2 className="mt-2 mb-6 text-5xl lg:text-6xl font-bold font-heading text-primaryText font-Inter">
                 See The Difference
               </h2>
               <p className="mb-6 text-secondaryText">
@@ -29,8 +29,8 @@ export const TraditionalVOvertime = () => {
             </div>
             <div className="flex flex-wrap flex-col lg:flex-row -mx-4 items-center mt-20">
               <div className="w-[350px] sm:w-[380px] lg:w-1/2 px-2 mb-8 lg:mb-0">
-                <div className="p-4 bg-bgDark3 rounded-3xl">
-                  <h3 className="p-4 mb-2 text-2xl font-bold font-heading text-primaryText text-center font-NotoSerif">
+                <div className="p-4 bg-bgDark2 rounded-3xl">
+                  <h3 className="p-4 mb-2 text-2xl font-bold font-heading text-primaryText text-center font-Inter">
                     Traditional Physical Therapy
                   </h3>
                   <ul className="mb-2 2xl:mb-6 text-primaryText">
@@ -69,12 +69,12 @@ export const TraditionalVOvertime = () => {
               </div>
               <div className="w-[350px] sm:w-[380px] lg:w-1/2 px-2 mb-8 lg:mb-0">
                 <div className="p-4 bg-primaryColor rounded-3xl">
-                  <h3 className="p-4 mb-2 text-2xl font-bold font-heading text-primaryText text-center font-NotoSerif">
+                  <h3 className="p-4 mb-2 text-2xl font-bold font-heading text-white text-center font-Inter">
                     OVERTIME Physical Therapy
                   </h3>
 
 
-                  <ul className="mb-2 2xl:mb-6 text-primaryText">
+                  <ul className="mb-2 2xl:mb-6 text-white">
                     <li className="mb-4 flex">
                       <CheckArrowIcon />
                       <span>
@@ -125,19 +125,19 @@ export const TraditionalVOvertime = () => {
         >
           <div className="container mx-auto px-4 pt-32">
             <div className="max-w-2xl mx-auto text-center mb-16">
-              <h2 className="mt-6 mb-6 text-4xl lg:text-5xl font-bold font-heading text-primaryColor font-NotoSerif uppercase">
+              <h2 className="mt-6 mb-6 text-4xl lg:text-5xl font-bold font-heading text-primaryColor font-Inter uppercase">
                 DISCOVER
               </h2>
               <p className="mb-6 text-secondaryText">
                 During your first appointment, we will conduct a thorough sport specific assessment to DISCOVER functional movement dysfunctions and impairments looking at the body globally.
               </p>
-              <h2 className="mt-6 mb-6 text-4xl lg:text-5xl font-bold font-heading text-primaryColor font-NotoSerif uppercase">
+              <h2 className="mt-6 mb-6 text-4xl lg:text-5xl font-bold font-heading text-primaryColor font-Inter uppercase">
                 OPTIMIZE
               </h2>
               <p className="mb-6 text-secondaryText">
                 We will correct and OPTIMIZE dysfunctions, injuries and impairments with experienced physical therapists using evidence-based rehabilitation.
               </p>
-              <h2 className="mt-6 mb-6 text-4xl lg:text-5xl font-bold font-heading text-primaryColor font-NotoSerif uppercase">
+              <h2 className="mt-6 mb-6 text-4xl lg:text-5xl font-bold font-heading text-primaryColor font-Inter uppercase">
                 PERFORM
               </h2>
               <p className="mb-6 text-secondaryText">

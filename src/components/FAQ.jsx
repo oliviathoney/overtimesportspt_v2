@@ -85,7 +85,7 @@ const FAQData = [
 export const FAQ = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <section className="w-full bg-bgDark2 mb-12 lg:mb-24 pt-12">
+    <section className="w-full bg-bgNight pb-12 lg:pb-24 pt-12">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -95,7 +95,7 @@ export const FAQ = () => {
         <div className="relative z-10 container px-2 sm:px-8 lg:px-4 mx-auto w-11/12 sm:w-full">
           <div className="md:max-w-4xl mx-auto">
             <p className="mb-2 mt-32 block-subtitle text-center">Have any questions?</p>
-            <h2 className="mb-16 block-big-title text-center font-NotoSerif">
+            <h2 className="mb-16 block-big-title text-center font-Inter">
               Frequently Asked Questions
             </h2>
             <div className="mb-11 flex flex-wrap -m-1">
@@ -125,7 +125,7 @@ const FAQBox = ({ defaultOpen, title, content }) => {
 
   return (
     <div
-      className="pt-2 sm:pt-6 pb-2 px-3 sm:px-8  rounded-3xl bg-bgDark3 main-border-gray-darker mb-4 relative hover:bg-bgDark3Hover cursor-pointer transition"
+      className="pt-2 sm:pt-6 pb-2 px-3 sm:px-8 rounded-3xl bg-bgDark2 main-border-gray-darker mb-4 relative hover:bg-bgDark3 cursor-pointer transition"
       onClick={() => setIsOpen(!isOpen)}
     >
       <div className="flex flex-col p-2  justify-center items-start">

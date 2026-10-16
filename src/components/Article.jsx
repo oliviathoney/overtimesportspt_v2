@@ -5,12 +5,12 @@ import { FaAngleLeft } from "react-icons/fa";
 export const Article = ({ articleData }) => {
   const { title, subtitle, date, image, content, footer } = articleData;
   return (
-    <div className="flex justify-center bg-bgDark2 relative pt-2">
+    <div className="flex justify-center bg-bgNight relative pt-2">
       <div className="px-2 sm:px-4">
         <a href="/blog" class="flex felx-col w-full text-start absolute top-36 font-medium text-highlightColor hover:underline">
           &#x3c; Back to blog posts
         </a>
-        <article className="p-8 pt-24 text-center rounded-3xl w-full lg:w-[1200px] 2xl:w-[1400px] mb-24 mt-16 sm:mt-24">
+        <article className="p-8 pt-24 text-center rounded-3xl bg-bgDark2 w-full lg:w-[1200px] 2xl:w-[1400px] mb-24 mt-16 sm:mt-24">
 
           <header className="mb-12">
             <div className="text-sm text-secondaryText my-4">{date}</div>

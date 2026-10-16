@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
-
 /* Typography */
 .block-title {
   @apply text-primaryText text-3xl font-bold tracking-normal;
@@ -17,7 +15,7 @@
   @apply text-primaryText text-base leading-relaxed;
 }
 .content-text-gray {
-  @apply text-gray-400 text-base;
+  @apply text-secondaryText text-base;
 }
 
 /* Borders */
@@ -32,21 +30,65 @@
 /* Buttons */
 
 .contained-button {
-  @apply rounded-lg font-bold bg-primaryColor text-primaryText flex justify-center items-center hover:bg-[#7274f3] cursor-pointer transition;
+  @apply rounded-lg font-bold bg-primaryColor text-white flex justify-center items-center hover:bg-[#7274f3] cursor-pointer transition;
 }
 .contained-button-reverse {
-  @apply rounded-lg font-bold bg-[#7274f3] text-primaryText flex justify-center items-center hover:bg-primaryColor cursor-pointer transition;
+  @apply rounded-lg font-bold bg-[#7274f3] text-white flex justify-center items-center hover:bg-primaryColor cursor-pointer transition;
 }
 
 .contained-button-reverse-clicked {
-  @apply rounded-lg font-bold bg-primaryColor text-primaryText flex justify-center items-center;
+  @apply rounded-lg font-bold bg-primaryColor text-white flex justify-center items-center;
 }
 .outlined-button {
   @apply text-primaryText main-border-gray rounded-xl bg-bgDark2 hover:bg-bgDark3  border-gray-700 text-sm;
+}
+
+.site-nav {
+  top: 0;
+  left: 0;
+  transform: translateY(0);
+}
+
+.site-nav[data-hidden="true"] {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.site-nav.home-nav[data-scrolled="true"] {
+  background-color: rgb(var(--surface-night) / 0.95);
+  backdrop-filter: blur(16px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-nav {
+    transition: transform 0.22s ease;
+  }
+}
+
+.appointment-form input,
+.appointment-form textarea,
+.consultation-form input:not([type="submit"]) {
+  background-color: theme("colors.bgNight");
+  color: theme("colors.primaryText");
+  border: 1px solid theme("colors.mainBorder");
+  --tw-ring-color: theme("colors.secondaryColor");
+}
+
+.appointment-form input::placeholder,
+.appointment-form textarea::placeholder,
+.consultation-form input:not([type="submit"])::placeholder {
+  color: theme("colors.secondaryText");
+}
+
+.appointment-form input:focus,
+.appointment-form textarea:focus,
+.consultation-form input:not([type="submit"]):focus {
+  outline: 2px solid theme("colors.secondaryColor");
+  outline-offset: 2px;
+  --tw-ring-color: theme("colors.secondaryColor");
 }
 
 /* Preventing FOUC */
 @font-face {
   font-display: var(--fontsource-Inter-font-display, optional);
 }
-

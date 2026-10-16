@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Card } from "flowbite-react";
 
 import SignsYou from "../assets/images/blog/signs-you.jpg";
@@ -44,18 +43,13 @@ const blogData = [
 ];
 
 export const BlogList = () => (
-  <section className="w-full flex justify-center bg-bgDark2 relative pt-32">
-    <div className="pb-20 pt-12 bg-bgDark2  2xl:w-[1150px] lg:w-[1050px]  md:w-4/5 ">
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
+  <section className="w-full flex justify-center bg-bgNight relative pt-32">
+    <div className="pb-20 pt-12 2xl:w-[1150px] lg:w-[1050px] md:w-4/5">
+      <div>
         <div className="container mx-auto">
           <div className="max-w-2xl text-start mb-16 px-8">
             <span className="block-subtitle">Our Blog</span>
-            <h2 className="mt-2 mb-6 text-5xl lg:text-6xl font-bold font-heading text-primaryText font-NotoSerif">
+            <h2 className="mt-2 mb-6 text-5xl lg:text-6xl font-bold font-heading text-primaryText font-Inter">
               Latest Insights
             </h2>
             <p className=" text-secondaryText">
@@ -65,15 +59,15 @@ export const BlogList = () => (
           {blogData.map((blog, i) => (
             <div className="w-100 py-3 px-5" key={i}>
               <Card
-                className="blogPost !max-w-full bg-bgDark1 main-border-gray shadow-lg"
+                className="blogPost !max-w-full bg-bgDark2 dark:bg-bgDark2 main-border-gray-darker dark:border-mainBorderDarker shadow-lg"
                 renderImage={() => <img width={500} src={blog.image} alt={blog.title} className="rounded-lg" />}
                 horizontal
                 key={i}
               >
-                <h3 className="text-3xl font-bold  text-secondaryColor font-NotoSerif">
+                <h3 className="text-3xl font-bold  text-secondaryColor font-Inter">
                   {blog.title}
                 </h3>
-                <p className="font-normal text-gray-400">
+                <p className="font-normal text-secondaryText">
                   {blog.subtitle}
                 </p>
                 <a href={blog.slug} class="inline-flex font-medium items-center text-highlightColor hover:underline">
@@ -83,7 +77,7 @@ export const BlogList = () => (
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </div>
   </section>
 );

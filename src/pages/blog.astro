@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import { Navbar } from "../components/Navbar.jsx";
 import { BlogList } from "../components/BlogList.jsx";
 import { Footer } from "../components/Footer.jsx";
-import { ScrollUpButton } from "../components/ScrollUpButton.jsx";
 import "../styles/Theme.css";
 import "../styles/Diagonals.css";
 import "../styles/custom.css";
@@ -12,7 +11,6 @@ import SiteData from "../constants/siteData.json";
 
 <Layout title="OVERTIME Sports">
   <Navbar client:load />
-  <BlogList client:load />
+  <BlogList />
   <Footer />
-  <ScrollUpButton client:load />
 </Layout>

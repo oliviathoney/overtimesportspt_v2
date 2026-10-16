@@ -62,9 +62,9 @@ export const MeetTheTeam = () => {
   };
 
   return (
-    <section className="w-full bg-bgDark2 mb-12 lg:mb-24 pt-32">
+    <section className="w-full bg-bgNight pb-12 lg:pb-24 pt-32">
       <p className="block-subtitle mx-auto text-center pt-16">About Our Practice</p>
-      <h2 className="mt-2 text-5xl lg:text-6xl block-big-title font-NotoSerif text-center">
+      <h2 className="mt-2 text-5xl lg:text-6xl block-big-title font-Inter text-center">
         Meet The Team
       </h2>
 
@@ -83,8 +83,8 @@ export const MeetTheTeam = () => {
                   className={`w-52 h-52 rounded-full mb-3 ${expandedId === profile.id && 'border-8 border-primaryColor'
                     }`}
                 />
-                <h2 className="text-xl font-semibold text-gray-100">{profile.name}</h2>
-                <p className="text-gray-400">{profile.position}</p>
+                <h2 className="text-xl font-semibold text-primaryText">{profile.name}</h2>
+                <p className="text-secondaryText">{profile.position}</p>
                 <button
                   className={` w-1/2 mt-2 h-8 ${expandedId === profile.id ? 'contained-button-reverse-clicked' : 'contained-button-reverse'}`}
                   aria-label="Learn More"
@@ -100,7 +100,7 @@ export const MeetTheTeam = () => {
       </div>
       <div className="hidden lg:flex flex-wrap items-center 2xl:w-[1450px] xl:w-[1300px] w-11/12 mx-auto md:pl-4 xl:pr-16 xl:pl-16">
         {expandedId != null &&
-          <p className="w-2/3 mx-auto text-secondaryText leading-loose text-center bg-gradient-to-br from-[#7274F320] from-25% to-[#7274F305] to-90% rounded-lg p-5">
+          <p className="w-2/3 mx-auto text-secondaryText leading-loose text-center bg-bgDark2 rounded-lg p-5">
             {profiles[expandedId].bio}
           </p>
         }
@@ -119,8 +119,8 @@ export const MeetTheTeam = () => {
                 className={`w-52 h-52 rounded-full mb-3 ${expandedId === profile.id && 'border-8 border-primaryColor'
                   }`}
               />
-              <h2 className="text-xl font-semibold text-gray-100">{profile.name}</h2>
-              <p className="text-gray-400">{profile.position}</p>
+              <h2 className="text-xl font-semibold text-primaryText">{profile.name}</h2>
+              <p className="text-secondaryText">{profile.position}</p>
               <button
                 className={` w-1/2 mt-2 h-8 ${expandedId === profile.id ? 'contained-button-reverse-clicked' : 'contained-button-reverse'}`}
                 aria-label="Learn More"
@@ -129,7 +129,7 @@ export const MeetTheTeam = () => {
                 <a href="#" className="text-xs">Learn More</a>
               </button>
               {expandedId === profile.id &&
-                <p className="w-11/12 mx-auto p-2 text-secondaryText leading-loose text-center mt-5 bg-gradient-to-br from-[#7274F320] from-25% to-[#7274F305] to-90% rounded-lg">
+                <p className="w-11/12 mx-auto p-2 text-secondaryText leading-loose text-center mt-5 bg-bgDark2 rounded-lg">
                   {profiles[expandedId].bio}
                 </p>
               }

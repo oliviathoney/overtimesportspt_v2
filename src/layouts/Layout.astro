@@ -8,6 +8,7 @@ import "@fontsource/inter/900.css";
 
 import { SEO, type Props as SEOProps } from "astro-seo";
 import SiteData from "../constants/siteData.json";
+import ThemeHead from "../components/ThemeHead.astro";
 
 export interface Props {
   title: string;
@@ -19,8 +20,11 @@ const { seo } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="bg-bgDark2">
+<html lang="en" class="bg-bgNight">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <ThemeHead />
     <!-- Google tag (gtag.js) -->
     <script
       is:inline
@@ -49,9 +53,6 @@ const { seo } = Astro.props;
     </script>
     <!-- Clicky analytics -->
     <script async data-id="101509781" src="//static.getclicky.com/js"></script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
@@ -79,21 +80,15 @@ const { seo } = Astro.props;
     />
 
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
   </head>
-  <body class="bg-bgDark2">
+  <body class="bg-bgNight text-primaryText">
     <main aria-label="Main content">
       <slot />
     </main>
     <style is:global>
       html {
-        font-family: Inter;
-        background-color: #26272b;
+        font-family: Inter, sans-serif;
+        background-color: theme("colors.bgNight");
         overflow-x: hidden;
         scroll-behavior: smooth !important;
       }

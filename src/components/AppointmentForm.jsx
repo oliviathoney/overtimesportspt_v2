@@ -57,18 +57,18 @@ export const AppointmentForm = () => {
   }
 
   return (
-    <section className="lg:mb-16 w-full flex flex-col justify-center items-center bg-bgDark1" id="request">
+    <section className="appointment-form lg:mb-16 w-full flex flex-col justify-center items-center bg-bgDark2" id="request">
       <div className="shape-divider-bottom-1665696614">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
-          className="bg-bgDark2  fill-bgDark2"
+          className="bg-bgNight fill-bgNight"
         >
           <path
             d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
-            className="bg-bgDark1  fill-bgDark1"
+            className="bg-bgDark2 fill-bgDark2"
           ></path>
         </svg>
       </div>
@@ -81,13 +81,13 @@ export const AppointmentForm = () => {
         <div className="relative !justify-center items-center z-10 container px-2 sm:px-8 lg:px-4 mx-auto w-11/12 sm:w-full">
           <div className="md:max-w-4xl mx-auto text-center">
             <span className="block-subtitle text-center">We're Excited to meet you</span>
-            <h2 className="mt-2 mb-8 text-5xl lg:text-6xl block-big-title font-NotoSerif text-center">
+            <h2 className="mt-2 mb-8 text-5xl lg:text-6xl block-big-title font-Inter text-center">
               Request an Appointment
             </h2>
             <p className="w-full mb-2  text-secondaryText leading-loose">
               Fill out the form below with what you're hoping to accomplish at OVERTIME
             </p>
-            <p className="w-1/2 flex mx-auto text-center mb-8 block-subtitle !text-primaryColor leading-loose">
+            <p className="w-1/2 flex mx-auto text-center mb-8 block-subtitle !text-secondaryColor leading-loose">
               Did you know that we offer special discounts for MILITARY PERSONNEL and FIRST RESPONDERS? Simply ask our team about our exclusive offers.
             </p>
           </div>
@@ -109,7 +109,7 @@ export const AppointmentForm = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
 
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md py-1.5 shadow-sm sm:text-sm sm:leading-6"
                         required
                       />
                     </div>
@@ -132,7 +132,7 @@ export const AppointmentForm = () => {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         aria-describedby="helper-text-explanation"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-600 dark:focus:border-indigo-600"
+                        className="block w-full rounded-lg ps-10 p-2.5 text-sm"
                         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                         placeholder="123-456-7890"
                       />
@@ -149,7 +149,7 @@ export const AppointmentForm = () => {
                         id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com"
+                        className="block w-full rounded-lg p-2.5 text-sm" placeholder="john.doe@company.com"
                         required />
                     </div>
                   </div>
@@ -164,7 +164,7 @@ export const AppointmentForm = () => {
                         value={about}
                         onChange={(e) => setAbout(e.target.value)}
                         rows={3}
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md py-1.5 shadow-sm sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
@@ -182,7 +182,7 @@ export const AppointmentForm = () => {
             </form>
             <div className="md:max-w-4xl mx-auto text-center">
               <span className="block-subtitle text-center">Or Schedule Now</span>
-              <h2 className="mt-2 mb-8 text-5xl lg:text-6xl block-big-title font-NotoSerif text-center">
+              <h2 className="mt-2 mb-8 text-5xl lg:text-6xl block-big-title font-Inter text-center">
                 Schedule An Appointment
               </h2>
               <button
@@ -208,11 +208,11 @@ export const AppointmentForm = () => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
-          className="bg-bgDark2 fill-bgDark2"
+          className="bg-bgNight fill-bgNight"
         >
           <path
             d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
-            className="bg-bgDark1 fill-bgDark1"
+            className="bg-bgDark2 fill-bgDark2"
           ></path>
         </svg>
       </div>

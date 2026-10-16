@@ -29,7 +29,7 @@ export const Footer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <footer aria-label="Site footer">
-      <div className="pt-10  lg:pt-20 lg:pb-16 bg-bgDark1 radius-for-skewed ">
+      <div className="pt-10  lg:pt-20 lg:pb-16 bg-bgNight border-t border-mainBorderDarker radius-for-skewed ">
         <div className="container mx-auto px-4 w-4/5 md:w-11/12 lg:w-10/12 xl:w-4/5 2xl:w-2/3">
           <div className="flex flex-wrap">
             <div className="w-full lg:w-1/2 mb-16 lg:mb-0">
@@ -38,7 +38,7 @@ export const Footer = () => {
                   <img
                     src={optLogo.src}
                     alt="OVERTIME Sports Physical Therapy and Performance Logo"
-                    className="w-4/5 mb-6 lg:mx-0 mx-auto"
+                    className="site-logo w-4/5 mb-6 lg:mx-0 mx-auto"
                   />
                 </div>
               </div>
@@ -48,7 +48,7 @@ export const Footer = () => {
               </div>
               <div className="flex justify-center lg:justify-start items-center text-center">
                 <a
-                  className="text-gray-400 text-sm sm:text-base"
+                  className="text-secondaryText text-sm sm:text-base"
                   href="https://maps.app.goo.gl/Ng3fLwf8KgRr15k29"
                   aria-label="Google Maps"
                 >
@@ -60,7 +60,7 @@ export const Footer = () => {
               </div>
               <div className="flex justify-center lg:justify-start items-center text-center">
                 <a
-                  className="text-gray-400 text-sm sm:text-base"
+                  className="text-secondaryText text-sm sm:text-base"
                   href="https://maps.app.goo.gl/fQELNxp2jEhLMJP6A"
                   aria-label="Google Maps"
                 >
@@ -69,14 +69,14 @@ export const Footer = () => {
               </div>
               <div className="flex justify-center lg:justify-start items-center text-center mt-3">
                 <p
-                  className="text-gray-400 text-sm sm:text-base"
+                  className="text-secondaryText text-sm sm:text-base"
                 >
                   info@overtimesportspt.com | (720) 771-9677
                 </p>
               </div>
               <div className="flex justify-center lg:justify-start items-center text-center">
                 <p
-                  className="text-gray-400 text-sm sm:text-base"
+                  className="text-secondaryText text-sm sm:text-base"
                 >
                   © 2024 OVERTIMESportsPT.com All rights reserved.
                 </p>
@@ -84,12 +84,12 @@ export const Footer = () => {
             </div>
             <div className="w-full lg:w-1/2  lg:pl-16 hidden lg:flex flex-wrap justify-end">
               <div className="w-full md:w-1/2 lg:w-auto mb-16 mr-12 md:mb-0">
-                <h3 className="mb-6 text-2xl font-bold text-primaryText font-NotoSerif">Company</h3>
+                <h3 className="mb-6 text-2xl font-bold text-primaryText font-Inter">Company</h3>
                 <ul>
                   {footerData[0].items.map((item, index) => (
                     <li key={`${item.name}-${index}`} className="mb-4">
                       <a
-                        className="text-gray-400 hover:text-gray-300"
+                        className="text-secondaryText hover:text-primaryText"
                         href={item.href}
                         aria-label={item.name}
                       >
@@ -100,14 +100,14 @@ export const Footer = () => {
                 </ul>
               </div>
               <div className="w-full md:w-1/2 lg:w-auto mb-16 md:mb-0">
-                <h3 className="mb-6 text-2xl font-bold text-primaryText font-NotoSerif">
+                <h3 className="mb-6 text-2xl font-bold text-primaryText font-Inter">
                   Important Links
                 </h3>
                 <ul>
                   {footerData[1].items.map((item, index) => (
                     <li key={`${item.name}-${index}`} className="mb-4">
                       <a
-                        className="text-gray-400 hover:text-gray-300"
+                        className="text-secondaryText hover:text-primaryText"
                         href={item.href}
                         aria-label={item.name}
                       >
@@ -123,7 +123,7 @@ export const Footer = () => {
                   {footerData[2].items.map((item, index) => (
                     <li key={`${item}-${index}`} className="mb-4">
                       <a
-                        className="text-gray-400 hover:text-gray-300"
+                        className="text-secondaryText hover:text-primaryText"
                         href="#"
                         aria-label={item}
                       >

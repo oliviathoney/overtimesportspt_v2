@@ -3,12 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import { Hero } from "../components/Hero.jsx";
 import { Navbar } from "../components/Navbar.jsx";
 import { Introduction } from "../components/Introduction.jsx";
+import Difference from "../components/Difference.astro";
 import { Testimonials } from "../components/Testimonials.jsx";
-import { ServicePreview } from "../components/ServicePreview.jsx";
 import { GetStarted } from "../components/GetStarted";
 import { SignOff } from "../components/SignOff";
 import { Footer } from "../components/Footer.jsx";
-import { ScrollUpButton } from "../components/ScrollUpButton";
 import "../styles/Theme.css";
 import "../styles/Diagonals.css";
 import "../styles/custom.css";
@@ -16,13 +15,43 @@ import SiteData from "../constants/siteData.json";
 ---
 
 <Layout title="OVERTIME Sports">
-  <Navbar client:load />
+  <Navbar hero client:load />
   <Hero client:load />
+  <section class="home-proof" aria-label="Why patients choose Overtime">
+    <ul class="home-proof__list">
+      <li>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m12 2.5 2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96L12 2.5Z" />
+        </svg>
+        <span>5.0 on Google &middot; 192+ reviews</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m12 2 8 4v6c0 5-8 10-8 10S4 17 4 12V6l8-4Z" />
+          <path d="m8.5 11.5 2.5 2.5 4.5-5" />
+        </svg>
+        <span>A Doctor of PT every visit</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 6v6l4 2" />
+        </svg>
+        <span>60-minute one-on-one sessions</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="m7.5 12 3 3 6-6" />
+        </svg>
+        <span>No referral needed</span>
+      </li>
+    </ul>
+  </section>
   <Introduction client:load />
+  <Difference />
   <GetStarted client:load />
-  <ServicePreview client:load />
   <Testimonials client:load />
   <SignOff client:load />
   <Footer />
-  <ScrollUpButton client:load />
 </Layout>

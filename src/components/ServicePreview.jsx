@@ -30,7 +30,7 @@ export const ServicePreview = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center mb-16">
               <span className="block-subtitle">Get Your Perfect Treatment</span>
-              <h2 className="mt-6 mb-6 text-5xl lg:text-6xl font-bold font-heading text-primaryText font-NotoSerif">
+              <h2 className="mt-6 mb-6 text-5xl lg:text-6xl font-bold font-heading text-primaryText font-Inter">
                 Services We Offer
               </h2>
               <p className="mb-6 text-secondaryText">

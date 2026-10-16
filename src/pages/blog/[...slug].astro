@@ -4,7 +4,6 @@ import { Navbar } from "../../components/Navbar.jsx";
 import { Article } from "../../components/Article.jsx";
 import { Footer } from "../../components/Footer.jsx";
 import "../../styles/Theme.css";
-import { ScrollUpButton } from "../../components/ScrollUpButton";
 
 import SignsYou from "../../assets/images/blog/signs-you.jpg";
 import SoccerInjuries from "../../assets/images/blog/soccer-injuries.jpg";
@@ -475,5 +474,4 @@ const articleData = {
   <Navbar client:load />
   <Article articleData={articleData} />
   <Footer />
-  <ScrollUpButton client:load />
 </Layout>

@@ -87,7 +87,7 @@ export const ConsultationModal = ({ setIsOpen }) => {
               </div>
               <div className="w-full lg:w-1/2 flex items-center flex-col justify-center pt-24 sm:pt-0">
                 <div className="flex lg:hidden text-center lg:justify-start items-center grow basis-0 mb-8">
-                  <div className="text-white font-['Inter'] font-bold text-3xl">
+                  <div className="text-primaryText font-['Inter'] font-bold text-3xl">
                     <h2>
                       Request a Free Consultation
                     </h2>
@@ -97,7 +97,7 @@ export const ConsultationModal = ({ setIsOpen }) => {
                 <h3 className="mb-7 text-lg lg:text-2xl text-primaryText font-bold leading-snug text-center">
                   REHAB - RECOVER - PERFORM
                 </h3>
-                <form onSubmit={handleSubmit}>
+                <form className="consultation-form" onSubmit={handleSubmit}>
                   <div className="flex flex-wrap -m-2">
                     <div className="w-full sm:w-2/5 p-2 ml-auto">
                       <input
@@ -167,7 +167,7 @@ export const ConsultationModal = ({ setIsOpen }) => {
                     <div className="w-full sm:w-4/5 p-2 mt-4 mx-auto">
                       <input
                         type="submit"
-                        className="py-4 px-6 w-full text-primaryText font-semibold rounded-xl shadow-4xl focus:ring focus:ring-indigo-300 bg-primaryColor hover:bg-[#7274f3] transition ease-in-out duration-200"
+                        className="py-4 px-6 w-full text-white font-semibold rounded-xl shadow-4xl focus:ring focus:ring-indigo-300 bg-primaryColor hover:bg-[#7274f3] transition ease-in-out duration-200"
                         aria-label="Request"
                         value="Request Consultation"
                       />
@@ -176,7 +176,7 @@ export const ConsultationModal = ({ setIsOpen }) => {
                 </form>
               </div>
               <div
-                className="fixed top-6 right-6 z-50 w-5 h-5 cursor-pointer text-[rgb(255,255,255,0.7)] hover:text-white transition"
+                className="fixed top-6 right-6 z-50 w-5 h-5 cursor-pointer text-secondaryText hover:text-primaryText transition"
                 onClick={() => setIsOpen(false)}
               >
                 <CloseIcon />

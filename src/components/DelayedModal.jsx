@@ -64,7 +64,7 @@ const DelayedModal = () => {
                 ref={modalRef}
                 className="bg-gray-100 bg-opacity-90 sm:bg-opacity-75 rounded-xl shadow-xl p-6 w-full h-auto sm:w-3/4 md:w-3/5 lg:w-1/2 sm:rounded-2xl sm:my-auto mx-4 animate-fadeIn"
             >
-                <h2 className="text-[#322F31] text-4xl  text-center font-LeagueSpartan font-bold mb-4">Welcome! Claim your 40% OFF INITIAL EVALUATION now!</h2>
+                <h2 className="text-[#322F31] text-4xl  text-center font-Inter font-bold mb-4">Welcome! Claim your 40% OFF INITIAL EVALUATION now!</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-wrap -m-2">
                         <div className="w-full sm:w-4/5 p-2 mx-auto">
@@ -116,7 +116,7 @@ const DelayedModal = () => {
                         <div className="w-full sm:w-4/5 p-2 mt-4 mx-auto">
                             <input
                                 type="submit"
-                                className="text-center py-4 px-6 w-full text-primaryText font-bold rounded-xl shadow-4xl focus:ring focus:ring-indigo-300 bg-primaryColor hover:bg-[#7274f3] transition ease-in-out duration-200"
+                                className="text-center py-4 px-6 w-full text-white font-bold rounded-xl shadow-4xl focus:ring focus:ring-indigo-300 bg-primaryColor hover:bg-[#7274f3] transition ease-in-out duration-200"
                                 aria-label="Request"
                                 value="CLAIM NOW!"
                             />
