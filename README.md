@@ -58,6 +58,11 @@ and Tailwind's `dark:` variants follow the selected theme rather than the OS.
 
 ##  How to run
 
+Use Node.js 24 (see `.nvmrc` and `package.json` engines). Vercel's Node.js Version
+setting should also be 24.x. Astro 5 and `@astrojs/vercel` 9 support this runtime;
+the older `@astrojs/vercel/serverless` adapter falls back to the discontinued
+Node.js 18 runtime when built with Node.js 24.
+
 All commands are run from the root of the project, from a terminal:
 
 | Command                | Action                                             |
