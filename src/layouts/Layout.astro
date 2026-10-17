@@ -63,10 +63,10 @@ const { seo } = Astro.props;
       description={seo?.description ?? SiteData.default.description}
       openGraph={seo?.openGraph ?? {
         basic: {
-          image: SiteData.default.openGraph.image,
+          image: new URL(SiteData.default.openGraph.image, Astro.url.origin).href,
           title: SiteData.default.openGraph.title,
           type: SiteData.default.openGraph.type,
-          url: SiteData.default.openGraph.url,
+          url: new URL(Astro.url.pathname, Astro.url.origin).href,
         },
         optional: {
           description: SiteData.default.openGraph.description,
