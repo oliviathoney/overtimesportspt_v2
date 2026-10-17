@@ -56,6 +56,16 @@ and Tailwind's `dark:` variants follow the selected theme rather than the OS.
 └── package.json
 ```
 
+## Updating the team
+
+Add, remove, or reorder entries in the `profiles` array in
+`src/components/MeetTheTeam.jsx`. Each entry has a unique, stable `id`, an imported
+image processed with `getImage`, a `name`, a `position`, and a `bio`. Separate bio
+paragraphs with blank lines. The responsive card grid and biography controls are
+generated from that array; no separate desktop/mobile markup needs updating.
+Use the optional `imagePosition` field (for example, `"center top"`) to adjust
+an individual portrait's crop without changing the other photos.
+
 ##  How to run
 
 Use Node.js 24 (see `.nvmrc` and `package.json` engines). Vercel's Node.js Version
