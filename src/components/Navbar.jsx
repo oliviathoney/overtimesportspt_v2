@@ -163,7 +163,7 @@ export const Navbar = ({ hero = false }) => {
               setIsConsultationOpen(true);
             }}
           >
-            Free consult
+            Free Consult
           </button>
         )}
         <button

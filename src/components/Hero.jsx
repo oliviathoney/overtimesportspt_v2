@@ -19,7 +19,7 @@ export const Hero = () => {
             <p className="home-hero__eyebrow">
               Physical therapy in Centennial / Highlands Ranch, CO.
             </p>
-            <h1 id="hero-heading">True Sports Physical Therapy. Driven by Data. Defined by Detail.</h1>
+            <h1 id="hero-heading">Built for Athletes. Driven by Data. Focused on Results.</h1>
             <p className="home-hero__description">
               Individualized sports rehabilitation and performance training built around objective testing, expert clinical care, and the demands of your sport.
             </p>
@@ -30,7 +30,7 @@ export const Hero = () => {
                 className="home-hero__consult"
                 onClick={() => setIsModalOpen(true)}
               >
-                Book a free consultation
+                BOOK A FREE CONSULTATION
               </button>
               <a className="home-hero__call" href="tel:+17207719677">
                 Call (720) 771-9677
@@ -70,7 +70,7 @@ export const Hero = () => {
           className="home-hero__consult"
           onClick={() => setIsModalOpen(true)}
         >
-          Free consult
+          Free Consult
         </button>
         <a className="home-hero__call" href="tel:+17207719677">
           Call

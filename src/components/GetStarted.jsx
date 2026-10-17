@@ -54,7 +54,7 @@ export const GetStarted = () => {
             className="home-roadmap__button"
             onClick={() => setIsModalOpen(true)}
           >
-            Book a free consultation
+            BOOK A FREE CONSULTATION
           </button>
         </div>
       </div>

@@ -30,7 +30,7 @@ export const Introduction = () => {
             <div>
               <span className="block-subtitle">Maximize your potential</span>
               <h2 className="mb-3 text-base lg:text-base block-big-title font-Inter">
-                SPORTS REHAB. RECOVERY. PERFORMANCE.
+                Sports Rehab. Recovery. Performance.
               </h2>
               <p className="mb-10 text-secondaryText leading-loose">
                 At Overtime, our Doctor of Physical Therapy offers a unique blend of manual therapy and corrective exercise. Whether you are injured, looking to stay healthy throughout the season or your day-to-day life, or want to take your performance to the next level, we are here to support you throughout your journey! <a className="text-secondaryText block-subtitle" id="address" href="/about">Want to learn more?</a>
