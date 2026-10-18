@@ -65,7 +65,7 @@ export const MeetTheTeam = () => {
       <div className="team-section__inner">
         <header className="team-section__header">
           <p className="block-subtitle">About our practice</p>
-          <h1 id="team-heading">Meet the team.</h1>
+          <h1 id="team-heading">Meet the Team</h1>
           <p className="team-section__intro">
             Get to know the people behind your rehab, recovery, and performance.
           </p>

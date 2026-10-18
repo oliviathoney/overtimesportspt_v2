@@ -1,128 +1,77 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import "../styles/Treatments.css";
 
-import { ConsultationModal } from "./ConsultationModal";
-
-const items = [
+const categories = [
   {
-    name: 'Muscle Strains and Sprains',
-    desc: 'Addressing injuries to muscles, tendons, and ligaments commonly experienced in sports activities.',
+    title: "Sports Injury Rehab",
+    icon: "M8 3h8v5h5v8h-5v5H8v-5H3V8h5V3Z",
+    conditions: ["Muscle strain rehab & ligament sprains", "Joint injuries & dislocations", "Ligament tears & cartilage damage"],
   },
   {
-    name: 'Joint Injuries',
-    desc: 'Rehabilitation for joint injuries such as ligament tears, dislocations, or cartilage damage. ',
+    title: "Post-Surgical Rehab",
+    icon: "M12 3 3 7v5c0 5 9 9 9 9s9-4 9-9V7l-9-4ZM12 8v8M8 12h8",
+    conditions: ["ACL reconstruction & meniscus repair", "Shoulder, hip & knee surgery rehab", "Ankle & spinal surgery rehab"],
   },
   {
-    name: 'Post-Surgery Rehabilitation',
-    desc: 'Assisting athletes in recovering from orthopedic surgeries, such as ACL reconstruction or joint arthroscopy. '
+    title: "Running & Overuse Injuries",
+    icon: "M16 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM4 11l5-3 5 3 5 1M9 8l-2 7 5 2-2 5M7 15l-4 6M14 11l-2 5",
+    conditions: ["Runner's knee & shin splints", "Stress fractures", "Tendonitis & tendinopathy"],
   },
   {
-    name: 'Overuse Injuries',
-    desc: 'Managing injuries caused by repetitive strain, common in athletes engaged in high-intensity training. ',
+    title: "Pain & Movement Rehab",
+    icon: "M12 3v18M8 5h8M7 9h10M7 13h10M8 17h8M9 21h6",
+    conditions: ["Neck & back pain", "Shoulder, elbow & wrist/hand pain", "Hip/groin, knee & ankle/foot pain", "Flexibility & mobility restrictions"],
   },
   {
-    name: 'Tendonitis and Tendinopathy',
-    desc: 'Treating inflammation or degeneration of tendons often seen in athletes due to repetitive motions. ',
+    title: "Athletic Performance",
+    icon: "M7 5H4v14h3V5ZM20 5h-3v14h3V5ZM4 9H2v6h2M20 9h2v6h-2M7 12h10",
+    conditions: ["Return-to-sport testing & conditioning", "Strength development & imbalances", "Running gait analysis", "Sport-specific training"],
   },
   {
-    name: 'Stress Fractures',
-    desc: 'Rehabilitation and prevention strategies for stress fractures, which can result from repetitive impact activities. ',
+    title: "Movement & Injury Prevention",
+    icon: "M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM7.5 12l3 3 6-6",
+    conditions: ["Biomechanical & functional movement assessments", "Athletic screening", "Injury prevention"],
   },
-  {
-    name: 'Concussion Management',
-    desc: 'Implementing protocols for safe return-to-play after a sports-related concussion. ',
-  },
-  {
-    name: 'Biomechanical Assessment',
-    desc: ' Analyzing and correcting movement patterns to enhance performance and prevent injuries. ',
-  },
-  {
-    name: 'Flexibility and Mobility Issues',
-    desc: 'Addressing limitations in range of motion and developing strategies for improvement. ',
-  },
-  {
-    name: 'Strength Imbalances',
-    desc: 'Designing targeted strength training programs to correct muscle imbalances and enhance overall performance. ',
-  },
-  {
-    name: 'Neck and Back Pain',
-    desc: 'Providing interventions for athletes experiencing pain or discomfort in the spine. ',
-  },
-  {
-    name: 'Sports-Specific Rehabilitation',
-    desc: 'Tailoring rehabilitation programs to meet the demands of specific sports and activities. ',
-  },
-  {
-    name: 'Preventive Strategies',
-    desc: 'Educating athletes on injury prevention techniques, warm-up routines, and proper body mechanics. ',
-  },
-  {
-    name: 'Running Injuries',
-    desc: 'Managing and preventing injuries associated with running, such as shin splints or runner\'s knee. ',
-  },
-  {
-    name: 'Performance Enhancement Programs',
-    desc: 'Designing and implementing training regimens to optimize an athlete\'s physical capabilities. ',
-  },
-  {
-    name: 'Return-to-Sport Conditioning',
-    desc: 'Gradual progression and conditioning programs to ensure a safe return to sports after an injury. ',
-  },
-  {
-    name: 'Athletic Screening',
-    desc: 'Conducting assessments to identify potential injury risks and areas for improvement. ',
-  },
-  {
-    name: 'Functional Movement Assessment',
-    desc: 'Evaluating an athlete\'s movement patterns to identify areas of weakness or dysfunction.',
-  },
-  {
-    name: 'Nutrition and Hydration Guidance',
-    desc: 'Providing advice on proper nutrition and hydration to support optimal athletic performance and recovery. ',
-  },
-  {
-    name: 'Mind-Body Techniques',
-    desc: 'Incorporating mental and emotional well-being strategies to enhance overall athletic performance. ',
-  },
-]
+];
 
 export const TreatmentList = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section className="bg-bgNight w-full py-12 lg:py-24">
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      ></motion.div>
-      <div className="container px-4 mx-auto 2xl:w-[1200px] xl:w-[1100px] lg:w-[1000px] md:w-4/5">
-        <div className="w-full mx-auto text-center">
-          <span className="block-subtitle">We're Here to Help</span>
-          <h2 className="mb-12 text-5xl lg:text-6xl font-bold font-heading text-primaryText font-Inter">
-            What We Treat
-          </h2>
-          <div className="flex lg:flex-row flex-col items-center -mx-4 justify-center lg:text-left text-center">
-            <ul role="list" className="divide-y divide-gray-100">
-              {items.map((item, i) => (
-                <li className="flex justify-between gap-x-2 py-5" key={i}>
-                  <div className="flex min-w-0 gap-x-2">
-                    <div className="min-w-0 flex-auto">
-                      <p className="text-md font-semibold leading-6 text-secondaryColor">{item.name}</p>
-                    </div>
-                  </div>
-                  <div className="hidden shrink-0 md:flex md:flex-col md:items-end">
-                    <p className="text-md leading-6 text-secondaryText">{item.desc}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+    <section className="treatments-section" aria-labelledby="treatments-heading">
+      <div className="treatments-section__inner">
+        <header className="treatments-section__header">
+          <p className="block-subtitle">We're here to help</p>
+          <h2 id="treatments-heading">What We Treat</h2>
+        </header>
+        <ul className="treatments-grid" role="list">
+          {categories.map((category, index) => (
+            <motion.li
+              key={category.title}
+              className="treatment-card"
+              initial={reduceMotion ? false : { y: 12 }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: reduceMotion ? 0 : 0.35, delay: reduceMotion ? 0 : (index % 3) * 0.06 }}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d={category.icon} />
+              </svg>
+              <h3>{category.title}</h3>
+              <ul className="treatment-card__conditions" role="list">
+                {category.conditions.map((condition) => <li key={condition}>{condition}</li>)}
+              </ul>
+            </motion.li>
+          ))}
+        </ul>
+        <aside className="treatments-concussion" aria-labelledby="concussion-heading">
+          <span className="treatments-concussion__mark" aria-hidden="true">+</span>
+          <div>
+            <h3 id="concussion-heading">Concussion management</h3>
+            <p>Support for sports-related concussion recovery and a guided return to play.</p>
           </div>
-        </div >
-      </div >
-      {isModalOpen && (
-        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-      )}
+        </aside>
+      </div>
     </section>
-  )
+  );
 };

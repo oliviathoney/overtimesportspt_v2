@@ -31,19 +31,16 @@ export const AboutOurPractice = () => {
       >
         <div className="practice-overview">
           <div>
-            <span className="block-subtitle">Built around you</span>
+            <span className="block-subtitle">Our purpose</span>
             <h2 id="practice-heading" className="practice-overview__heading">
-              About Our Practice
+              Raising the Standard of Sports Rehabilitation.
             </h2>
             <div className="space-y-4 text-secondaryText leading-loose">
               <p>
-                OVERTIME Sports PT + Performance helps athletes and active individuals recover from injury, build strength, and return to the activities they love.
+                Overtime was founded on a simple belief: every athlete deserves to feel heard, understood, and supported by a team that truly understands their sport.
               </p>
               <p>
-                Our physical therapists combine hands-on care with individualized rehab and performance training, giving you the tools to move confidently and stay in the game.
-              </p>
-              <p>
-                Visit our clinics in Centennial and Highlands Ranch, serving the greater Denver metro area.
+                Our purpose is to bridge the gap between rehabilitation and performance through individualized care, objective testing, and a commitment to helping every athlete reach their full potential.
               </p>
             </div>
           </div>
@@ -60,7 +57,7 @@ export const AboutOurPractice = () => {
         <section className="practice-locations" aria-labelledby="locations-heading">
           <header className="practice-locations__header">
             <p className="block-subtitle">Visit us</p>
-            <h3 id="locations-heading">Our locations</h3>
+            <h3 id="locations-heading">Our Locations</h3>
           </header>
           <div className="practice-locations__layout">
             <div className="practice-locations__cards">

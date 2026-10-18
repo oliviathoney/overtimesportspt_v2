@@ -1,0 +1,138 @@
+.audience-section {
+  padding-block: 56px;
+  background: rgb(var(--surface-2));
+}
+
+.audience-section__inner {
+  width: min(1150px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.audience-section__header {
+  max-width: 800px;
+}
+
+.audience-section__header h2 {
+  margin: 8px 0 20px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.audience-section__intro,
+.audience-section__area,
+.audience-section__groups p {
+  color: rgb(var(--text-muted));
+  line-height: 1.7;
+}
+
+.audience-section__area {
+  margin-top: 12px;
+  font-size: 0.875rem;
+}
+
+.audience-section__groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.audience-section__groups li {
+  min-width: 0;
+  padding-left: 20px;
+  border-left: 2px solid rgb(var(--accent) / 0.6);
+}
+
+.audience-section__groups h3 {
+  margin-bottom: 10px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.audience-section__services {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  color: rgb(var(--accent));
+  font-weight: 600;
+  text-underline-offset: 4px;
+}
+
+.audience-section__services:hover {
+  text-decoration: underline;
+}
+
+.audience-section__services:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 4px;
+}
+
+.audience-section__experience {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgb(var(--border) / var(--border-opacity));
+}
+
+.audience-section__experience > p {
+  margin-bottom: 20px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgb(var(--text-muted));
+}
+
+.audience-section__logos {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 20px;
+  align-items: center;
+}
+
+.audience-section__logos > div {
+  display: flex;
+  min-width: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.audience-section__logos [aria-hidden] {
+  display: block;
+  width: 100%;
+  max-width: 120px;
+}
+
+.audience-section__logos svg {
+  display: block;
+  width: 100%;
+  height: 64px;
+}
+
+@media (max-width: 767px) {
+  .audience-section {
+    padding-block: 36px;
+  }
+
+  .audience-section__inner {
+    width: calc(100% - 32px);
+  }
+
+  .audience-section__groups {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .audience-section__logos {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px 16px;
+  }
+
+  .audience-section__logos svg {
+    height: 52px;
+  }
+}
