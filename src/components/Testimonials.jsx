@@ -78,7 +78,7 @@ export const Testimonials = () => (
                 </svg>
               ))}
             </span>
-            <span>5.0 &middot; 192+ Google reviews</span>
+            <span>5.0 &middot; 200+ Google reviews</span>
           </a>
         </div>
         <Review testimonial={testimonialsData[0]} featured />

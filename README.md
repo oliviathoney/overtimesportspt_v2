@@ -21,6 +21,9 @@ scrolling down and returns while scrolling up. It stays visible near the top,
 while its mobile menu or consultation dialog is open, and during keyboard focus
 within the navigation. Small scroll movements are filtered to avoid flicker, and
 the slide animation respects reduced-motion preferences.
+All navbar "Free Consult" buttons open the shared consultation dialog directly
+with the `navigation` analytics source. Mobile menu actions close the menu before
+opening the dialog rather than navigating to the FAQ appointment anchor.
 
 Theme switching is temporarily disabled: all pages stay dark, including the
 standalone privacy policy, and the sun/moon buttons are not displayed. Saved preferences
@@ -65,6 +68,98 @@ paragraphs with blank lines. The responsive card grid and biography controls are
 generated from that array; no separate desktop/mobile markup needs updating.
 Use the optional `imagePosition` field (for example, `"center top"`) to adjust
 an individual portrait's crop without changing the other photos.
+
+## Updating services
+
+`src/components/ServiceList.jsx` defines three core service cards and three
+groups of supporting treatments. Keep the short benefit visible in each
+native `<details>` summary and put the fuller explanation in its expandable
+body. These details are server-rendered and work without JavaScript. Education
+is included in the physical therapy card rather than listed as a separate
+treatment. The closing banner uses the shared `AboutConsultation` component
+with the `services_cta` analytics source.
+
+Each treatment group keeps one original photo with a short caption. Service
+photos use responsive WebP sources and reserved dimensions. The Services page
+has local search copy, a production canonical URL, and page-specific search
+and social metadata in `src/constants/siteData.json` and `src/pages/services.astro`.
+Keep the visible service descriptions and metadata aligned with actual offerings.
+
+## FAQ page
+
+The navigation's FAQ tab keeps the existing `/resources` URL. This page contains
+the eight FAQs and the shared consultation CTA; the old inline appointment form
+is no longer rendered there. `/resources/#request` still links to the CTA for
+existing appointment links. FAQ answers use server-rendered native details,
+which work without hydration and do not truncate long answers on small screens.
+Questions are grouped by the `category` field in `FAQData`: getting started,
+visits, and insurance/payments. Topic links and the desktop introduction share
+the same category definitions.
+
+## Blog
+
+`src/data/blogPosts.js` is the shared source for the listing and all five
+prerendered article pages. Preserve existing slugs when editing posts so inbound
+links continue working. Each entry keeps its article title, subtitle, HTML body,
+original image, publication label, ISO `publishDate`, and listing `excerpt`.
+The optional `listTitle` preserves an existing listing-specific headline.
+Set `thumbnailFit: "contain"` when the listing thumbnail should use the photo's
+natural proportions rather than a cropped frame. These image areas fit the photo
+without side padding; the featured card uses a compact square column on desktop.
+This does not affect the article's image.
+Use semantic paragraphs, headings, and lists in the HTML body, not line breaks
+or styled spans in place of document structure.
+
+The listing and article templates share `src/styles/Blog.css`. The listing uses
+two CSS masonry-style columns below the full-width featured post, stacking cards
+without fixed-height rows or JavaScript. Reading order runs down the first column,
+then down the second; mobile uses a single column. Cards stay intact across columns.
+Articles use a
+readable text column, related-post links, and responsive WebP images without
+requiring client hydration. Search/social metadata, production canonicals, and
+`BlogPosting` structured data are generated from each post's existing content
+and publication date; do not change dates just to imply a fresh publication.
+The shared closing consultation banner tracks `blog_cta` or `blog_article_cta`.
+
+## Footer
+
+`src/components/Footer.jsx` renders the shared, server-rendered footer on the
+main site pages and blog articles. Its `links` and `locations` arrays define the
+navigation and both existing Google Maps destinations. Keep addresses and map
+links aligned with the About page when locations change. Phone/email links are
+actionable, navigation and privacy links remain visible on mobile, and the
+copyright year comes from the render date (build date for prerendered articles).
+The footer uses `src/styles/Footer.css` and needs no client hydration.
+
+## Consultation requests
+
+The shared `ConsultationModal.jsx` requests a free 15-minute phone consultation,
+not a reserved appointment. First name, last name, email, and a US/Canada
+10-digit phone number (optionally prefixed with +1) are required. The optional
+goals/injury/pain message is limited to 2,000 characters and included only in the
+practice's notification email. The API validates these fields and escapes email
+HTML; the legacy promotional form retains its existing optional-phone behavior.
+Only confirmed successful delivery redirects to `/thank-you/`. Failures leave
+the entered details in place and display an error.
+
+GA4 events `consultation_opened`, `consultation_started`, and
+`consultation_submitted` measure the funnel, with `cta_source` and `page_path`
+parameters. Register `cta_source` as an event-scoped custom dimension in GA4 and
+use these events in a Funnel Exploration to compare opens, starts, and successful
+requests by CTA. Opens/starts fire once per dialog opening; submissions fire
+only after API success. Analytics blocking can cause undercounting.
+
+The existing Google Ads conversion also fires on submission success. The
+thank-you page does not fire a conversion, so refreshing it cannot duplicate
+one. Form names, email addresses, phone numbers, and free-text health details
+are not included in these analytics events or URLs; this form no longer sets
+Google Ads enhanced-conversion user data. Do not configure tag-manager variables
+to collect form values.
+
+The homepage review count uses the customer's supplied 200+ figure; keep it in
+sync with the linked Google listing. The homepage introduction pairs the runner
+photo with the supplied `src/assets/images/basketball-home.png`. The basketball
+photo uses responsive WebP sources and a top-aligned crop to keep the ball in view.
 
 ##  How to run
 

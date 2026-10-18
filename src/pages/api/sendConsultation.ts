@@ -5,15 +5,56 @@ import { Resend } from "resend";
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
-export const POST: APIRoute = async ({ request, redirect }) => {
-  // Get the form data submitted by the user on the home page
-  // const formData = await request.formData();
-  const body = await request.json();
-  const to = body.email as string | null;
-  const phone = body.phone as string | null;
-  const firstname = body.firstname as string | null;
-  var lastname = body.lastname as string | null;
-  const deal = body.deal as boolean | null;
+const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (character) => ({
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;",
+})[character]!);
+
+const invalidRequest = (message: string) => Response.json({ message }, { status: 400 });
+
+export const POST: APIRoute = async ({ request }) => {
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    return invalidRequest("Please submit valid form data.");
+  }
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return invalidRequest("Please submit valid form data.");
+  }
+  const fields = body as Record<string, unknown>;
+  const field = (name: string) => {
+    const value = fields[name];
+    return typeof value === "string" ? value.trim() : "";
+  };
+  const to = field("email");
+  const firstName = field("firstname");
+  const lastName = field("lastname");
+  const phoneNumber = field("phone");
+  const message = field("message");
+  const isConsultation = fields.form === "consultation";
+  const digits = phoneNumber.replace(/\D/g, "");
+  if (!to || to.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to) ||
+      !firstName || firstName.length > 100 || lastName.length > 100 ||
+      phoneNumber.length > 30 || message.length > 2000 ||
+      (fields.message !== undefined && typeof fields.message !== "string")) {
+    return invalidRequest("Please provide valid contact details and a message of 2,000 characters or fewer.");
+  }
+  if (isConsultation && (!lastName || !/^\+?[\d\s().-]+$/.test(phoneNumber) ||
+      !(/^\d{10}$/.test(digits) || /^1\d{10}$/.test(digits)))) {
+    return invalidRequest("Please provide your last name and a valid 10-digit phone number.");
+  }
+  const firstname = escapeHtml(firstName);
+  const lastname = escapeHtml(lastName);
+  const phone = escapeHtml(phoneNumber);
+  const contactEmail = escapeHtml(to);
+  const messageHtml = message
+    ? `<p>Goals, injury, or pain:<br>${escapeHtml(message).replace(/\r?\n/g, "<br>")}</p>`
+    : "";
+  const deal = fields.deal === true;
   const subject = "Welcome to OVERTIME Sports PT and Performance";
   const html = `
     <!DOCTYPE html
@@ -117,7 +158,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
         Someone has expressed interest on overtimesportspt.com <br>
         IMPORTANT: They should receive 40% off their initial evaluation.
         <p>Name: ${firstname} ${lastname}</p>
-        <p>Email: ${to}<br>Phone Number: ${phone}</p>
+        <p>Email: ${contactEmail}<br>Phone Number: ${phone}</p>
+        ${messageHtml}
         </div>
         <!-- Footer -->
         <div style="color: #5f5f5f">
@@ -133,7 +175,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
         <div style="margin-bottom: 32px; color: #222">
         Someone has expressed interest on overtimesportspt.com <br>
         <p>Name: ${firstname} ${lastname}</p>
-        <p>Email: ${to}<br>Phone Number: ${phone}</p>
+        <p>Email: ${contactEmail}<br>Phone Number: ${phone}</p>
+        ${messageHtml}
         </div>
         <!-- Footer -->
         <div style="color: #5f5f5f">
@@ -141,56 +184,36 @@ export const POST: APIRoute = async ({ request, redirect }) => {
         </div>
       `
   }
-  // Throw an error if we're missing any of the needed fields.
-  if (!to) {
-    return new Response(
-      JSON.stringify({
-        message: `Fill out all fields.`,
-      }),
-      {
-        status: 404,
-        statusText: "Did not provide the right data",
-      },
+  try {
+    const sendResend = await resend.emails.send({
+      from: "no-reply@overtimesportspt.com",
+      to,
+      subject,
+      html,
+    });
+    const sendNotif = await resend.emails.send({
+      from: "new-consultation-request@overtimesportspt.com",
+      to: "info@overtimesportspt.com",
+      subject: "New Consultation Request",
+      html: othtml,
+    });
+
+    if (sendResend.data && sendNotif.data) {
+      return Response.json({ success: true, message: "Message successfully sent!" });
+    }
+    console.error("Consultation email delivery was not confirmed:", {
+      confirmationAccepted: Boolean(sendResend.data),
+      notificationAccepted: Boolean(sendNotif.data),
+    });
+    return Response.json(
+      { message: "Your request could not be confirmed. Please try again or call (720) 771-9677." },
+      { status: 500 },
     );
-  }
-
-  if (!lastname) {
-    lastname = ""
-  }
-
-  const sendResend = await resend.emails.send({
-    from: "no-reply@overtimesportspt.com",
-    to: to,
-    subject: subject,
-    html: html,
-  }); // If the message was sent successfully, return a 200 response
-
-  const sendNotif = await resend.emails.send({
-    from: "new-consultation-request@overtimesportspt.com",
-    to: "info@overtimesportspt.com",
-    subject: `New Consultation Request`,
-    html: othtml,
-  })
-
-  if (sendResend.data && sendNotif.data) {
-    return new Response(
-      JSON.stringify({
-        message: `Message successfully sent!`,
-      }),
-      {
-        status: 200,
-        statusText: "OK",
-      },
-    ); // If there was an error sending the message, return a 500 response
-  } else {
-    return new Response(
-      JSON.stringify({
-        message: `Message failed to send: ${sendResend.error}`,
-      }),
-      {
-        status: 500,
-        statusText: `Internal Server Error: ${sendResend.error}`,
-      },
+  } catch (error) {
+    console.error("Consultation email delivery failed:", error instanceof Error ? error.name : "Unknown error");
+    return Response.json(
+      { message: "Your request could not be confirmed. Please try again or call (720) 771-9677." },
+      { status: 500 },
     );
   }
 };

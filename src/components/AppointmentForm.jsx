@@ -226,7 +226,7 @@ export const AppointmentForm = () => {
         </Toast>
       )}
       {isModalOpen && (
-        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        <ConsultationModal source="appointment" setIsOpen={setIsModalOpen} />
       )}
     </section >
   );

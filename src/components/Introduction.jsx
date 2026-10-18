@@ -5,11 +5,16 @@ import { getImage } from "astro:assets";
 import { ConsultationModal } from "./ConsultationModal";
 import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 import runnerHome from "../assets/images/runner-home.jpg";
-import soccerHome from "../assets/images/soccer-home.jpg";
+import basketballHome from "../assets/images/basketball-home.png";
 
 
 const optRunner = await getImage({ src: runnerHome })
-const optSoccer = await getImage({ src: soccerHome })
+const optBasketball = await getImage({
+  src: basketballHome,
+  width: 800,
+  widths: [320, 480, 800],
+  format: "webp",
+});
 
 export const Introduction = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,24 +38,28 @@ export const Introduction = () => {
                 Sports Rehab. Recovery. Performance.
               </h2>
               <p className="mb-10 text-secondaryText leading-loose">
-                At Overtime, our Doctor of Physical Therapy offers a unique blend of manual therapy and corrective exercise. Whether you are injured, looking to stay healthy throughout the season or your day-to-day life, or want to take your performance to the next level, we are here to support you throughout your journey! <a className="text-secondaryText block-subtitle" id="address" href="/about">Want to learn more?</a>
+                Whether you're recovering from an injury, staying healthy through your season, or pushing toward your next level, Overtime provides individualized sports physical therapy and performance training designed to help you move better, feel better, and stay better.
               </p>
               <ul className="mb-6 text-primaryText">
                 <li className="mb-4 flex">
                   <CheckArrowIcon />
-                  <span>Rehabilitation and recovery</span>
+                  <span>Sports Injury Rehab</span>
                 </li>
                 <li className="mb-4 flex">
                   <CheckArrowIcon />
-                  <span>Injury prevention</span>
+                  <span>Injury Prevention and Recovery</span>
                 </li>
                 <li className="mb-4 flex">
                   <CheckArrowIcon />
-                  <span>Performance training</span>
+                  <span>Objective Strength and Movement Testing</span>
                 </li>
                 <li className="mb-4 flex">
                   <CheckArrowIcon />
-                  <span><a id="address" href="/services">And more!</a></span>
+                  <span>Hands-On Manual Therapy</span>
+                </li>
+                <li className="mb-4 flex">
+                  <CheckArrowIcon />
+                  <span>Return-to-Sport Testing</span>
                 </li>
               </ul>
             </div>
@@ -58,9 +67,8 @@ export const Introduction = () => {
               <button
                 className="contained-button w-full sm:w-auto min-h-12 px-6 py-3"
                 onClick={() => setIsModalOpen(true)}
-                aria-label="Request"
               >
-                BOOK A FREE CONSULTATION
+                TALK TO OUR SPORTS PT
               </button>
             </div>
           </div>
@@ -74,10 +82,13 @@ export const Introduction = () => {
               decoding="async"
             />
             <img
-              src={optSoccer.src}
-              width={optSoccer.width}
-              height={optSoccer.height}
-              alt="A soccer player about to kick the ball to his teammates."
+              src={optBasketball.src}
+              srcSet={optBasketball.srcSet.attribute}
+              sizes="(min-width: 1024px) 22vw, 45vw"
+              width={optBasketball.options.width}
+              height={optBasketball.options.height}
+              alt="A basketball player taking a jump shot while a defender contests."
+              style={{ objectPosition: "center top" }}
               loading="lazy"
               decoding="async"
             />
@@ -85,7 +96,7 @@ export const Introduction = () => {
         </div>
       </motion.div>
       {isModalOpen && (
-        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        <ConsultationModal source="introduction" setIsOpen={setIsModalOpen} />
       )}
     </section>
   );

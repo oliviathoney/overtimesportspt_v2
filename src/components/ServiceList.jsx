@@ -1,145 +1,219 @@
-import { Card } from "flowbite-react";
 import { getImage } from "astro:assets";
+import pt from "../assets/images/services/PT.jpg";
+import recovery from "../assets/images/services/Recovery.jpg";
+import performance from "../assets/images/services/Performance.jpg";
+import forcePlates from "../assets/images/services/Force Plates.jpg";
+import dryNeedling from "../assets/images/services/Dry Needling.jpg";
+import alterG from "../assets/images/services/alterG.png";
+import "../styles/Services.css";
 
-import pt from "../assets/images/services/PT.jpg"
-import recovery from "../assets/images/services/Recovery.jpg"
-import performance from "../assets/images/services/Performance.jpg"
-import mobility from "../assets/images/services/Mobility.jpg"
-import dryneedling from "../assets/images/services/Dry Needling.jpg"
-import vfp from "../assets/images/services/Force Plates.jpg"
-import manipulation from "../assets/images/services/Manipulation.jpg"
-import cupping from "../assets/images/services/Cupping.jpg"
-import stm from "../assets/images/services/IASTM.jpg"
-import bfr from "../assets/images/services/BFR.jpg"
-import ni from "../assets/images/services/Near Infrared.jpg"
-import education from "../assets/images/services/Education.jpg"
-import dst from "../assets/images/services/Dynamo Strength Testing.jpg"
-import compression from "../assets/images/services/Compression Therapy.jpg"
-import alterg from "../assets/images/services/alterG.png"
+const imageOptions = { width: 1000, widths: [320, 480, 800, 1000], format: "webp", quality: 85 };
 
 const services = [
   {
-    'image': await getImage({ src: pt }),
-    'desc': 'Physical therapy offers numerous benefits, including pain relief and improved mobility, for individuals recovering from injuries or surgeries. Physical therapy plays a crucial role in preventing future injuries by addressing underlying musculoskeletal imbalances and promoting proper body mechanics. By providing personalized treatment plans and education, physical therapists empower individuals to actively participate in their recovery and achieve long-term health and wellness goals.',
-    'title': 'Physical Therapy',
-    'alt': "Dr. Benitez works with a physical therapy client."
+    id: "physical-therapy",
+    title: "Sports Physical Therapy",
+    description: "Personalized rehab for injury, pain, and post-surgical recovery.",
+    image: await getImage({ src: pt, ...imageOptions }),
+    alt: "An Overtime physical therapist guiding an athlete through a knee rehabilitation exercise.",
+    note: "Education is part of your care: understand your plan, learn how to manage your symptoms, and build confidence beyond your appointments.",
   },
   {
-    'image': await getImage({ src: recovery }),
-    'desc': 'Proper recovery is essential for athletes and individuals engaged in physical activities, promoting faster healing and reducing the risk of future injuries. It allows muscles and tissues to repair and regenerate, leading to improved overall physical function.',
-    'title': 'Recovery',
-    'alt': "Dr. Benitez works with a client to improve muscle recovery."
+    id: "performance",
+    title: "Performance Training",
+    description: "Build strength, improve movement, and prepare for the demands of your sport.",
+    image: await getImage({ src: performance, ...imageOptions }),
+    alt: "An athlete working on strength and performance in the Overtime gym.",
+    note: "Individualized training connects your goals with the strength and movement skills your sport requires.",
   },
   {
-    'image': await getImage({ src: performance }),
-    'desc': 'Performance therapy provides athletes with targeted interventions to optimize their physical capabilities and enhance overall athletic performance. It goes beyond traditional rehabilitation, focusing on improving strength, agility, and sport-specific skills. Additionally, performance therapy emphasizes injury prevention strategies, ensuring athletes can sustain peak performance levels and longevity in their respective sports.',
-    'title': 'Performance Training',
-    'alt': "Dr. Benitez works in the OVERTIME Sports gym to improve a client's performance levels."
-  },
-  {
-    'image': await getImage({ src: dryneedling }),
-    'desc': 'Functional dry needling can enhance blood flow to the targeted muscles, promoting the delivery of nutrients and oxygen for optimal healing. Many individuals experience reduced pain and improved mobility after undergoing functional dry needling sessions, making it a valuable adjunct to comprehensive physical therapy interventions.',
-    'title': 'Functional Dry Needling',
-    'alt': "An athlete relaxes while undergoing dry needle therapy."
-  },
-  {
-    'image': await getImage({ src: alterg }),
-    'desc': 'Designed for athletes interested in rehabbing faster, training while protecting or recovering from an injury or surgery, or increasing volume while minimzing stress and load in the joints, the AlterG allow you to achieve your goals sooner and smarter. The AlterG uses air pressure techonology to unweigh up to 80% of your body weight so that you can walk/run pain free.',
-    'title': 'Anti-Gravity Treadmill AlterG',
-    'alt': 'The AlterG ant-gravity treadmil infront of a multi-colored wall.'
-  },
-  {
-    'image': await getImage({ src: vfp }),
-    'desc': 'Utilizing VALD force plates in biomechanical assessments provides precise and detailed insights into an individual\'s movement patterns, allowing for a thorough analysis of forces exerted during physical activities. These force plates offer accurate data on ground reaction forces, helping identify potential issues in weight distribution and balance. Individuals can receive targeted training programs to enhance performance, prevent injuries, and optimize overall biomechanical efficiency.',
-    'title': 'VALD Force Plates',
-    'alt': "An athlete jumps on the VALD force plates while Dr. Benitez monitors him."
-  },
-  {
-    'image': await getImage({ src: dst }),
-    'desc': 'Dynamo strength testing provides precise measurements of a patient\'s muscle strength, allowing therapists to assess imbalances, track progress, and tailor rehabilitation programs.This objective data ensures targeted treatment, optimizes recovery, and helps prevent re- injury by addressing specific weaknesses.',
-    'title': 'Dynamo Strength Testing',
-    'alt': "Dr. Benitez shows a client how to perform Dyanamo strength testing."
-  },
-  {
-    'image': await getImage({ src: bfr }),
-    'desc': 'This technique involves using cuffs or bands to partially restrict blood flow during exercise, leading to increased metabolic stress and muscle growth. BFR has been shown to enhance muscle hypertrophy and strength, making it a time-efficient and effective method for rehabilitation and performance improvement.',
-    'title': 'Blood Flow Restriction',
-    'alt': "A client performs physical therapy with a band to partial restrict blood flow."
-  },
-  {
-    'image': await getImage({ src: manipulation }),
-    'desc': 'Manipulation, performed by skilled physical therapists, involves hands-on techniques to manipulate joints and soft tissues, providing immediate relief from pain and stiffness. This approach improves joint mobility, reduces muscle tension, and enhances overall flexibility. PT manipulation is particularly effective in treating musculoskeletal conditions such as back pain, neck pain, and joint restrictions.',
-    'title': 'Manipulation',
-    'alt': "Dr. Benitez performs manipulation therapy on a client to improve shoulder pain."
-  },
-  {
-    'image': await getImage({ src: mobility }),
-    'desc': 'Mobility exercises help prevent injuries by promoting proper movement patterns and ensuring joints function optimally. Additionally, increased mobility facilitates efficient athletic performance, enabling athletes to reach their full potential in terms of strength, speed, and agility.',
-    'title': 'Mobility',
-    'alt': "Dr. Benitez works with a client to improve mobility."
-  },
-  {
-    'image': await getImage({ src: cupping }),
-    'desc': 'This technique is known to alleviate muscle tension, reduce inflammation, and enhance overall circulation. Cupping is often used to relieve pain associated with musculoskeletal conditions, promoting faster recovery from injuries or overuse.',
-    'title': 'Cupping',
-    'alt': "A client relaxes while receiving cupping therapy."
-  },
-  {
-    'image': await getImage({ src: stm }),
-    'desc': 'This technique enhances blood flow to the targeted areas, facilitating the body\'s natural healing process. IASTM is particularly beneficial for athletes and individuals recovering from injuries, as it can improve range of motion, flexibility, and overall tissue health. By addressing soft tissue restrictions, IASTM contributes to pain relief and improved functional movement, making it a valuable adjunct to physical therapy and rehabilitation programs.',
-    'title': 'Instrument-Assisted STM',
-    'alt': "A client relaxes while receiving Instrument-Assisted STM therapy."
-  },
-  {
-    'image': await getImage({ src: education }),
-    'desc': 'Education empowers physical therapy patients by helping them understand their condition, treatment plan, and the importance of proper movement techniques. This knowledge fosters active participation, reduces the risk of re-injury, and enhances long-term outcomes by encouraging patients to take ownership of their rehab and recovery process.',
-    'title': 'Education',
-    'alt': "A client looks at a screen showing a human skeleton highlighting different areas of the spine."
-  },
-  {
-    'image': await getImage({ src: compression }),
-    'desc': 'This technique enhances circulation by applying controlled pressure to limbs, reducing swelling, improving oxygen delivery, and flushing out metabolic waste. This accelerates recovery, decreases muscle soreness, and supports overall performance and healing for athletes.',
-    'title': 'Compression Therapy',
-    'alt': "A client relaxes while receiving compression therapy withy Normatec boots."
+    id: "recovery",
+    title: "Recovery",
+    description: "Support your recovery between training sessions and throughout your rehab.",
+    image: await getImage({ src: recovery, ...imageOptions }),
+    alt: "An Overtime physical therapist working with an athlete on recovery.",
+    note: "A tailored approach helps you manage training demands and supports your return to activity.",
   },
 ];
 
+const groups = [
+  {
+    id: "testing",
+    title: "Objective Testing",
+    description: "Know your starting point. Measure your progress.",
+    image: await getImage({ src: forcePlates, ...imageOptions }),
+    alt: "An athlete jumping above VALD force plates while an Overtime physical therapist observes.",
+    caption: "VALD force plate testing",
+    imagePosition: "center 75%",
+    tools: [
+      {
+        title: "VALD Force Plates",
+        benefit: "Measure how you produce and absorb force.",
+        description: "Assess jumping, landing, and side-to-side differences to help guide training and track rehabilitation progress.",
+      },
+      {
+        title: "Dynamo Strength Testing",
+        benefit: "Understand your strength beyond how it feels.",
+        description: "Measure muscle strength, identify imbalances, and compare results over time to guide your personalized rehab or training plan.",
+      },
+    ],
+  },
+  {
+    id: "hands-on",
+    title: "Hands-On Treatment",
+    description: "Targeted support for pain, stiffness, and movement.",
+    image: await getImage({ src: dryNeedling, ...imageOptions }),
+    alt: "Dry needling with electrical stimulation applied around an athlete's knee.",
+    caption: "Functional dry needling",
+    imagePosition: "center",
+    tools: [
+      {
+        title: "Functional Dry Needling",
+        benefit: "Address muscle tension as part of your rehab.",
+        description: "Fine needles target selected muscles to help manage pain and movement limitations. Your physical therapist assesses whether dry needling fits your needs.",
+      },
+      {
+        title: "Joint Manipulation",
+        benefit: "Hands-on care for joint stiffness.",
+        description: "Targeted manual techniques address joint restrictions and support mobility alongside exercise and your broader treatment plan.",
+      },
+      {
+        title: "Cupping",
+        benefit: "Support soft tissue mobility.",
+        description: "Suction cups are applied to selected areas as part of hands-on treatment to help address muscle tension and movement restrictions.",
+      },
+      {
+        title: "Instrument-Assisted Soft Tissue Mobilization",
+        benefit: "Focused treatment for soft tissue restrictions.",
+        description: "Instrument-assisted soft tissue mobilization (IASTM) uses specialized tools to work on areas of soft tissue restriction and support comfortable movement.",
+      },
+    ],
+  },
+  {
+    id: "movement-recovery",
+    title: "Movement & Recovery Support",
+    description: "Build capacity with the right level of support.",
+    image: await getImage({ src: alterG, ...imageOptions }),
+    alt: "An AlterG anti-gravity treadmill with its body-weight support enclosure.",
+    caption: "AlterG anti-gravity treadmill",
+    imagePosition: "center",
+    tools: [
+      {
+        title: "AlterG Anti-Gravity Treadmill",
+        benefit: "Walk or run with less body-weight loading.",
+        description: "Adjustable body-weight support reduces the load during walking and running, helping your clinician gradually progress activity after injury or surgery.",
+      },
+      {
+        title: "Blood Flow Restriction Training",
+        benefit: "Work on strength with lighter loads.",
+        description: "Blood flow restriction (BFR) uses controlled cuff pressure during selected exercises to support strength training when heavier loads are not appropriate. Your clinician screens for suitability and supervises its use.",
+      },
+      {
+        title: "Mobility",
+        benefit: "Improve the movement your activities require.",
+        description: "Targeted mobility exercises address range-of-motion limitations and help you build control through the movements used in daily life and sport.",
+      },
+      {
+        title: "Compression Therapy",
+        benefit: "Support recovery between efforts.",
+        description: "Pneumatic compression boots apply controlled pressure to the legs as part of a recovery plan to help manage post-activity soreness and swelling.",
+      },
+    ],
+  },
+];
 
-export const ServiceList = () => {
-  return (
-    <section className="w-full flex justify-center bg-bgNight relative pt-32">
-      <div className="pb-20 pt-12 2xl:w-[1150px] lg:w-[1050px] md:w-4/5">
-        <div>
-          <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center mb-4">
-              <span className="block-subtitle">Get Your Perfect Treatment</span>
-              <h2 className="mt-2 mb-6 text-5xl lg:text-6xl font-bold font-heading text-primaryText font-Inter">
-                Services We Offer
-              </h2>
-              <p className=" text-secondaryText">
-                OVERTIME offers the best cutting-edge techniques to get you to your best self.
-              </p>
-            </div>
-            {services.map((service, i) => (
-              <div className="w-100 py-3" key={i}>
-                <Card
-                  className="!max-w-full bg-bgDark2 dark:bg-bgDark2 main-border-gray-darker dark:border-mainBorderDarker shadow-lg"
-                  renderImage={() => <img width={400} src={service.image.src} alt={service.alt} className="rounded-lg" />}
-                  horizontal
-                  key={i}
-                >
-                  <h3 className="text-3xl font-bold  text-secondaryColor font-Inter">
-                    {service.title}
-                  </h3>
-                  <p className="font-normal text-secondaryText">
-                    {service.desc}
-                  </p>
-                </Card>
-              </div>
-            ))}
-          </div>
+export const ServiceList = () => (
+  <>
+    <section className="services-overview" aria-labelledby="services-heading">
+      <div className="services-container">
+        <header className="services-overview__intro">
+          <p className="block-subtitle">Centennial &amp; Highlands Ranch, CO</p>
+          <h1 id="services-heading">Sports Physical Therapy. Built Around Your Goals.</h1>
+          <p className="services-overview__description">
+            Recover from injury, build strength, and return to the activities you love
+            with individualized sports physical therapy and objective testing.
+          </p>
+          <p className="services-overview__local">
+            Sports rehab, performance training, and recovery for athletes and active adults
+            in Centennial, Highlands Ranch, and the Denver metro area.{" "}
+            <a href="/about#locations-heading">Find our locations.</a>
+          </p>
+        </header>
+        <ul className="services-overview__cards" aria-label="Ways we can help">
+          {services.map((service) => (
+            <li key={service.id}>
+              <article className="services-card" aria-labelledby={`${service.id}-heading`}>
+                <img
+                  src={service.image.src}
+                  srcSet={service.image.srcSet.attribute}
+                  sizes="(min-width: 1200px) 370px, (min-width: 768px) calc((100vw - 88px) / 3), calc(100vw - 32px)"
+                  width={service.image.options.width}
+                  height={service.image.options.height}
+                  alt={service.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="services-card__body">
+                  <h2 id={`${service.id}-heading`}>{service.title}</h2>
+                  <p className="services-card__description">{service.description}</p>
+                  <p className="services-card__note">{service.note}</p>
+                </div>
+              </article>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+    <section className="services-tools" aria-labelledby="services-tools-heading">
+      <div className="services-container">
+        <header className="services-tools__intro">
+          <p className="block-subtitle">Personalized Care. Purposeful Treatment.</p>
+          <h2 id="services-tools-heading">The Tools Behind Your Progress.</h2>
+          <p>
+            Your plan may combine several approaches. We select the tools that fit
+            your needs. You don't have to choose a treatment before getting started.
+          </p>
+          <p className="services-tools__hint">Explore a treatment to learn more.</p>
+        </header>
+        <div className="services-tools__groups">
+          {groups.map((group) => (
+            <section className="services-tool-group" key={group.id} aria-labelledby={`${group.id}-heading`}>
+              <figure className="services-tool-group__photo">
+                <img
+                  src={group.image.src}
+                  srcSet={group.image.srcSet.attribute}
+                  sizes="(min-width: 1200px) 370px, (min-width: 1024px) calc((100vw - 88px) / 3), calc(100vw - 32px)"
+                  width={group.image.options.width}
+                  height={group.image.options.height}
+                  alt={group.alt}
+                  style={{ objectPosition: group.imagePosition }}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>{group.caption}</figcaption>
+              </figure>
+              <header className="services-tool-group__header">
+                <h3 id={`${group.id}-heading`}>{group.title}</h3>
+                <p>{group.description}</p>
+              </header>
+              {group.tools.map((tool) => (
+                <details className="services-tool" key={tool.title}>
+                  <summary>
+                    <span>
+                      <strong>{tool.title}</strong>
+                      <span className="services-tool__benefit">{tool.benefit}</span>
+                    </span>
+                    <svg className="services-tool__toggle" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M5 12h14M12 5v14" />
+                    </svg>
+                  </summary>
+                  <div className="services-tool__detail"><p>{tool.description}</p></div>
+                </details>
+              ))}
+            </section>
+          ))}
         </div>
       </div>
     </section>
-  );
-};
+  </>
+);

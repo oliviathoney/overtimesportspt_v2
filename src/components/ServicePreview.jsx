@@ -151,7 +151,7 @@ export const ServicePreview = () => {
         </motion.div>
       </div>
       {isModalOpen && (
-        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        <ConsultationModal source="services" setIsOpen={setIsModalOpen} />
       )}
     </section>
   );

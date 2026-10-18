@@ -16,7 +16,6 @@ export interface Props {
   seo?: SEOProps;
 }
 
-const { title } = Astro.props;
 const { seo } = Astro.props;
 ---
 
@@ -80,7 +79,6 @@ const { seo } = Astro.props;
       }}
     />
 
-    <title>{title}</title>
   </head>
   <body class="bg-bgNight text-primaryText">
     <main aria-label="Main content">

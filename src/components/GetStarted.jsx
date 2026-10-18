@@ -59,7 +59,7 @@ export const GetStarted = () => {
         </div>
       </div>
       {isModalOpen && (
-        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        <ConsultationModal source="roadmap" setIsOpen={setIsModalOpen} />
       )}
     </section>
   );

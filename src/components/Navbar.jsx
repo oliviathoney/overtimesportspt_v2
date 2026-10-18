@@ -11,7 +11,7 @@ const navbarLinks = [
   { label: "Home", href: "/#home", ariaLabel: "Home" },
   { label: "About", href: "/about", ariaLabel: "About" },
   { label: "Services", href: "/services", ariaLabel: "Services" },
-  { label: "Resources", href: "/resources", ariaLabel: "Resources" },
+  { label: "FAQ", href: "/resources", ariaLabel: "FAQ" },
   { label: "Blog", href: "/blog", ariaLabel: "Blog" },
 ];
 
@@ -22,6 +22,11 @@ export const Navbar = ({ hero = false }) => {
   const [isHidden, setIsHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const shouldHide = isHidden && !isOpen && !isConsultationOpen;
+
+  const openConsultation = () => {
+    setIsOpen(false);
+    setIsConsultationOpen(true);
+  };
 
   useEffect(() => {
     const scrollPosition = () => Math.max(
@@ -147,10 +152,12 @@ export const Navbar = ({ hero = false }) => {
               <InstagramIcon />
             </a>
             <button
+              type="button"
               className="contained-button w-64 sm:w-52 h-10 ml-4"
-              aria-label="Get started"
+              aria-haspopup="dialog"
+              onClick={openConsultation}
             >
-              <a href="/resources/#request">Request Appointment</a>
+              Free Consult
             </button>
           </div>
         </motion.div>
@@ -158,10 +165,8 @@ export const Navbar = ({ hero = false }) => {
           <button
             type="button"
             className="home-nav__consult lg:hidden"
-            onClick={() => {
-              setIsOpen(false);
-              setIsConsultationOpen(true);
-            }}
+            aria-haspopup="dialog"
+            onClick={openConsultation}
           >
             Free Consult
           </button>
@@ -206,10 +211,12 @@ export const Navbar = ({ hero = false }) => {
                 </a>
               ))}
               <button
+                type="button"
                 className="contained-button w-64 sm:w-52 h-10 ml-4"
-                aria-label="Get started"
+                aria-haspopup="dialog"
+                onClick={openConsultation}
               >
-                <a href="/resources/#request">Request Appointment</a>
+                Free Consult
               </button>
             </div>
           </motion.div>
@@ -217,7 +224,7 @@ export const Navbar = ({ hero = false }) => {
       </AnimatePresence>
     </nav>
     {isConsultationOpen && (
-      <ConsultationModal setIsOpen={setIsConsultationOpen} />
+      <ConsultationModal source="navigation" setIsOpen={setIsConsultationOpen} />
     )}
     </>
   );

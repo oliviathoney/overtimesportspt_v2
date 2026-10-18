@@ -31,7 +31,9 @@ export default defineConfig({
   integrations: [
     react(),
     tailwind(),
-    sitemap(),
+    sitemap({
+      filter: (page) => new URL(page).pathname.replace(/\/$/, '') !== '/thank-you',
+    }),
     partytown({
       config: {
         forward: ["dataLayer.push"]

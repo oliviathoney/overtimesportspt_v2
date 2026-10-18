@@ -10,6 +10,7 @@ const optOTcp = await getImage({ src: OTcp, quality: 95 });
 
 export const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [consultationSource, setConsultationSource] = useState("hero");
 
   return (
     <>
@@ -17,18 +18,20 @@ export const Hero = () => {
         <div className="home-hero__inner">
           <div className="home-hero__content">
             <p className="home-hero__eyebrow">
-              Physical therapy in Centennial / Highlands Ranch, CO.
+              Sports Physical Therapy &mdash; Centennial &amp; Highlands Ranch, CO.
             </p>
             <h1 id="hero-heading">Built for Athletes. Driven by Data. Focused on Results.</h1>
             <p className="home-hero__description">
-              Individualized sports rehabilitation and performance training built around objective testing, expert clinical care, and the demands of your sport.
+              Sports physical therapy combining objective testing, expert clinical care, and the demands of your sport.
             </p>
-            <p className="home-hero__tagline">Discover - Optimize - Perform</p>
             <div className="home-hero__actions">
               <button
                 type="button"
                 className="home-hero__consult"
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => {
+                  setConsultationSource("hero");
+                  setIsModalOpen(true);
+                }}
               >
                 BOOK A FREE CONSULTATION
               </button>
@@ -49,7 +52,7 @@ export const Hero = () => {
                   </svg>
                 ))}
               </span>
-              <span>5.0 &middot; 192+ Google reviews</span>
+              <span>5.0 &middot; 200+ Google reviews</span>
             </a>
           </div>
         </div>
@@ -68,7 +71,10 @@ export const Hero = () => {
         <button
           type="button"
           className="home-hero__consult"
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => {
+            setConsultationSource("mobile_bar");
+            setIsModalOpen(true);
+          }}
         >
           Free Consult
         </button>
@@ -77,7 +83,7 @@ export const Hero = () => {
         </a>
       </div>
       {isModalOpen && (
-        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        <ConsultationModal source={consultationSource} setIsOpen={setIsModalOpen} />
       )}
     </>
   );

@@ -2,15 +2,40 @@
 import Layout from "../layouts/Layout.astro";
 import { Navbar } from "../components/Navbar.jsx";
 import { BlogList } from "../components/BlogList.jsx";
+import { AboutConsultation } from "../components/AboutConsultation.jsx";
 import { Footer } from "../components/Footer.jsx";
 import "../styles/Theme.css";
 import "../styles/Diagonals.css";
 import "../styles/custom.css";
 import SiteData from "../constants/siteData.json";
+
+const title = "Sports Physical Therapy Blog | Overtime Sports PT";
+const description = "Sports physical therapy insights on recovery, injury prevention, dry needling, and finding the right PT in South Denver from Overtime Sports PT.";
+const canonical = new URL("/blog/", Astro.site).href;
+const previewImage = new URL(SiteData.default.openGraph.image, Astro.url.origin).href;
 ---
 
-<Layout title="OVERTIME Sports">
+<Layout
+  title={title}
+  seo={{
+    title,
+    description,
+    canonical,
+    openGraph: {
+      basic: { title, type: "website", image: previewImage, url: canonical },
+      optional: { description, siteName: SiteData.default.name },
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      image: previewImage,
+      creator: SiteData.default.twitter.creator,
+    },
+  }}
+>
   <Navbar client:load />
   <BlogList />
+  <AboutConsultation source="blog_cta" headingId="blog-consultation-heading" client:load />
   <Footer />
 </Layout>

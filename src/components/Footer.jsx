@@ -1,143 +1,107 @@
 import { getImage } from "astro:assets";
-import { useState } from "react";
-import { ConsultationModal } from "./ConsultationModal";
-
+import { InstagramIcon } from "../assets/icons/InstagramIcon";
 import logo from "../assets/images/logo.png";
-const optLogo = await getImage({ src: logo })
+import "../styles/Footer.css";
 
-const footerData = [
+const optLogo = await getImage({ src: logo, width: 480, format: "webp" });
+
+const links = [
+  { label: "About Us", href: "/about" },
+  { label: "Our Services", href: "/services" },
+  { label: "FAQ", href: "/resources" },
+  { label: "Blog", href: "/blog" },
+];
+
+const locations = [
   {
-    title: "Company",
-    items: [
-      { name: "About Us", href: "/about" },
-      { name: "Contact Us", href: "mailto:info@overtimesports.com" },
-      { name: "Our Services", href: "/services" }
-    ],
+    id: "centennial",
+    name: "Centennial",
+    street: "327 South Inverness Dr",
+    city: "Centennial, CO 80112",
+    map: "https://maps.app.goo.gl/Ng3fLwf8KgRr15k29",
   },
   {
-    title: "Important Links",
-    items: [
-      "Schedule Appointment",
-      { name: "Schedule Appointment", href: "resources/#request" },
-      { name: "Frequently Asked Questions", href: "/resources" },
-      { name: "Privacy Policy", href: "/privacy-policy" },
-    ],
+    id: "highlands-ranch",
+    name: "Highlands Ranch",
+    street: "8955 S Ridgeline Blvd #800",
+    city: "Highlands Ranch, CO 80129",
+    map: "https://maps.app.goo.gl/fQELNxp2jEhLMJP6A",
   },
 ];
 
-export const Footer = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  return (
-    <footer aria-label="Site footer">
-      <div className="pt-10  lg:pt-20 lg:pb-16 bg-bgNight border-t border-mainBorderDarker radius-for-skewed ">
-        <div className="container mx-auto px-4 w-4/5 md:w-11/12 lg:w-10/12 xl:w-4/5 2xl:w-2/3">
-          <div className="flex flex-wrap">
-            <div className="w-full lg:w-1/2 mb-16 lg:mb-0">
-              <div className="flex justify-center lg:justify-start items-center text-center grow basis-0">
-                <div className="text-white mr-2 text-6xl">
-                  <img
-                    src={optLogo.src}
-                    alt="OVERTIME Sports Physical Therapy and Performance Logo"
-                    className="site-logo w-4/5 mb-6 lg:mx-0 mx-auto"
-                  />
-                </div>
-              </div>
-
-              <div className="flex justify-center lg:justify-start items-center text-center">
-                <p className="text-secondaryColor text:sm sm:text-base">Centennial Location</p>
-              </div>
-              <div className="flex justify-center lg:justify-start items-center text-center">
-                <a
-                  className="text-secondaryText text-sm sm:text-base"
-                  href="https://maps.app.goo.gl/Ng3fLwf8KgRr15k29"
-                  aria-label="Google Maps"
-                >
-                  327 South Inverness Dr, Centennial, CO 80112
-                </a>
-              </div>
-              <div className="flex justify-center lg:justify-start items-center text-center">
-                <p className="text-secondaryColor text:sm sm:text-base">Highlands Ranch Location</p>
-              </div>
-              <div className="flex justify-center lg:justify-start items-center text-center">
-                <a
-                  className="text-secondaryText text-sm sm:text-base"
-                  href="https://maps.app.goo.gl/fQELNxp2jEhLMJP6A"
-                  aria-label="Google Maps"
-                >
-                  8955 S Ridgeline Blvd #800, Highlands Ranch, CO 80129
-                </a>
-              </div>
-              <div className="flex justify-center lg:justify-start items-center text-center mt-3">
-                <p
-                  className="text-secondaryText text-sm sm:text-base"
-                >
-                  info@overtimesportspt.com | (720) 771-9677
-                </p>
-              </div>
-              <div className="flex justify-center lg:justify-start items-center text-center">
-                <p
-                  className="text-secondaryText text-sm sm:text-base"
-                >
-                  © 2024 OVERTIMESportsPT.com All rights reserved.
-                </p>
-              </div>
-            </div>
-            <div className="w-full lg:w-1/2  lg:pl-16 hidden lg:flex flex-wrap justify-end">
-              <div className="w-full md:w-1/2 lg:w-auto mb-16 mr-12 md:mb-0">
-                <h3 className="mb-6 text-2xl font-bold text-primaryText font-Inter">Company</h3>
-                <ul>
-                  {footerData[0].items.map((item, index) => (
-                    <li key={`${item.name}-${index}`} className="mb-4">
-                      <a
-                        className="text-secondaryText hover:text-primaryText"
-                        href={item.href}
-                        aria-label={item.name}
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="w-full md:w-1/2 lg:w-auto mb-16 md:mb-0">
-                <h3 className="mb-6 text-2xl font-bold text-primaryText font-Inter">
-                  Important Links
-                </h3>
-                <ul>
-                  {footerData[1].items.map((item, index) => (
-                    <li key={`${item.name}-${index}`} className="mb-4">
-                      <a
-                        className="text-secondaryText hover:text-primaryText"
-                        href={item.href}
-                        aria-label={item.name}
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              {/* <div className="w-full md:w-1/3 lg:w-auto">
-                <h3 className="mb-6 text-2xl font-bold text-primaryText">Company</h3>
-                <ul>
-                  {footerData[2].items.map((item, index) => (
-                    <li key={`${item}-${index}`} className="mb-4">
-                      <a
-                        className="text-secondaryText hover:text-primaryText"
-                        href="#"
-                        aria-label={item}
-                      >
-                        {item}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div> */}
-            </div>
-          </div>
+export const Footer = () => (
+  <footer className="site-footer" aria-label="Site footer">
+    <div className="site-footer__inner">
+      <div className="site-footer__grid">
+        <div className="site-footer__brand">
+          <a className="site-footer__logo" href="/" aria-label="Overtime Sports PT home">
+            <img
+              className="site-logo"
+              src={optLogo.src}
+              width={optLogo.options.width}
+              height={optLogo.options.height}
+              alt="Overtime Sports Physical Therapy and Performance"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <p className="site-footer__description">
+            Sports Rehab. Recovery. Performance.
+          </p>
+          <address className="site-footer__contact">
+            <a href="tel:+17207719677">(720) 771-9677</a>
+            <a href="mailto:info@overtimesportspt.com">info@overtimesportspt.com</a>
+          </address>
+          <a
+            className="site-footer__social"
+            href="https://www.instagram.com/overtimesportspt/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Overtime Sports PT on Instagram (opens in a new tab)"
+          >
+            <span aria-hidden="true"><InstagramIcon /></span>
+            Instagram
+            <span aria-hidden="true">{"\u2197"}</span>
+          </a>
         </div>
+        <nav className="site-footer__navigation" aria-labelledby="footer-explore-heading">
+          <h2 className="site-footer__heading" id="footer-explore-heading">Explore</h2>
+          <ul>
+            {links.map((link) => (
+              <li key={link.label}>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        {locations.map((location) => (
+          <section
+            className="site-footer__location"
+            aria-labelledby={`footer-${location.id}-heading`}
+            key={location.id}
+          >
+            <h2 className="site-footer__heading" id={`footer-${location.id}-heading`}>
+              {location.name}
+            </h2>
+            <address>
+              <a
+                href={location.map}
+                aria-label={`Get directions to Overtime Sports PT in ${location.name}: ${location.street}, ${location.city}`}
+              >
+                <span>{location.street}</span>
+                <span>{location.city}</span>
+                <span className="site-footer__directions">
+                  Get Directions <span aria-hidden="true">{"\u2197"}</span>
+                </span>
+              </a>
+            </address>
+          </section>
+        ))}
       </div>
-
-    </footer>
-  );
-};
+      <div className="site-footer__bottom">
+        <p>&copy; {new Date().getFullYear()} Overtime Sports PT. All rights reserved.</p>
+        <a href="/privacy-policy">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+);

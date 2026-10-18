@@ -1,190 +1,212 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-
-import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
+import { useEffect, useId, useRef, useState } from "react";
 import { CloseIcon } from "../assets/icons/CloseIcon";
+import "../styles/Consultation.css";
 
+export const ConsultationModal = ({ setIsOpen, source = "other" }) => {
+  const dialogRef = useRef(null);
+  const headingRef = useRef(null);
+  const opened = useRef(false);
+  const started = useRef(false);
+  const submitting = useRef(false);
+  const redirectTimer = useRef(null);
+  const id = useId();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-export const ConsultationModal = ({ setIsOpen }) => {
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastName] = useState("");
+  const track = (event) => {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", event, {
+        cta_source: source,
+        page_path: window.location.pathname,
+        transport_type: "beacon",
+      });
+    }
+  };
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    const previousFocus = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    dialog.showModal();
+    document.body.style.overflow = "hidden";
+    headingRef.current.focus();
+    if (!opened.current) {
+      track("consultation_opened");
+      opened.current = true;
+    }
+    return () => {
+      clearTimeout(redirectTimer.current);
+      dialog.close();
+      document.body.style.overflow = previousOverflow;
+      if (previousFocus instanceof HTMLElement) previousFocus.focus();
+    };
+  }, []);
+
+  const close = () => {
+    if (!submitting.current) setIsOpen(false);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (submitting.current) return;
+    const form = event.currentTarget;
+    const values = new FormData(form);
+    const phone = values.get("phone").trim();
+    const digits = phone.replace(/\D/g, "");
+    const validPhone = /^\+?[\d\s().-]+$/.test(phone) &&
+      (/^\d{10}$/.test(digits) || /^1\d{10}$/.test(digits));
+    form.elements.phone.setCustomValidity(
+      validPhone ? "" : "Enter a 10-digit phone number, with an optional +1 country code.",
+    );
+    if (!form.reportValidity()) return;
+
+    submitting.current = true;
+    setIsSubmitting(true);
+    setError("");
     try {
-      const response = await fetch('/api/sendConsultation', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: email, phone: phone, firstname: firstname, lastname: lastname, deal: false }),
+      const response = await fetch("/api/sendConsultation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstname: values.get("firstname").trim(),
+          lastname: values.get("lastname").trim(),
+          email: values.get("email").trim(),
+          phone,
+          message: values.get("message").trim(),
+          form: "consultation",
+          deal: false,
+        }),
       });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+      const result = await response.json();
+      if (!response.ok || result.success !== true) {
+        throw new Error(result.message || "Your request could not be sent. Please try again or call (720) 771-9677.");
       }
-
-      // Handle success, e.g., display a success message
-      console.log('Form submitted successfully!');
-      if (typeof window.gtag === 'function') {
-        const phoneE164 = phone ? '+1' + phone.replace(/-/g, '') : undefined;
-        window.gtag('set', 'user_data', {
-          ...(email && { email }),
-          ...(phoneE164 && { phone_number: phoneE164 }),
-        });
-        window.gtag('event', 'conversion', { 'send_to': 'AW-17580190165/QZyqCIudr98cENXT8b5B' });
-      }
-      setIsOpen(false)
-    } catch (error) {
-      // Handle error, e.g., display an error message
-      console.error('Error submitting form:', error);
+    } catch (submissionError) {
+      console.error("Consultation submission failed:", submissionError);
+      setError("Your request could not be confirmed. Please try again or call (720) 771-9677.");
+      submitting.current = false;
+      setIsSubmitting(false);
+      return;
     }
-    // alert(`Name: ${name}, Email: ${email}, Phone: ${phone}, About: ${about}`)
-  }
 
+    track("consultation_submitted");
+    let redirected = false;
+    const navigate = () => {
+      if (redirected) return;
+      redirected = true;
+      window.location.assign("/thank-you/");
+    };
+    // Allow the existing Ads conversion to send, without blocking on analytics.
+    redirectTimer.current = window.setTimeout(navigate, 1500);
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "conversion", {
+        send_to: "AW-17580190165/QZyqCIudr98cENXT8b5B",
+        event_callback: navigate,
+        event_timeout: 1200,
+        transport_type: "beacon",
+      });
+    } else {
+      navigate();
+    }
+  };
 
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0, zIndex: 50 }}
-        animate={{ opacity: 1, zIndex: 50 }}
-        transition={{ duration: 0.1 }}
-        exit={{ opacity: 0 }}
-      >
-        <div
-          className="w-full h-full  bg-bgDarkTransparentDarker fixed top-0 left-0 flex  z-50 justify-center items-center"
-          onClick={() => setIsOpen(false)}
+    <dialog
+      ref={dialogRef}
+      className="consultation-dialog"
+      aria-labelledby={`${id}-heading`}
+      onCancel={(event) => {
+        event.preventDefault();
+        close();
+      }}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) close();
+      }}
+    >
+      <div className="consultation-dialog__toolbar">
+        <button
+          type="button"
+          className="consultation-dialog__close"
+          aria-label="Close consultation form"
+          onClick={close}
+          disabled={isSubmitting}
         >
-          <div
-            className="w-full h-screen sm:h-auto sm:w-3/4 md:w-3/5 lg:w-[1000px] xl:w-[1100px] sm:rounded-2xl bg-bgDarkTransparentLighter main-border-gray-darker py-12 px-8 sm:px-16 backdrop-blur-xl fixed sm:mb-8 mx-auto z-50"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex relative">
-              <div className="w-1/2 hidden lg:inline">
-                <h2 className="mt-6 mb-2 text-5xl font-bold tracking-normal text-primaryText">
-                  REQUEST A FREE CONSULTATION
-                </h2>
-                {/* <h2 className="text-5xl font-bold tracking-normal text-secondaryColor">
-                Free Consultation
-              </h2> */}
-
-                <ul className="mb-6 text-primaryText mt-12">
-                  <li className="mb-4 flex">
-                    <CheckArrowIcon />
-                    <span><b className="text-secondaryColor">STEP 1:</b> 15 minute phone consultation to discuss your goals, challenges, needs.</span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CheckArrowIcon />
-                    <span><b className="text-secondaryColor">STEP 2:</b> Schedule your first initial evaluation with our doctor of physical therapy.</span>
-                  </li>
-                  <li className="mb-4 flex">
-                    <CheckArrowIcon />
-                    <span><b className="text-secondaryColor">STEP 3:</b> Begin your health journey.</span>
-                  </li>
-                </ul>
+          <CloseIcon />
+        </button>
+      </div>
+      <div className="consultation-dialog__inner">
+        <div className="consultation-dialog__intro">
+          <p className="consultation-dialog__eyebrow">Your next step</p>
+          <h2 id={`${id}-heading`} ref={headingRef} tabIndex={-1}>Let's Talk About Your Goals</h2>
+          <p className="consultation-dialog__summary">
+            Start with a free, 15-minute phone consultation with a Sports PT.
+          </p>
+          <ol className="consultation-dialog__steps">
+            <li>
+              <strong>15-minute phone consultation</strong>
+              <span>Talk with a Sports PT about you and your goals.</span>
+            </li>
+            <li>
+              <strong>Initial evaluation</strong>
+              <span>Schedule a one-on-one evaluation with a Doctor of Physical Therapy.</span>
+            </li>
+            <li>
+              <strong>Begin your health journey</strong>
+              <span>Start your personalized plan.</span>
+            </li>
+          </ol>
+        </div>
+        <form
+          className="consultation-form"
+          onSubmit={handleSubmit}
+          aria-busy={isSubmitting}
+          onChange={() => {
+            if (!started.current) {
+              track("consultation_started");
+              started.current = true;
+            }
+          }}
+        >
+          <p className="consultation-form__intro">Request your free consultation. All fields are required except your message.</p>
+          <fieldset disabled={isSubmitting}>
+            <legend className="sr-only">Your contact details</legend>
+            <div className="consultation-form__names">
+              <div>
+                <label htmlFor={`${id}-firstname`}>First name</label>
+                <input id={`${id}-firstname`} name="firstname" autoComplete="given-name" maxLength={100} required pattern=".*\S.*" />
               </div>
-              <div className="w-full lg:w-1/2 flex items-center flex-col justify-center pt-24 sm:pt-0">
-                <div className="flex lg:hidden text-center lg:justify-start items-center grow basis-0 mb-8">
-                  <div className="text-primaryText font-['Inter'] font-bold text-3xl">
-                    <h2>
-                      Request a Free Consultation
-                    </h2>
-                  </div>
-                </div>
-
-                <h3 className="mb-7 text-lg lg:text-2xl text-primaryText font-bold leading-snug text-center">
-                  REHAB - RECOVER - PERFORM
-                </h3>
-                <form className="consultation-form" onSubmit={handleSubmit}>
-                  <div className="flex flex-wrap -m-2">
-                    <div className="w-full sm:w-2/5 p-2 ml-auto">
-                      <input
-                        className="px-4 py-4 w-full text-gray-500 font-medium text-center placeholder-gray-500 outline-none border bg-gray-300 border-gray-300 rounded-lg focus:ring focus:ring-indigo-300"
-                        id="recipient_firstname"
-                        type="text"
-                        name="recipient_firstname"
-                        value={firstname}
-                        onChange={(e) => {
-                          setFirstname(e.target.value);
-                          setIsOpen(true)
-                        }
-                        }
-                        placeholder="First Name"
-                        required
-                      />
-                    </div>
-                    <div className="w-full sm:w-2/5 p-2 mr-auto">
-                      <input
-                        className="px-4 py-4 w-full text-gray-500 font-medium text-center placeholder-gray-500 outline-none border bg-gray-300 border-gray-300 rounded-lg focus:ring focus:ring-indigo-300"
-                        id="recipient_lastname"
-                        type="text"
-                        name="recipient_lastname"
-                        value={lastname}
-                        onChange={(e) => {
-                          setLastName(e.target.value);
-                          setIsOpen(true)
-                        }
-                        }
-                        placeholder="Last Name"
-                        required
-                      />
-                    </div>
-                    <div className="w-full sm:w-4/5 p-2 mx-auto">
-                      <input
-                        className="px-4 py-4 w-full text-gray-500 font-medium text-center placeholder-gray-500 outline-none border bg-gray-300 border-gray-300 rounded-lg focus:ring focus:ring-indigo-300"
-                        id="recipient_email"
-                        type="text"
-                        name="recipient_email"
-                        value={email}
-                        onChange={(e) => {
-                          setEmail(e.target.value);
-                          setIsOpen(true)
-                        }
-                        }
-                        placeholder="Your email address"
-                        required
-                      />
-                    </div>
-                    <div className="w-full sm:w-4/5 p-2 mx-auto">
-                      <input
-                        type="text"
-                        id="phone"
-                        aria-describedby="helper-text-explanation"
-                        className="px-4 py-4 w-full text-gray-500 font-medium text-center placeholder-gray-500 outline-none border bg-gray-300 border-gray-300 rounded-lg focus:ring focus:ring-indigo-300"
-                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                        placeholder="Phone (123-456-7890) - optional"
-                        name="recipient_phone"
-                        value={phone}
-                        onChange={(e) => {
-                          setPhone(e.target.value);
-                          setIsOpen(true)
-                        }
-                        }
-                      />
-                    </div>
-                    <div className="w-full sm:w-4/5 p-2 mt-4 mx-auto">
-                      <input
-                        type="submit"
-                        className="py-4 px-6 w-full text-white font-semibold rounded-xl shadow-4xl focus:ring focus:ring-indigo-300 bg-primaryColor hover:bg-[#7274f3] transition ease-in-out duration-200"
-                        aria-label="Request"
-                        value="Request Consultation"
-                      />
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div
-                className="fixed top-6 right-6 z-50 w-5 h-5 cursor-pointer text-secondaryText hover:text-primaryText transition"
-                onClick={() => setIsOpen(false)}
-              >
-                <CloseIcon />
+              <div>
+                <label htmlFor={`${id}-lastname`}>Last name</label>
+                <input id={`${id}-lastname`} name="lastname" autoComplete="family-name" maxLength={100} required pattern=".*\S.*" />
               </div>
             </div>
-          </div>
-        </div >
-      </motion.div >
-    </AnimatePresence >
+            <label htmlFor={`${id}-email`}>Email</label>
+            <input id={`${id}-email`} name="email" type="email" autoComplete="email" maxLength={254} required />
+            <label htmlFor={`${id}-phone`}>Phone</label>
+            <input
+              id={`${id}-phone`}
+              name="phone"
+              type="tel"
+              autoComplete="tel"
+              maxLength={30}
+              required
+              onChange={(event) => event.target.setCustomValidity("")}
+            />
+            <label htmlFor={`${id}-message`}>Tell us about your goals, injury, or pain <span>(optional)</span></label>
+            <textarea id={`${id}-message`} name="message" rows={3} maxLength={2000} aria-describedby={`${id}-privacy`} />
+            <p id={`${id}-privacy`} className="consultation-form__privacy">
+              Share only what you're comfortable sending through this form. Please don't include detailed medical records. <a href="/privacy-policy">Privacy policy</a>
+            </p>
+          </fieldset>
+          {error && <p className="consultation-form__error" role="alert">{error}</p>}
+          <button type="submit" className="consultation-form__submit" disabled={isSubmitting}>
+            {isSubmitting ? "SENDING YOUR REQUEST..." : "REQUEST MY FREE CONSULTATION"}
+          </button>
+          <p className="consultation-form__note" role="status">
+            {isSubmitting ? "Please wait while we confirm your request." : "This requests a consultation; it does not reserve an appointment."}
+          </p>
+        </form>
+      </div>
+    </dialog>
   );
 };

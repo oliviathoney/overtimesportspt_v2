@@ -1,83 +1,64 @@
-import { Card } from "flowbite-react";
+import { getImage } from "astro:assets";
+import { blogPosts } from "../data/blogPosts";
+import "../styles/Blog.css";
 
-import SignsYou from "../assets/images/blog/signs-you.jpg";
-import SoccerInjuries from "../assets/images/blog/soccer-injuries.jpg";
-import BestPT from "../assets/images/blog/best-pt.jpg";
-import DryNeedling from "../assets/images/blog/dry-needling.jpg";
-import DOP from "../assets/images/blog/dop.jpg";
-
-const blogData = [
-  {
-    title: "What Do We Mean By DISCOVER, OPTIMIZE, PERFORM?",
-    subtitle: "At Overtime, we follow a 3-Step process to get you back from pain to not only achieving but exceeding your goals...",
-    image: DOP.src,
-    slug: "/blog/discover-optimize-perform",
-  },
-  {
-    title: "Why Do We Dry Needle?",
-    subtitle: "Dry needling is a technique used by physical therapists and other healthcare providers to treat muscular pain and dysfunction...",
-    image: DryNeedling.src,
-    slug: "/blog/dry-needling",
-  },
-  {
-    title: "How To Find the Best Physical Therapist in South Denver",
-    subtitle: "You've decided that physical therapy is the right choice for your health and are ready to take the next step in improving your quality of life...",
-    image: BestPT.src,
-    slug: "/blog/best-physical-therapist",
-  },
-  {
-    title: "The 5 Most Common Soccer Injuries and How to Prevent Them",
-    subtitle: "Soccer is an exhilarating sport, known for its fast pace, thrilling goals, and incredible athleticism. However, like all physical activities, it comes with its risks. Injuries are a part of the game, and understanding...",
-    image: SoccerInjuries.src,
-    slug: "/blog/the-5-most-common-soccer-injuries"
-  },
-  {
-    title: "5 Signs You Need A New PT",
-    subtitle:
-      "Choosing the right physical therapist can be overwhelming, especially when dealing with pain or injury. It's important to feel comfortable, heard, and confident in the care you're receiving. Here are 5 signs that it might be time to find a new PT...",
-    image: SignsYou.src,
-    slug: "/blog/5-signs-you-need-a-new-pt"
-  },
-
-
-];
+const posts = await Promise.all(
+  blogPosts.map(async (post) => ({
+    ...post,
+    thumbnail: await getImage({
+      src: post.image,
+      width: 1000,
+      widths: [320, 480, 720, 1000],
+      format: "webp",
+      quality: 85,
+    }),
+  })),
+);
 
 export const BlogList = () => (
-  <section className="w-full flex justify-center bg-bgNight relative pt-32">
-    <div className="pb-20 pt-12 2xl:w-[1150px] lg:w-[1050px] md:w-4/5">
-      <div>
-        <div className="container mx-auto">
-          <div className="max-w-2xl text-start mb-16 px-8">
-            <span className="block-subtitle">Our Blog</span>
-            <h2 className="mt-2 mb-6 text-5xl lg:text-6xl font-bold font-heading text-primaryText font-Inter">
-              Latest Insights
-            </h2>
-            <p className=" text-secondaryText">
-              Hear more from our Doctor of Physical Therapy about latest insights and trends in the industry. We are determined to stay on the cutting-edge and keep our patients up-to-date.
-            </p>
-          </div>
-          {blogData.map((blog, i) => (
-            <div className="w-100 py-3 px-5" key={i}>
-              <Card
-                className="blogPost !max-w-full bg-bgDark2 dark:bg-bgDark2 main-border-gray-darker dark:border-mainBorderDarker shadow-lg"
-                renderImage={() => <img width={500} src={blog.image} alt={blog.title} className="rounded-lg" />}
-                horizontal
-                key={i}
-              >
-                <h3 className="text-3xl font-bold  text-secondaryColor font-Inter">
-                  {blog.title}
-                </h3>
-                <p className="font-normal text-secondaryText">
-                  {blog.subtitle}
-                </p>
-                <a href={blog.slug} class="inline-flex font-medium items-center text-highlightColor hover:underline">
-                  Read more
-                </a>
-              </Card>
-            </div>
-          ))}
-        </div>
-      </div>
+  <section className="blog-index" aria-labelledby="blog-heading">
+    <div className="blog-container">
+      <header className="blog-index__intro">
+        <p className="block-subtitle">Our Blog</p>
+        <h1 id="blog-heading">Latest Insights</h1>
+        <p className="blog-index__description">
+          Hear more from our Doctor of Physical Therapy about latest insights and
+          trends in the industry. We are determined to stay on the cutting-edge
+          and keep our patients up-to-date.
+        </p>
+      </header>
+      <ul className="blog-grid">
+        {posts.map((post, index) => (
+          <li key={post.slug} className={index === 0 ? "blog-grid__featured" : undefined}>
+            <article className="blog-card" aria-labelledby={`post-${post.slug}`}>
+              <a href={`/blog/${post.slug}`} aria-labelledby={`post-${post.slug}`}>
+                <div className={`blog-card__image${post.thumbnailFit === "contain" ? " blog-card__image--natural" : ""}`}>
+                  <img
+                    src={post.thumbnail.src}
+                    srcSet={post.thumbnail.srcSet.attribute}
+                    sizes={index === 0
+                      ? "(min-width: 768px) 240px, calc(100vw - 32px)"
+                      : "(min-width: 1200px) 565px, (min-width: 768px) 48vw, calc(100vw - 32px)"}
+                    width={post.thumbnail.options.width}
+                    height={post.thumbnail.options.height}
+                    alt=""
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                  />
+                </div>
+                <div className="blog-card__body">
+                  <time dateTime={post.publishDate}>{post.publish}</time>
+                  <h2 id={`post-${post.slug}`}>{post.listTitle ?? post.title}</h2>
+                  <p>{post.excerpt}</p>
+                  <span className="blog-card__link">
+                    Read more <span aria-hidden="true">{"\u2197"}</span>
+                  </span>
+                </div>
+              </a>
+            </article>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 );
