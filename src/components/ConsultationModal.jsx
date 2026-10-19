@@ -77,8 +77,11 @@ export const ConsultationModal = ({ setIsOpen, source = "other" }) => {
           deal: false,
         }),
       });
+      if (!response.ok) {
+        throw new Error(`Consultation request failed (HTTP ${response.status}).`);
+      }
       const result = await response.json();
-      if (!response.ok || result.success !== true) {
+      if (result?.success !== true) {
         throw new Error(result.message || "Your request could not be sent. Please try again or call (720) 771-9677.");
       }
     } catch (submissionError) {
@@ -167,7 +170,7 @@ export const ConsultationModal = ({ setIsOpen, source = "other" }) => {
             }
           }}
         >
-          <p className="consultation-form__intro">Request your free consultation. All fields are required except your message.</p>
+          <p className="consultation-form__intro">All fields are required except your message.</p>
           <fieldset disabled={isSubmitting}>
             <legend className="sr-only">Your contact details</legend>
             <div className="consultation-form__names">
@@ -180,20 +183,26 @@ export const ConsultationModal = ({ setIsOpen, source = "other" }) => {
                 <input id={`${id}-lastname`} name="lastname" autoComplete="family-name" maxLength={100} required pattern=".*\S.*" />
               </div>
             </div>
-            <label htmlFor={`${id}-email`}>Email</label>
-            <input id={`${id}-email`} name="email" type="email" autoComplete="email" maxLength={254} required />
-            <label htmlFor={`${id}-phone`}>Phone</label>
-            <input
-              id={`${id}-phone`}
-              name="phone"
-              type="tel"
-              autoComplete="tel"
-              maxLength={30}
-              required
-              onChange={(event) => event.target.setCustomValidity("")}
-            />
+            <div className="consultation-form__contact">
+              <div>
+                <label htmlFor={`${id}-email`}>Email</label>
+                <input id={`${id}-email`} name="email" type="email" autoComplete="email" maxLength={254} required />
+              </div>
+              <div>
+                <label htmlFor={`${id}-phone`}>Phone</label>
+                <input
+                  id={`${id}-phone`}
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  maxLength={30}
+                  required
+                  onChange={(event) => event.target.setCustomValidity("")}
+                />
+              </div>
+            </div>
             <label htmlFor={`${id}-message`}>Tell us about your goals, injury, or pain <span>(optional)</span></label>
-            <textarea id={`${id}-message`} name="message" rows={3} maxLength={2000} aria-describedby={`${id}-privacy`} />
+            <textarea id={`${id}-message`} name="message" rows={2} maxLength={2000} aria-describedby={`${id}-privacy`} />
             <p id={`${id}-privacy`} className="consultation-form__privacy">
               Share only what you're comfortable sending through this form. Please don't include detailed medical records. <a href="/privacy-policy">Privacy policy</a>
             </p>

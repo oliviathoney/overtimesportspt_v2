@@ -3,8 +3,6 @@ export const prerender = false;
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
-
 const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (character) => ({
   "&": "&amp;",
   "<": "&lt;",
@@ -46,6 +44,14 @@ export const POST: APIRoute = async ({ request }) => {
   if (isConsultation && (!lastName || !/^\+?[\d\s().-]+$/.test(phoneNumber) ||
       !(/^\d{10}$/.test(digits) || /^1\d{10}$/.test(digits)))) {
     return invalidRequest("Please provide your last name and a valid 10-digit phone number.");
+  }
+  const apiKey = process.env.RESEND_API_KEY || import.meta.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error("Consultation email service is not configured: RESEND_API_KEY is missing.");
+    return Response.json(
+      { message: "Consultation requests are temporarily unavailable. Please call (720) 771-9677." },
+      { status: 503 },
+    );
   }
   const firstname = escapeHtml(firstName);
   const lastname = escapeHtml(lastName);
@@ -185,6 +191,7 @@ export const POST: APIRoute = async ({ request }) => {
       `
   }
   try {
+    const resend = new Resend(apiKey);
     const sendResend = await resend.emails.send({
       from: "no-reply@overtimesportspt.com",
       to,
@@ -204,6 +211,8 @@ export const POST: APIRoute = async ({ request }) => {
     console.error("Consultation email delivery was not confirmed:", {
       confirmationAccepted: Boolean(sendResend.data),
       notificationAccepted: Boolean(sendNotif.data),
+      confirmationError: sendResend.error?.name,
+      notificationError: sendNotif.error?.name,
     });
     return Response.json(
       { message: "Your request could not be confirmed. Please try again or call (720) 771-9677." },

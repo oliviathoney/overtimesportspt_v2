@@ -141,6 +141,17 @@ practice's notification email. The API validates these fields and escapes email
 HTML; the legacy promotional form retains its existing optional-phone behavior.
 Only confirmed successful delivery redirects to `/thank-you/`. Failures leave
 the entered details in place and display an error.
+The dialog uses a compact two-column layout from 768px, with paired contact fields
+from 600px. All three next steps remain visible on mobile; short screens can scroll
+within the dialog without losing the close control.
+
+Set the server-only `RESEND_API_KEY` in each Vercel project's Preview and Production
+environments and redeploy after changing it. The endpoint reads the Node runtime
+environment first, falling back to Astro's environment for local `.env` support.
+Missing configuration returns a JSON 503 response rather than failing during
+module initialization. Email-provider error
+names are logged on the server without form values or API keys; HTTP failures are
+handled before the browser tries to parse a success response.
 
 GA4 events `consultation_opened`, `consultation_started`, and
 `consultation_submitted` measure the funnel, with `cta_source` and `page_path`

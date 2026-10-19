@@ -21,8 +21,8 @@
 .consultation-dialog__inner {
   position: relative;
   display: grid;
-  gap: 28px;
-  padding: 48px 24px 28px;
+  gap: 20px;
+  padding: 48px 16px 20px;
 }
 
 .consultation-dialog__toolbar {
@@ -51,7 +51,7 @@
 }
 
 .consultation-dialog__eyebrow {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   color: rgb(var(--accent));
   font-size: 12px;
   font-weight: 700;
@@ -60,8 +60,8 @@
 }
 
 .consultation-dialog h2 {
-  margin-bottom: 16px;
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  margin-bottom: 12px;
+  font-size: clamp(1.625rem, 2.5vw, 2rem);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.035em;
@@ -75,15 +75,19 @@
 }
 
 .consultation-dialog__steps {
-  display: none;
-  margin-top: 32px;
+  margin-top: 20px;
   padding-left: 22px;
+  font-size: 14px;
   list-style: decimal;
 }
 
 .consultation-dialog__steps li {
-  margin-bottom: 24px;
-  padding-left: 8px;
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+.consultation-dialog__steps li:last-child {
+  margin-bottom: 0;
 }
 
 .consultation-dialog__steps li::marker {
@@ -97,7 +101,7 @@
 }
 
 .consultation-dialog__steps strong {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .consultation-form {
@@ -105,7 +109,7 @@
 }
 
 .consultation-form__intro {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   font-size: 14px;
 }
 
@@ -115,7 +119,7 @@
 
 .consultation-form label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-size: 14px;
   font-weight: 600;
 }
@@ -128,24 +132,32 @@
 .consultation-form input,
 .consultation-form textarea {
   width: 100%;
-  margin-bottom: 18px;
-  padding: 12px 14px;
+  min-height: 44px;
+  margin-bottom: 12px;
+  padding: 10px 12px;
   border: 1px solid rgb(var(--border) / var(--border-opacity));
   border-radius: 8px;
   background: rgb(var(--surface-night));
   color: rgb(var(--text));
   font: inherit;
   font-size: 16px;
+  line-height: 1.35;
 }
 
 .consultation-form textarea {
-  margin-bottom: 8px;
+  min-height: 64px;
+  margin-bottom: 6px;
   resize: vertical;
 }
 
-.consultation-form__names {
+.consultation-form__names,
+.consultation-form__contact {
   display: grid;
-  gap: 0 14px;
+  gap: 0 12px;
+}
+
+.consultation-form__names {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .consultation-form__privacy,
@@ -162,9 +174,9 @@
 
 .consultation-form__submit {
   width: 100%;
-  min-height: 52px;
-  margin-block: 20px 12px;
-  padding: 14px 16px;
+  min-height: 48px;
+  margin-block: 16px 8px;
+  padding: 12px 14px;
   border-radius: 8px;
   background: rgb(var(--accent));
   color: rgb(var(--surface-night));
@@ -182,11 +194,12 @@
 }
 
 .consultation-form__error {
-  margin-top: 16px;
-  padding: 12px;
+  margin-top: 12px;
+  padding: 10px 12px;
   border: 1px solid #f4a6a6;
   border-radius: 8px;
   color: #f4a6a6;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -198,20 +211,16 @@
   outline-offset: 3px;
 }
 
-@media (min-width: 480px) {
-  .consultation-form__names {
+@media (min-width: 600px) {
+  .consultation-form__contact {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 768px) {
   .consultation-dialog__inner {
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    padding: 48px;
-  }
-
-  .consultation-dialog__steps {
-    display: block;
+    gap: 28px;
+    padding: 48px 28px 24px;
   }
 }
