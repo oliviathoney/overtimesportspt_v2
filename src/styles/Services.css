@@ -68,7 +68,8 @@
 .services-card img {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: auto;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
 }
 
@@ -146,11 +147,14 @@
   padding: 24px;
 }
 
+.services-tool-group__content {
+  min-width: 0;
+}
+
 .services-tool-group__photo img {
   display: block;
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: auto;
 }
 
 .services-tool-group__photo figcaption {
@@ -246,6 +250,14 @@
   line-height: 1.7;
 }
 
+.services-tool__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+  border-radius: 8px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .services-tool__toggle {
     transition: transform 0.2s ease;
@@ -264,6 +276,14 @@
 
 }
 
+@media (min-width: 640px) and (max-width: 1023px) {
+  .services-tool-group {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: start;
+  }
+}
+
 @media (max-width: 767px) {
   .services-container {
     width: calc(100% - 32px);
@@ -280,10 +300,6 @@
   .services-overview__cards {
     grid-template-columns: minmax(0, 1fr);
     gap: 20px;
-  }
-
-  .services-card img {
-    height: 180px;
   }
 
   .services-card__body {

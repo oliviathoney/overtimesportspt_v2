@@ -21,9 +21,13 @@ scrolling down and returns while scrolling up. It stays visible near the top,
 while its mobile menu or consultation dialog is open, and during keyboard focus
 within the navigation. Small scroll movements are filtered to avoid flicker, and
 the slide animation respects reduced-motion preferences.
-All navbar "Free Consult" buttons open the shared consultation dialog directly
+All navbar "Get Started" buttons open the shared consultation dialog directly
 with the `navigation` analytics source. Mobile menu actions close the menu before
 opening the dialog rather than navigating to the FAQ appointment anchor.
+The homepage hero button and mobile bottom bar use "Start Your Comeback" and
+open the same dialog with their existing `hero` and `mobile_bar` analytics sources.
+Homepage difference photo captions are hidden below 1024px; the supporting
+assessment text stays visible at every screen size.
 
 Theme switching is temporarily disabled: all pages stay dark, including the
 standalone privacy policy, and the sun/moon buttons are not displayed. Saved preferences
@@ -79,8 +83,18 @@ is included in the physical therapy card rather than listed as a separate
 treatment. The closing banner uses the shared `AboutConsultation` component
 with the `services_cta` analytics source.
 
-Each treatment group keeps one original photo with a short caption. Service
-photos use responsive WebP sources and reserved dimensions. The Services page
+Each treatment group has a photo with a short caption. The updated AlterG image
+is in `src/assets/images/services/alterG.png`; the BFR photo is in `BFR.jpg` and
+appears inside the Blood Flow Restriction Training disclosure. Dynamo Strength
+Testing and Cupping also show their existing service photos when expanded; other
+treatment disclosures stay text-only. The AlterG and BFR source crops remove
+unused ceiling/floor space while retaining the athletes and treatment equipment.
+The AlterG display image uses a top-aligned square crop to match the force plate
+photo, keeping the athlete and body-weight support enclosure in view. Other group
+and treatment-detail photos keep their natural proportions rather than being
+clipped into short banners. At tablet widths, group photos sit beside the
+treatment text. Core service cards use taller 4:3 images.
+Service photos use responsive WebP sources and reserved dimensions. The Services page
 has local search copy, a production canonical URL, and page-specific search
 and social metadata in `src/constants/siteData.json` and `src/pages/services.astro`.
 Keep the visible service descriptions and metadata aligned with actual offerings.
@@ -95,6 +109,8 @@ which work without hydration and do not truncate long answers on small screens.
 Questions are grouped by the `category` field in `FAQData`: getting started,
 visits, and insurance/payments. Topic links and the desktop introduction share
 the same category definitions.
+The insurance and payment answers both list HSA and FSA payments. Keep these
+payment options distinct from insurance acceptance and reimbursement.
 
 ## Blog
 

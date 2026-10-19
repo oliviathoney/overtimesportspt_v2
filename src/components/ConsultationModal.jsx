@@ -211,9 +211,11 @@ export const ConsultationModal = ({ setIsOpen, source = "other" }) => {
           <button type="submit" className="consultation-form__submit" disabled={isSubmitting}>
             {isSubmitting ? "SENDING YOUR REQUEST..." : "REQUEST MY FREE CONSULTATION"}
           </button>
-          <p className="consultation-form__note" role="status">
-            {isSubmitting ? "Please wait while we confirm your request." : "This requests a consultation; it does not reserve an appointment."}
-          </p>
+          {isSubmitting && (
+            <p className="consultation-form__note" role="status">
+              Please wait while we confirm your request.
+            </p>
+          )}
         </form>
       </div>
     </dialog>

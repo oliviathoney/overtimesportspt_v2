@@ -5,6 +5,9 @@ import performance from "../assets/images/services/Performance.jpg";
 import forcePlates from "../assets/images/services/Force Plates.jpg";
 import dryNeedling from "../assets/images/services/Dry Needling.jpg";
 import alterG from "../assets/images/services/alterG.png";
+import bfr from "../assets/images/services/BFR.jpg";
+import dynamo from "../assets/images/services/Dynamo Strength Testing.jpg";
+import cupping from "../assets/images/services/Cupping.jpg";
 import "../styles/Services.css";
 
 const imageOptions = { width: 1000, widths: [320, 480, 800, 1000], format: "webp", quality: 85 };
@@ -44,7 +47,6 @@ const groups = [
     image: await getImage({ src: forcePlates, ...imageOptions }),
     alt: "An athlete jumping above VALD force plates while an Overtime physical therapist observes.",
     caption: "VALD force plate testing",
-    imagePosition: "center 75%",
     tools: [
       {
         title: "VALD Force Plates",
@@ -55,6 +57,8 @@ const groups = [
         title: "Dynamo Strength Testing",
         benefit: "Understand your strength beyond how it feels.",
         description: "Measure muscle strength, identify imbalances, and compare results over time to guide your personalized rehab or training plan.",
+        image: await getImage({ src: dynamo, ...imageOptions }),
+        alt: "An Overtime physical therapist using a VALD Dynamo device to measure an athlete's strength.",
       },
     ],
   },
@@ -65,7 +69,6 @@ const groups = [
     image: await getImage({ src: dryNeedling, ...imageOptions }),
     alt: "Dry needling with electrical stimulation applied around an athlete's knee.",
     caption: "Functional dry needling",
-    imagePosition: "center",
     tools: [
       {
         title: "Functional Dry Needling",
@@ -81,6 +84,8 @@ const groups = [
         title: "Cupping",
         benefit: "Support soft tissue mobility.",
         description: "Suction cups are applied to selected areas as part of hands-on treatment to help address muscle tension and movement restrictions.",
+        image: await getImage({ src: cupping, ...imageOptions }),
+        alt: "An Overtime physical therapist applying suction cups to an athlete's back.",
       },
       {
         title: "Instrument-Assisted Soft Tissue Mobilization",
@@ -93,10 +98,17 @@ const groups = [
     id: "movement-recovery",
     title: "Movement & Recovery Support",
     description: "Build capacity with the right level of support.",
-    image: await getImage({ src: alterG, ...imageOptions }),
-    alt: "An AlterG anti-gravity treadmill with its body-weight support enclosure.",
+    image: await getImage({
+      src: alterG,
+      ...imageOptions,
+      width: Math.min(alterG.width, imageOptions.width),
+      height: Math.min(alterG.width, imageOptions.width),
+      fit: "cover",
+      position: "top",
+      widths: imageOptions.widths.filter((width) => width <= alterG.width),
+    }),
+    alt: "An athlete running in an AlterG anti-gravity treadmill with a body-weight support enclosure.",
     caption: "AlterG anti-gravity treadmill",
-    imagePosition: "center",
     tools: [
       {
         title: "AlterG Anti-Gravity Treadmill",
@@ -107,6 +119,8 @@ const groups = [
         title: "Blood Flow Restriction Training",
         benefit: "Work on strength with lighter loads.",
         description: "Blood flow restriction (BFR) uses controlled cuff pressure during selected exercises to support strength training when heavier loads are not appropriate. Your clinician screens for suitability and supervises its use.",
+        image: await getImage({ src: bfr, ...imageOptions }),
+        alt: "An Overtime physical therapist checking a blood flow restriction cuff on an athlete's upper leg.",
       },
       {
         title: "Mobility",
@@ -182,34 +196,50 @@ export const ServiceList = () => (
                 <img
                   src={group.image.src}
                   srcSet={group.image.srcSet.attribute}
-                  sizes="(min-width: 1200px) 370px, (min-width: 1024px) calc((100vw - 88px) / 3), calc(100vw - 32px)"
+                  sizes="(min-width: 1200px) 370px, (min-width: 1024px) calc((100vw - 88px) / 3), (min-width: 640px) 45vw, calc(100vw - 32px)"
                   width={group.image.options.width}
                   height={group.image.options.height}
                   alt={group.alt}
-                  style={{ objectPosition: group.imagePosition }}
                   loading="lazy"
                   decoding="async"
                 />
                 <figcaption>{group.caption}</figcaption>
               </figure>
-              <header className="services-tool-group__header">
-                <h3 id={`${group.id}-heading`}>{group.title}</h3>
-                <p>{group.description}</p>
-              </header>
-              {group.tools.map((tool) => (
-                <details className="services-tool" key={tool.title}>
-                  <summary>
-                    <span>
-                      <strong>{tool.title}</strong>
-                      <span className="services-tool__benefit">{tool.benefit}</span>
-                    </span>
-                    <svg className="services-tool__toggle" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M5 12h14M12 5v14" />
-                    </svg>
-                  </summary>
-                  <div className="services-tool__detail"><p>{tool.description}</p></div>
-                </details>
-              ))}
+              <div className="services-tool-group__content">
+                <header className="services-tool-group__header">
+                  <h3 id={`${group.id}-heading`}>{group.title}</h3>
+                  <p>{group.description}</p>
+                </header>
+                {group.tools.map((tool) => (
+                  <details className="services-tool" key={tool.title}>
+                    <summary>
+                      <span>
+                        <strong>{tool.title}</strong>
+                        <span className="services-tool__benefit">{tool.benefit}</span>
+                      </span>
+                      <svg className="services-tool__toggle" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M5 12h14M12 5v14" />
+                      </svg>
+                    </summary>
+                    <div className="services-tool__detail">
+                      {tool.image && (
+                        <img
+                          className="services-tool__image"
+                          src={tool.image.src}
+                          srcSet={tool.image.srcSet.attribute}
+                          sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, calc(100vw - 72px)"
+                          width={tool.image.options.width}
+                          height={tool.image.options.height}
+                          alt={tool.alt}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      )}
+                      <p>{tool.description}</p>
+                    </div>
+                  </details>
+                ))}
+              </div>
             </section>
           ))}
         </div>

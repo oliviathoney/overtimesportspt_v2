@@ -54,7 +54,8 @@ const FAQData = [
       At OVERTIME Sports PT + Performance we do not accept insurance. If you would like to submit for
       out-of-network benefits, we will provide you with a superbill with the documentation needed for
       reimbursement, based on your insurance provider. Please note that reimbursement rates vary, and
-      reimbursement is not guaranteed.
+      reimbursement is not guaranteed. We do accept Health Savings Account (HSA) and Flexible
+      Spending Account (FSA) payments.
       `
   },
   {
@@ -63,7 +64,7 @@ const FAQData = [
     answer:
       `
       We accept cash, check, debit card and credit card. We also accept Health Savings Account (HSA)
-      payments. We are happy to discuss payment plan options as
+      and Flexible Spending Account (FSA) payments. We are happy to discuss payment plan options as
       well. It is our policy that payment is made at the time of service.
       `
   },

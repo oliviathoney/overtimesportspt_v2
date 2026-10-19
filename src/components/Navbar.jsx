@@ -157,7 +157,7 @@ export const Navbar = ({ hero = false }) => {
               aria-haspopup="dialog"
               onClick={openConsultation}
             >
-              Free Consult
+              Get Started
             </button>
           </div>
         </motion.div>
@@ -168,7 +168,7 @@ export const Navbar = ({ hero = false }) => {
             aria-haspopup="dialog"
             onClick={openConsultation}
           >
-            Free Consult
+            Get Started
           </button>
         )}
         <button
@@ -216,7 +216,7 @@ export const Navbar = ({ hero = false }) => {
                 aria-haspopup="dialog"
                 onClick={openConsultation}
               >
-                Free Consult
+                Get Started
               </button>
             </div>
           </motion.div>
