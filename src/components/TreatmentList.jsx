@@ -5,22 +5,22 @@ const categories = [
   {
     title: "Sports Injury Rehab",
     icon: "M8 3h8v5h5v8h-5v5H8v-5H3V8h5V3Z",
-    conditions: ["Muscle strain rehab & ligament sprains", "Joint injuries & dislocations", "Ligament tears & cartilage damage"],
+    conditions: ["Muscle Strains and Ligament Sprains", "Joint Pain and Dislocations", "Cartilage Pathology"],
   },
   {
-    title: "Post-Surgical Rehab",
+    title: "Post Surgical Rehab",
     icon: "M12 3 3 7v5c0 5 9 9 9 9s9-4 9-9V7l-9-4ZM12 8v8M8 12h8",
-    conditions: ["ACL reconstruction & meniscus repair", "Shoulder, hip & knee surgery rehab", "Ankle & spinal surgery rehab"],
+    conditions: ["ACL Reconstruction", "Meniscus Repairs", "Spine, Shoulder, Hip, Ankle and Knee Rehab"],
   },
   {
-    title: "Running & Overuse Injuries",
+    title: "Running and Overuse Injuries",
     icon: "M16 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM4 11l5-3 5 3 5 1M9 8l-2 7 5 2-2 5M7 15l-4 6M14 11l-2 5",
-    conditions: ["Runner's knee & shin splints", "Stress fractures", "Tendonitis & tendinopathy"],
+    conditions: ["Runner\u2019s Knee", "Shin Splints", "Bone Stress Reactions and Fractures", "Tendon Pain"],
   },
   {
-    title: "Pain & Movement Rehab",
+    title: "Pain and Movement Rehab",
     icon: "M12 3v18M8 5h8M7 9h10M7 13h10M8 17h8M9 21h6",
-    conditions: ["Neck & back pain", "Shoulder, elbow & wrist/hand pain", "Hip/groin, knee & ankle/foot pain", "Flexibility & mobility restrictions"],
+    conditions: ["Neck and Back Pain", "Joint Pain", "Flexibility and Mobility Restrictions"],
   },
   {
     title: "Athletic Performance",
