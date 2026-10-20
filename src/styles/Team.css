@@ -13,6 +13,7 @@
 }
 
 .team-section__header h1 {
+  scroll-margin-top: 128px;
   margin: 8px 0 12px;
   font-size: clamp(2.25rem, 5vw, 3rem);
   font-weight: 800;

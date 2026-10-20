@@ -33,7 +33,7 @@ export const Hero = () => {
                   setIsModalOpen(true);
                 }}
               >
-                Start Your Comeback
+                Book Free Consultation
               </button>
               <a className="home-hero__call" href="tel:+17207719677">
                 Call (720) 771-9677

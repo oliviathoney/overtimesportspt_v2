@@ -24,8 +24,9 @@ the slide animation respects reduced-motion preferences.
 All navbar "Get Started" buttons open the shared consultation dialog directly
 with the `navigation` analytics source. Mobile menu actions close the menu before
 opening the dialog rather than navigating to the FAQ appointment anchor.
-The homepage hero button and mobile bottom bar use "Start Your Comeback" and
-open the same dialog with their existing `hero` and `mobile_bar` analytics sources.
+The homepage hero button uses "Book Free Consultation"; the mobile bottom bar
+keeps "Start Your Comeback". Both open the same dialog with their existing
+`hero` and `mobile_bar` analytics sources.
 Homepage difference photo captions are hidden below 1024px; the supporting
 assessment text stays visible at every screen size.
 
@@ -146,6 +147,9 @@ links aligned with the About page when locations change. Phone/email links are
 actionable, navigation and privacy links remain visible on mobile, and the
 copyright year comes from the render date (build date for prerendered articles).
 The footer uses `src/styles/Footer.css` and needs no client hydration.
+Its "Schedule Appointment" link goes directly to the practice's Jane booking site
+at `https://overtimesportspt.janeapp.com/`, with green accent text and an external-link
+arrow to distinguish it from internal navigation.
 
 ## Consultation requests
 
@@ -157,6 +161,10 @@ practice's notification email. The API validates these fields and escapes email
 HTML; the legacy promotional form retains its existing optional-phone behavior.
 Only confirmed successful delivery redirects to `/thank-you/`. Failures leave
 the entered details in place and display an error.
+The thank-you page confirms "Request Received", explains the usual two-hour
+response window, and links to `/about#team-heading` through "Meet Your Sports PTs".
+The team heading has scroll clearance for the fixed navbar. "Back to Home" stays
+a secondary text link.
 The dialog uses a compact two-column layout from 768px, with paired contact fields
 from 600px. All three next steps remain visible on mobile; short screens can scroll
 within the dialog without losing the close control.

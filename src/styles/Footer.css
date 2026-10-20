@@ -75,6 +75,12 @@
   padding-block: 8px;
 }
 
+.site-footer .site-footer__external {
+  gap: 8px;
+  color: rgb(var(--accent));
+  font-weight: 600;
+}
+
 .site-footer .site-footer__social {
   display: inline-flex;
   align-items: center;

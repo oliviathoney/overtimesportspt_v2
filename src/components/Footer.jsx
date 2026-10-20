@@ -10,6 +10,7 @@ const links = [
   { label: "Our Services", href: "/services" },
   { label: "FAQ", href: "/resources" },
   { label: "Blog", href: "/blog" },
+  { label: "Schedule Appointment", href: "https://overtimesportspt.janeapp.com/", external: true },
 ];
 
 const locations = [
@@ -69,7 +70,14 @@ export const Footer = () => (
           <ul>
             {links.map((link) => (
               <li key={link.label}>
-                <a href={link.href}>{link.label}</a>
+                <a
+                  href={link.href}
+                  className={link.external ? "site-footer__external" : undefined}
+                  aria-label={link.external ? `${link.label} (external booking site)` : undefined}
+                >
+                  {link.label}
+                  {link.external && <span aria-hidden="true">{"\u2197"}</span>}
+                </a>
               </li>
             ))}
           </ul>
