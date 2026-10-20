@@ -1,0 +1,186 @@
+.about-difference-layout {
+  width: min(1150px, calc(100% - 48px));
+}
+
+.about-difference__header {
+  margin-bottom: 24px;
+}
+
+.about-difference__header h2,
+.about-journey__header h2 {
+  margin-top: 8px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.about-difference__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.about-difference__card {
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid rgb(var(--border) / var(--border-opacity));
+  border-radius: 16px;
+  background: rgb(var(--surface-1));
+  transition: border-color 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
+}
+
+.about-difference__card svg {
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 18px;
+  fill: none;
+  stroke: rgb(var(--accent));
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.about-difference__card h3 {
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.about-difference__card p {
+  max-width: 48ch;
+  color: rgb(var(--text-muted));
+  line-height: 1.7;
+}
+
+.about-journey {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid rgb(var(--border) / var(--border-opacity));
+}
+
+.about-journey__steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 28px;
+}
+
+.about-journey__intro {
+  max-width: 70ch;
+  margin-top: 16px;
+  color: rgb(var(--text-muted));
+  line-height: 1.7;
+}
+
+.about-journey__step {
+  position: relative;
+  min-width: 0;
+}
+
+.about-journey__step:not(:last-child)::after {
+  position: absolute;
+  top: 30px;
+  right: -32px;
+  left: 80px;
+  height: 1px;
+  background: rgb(var(--accent) / 0.3);
+  content: "";
+}
+
+.about-journey__number {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 80px;
+  margin-bottom: 20px;
+  background: rgb(var(--surface-night));
+  color: rgb(var(--accent) / 0.65);
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+}
+
+.about-journey__copy h3 {
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.about-journey__copy p {
+  color: rgb(var(--text-muted));
+  line-height: 1.7;
+}
+
+.about-journey__copy .about-journey__subtitle {
+  margin-bottom: 12px;
+  color: rgb(var(--accent));
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .about-journey {
+    margin-top: 40px;
+    padding-top: 28px;
+  }
+
+  .about-journey__steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .about-journey__step {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+  }
+
+  .about-journey__number {
+    width: 56px;
+    margin: 0;
+    font-size: 2.5rem;
+  }
+
+  .about-journey__step:not(:last-child)::after {
+    top: 58px;
+    right: auto;
+    bottom: -20px;
+    left: 25px;
+    width: 1px;
+    height: auto;
+  }
+}
+
+@media (hover: hover) {
+  .about-difference__card:hover {
+    border-color: rgb(var(--accent) / 0.65);
+    background: rgb(var(--surface-2));
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.15);
+  }
+}
+
+@media (max-width: 639px) {
+  .about-difference-layout {
+    width: calc(100% - 32px);
+  }
+
+  .about-difference__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .about-difference__card {
+    padding: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-difference__card {
+    transition: none;
+  }
+}

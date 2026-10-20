@@ -1,7 +1,4 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
-
-import { ConsultationModal } from "./ConsultationModal";
+import { motion, useReducedMotion } from "framer-motion";
 
 import { NFLLogo } from "../assets/logos/NFLLogo";
 import { NBALogo } from "../assets/logos/NBALogo";
@@ -9,66 +6,76 @@ import { MLBLogo } from "../assets/logos/MLBLogo";
 import { USATFLogo } from "../assets/logos/USATFLogo";
 import { FIFALogo } from "../assets/logos/FIFALogo";
 import { CrossFitLogo } from "../assets/logos/CrossFitLogo";
+import "../styles/Audience.css";
+
+const audiences = [
+  {
+    title: "Competitive athletes",
+    description: "We take pride in treating high school, collegiate, and professional athletes.",
+  },
+  {
+    title: "Active adults",
+    description: "Personalized rehab and performance training for active adults and weekend warriors.",
+  },
+  {
+    title: "Tactical athletes",
+    description: "We also support tactical athletes and military personnel returning to work duties.",
+  },
+];
+
+const leagues = [
+  { name: "NFL", Logo: NFLLogo },
+  { name: "NBA", Logo: NBALogo },
+  { name: "MLB", Logo: MLBLogo },
+  { name: "CrossFit", Logo: CrossFitLogo },
+  { name: "USATF", Logo: USATFLogo },
+  { name: "FIFA", Logo: FIFALogo },
+];
 
 export const Brands = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section className=" bg-bgDark1 w-full pt-24 ">
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        <div className="container px-4 mx-auto 2xl:w-[1200px] xl:w-[1100px] lg:w-[1000px] md:w-4/5">
-          <div className="flex lg:flex-row flex-col items-center -mx-4 justify-center lg:text-left text-center">
-            <div className="w-full lg:w-1/2 px-4 mb-12 lg:mb-12">
-              <div className="flex flex-col">
-                <h2 className="mb-2  text-5xl sm:text-6xl 2xl:text-7xl font-bold tracking-normal text-primaryText font-NotoSerif">
-                  Serving
-                </h2>
-                <h2 className=" text-5xl  sm:text-6xl 2xl:text-7xl font-bold tracking-normal text-secondaryColor font-NotoSerif">
-                  Denver Metro
-                </h2>
-                <p className="text-secondaryText mt-3">
-                  Whether you are an active adult, body builder, or weekend warrior, we will develop a personalized plan to you help you reach your goals.
-                  <br></br>
-                  <br></br>
-                  We take pride in treating a variety of high school, collegiate and professional athletes. In addition we also support tactical athletes and miliatry personnel returning to work duties.
-                  <br></br>
-                  <br></br>
-                  <a className="text-secondaryText block-subtitle" id="address" href="/services">See what services we offer</a>
-                </p>
+    <section className="audience-section" aria-labelledby="audience-heading">
+      <div className="audience-section__inner">
+        <header className="audience-section__header">
+          <p className="block-subtitle">Who we work with</p>
+          <h2 id="audience-heading">Built for athletes. Here for you.</h2>
+          <p className="audience-section__intro">
+            Whether you are a high school athlete, active adult, or weekend warrior,
+            we will develop a personalized plan to help you reach your goals.
+          </p>
+          <p className="audience-section__area">Serving Centennial, Highlands Ranch, and the greater Denver metro area.</p>
+        </header>
+        <ul className="audience-section__groups" role="list">
+          {audiences.map((audience, index) => (
+            <motion.li
+              key={audience.title}
+              initial={reduceMotion ? false : { y: 12 }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: reduceMotion ? 0 : 0.35, delay: reduceMotion ? 0 : index * 0.06 }}
+            >
+              <h3>{audience.title}</h3>
+              <p>{audience.description}</p>
+            </motion.li>
+          ))}
+        </ul>
+        <a className="audience-section__services" href="/services">
+          Explore our services <span aria-hidden="true">{"\u2192"}</span>
+        </a>
+        <div className="audience-section__experience">
+          <p>Our clinicians have worked with athletes competing in:</p>
+          <div className="brand-logos audience-section__logos" role="list" aria-label="Athlete competition experience">
+            {leagues.map(({ name, Logo }) => (
+              <div key={name} role="listitem">
+                <span className="sr-only">{name}</span>
+                <span aria-hidden="true"><Logo /></span>
               </div>
-            </div>
-            <div className="w-2/3 sm:w-[620px] lg:w-1/2 mx-auto lg:mx-0 lg:pl-10">
-              <div className="flex flex-wrap -m-4">
-                <div className="w-1/2 sm:w-1/3 py-6 flex justify-center">
-                  <NFLLogo />
-                </div>
-                <div className="w-1/2 sm:w-1/3 py-6 flex  justify-center">
-                  <NBALogo />
-                </div>
-                <div className="w-1/2 sm:w-1/3 py-6 flex  justify-center">
-                  <MLBLogo />
-                </div>
-                <div className="w-1/2 sm:w-1/3  py-6 flex  justify-center">
-                  <CrossFitLogo />
-                </div>
-                <div className="w-1/2 sm:w-1/3 py-6 flex justify-center">
-                  <USATFLogo />
-                </div>
-                <div className="w-1/2 sm:w-1/3 py-6 flex justify-center">
-                  <FIFALogo />
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-      </motion.div>
-      {isModalOpen && (
-        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-      )}
+      </div>
     </section>
-  )
+  );
 };

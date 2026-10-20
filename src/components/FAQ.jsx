@@ -1,10 +1,8 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-
-import { ConsultationModal } from "./ConsultationModal";
+import "../styles/FAQ.css";
 
 const FAQData = [
   {
+    category: "getting-started",
     question: "Do I need physical therapy?",
     answer:
       `
@@ -19,6 +17,7 @@ const FAQData = [
       `
   },
   {
+    category: "your-visits",
     question: "What should I expect in my first session?",
     answer:
       `
@@ -30,6 +29,7 @@ const FAQData = [
       `
   },
   {
+    category: "your-visits",
     question: "What are our sessions like?",
     answer:
       `
@@ -41,30 +41,35 @@ const FAQData = [
       `
   },
   {
+    category: "your-visits",
     question: "What should I wear?",
     answer:
       "Please wear comfortable and/or athletic clothing.",
   },
   {
+    category: "insurance-payments",
     question: "Do you take insurance?",
     answer:
       `
       At OVERTIME Sports PT + Performance we do not accept insurance. If you would like to submit for
       out-of-network benefits, we will provide you with a superbill with the documentation needed for
       reimbursement, based on your insurance provider. Please note that reimbursement rates vary, and
-      reimbursement is not guaranteed.
+      reimbursement is not guaranteed. We do accept Health Savings Account (HSA) and Flexible
+      Spending Account (FSA) payments.
       `
   },
   {
+    category: "insurance-payments",
     question: "What type of payments do you accept?",
     answer:
       `
       We accept cash, check, debit card and credit card. We also accept Health Savings Account (HSA)
-      payments. We are happy to discuss payment plan options as
+      and Flexible Spending Account (FSA) payments. We are happy to discuss payment plan options as
       well. It is our policy that payment is made at the time of service.
       `
   },
   {
+    category: "getting-started",
     question: "Do you only work with athletes?",
     answer:
       `
@@ -73,89 +78,67 @@ const FAQData = [
       `
   },
   {
+    category: "getting-started",
     question: "How do I schedule an appointment?",
     answer:
       `
       Please feel free to call or text (720) 771-9677, email us at info@overtimesportspt.com, or use
-      the form below.
+      the Book a Free Consultation button below to request a phone consultation.
       `
   },
 ];
 
+const categories = [
+  { id: "getting-started", title: "Getting Started" },
+  { id: "your-visits", title: "Your Visits" },
+  { id: "insurance-payments", title: "Insurance & Payments" },
+];
+
 export const FAQ = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <section className="w-full bg-bgDark2 mb-12 lg:mb-24 pt-12">
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        <div className="relative z-10 container px-2 sm:px-8 lg:px-4 mx-auto w-11/12 sm:w-full">
-          <div className="md:max-w-4xl mx-auto">
-            <p className="mb-2 mt-32 block-subtitle text-center">Have any questions?</p>
-            <h2 className="mb-16 block-big-title text-center font-NotoSerif">
-              Frequently Asked Questions
-            </h2>
-            <div className="mb-11 flex flex-wrap -m-1">
-              {FAQData.map((item, index) => (
-                <div className="w-full p-1" key={`${item.question}-${index}`}>
-                  <FAQBox
-                    title={item.question}
-                    content={item.answer}
-                    key={`${item.question}-${item.answer}`}
-                    defaultOpen={index === 0}
-                  />
-                </div>
+    <section className="faq-page" aria-labelledby="faq-heading">
+      <div className="faq-page__inner">
+        <header className="faq-page__intro">
+          <p className="block-subtitle">Good to know</p>
+          <h1 id="faq-heading">Frequently Asked Questions</h1>
+          <p className="faq-page__description">
+            From your first visit to payment options, here's what to know before
+            getting started.
+          </p>
+          <nav className="faq-page__topics" aria-label="FAQ topics">
+            {categories.map((category) => (
+              <a href={`#faq-${category.id}`} key={category.id}>
+                {category.title}<span aria-hidden="true">{"\u2197"}</span>
+              </a>
+            ))}
+          </nav>
+        </header>
+        <div className="faq-page__questions">
+          {categories.map((category) => (
+            <section
+              className="faq-group"
+              id={`faq-${category.id}`}
+              aria-labelledby={`faq-${category.id}-heading`}
+              key={category.id}
+            >
+              <h2 id={`faq-${category.id}-heading`}>{category.title}</h2>
+              {FAQData.filter((item) => item.category === category.id).map((item) => (
+                <details className="faq-question" key={item.question} open={item === FAQData[0]}>
+                  <summary>
+                    <h3>{item.question}</h3>
+                    <span className="faq-question__toggle" aria-hidden="true">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5v14" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p className="faq-question__answer">{item.answer}</p>
+                </details>
               ))}
-            </div>
-          </div>
+            </section>
+          ))}
         </div>
-      </motion.div>
-      {isModalOpen && (
-        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-      )}
+      </div>
     </section>
   )
-};
-
-const FAQBox = ({ defaultOpen, title, content }) => {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
-
-  return (
-    <div
-      className="pt-2 sm:pt-6 pb-2 px-3 sm:px-8  rounded-3xl bg-bgDark3 main-border-gray-darker mb-4 relative hover:bg-bgDark3Hover cursor-pointer transition"
-      onClick={() => setIsOpen(!isOpen)}
-    >
-      <div className="flex flex-col p-2  justify-center items-start">
-        <h3 className=" content-title pt-3 sm:pt-0 pr-8 sm:pr-0">{title}</h3>
-        <p
-          className={`text-secondaryText pt-4 transition-height duration-300 overflow-hidden ${isOpen ? "max-h-96" : "max-h-0"
-            }`}
-        >
-          {content}
-        </p>
-      </div>
-      <div className="absolute top-6 right-4 sm:top-8 sm:right-8">
-        <svg
-          width="28px"
-          height="30px"
-          viewBox="0 0 20 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className={`transition-all duration-500  ${isOpen ? "rotate-[180deg]" : "rotate-[270deg]"
-            }`}
-        >
-          <path
-            d="M4.16732 12.5L10.0007 6.66667L15.834 12.5"
-            stroke="#4F46E5"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-        </svg>
-      </div>
-    </div>
-  );
 };

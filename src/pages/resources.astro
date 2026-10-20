@@ -2,24 +2,30 @@
 import Layout from "../layouts/Layout.astro";
 import { Navbar } from "../components/Navbar.jsx";
 import { FAQ } from "../components/FAQ.jsx";
-import { AppointmentForm } from "../components/AppointmentForm";
+import { AboutConsultation } from "../components/AboutConsultation.jsx";
 import { Footer } from "../components/Footer.jsx";
-import { ScrollUpButton } from "../components/ScrollUpButton.jsx";
 import "../styles/Theme.css";
 import "../styles/Diagonals.css";
 import SiteData from "../constants/siteData.json";
 ---
 
 <Layout
-  title="OVERTIME Sports - Resources"
+  title="OVERTIME Sports - FAQ"
   seo={{
     title: SiteData.pages.resources.title,
     description: SiteData.pages.resources.description,
   }}
 >
   <Navbar client:load />
-  <FAQ client:load />
-  <AppointmentForm client:load />
+  <FAQ />
+  <div id="request" class="scroll-mt-28">
+    <AboutConsultation
+      heading="Still Have Questions?"
+      description="Tell us about your goals. Our Sports PT team will help you understand your next step."
+      source="faq_cta"
+      headingId="faq-consultation-heading"
+      client:load
+    />
+  </div>
   <Footer />
-  <ScrollUpButton client:load />
 </Layout>

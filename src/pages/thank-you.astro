@@ -1,0 +1,136 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Navbar } from "../components/Navbar.jsx";
+import { Footer } from "../components/Footer.jsx";
+import "../styles/Theme.css";
+import "../styles/custom.css";
+---
+
+<Layout
+  title="Request Received | OVERTIME Sports PT"
+  seo={{
+    title: "Request Received | OVERTIME Sports PT",
+    description: "What happens next after requesting a consultation with Overtime Sports PT.",
+    noindex: true,
+    nofollow: true,
+  }}
+>
+  <Navbar client:load />
+  <section class="consultation-thanks" aria-labelledby="thanks-heading">
+    <div class="consultation-thanks__inner">
+      <h1 id="thanks-heading">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="m5 12 4 4L19 6" />
+        </svg>
+        <span>Request Received</span>
+      </h1>
+      <p>Our team will contact you soon (usually within 2 hours) to arrange your free, 15-minute phone consultation with a Sports PT.</p>
+      <p>Expect a text or call from <a class="consultation-thanks__phone" href="tel:+17207719677">(720) 771-9677</a></p>
+      <p>During your consultation, we'll discuss your injury, your goals, and how we can help. We'll also answer your questions and walk you through scheduling an initial evaluation.</p>
+      <div class="consultation-thanks__actions">
+        <a class="consultation-thanks__team" href="/about#team-heading">Meet Your Sports PTs</a>
+        <a class="consultation-thanks__home" href="/">Back to Home</a>
+      </div>
+    </div>
+  </section>
+  <Footer />
+</Layout>
+
+<style>
+  .consultation-thanks {
+    min-height: 75svh;
+    padding: 180px 24px 80px;
+    background: rgb(var(--surface-night));
+  }
+
+  .consultation-thanks__inner {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  h1 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+  }
+
+  h1 svg {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    color: rgb(var(--accent));
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .consultation-thanks__inner > p {
+    margin-bottom: 20px;
+    color: rgb(var(--text-muted));
+    line-height: 1.7;
+  }
+
+  .consultation-thanks__phone {
+    color: rgb(var(--accent));
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .consultation-thanks__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 24px;
+    margin-top: 28px;
+  }
+
+  .consultation-thanks__team,
+  .consultation-thanks__home {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .consultation-thanks__team {
+    min-height: 48px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: rgb(var(--accent));
+    color: rgb(var(--surface-night));
+    font-weight: 700;
+  }
+
+  .consultation-thanks__team:hover {
+    filter: brightness(1.08);
+  }
+
+  .consultation-thanks__home {
+    min-height: 44px;
+    color: rgb(var(--text-muted));
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .consultation-thanks__home:hover,
+  .consultation-thanks__phone:hover {
+    color: rgb(var(--text));
+  }
+
+  .consultation-thanks a:focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 767px) {
+    .consultation-thanks {
+      padding-block: 144px 56px;
+    }
+  }
+</style>

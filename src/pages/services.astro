@@ -2,12 +2,15 @@
 import Layout from "../layouts/Layout.astro";
 import { Navbar } from "../components/Navbar.jsx";
 import { ServiceList } from "../components/ServiceList.jsx";
+import { AboutConsultation } from "../components/AboutConsultation.jsx";
 import { Footer } from "../components/Footer.jsx";
-import { ScrollUpButton } from "../components/ScrollUpButton.jsx";
 import "../styles/Theme.css";
 import "../styles/Diagonals.css";
 import "../styles/custom.css";
 import SiteData from "../constants/siteData.json";
+
+const canonical = new URL("/services/", Astro.site);
+const previewImage = new URL(SiteData.default.openGraph.image, Astro.url.origin).href;
 ---
 
 <Layout
@@ -15,10 +18,36 @@ import SiteData from "../constants/siteData.json";
   seo={{
     title: SiteData.pages.services.title,
     description: SiteData.pages.services.description,
+    canonical,
+    openGraph: {
+      basic: {
+        title: SiteData.pages.services.title,
+        type: "website",
+        image: previewImage,
+        url: canonical,
+      },
+      optional: {
+        description: SiteData.pages.services.description,
+        siteName: SiteData.default.name,
+      },
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: SiteData.pages.services.title,
+      description: SiteData.pages.services.description,
+      image: previewImage,
+      creator: SiteData.default.twitter.creator,
+    },
   }}
 >
   <Navbar client:load />
-  <ServiceList client:load />
+  <ServiceList />
+  <AboutConsultation
+    heading="Not Sure Where to Start?"
+    description="Tell us about your goals. Our Sports PT team will help you understand your next step."
+    source="services_cta"
+    headingId="services-consultation-heading"
+    client:load
+  />
   <Footer />
-  <ScrollUpButton client:load />
 </Layout>

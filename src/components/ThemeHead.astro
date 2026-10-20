@@ -1,0 +1,56 @@
+---
+import "../styles/Palette.css";
+---
+
+<script is:inline>
+  (() => {
+    const themeSwitchingEnabled = false;
+    const key = "overtime-theme";
+    const root = document.documentElement;
+
+    const readTheme = () => {
+      try {
+        const saved = window.localStorage.getItem(key);
+        if (saved === "dark" || saved === "light") return saved;
+        if (saved !== null) {
+          console.warn("Ignoring an unsupported saved color theme:", saved);
+        }
+      } catch (error) {
+        console.warn("Unable to read the saved color theme.", error);
+      }
+      return "dark";
+    };
+
+    const applyTheme = (theme) => {
+      root.dataset.theme = theme;
+      root.classList.toggle("dark", theme === "dark");
+    };
+
+    applyTheme(themeSwitchingEnabled ? readTheme() : "dark");
+
+    if (!themeSwitchingEnabled) {
+      window.addEventListener("pageshow", () => applyTheme("dark"));
+      return;
+    }
+
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Element)) return;
+      if (!event.target.closest("[data-theme-toggle]")) return;
+
+      const theme = root.dataset.theme === "light" ? "dark" : "light";
+      applyTheme(theme);
+      try {
+        window.localStorage.setItem(key, theme);
+      } catch (error) {
+        console.warn("Unable to save the color theme for future visits.", error);
+      }
+    });
+
+    window.addEventListener("storage", (event) => {
+      if (event.key === key || event.key === null) {
+        applyTheme(readTheme());
+      }
+    });
+    window.addEventListener("pageshow", () => applyTheme(readTheme()));
+  })();
+</script>

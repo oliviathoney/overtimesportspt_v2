@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 import { getImage } from "astro:assets";
 
-import { ConsultationModal } from "./ConsultationModal";
+import "../styles/Team.css";
 import edward from "../assets/images/edward.JPG";
 import john_b from "../assets/images/john_b.jpeg"
 import emily from "../assets/images/emily.jpg"
@@ -10,8 +10,9 @@ import kendall from "../assets/images/kendall.jpg"
 
 const profiles = [
   {
-    id: 0,
+    id: 'edward-benitez',
     image: await getImage({ src: edward }),
+    imagePosition: 'center top',
     name: 'Edward Benitez',
     position: 'Founder, Physical Therapist',
     bio: `Dr. Edward Benitez is originally from Dallas, Texas. Edward played various sports throughout his life at a competitive level. He became interested in physical therapy after experiencing the positive results he received throughout his personal injury rehabilitation.
@@ -23,7 +24,7 @@ Edward received a Bachelor of Science degree in Exercise Science with a Minor in
 `
   },
   {
-    id: 1,
+    id: 'john-bunnell',
     image: await getImage({ src: john_b }),
     name: 'John Bunnell',
     position: 'Physical Therapist',
@@ -33,7 +34,7 @@ John specializes in ACL rehabilitation, with a focus on restoring confidence and
 In addition to his clinical work, John has a strong background in strength and conditioning. He has developed sport-specific and in-season training programs, including for a nationally ranked high school lacrosse team. As a former track and field and soccer athlete, he understands the demands of sport firsthand and continues to train with a focus on strength, speed, and power development.`
   },
   {
-    id: 2,
+    id: 'emily-tully',
     image: await getImage({ src: emily }),
     name: 'Emily Tully',
     position: 'Physical Therapist',
@@ -46,7 +47,7 @@ She enjoys helping athletes build confidence throughout the rehabilitation proce
 Emily has a special interest in working with youth and adolescent athletes and is dedicated to creating an encouraging environment where patients feel empowered to achieve their goals.`
   },
   {
-    id: 3,
+    id: 'kendall-crepeau',
     image: await getImage({ src: kendall }),
     name: 'Kendall Crepeau',
     position: 'Clinic Manager',
@@ -56,87 +57,93 @@ Emily has a special interest in working with youth and adolescent athletes and i
 
 export const MeetTheTeam = () => {
   const [expandedId, setExpandedId] = useState(null);
-
-  const handleCardClick = (id) => {
-    setExpandedId(expandedId === id ? null : id);
-  };
+  const reduceMotion = useReducedMotion();
+  const selectedProfile = profiles.find((profile) => profile.id === expandedId);
 
   return (
-    <section className="w-full bg-bgDark2 mb-12 lg:mb-24 pt-32">
-      <p className="block-subtitle mx-auto text-center pt-16">About Our Practice</p>
-      <h2 className="mt-2 text-5xl lg:text-6xl block-big-title font-NotoSerif text-center">
-        Meet The Team
-      </h2>
-
-      {/* DESKTOP VERSION */}
-      <div className="hidden lg:flex items-center 2xl:w-[1450px] xl:w-[1300px] w-11/12 mx-auto md:pl-4 xl:pr-16 xl:pl-16">
-        <div className="flex overflow-x-auto gap-12 p-6 mx-auto items-center">
-          {profiles.map((profile) => (
-            <div
+    <section className="team-section" aria-labelledby="team-heading">
+      <div className="team-section__inner">
+        <header className="team-section__header">
+          <p className="block-subtitle">About our practice</p>
+          <h1 id="team-heading">Meet the Team</h1>
+          <p className="team-section__intro">
+            Get to know the people behind your rehab, recovery, and performance.
+          </p>
+        </header>
+        <div className="team-grid" style={{ "--team-count": profiles.length }}>
+          {profiles.map((profile, index) => (
+            <motion.article
               key={profile.id}
-              className="flex-shrink-0 w-64 cursor-pointer rounded-2xl transition-all duration-300"
+              className={`team-card${expandedId === profile.id ? " team-card--selected" : ""}`}
+              initial={reduceMotion ? false : { y: 14 }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: reduceMotion ? 0 : 0.4, delay: reduceMotion ? 0 : (index % 4) * 0.06 }}
             >
-              <div className="flex flex-col items-center text-center p-4">
-                <img
-                  src={profile.image.src}
-                  alt={profile.name}
-                  className={`w-52 h-52 rounded-full mb-3 ${expandedId === profile.id && 'border-8 border-primaryColor'
-                    }`}
-                />
-                <h2 className="text-xl font-semibold text-gray-100">{profile.name}</h2>
-                <p className="text-gray-400">{profile.position}</p>
-                <button
-                  className={` w-1/2 mt-2 h-8 ${expandedId === profile.id ? 'contained-button-reverse-clicked' : 'contained-button-reverse'}`}
-                  aria-label="Learn More"
-                  onClick={() => handleCardClick(profile.id)}
-                >
-                  <a href="#" className="text-xs">Learn More</a>
-                </button>
-              </div>
-            </div>
+              <button
+                type="button"
+                className="team-card__button"
+                id={`team-trigger-${profile.id}`}
+                aria-expanded={expandedId === profile.id}
+                aria-controls={expandedId === profile.id ? `team-bio-${profile.id}` : undefined}
+                aria-label={`${expandedId === profile.id ? "Close" : "Read"} ${profile.name}'s bio`}
+                onClick={() => setExpandedId((current) => current === profile.id ? null : profile.id)}
+              >
+                <span className="team-card__portrait">
+                  <img
+                    src={profile.image.src}
+                    width={profile.image.width}
+                    height={profile.image.height}
+                    alt={profile.name}
+                    style={{ objectPosition: profile.imagePosition }}
+                    loading={index < 4 ? "eager" : "lazy"}
+                    decoding="async"
+                  />
+                </span>
+                <span className="team-card__info">
+                  <span className="team-card__name">{profile.name}</span>
+                  <span className="team-card__role">{profile.position}</span>
+                  <span className="team-card__action">
+                    {expandedId === profile.id ? "Close bio" : "Read bio"}
+                    <span className="team-card__symbol" aria-hidden="true">
+                      {expandedId === profile.id ? "\u2212" : "+"}
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </motion.article>
           ))}
         </div>
-
-      </div>
-      <div className="hidden lg:flex flex-wrap items-center 2xl:w-[1450px] xl:w-[1300px] w-11/12 mx-auto md:pl-4 xl:pr-16 xl:pl-16">
-        {expandedId != null &&
-          <p className="w-2/3 mx-auto text-secondaryText leading-loose text-center bg-gradient-to-br from-[#7274F320] from-25% to-[#7274F305] to-90% rounded-lg p-5">
-            {profiles[expandedId].bio}
-          </p>
-        }
-      </div>
-      {/* MOBILE VERSION */}
-      <div className="lg:hidden items-center mx-auto">
-        {profiles.map((profile) => (
-          <div
-            key={profile.id}
-            className="flex-shrink-0 cursor-pointer rounded-2xl transition-all duration-300 mx-auto"
-          >
-            <div className="flex flex-col items-center text-center py-4">
-              <img
-                src={profile.image.src}
-                alt={profile.name}
-                className={`w-52 h-52 rounded-full mb-3 ${expandedId === profile.id && 'border-8 border-primaryColor'
-                  }`}
-              />
-              <h2 className="text-xl font-semibold text-gray-100">{profile.name}</h2>
-              <p className="text-gray-400">{profile.position}</p>
-              <button
-                className={` w-1/2 mt-2 h-8 ${expandedId === profile.id ? 'contained-button-reverse-clicked' : 'contained-button-reverse'}`}
-                aria-label="Learn More"
-                onClick={() => handleCardClick(profile.id)}
+        <AnimatePresence initial={false} mode="wait">
+          {selectedProfile && (
+            <motion.div
+              key={selectedProfile.id}
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: reduceMotion ? 0 : 0.25 }}
+              className="team-bio-wrap"
+            >
+              <section
+                className="team-bio"
+                id={`team-bio-${selectedProfile.id}`}
+                aria-labelledby={`team-bio-heading-${selectedProfile.id}`}
               >
-                <a href="#" className="text-xs">Learn More</a>
-              </button>
-              {expandedId === profile.id &&
-                <p className="w-11/12 mx-auto p-2 text-secondaryText leading-loose text-center mt-5 bg-gradient-to-br from-[#7274F320] from-25% to-[#7274F305] to-90% rounded-lg">
-                  {profiles[expandedId].bio}
-                </p>
-              }
-            </div>
-          </div>
-        ))}
+                <div className="team-bio__heading">
+                  <p className="block-subtitle">Behind the care</p>
+                  <h2 id={`team-bio-heading-${selectedProfile.id}`}>{selectedProfile.name}</h2>
+                  <p>{selectedProfile.position}</p>
+                </div>
+                <div className="team-bio__copy">
+                  {selectedProfile.bio.trim().split(/\n\s*\n/).map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+                </div>
+              </section>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </section >
+    </section>
   );
 };

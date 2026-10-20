@@ -1,155 +1,110 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
-import { ConsultationModal } from "./ConsultationModal";
-import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
+import "../styles/AboutDifference.css";
+
+const benefits = [
+  {
+    title: "One-on-One Care",
+    description: "Dedicated 60-minute sessions with a Doctor of Physical Therapy.",
+    icon: "M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM3 21v-2a7 7 0 0 1 11-5.7M16 19l2 2 4-4",
+  },
+  {
+    title: "Objective Testing",
+    description: "Measure progress with data\u2014not guesswork\u2014to guide your next step.",
+    icon: "M4 20v-5M9 20v-8M14 20v-5M19 20V9M3 11l6-6 5 4 7-7",
+  },
+  {
+    title: "Built for Your Sport",
+    description: "Rehab and training tailored to the demands of your sport and your goals.",
+    icon: "M7 5H4v14h3V5ZM20 5h-3v14h3V5ZM4 9H2v6h2M20 9h2v6h-2M7 12h10",
+  },
+  {
+    title: "A Team That Knows You",
+    description: "Personalized attention, clear communication, and a plan built with you.",
+    icon: "M12 21S3 15 3 8.5a4.5 4.5 0 0 1 9-1 4.5 4.5 0 0 1 9 1C21 15 12 21 12 21ZM8 12l2.5 2.5L16 9",
+  },
+];
+
+const steps = [
+  {
+    title: "Discover",
+    subtitle: "Understand the Athlete.",
+    description: "We start with your goals, injury history, and the demands of your sport. Movement assessment and objective testing identify limitations and establish your starting point.",
+  },
+  {
+    title: "Optimize",
+    subtitle: "Build With Purpose.",
+    description: "Hands-on treatment, progressive strength training, and individualized rehab address limitations, restore function, and prepare your body for the demands ahead.",
+  },
+  {
+    title: "Perform",
+    subtitle: "Return With Confidence.",
+    description: "Objective reassessments and sport-specific training measure your progress, guide your return to activity, and help you perform at your best.",
+  },
+];
 
 export const TraditionalVOvertime = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   return (
-    <section className="w-full flex justify-center bg-bgDark2 relative">
+    <section className="w-full flex justify-center bg-bgNight relative">
       <div className="absolute -top-16" id="pricing" />
-      <div className="pb-20 pt-12 bg-bgDark2  2xl:w-[1150px] lg:w-[1050px]  md:w-4/5 ">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto text-center mb-16">
-              <span className="block-subtitle">Traditional PT VS. OVERTIME PT</span>
-              <h2 className="mt-2 mb-6 text-5xl lg:text-6xl font-bold font-heading text-primaryText font-NotoSerif">
-                See The Difference
-              </h2>
-              <p className="mb-6 text-secondaryText">
-                So many physical therapy clinics, why choose OVERTIME?
-              </p>
-            </div>
-            <div className="flex flex-wrap flex-col lg:flex-row -mx-4 items-center mt-20">
-              <div className="w-[350px] sm:w-[380px] lg:w-1/2 px-2 mb-8 lg:mb-0">
-                <div className="p-4 bg-bgDark3 rounded-3xl">
-                  <h3 className="p-4 mb-2 text-2xl font-bold font-heading text-primaryText text-center font-NotoSerif">
-                    Traditional Physical Therapy
-                  </h3>
-                  <ul className="mb-2 2xl:mb-6 text-primaryText">
-                    <li className="mb-4 flex">
-                      <CheckArrowIcon />
-                      <span>
-                        30-minute sessions with a technician or assistant with minimal to no discussion with the doctor
-                      </span>
-                    </li>
-                    <li className="mb-4 flex">
-                      <CheckArrowIcon />
-                      <span>
-                        You are 1 out of 4 patients seen simultaneously
-                      </span>
-                    </li>
-                    <li className="mb-4 flex">
-                      <CheckArrowIcon />
-                      <span>
-                        One size fits all treatment approach
-                      </span>
-                    </li>
-                    <li className="mb-4 flex">
-                      <CheckArrowIcon />
-                      <span>
-                        Insurance dictates your treatment approach
-                      </span>
-                    </li>
-                    <li className="mb-4 flex">
-                      <CheckArrowIcon />
-                      <span>
-                        Insurance caps the number of sessions you are allowed with PT
-                      </span>
-                    </li>
-                  </ul>
+      <div className="about-difference-layout pb-20 pt-12">
+        <section className="about-difference" aria-labelledby="about-difference-heading">
+          <header className="about-difference__header">
+            <p className="block-subtitle">The Overtime approach</p>
+            <h2 id="about-difference-heading">See the Difference</h2>
+          </header>
+          <ul className="about-difference__grid" role="list">
+            {benefits.map((benefit, index) => (
+              <motion.li
+                key={benefit.title}
+                className="about-difference__card"
+                initial={reduceMotion ? false : { y: 12 }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: reduceMotion ? 0 : 0.35, delay: reduceMotion ? 0 : index * 0.06 }}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d={benefit.icon} />
+                </svg>
+                <h3>{benefit.title}</h3>
+                <p>{benefit.description}</p>
+              </motion.li>
+            ))}
+          </ul>
+        </section>
+        <section className="about-journey" aria-labelledby="about-journey-heading">
+          <header className="about-journey__header">
+            <p className="block-subtitle">Your path forward</p>
+            <h2 id="about-journey-heading">Discover. Optimize. Perform.</h2>
+            <p className="about-journey__intro">
+              A personalized, data-driven approach to sports rehabilitation and performance, built around your goals and the demands of your sport.
+            </p>
+          </header>
+          <ol className="about-journey__steps" role="list">
+            {steps.map((step, index) => (
+              <motion.li
+                key={step.title}
+                className="about-journey__step"
+                initial={reduceMotion ? false : { y: 12 }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: reduceMotion ? 0 : 0.35, delay: reduceMotion ? 0 : index * 0.08 }}
+              >
+                <span className="about-journey__number" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="about-journey__copy">
+                  <h3>{step.title}</h3>
+                  <p className="about-journey__subtitle">{step.subtitle}</p>
+                  <p>{step.description}</p>
                 </div>
-              </div>
-              <div className="w-[350px] sm:w-[380px] lg:w-1/2 px-2 mb-8 lg:mb-0">
-                <div className="p-4 bg-primaryColor rounded-3xl">
-                  <h3 className="p-4 mb-2 text-2xl font-bold font-heading text-primaryText text-center font-NotoSerif">
-                    OVERTIME Physical Therapy
-                  </h3>
-
-
-                  <ul className="mb-2 2xl:mb-6 text-primaryText">
-                    <li className="mb-4 flex">
-                      <CheckArrowIcon />
-                      <span>
-                        One on one sessions with a Doctor of Physical Therapy
-                      </span>
-                    </li>
-                    <li className="mb-4 flex">
-                      <CheckArrowIcon />
-                      <span>
-                        Sport Physical Therapist specializing in athletes to allow for an appropriate return to sport plan of care
-                      </span>
-                    </li>
-                    <li className="mb-4 flex">
-                      <CheckArrowIcon />
-                      <span>
-                        Long term results
-                      </span>
-                    </li>
-                    <li className="mb-4 flex">
-                      <CheckArrowIcon />
-                      <span>
-                        You and your physical therapist develop your plan of care
-                      </span>
-                    </li>
-                    <li className="mb-4 flex">
-                      <CheckArrowIcon />
-                      <span>
-                        Performance and Recovery sessions to keep you at the top of your game all season and year long
-                      </span>
-                    </li>
-                    <li className="mb-4 flex">
-                      <CheckArrowIcon />
-                      <span>
-                        You and your goals are the priority
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <div className="container mx-auto px-4 pt-32">
-            <div className="max-w-2xl mx-auto text-center mb-16">
-              <h2 className="mt-6 mb-6 text-4xl lg:text-5xl font-bold font-heading text-primaryColor font-NotoSerif uppercase">
-                DISCOVER
-              </h2>
-              <p className="mb-6 text-secondaryText">
-                During your first appointment, we will conduct a thorough sport specific assessment to DISCOVER functional movement dysfunctions and impairments looking at the body globally.
-              </p>
-              <h2 className="mt-6 mb-6 text-4xl lg:text-5xl font-bold font-heading text-primaryColor font-NotoSerif uppercase">
-                OPTIMIZE
-              </h2>
-              <p className="mb-6 text-secondaryText">
-                We will correct and OPTIMIZE dysfunctions, injuries and impairments with experienced physical therapists using evidence-based rehabilitation.
-              </p>
-              <h2 className="mt-6 mb-6 text-4xl lg:text-5xl font-bold font-heading text-primaryColor font-NotoSerif uppercase">
-                PERFORM
-              </h2>
-              <p className="mb-6 text-secondaryText">
-                Return to sport or activity pain free using our individualized plan tailored for you to PERFORM and exceed peak performance in your sport or activity.
-              </p>
-            </div>
-          </div>
-        </motion.div>
+              </motion.li>
+            ))}
+          </ol>
+        </section>
       </div >
-      {isModalOpen && (
-        <ConsultationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-      )}
     </section >
   );
 };
