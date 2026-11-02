@@ -18,7 +18,7 @@ accents for readability.
 
 The navbar stays pinned for the first 200px of scrolling, then hides while
 scrolling down and returns while scrolling up. It stays visible near the top,
-while its mobile menu or consultation dialog is open, and during keyboard focus
+while its mobile menu, Programs dropdown, or consultation dialog is open, and during keyboard focus
 within the navigation. Small scroll movements are filtered to avoid flicker, and
 the slide animation respects reduced-motion preferences.
 All navbar "Get Started" buttons open the shared consultation dialog directly
@@ -99,6 +99,52 @@ Service photos use responsive WebP sources and reserved dimensions. The Services
 has local search copy, a production canonical URL, and page-specific search
 and social metadata in `src/constants/siteData.json` and `src/pages/services.astro`.
 Keep the visible service descriptions and metadata aligned with actual offerings.
+
+## Programs
+
+The Programs disclosure in the desktop and mobile navbar links to
+`/programs/acl-comeback/` and `/programs/running-comeback/`. Shared labels and
+routes live in `src/data/programs.js` and also populate the footer.
+The dropdown supports click/touch, hover, keyboard focus, Arrow Down, Escape,
+and outside-click dismissal. Mobile navigation scrolls within short viewports.
+Do not add a link to `/programs/` without creating an index page.
+
+Both pages are prerendered, with page-specific canonical/search/social metadata
+and sitemap entries. Edit their copy and phase arrays in `src/pages/programs/`.
+`ProgramLayout.astro`, `ProgramRoadmap.astro`, `ProgramPhoto.astro`, and
+`src/styles/Programs.css` keep their presentation consistent. ACL FAQs use native
+details and work without JavaScript. Keep the six ACL stages and five running
+stages sequential when editing, and preserve the milestone-based progression
+and conditional gait-assessment guidance.
+
+Program buttons open the existing consultation dialog, not a separate form.
+Analytics sources distinguish `acl_hero`, `acl_faq`, `acl_closing`,
+`running_hero`, and `running_closing`; the shared navbar retains `navigation`.
+
+The seven program photos in `src/assets/images/programs/` were selected from the
+client's supplied collection after visual comparison against existing site images.
+They use distinct photographs rather than renamed duplicates, responsive WebP
+outputs, and reserved dimensions. Original filenames map to source assets as follows:
+
+| Supplied photo | Program asset |
+| --- | --- |
+| IMG_1928 2.JPG | acl-knee-assessment.jpg |
+| IMG_1934 2.JPG | acl-strength-results.jpg |
+| IMG_1965 2.JPG | acl-sport-progression.jpg |
+| IMG_1933 2.JPG | acl-personal-support.jpg |
+| IMG_1985 2.JPG | running-comeback-confidence.jpg |
+| IMG_1991 2.JPG | running-strength-assessment.jpg |
+| OT-11.jpg | running-movement-rehab.jpg |
+
+The Running page's AlterG section intentionally reuses
+`src/assets/images/services/alterG.png`, with a top-aligned square display crop
+to keep the runner and support enclosure visible. Gait assessment stays text-only
+until a suitable photo of an actual running assessment is available.
+
+The ACL highlights describe the care approach rather than claiming athlete-return
+totals. Do not add unverified outcome counts, mockup testimonials, or other clinics'
+reviews. AlterG availability differs by location: confirm availability
+with the practice before naming a clinic, rather than implying both have it.
 
 ## FAQ page
 

@@ -4,29 +4,64 @@ import { getImage } from "astro:assets";
 
 import { InstagramIcon } from "../assets/icons/InstagramIcon";
 import { ConsultationModal } from "./ConsultationModal";
+import { programLinks } from "../data/programs";
 import logo from "../assets/images/logo.png";
+import "../styles/Navigation.css";
 const optLogo = await getImage({ src: logo })
 
 const navbarLinks = [
   { label: "Home", href: "/#home", ariaLabel: "Home" },
   { label: "About", href: "/about", ariaLabel: "About" },
   { label: "Services", href: "/services", ariaLabel: "Services" },
+  { label: "Programs", children: programLinks },
   { label: "FAQ", href: "/resources", ariaLabel: "FAQ" },
   { label: "Blog", href: "/blog", ariaLabel: "Blog" },
 ];
 
 export const Navbar = ({ hero = false }) => {
   const navRef = useRef(null);
+  const desktopProgramsRef = useRef(null);
+  const mobileProgramsRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isProgramsOpen, setIsProgramsOpen] = useState(false);
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const shouldHide = isHidden && !isOpen && !isConsultationOpen;
+  const shouldHide = isHidden && !isOpen && !isProgramsOpen && !isConsultationOpen;
+
+  const closeNavigation = () => {
+    setIsOpen(false);
+    setIsProgramsOpen(false);
+  };
 
   const openConsultation = () => {
-    setIsOpen(false);
+    closeNavigation();
     setIsConsultationOpen(true);
   };
+
+  useEffect(() => {
+    if (!isProgramsOpen) return;
+    const dismissOutside = (event) => {
+      if (
+        !desktopProgramsRef.current?.contains(event.target) &&
+        !mobileProgramsRef.current?.contains(event.target)
+      ) {
+        setIsProgramsOpen(false);
+      }
+    };
+    document.addEventListener("pointerdown", dismissOutside);
+    return () => document.removeEventListener("pointerdown", dismissOutside);
+  }, [isProgramsOpen]);
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeMenus = () => {
+      setIsOpen(false);
+      setIsProgramsOpen(false);
+    };
+    desktop.addEventListener("change", closeMenus);
+    return () => desktop.removeEventListener("change", closeMenus);
+  }, []);
 
   useEffect(() => {
     const scrollPosition = () => Math.max(
@@ -48,6 +83,7 @@ export const Navbar = ({ hero = false }) => {
       if (
         currentY <= 200 ||
         isOpen ||
+        isProgramsOpen ||
         isConsultationOpen ||
         (
           navRef.current?.contains(document.activeElement) &&
@@ -83,7 +119,61 @@ export const Navbar = ({ hero = false }) => {
       window.removeEventListener("scroll", onScroll);
       window.cancelAnimationFrame(frame);
     };
-  }, [isOpen, isConsultationOpen]);
+  }, [isOpen, isProgramsOpen, isConsultationOpen]);
+
+  const renderPrograms = (mobile = false) => (
+    <div
+      key="Programs"
+      ref={mobile ? mobileProgramsRef : desktopProgramsRef}
+      className={`program-nav ${mobile ? "program-nav--mobile" : ""}`}
+      onPointerEnter={(event) => {
+        if (!mobile && event.pointerType === "mouse") setIsProgramsOpen(true);
+      }}
+      onPointerLeave={(event) => {
+        if (!mobile && !event.currentTarget.contains(document.activeElement)) {
+          setIsProgramsOpen(false);
+        }
+      }}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setIsProgramsOpen(false);
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
+          event.preventDefault();
+          event.stopPropagation();
+          setIsProgramsOpen(false);
+          event.currentTarget.querySelector("button")?.focus();
+        } else if (event.key === "ArrowDown" && event.target.tagName === "BUTTON") {
+          event.preventDefault();
+          setIsProgramsOpen(true);
+          const container = event.currentTarget;
+          window.requestAnimationFrame(() => container.querySelector("a")?.focus());
+        }
+      }}
+    >
+      <button
+        type="button"
+        className="program-nav__trigger"
+        aria-expanded={isProgramsOpen}
+        aria-controls={`programs-${mobile ? "mobile" : "desktop"}-links`}
+        onClick={() => setIsProgramsOpen((open) => !open)}
+      >
+        Programs
+        <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="m2 4 4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
+        </svg>
+      </button>
+      <ul
+        id={`programs-${mobile ? "mobile" : "desktop"}-links`}
+        className="program-nav__links"
+        hidden={!isProgramsOpen}
+      >
+        {programLinks.map(({ label, href }) => (
+          <li key={href}><a href={href} onClick={closeNavigation}>{label}</a></li>
+        ))}
+      </ul>
+    </div>
+  );
 
   return (
     <>
@@ -123,10 +213,10 @@ export const Navbar = ({ hero = false }) => {
           transition={{ duration: 0.3 }}
           exit={{ opacity: 0 }}
         >
-          <div className="hidden lg:flex h-full pl-4 pb-2">
-            {navbarLinks.map(({ href, label, ariaLabel }) => (
+          <div className="site-nav__links hidden lg:flex h-full">
+            {navbarLinks.map(({ href, label, ariaLabel, children }) => children ? renderPrograms() : (
               <a
-                className="text-primaryText lg:text-base text-2xl leading-6 mx-2 2xl:mx-4 cursor-pointer font-normal lg:font-medium hover:scale-110 transition h-full pt-2"
+                className="site-nav__link"
                 href={href}
                 aria-label={ariaLabel}
                 key={label}
@@ -177,7 +267,10 @@ export const Navbar = ({ hero = false }) => {
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
           aria-controls="mobile-navigation"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            setIsOpen(!isOpen);
+            setIsProgramsOpen(false);
+          }}
         >
           <div className="w-5 h-0.5 bg-gray-500  mb-1"></div>
           <div className="w-5 h-0.5 bg-gray-500  mb-1"></div>
@@ -199,12 +292,12 @@ export const Navbar = ({ hero = false }) => {
         items-center gap-10 pb-10 border-y border-solid border-bgDark3 pt-10
         "
             >
-              {navbarLinks.map(({ label, href, ariaLabel }) => (
+              {navbarLinks.map(({ label, href, ariaLabel, children }) => children ? renderPrograms(true) : (
                 <a
                   key={href}
                   className="text-primaryText lg:text-base text-2xl leading-6 mr-4 ml-4 2xl:mr-6 2xl:ml-6 cursor-pointer font-normal lg:font-medium hover:scale-110 transition duration-300 h-full pt-2"
                   href={href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={closeNavigation}
                   aria-label={ariaLabel}
                 >
                   {label}
