@@ -143,8 +143,8 @@ until a suitable photo of an actual running assessment is available.
 
 The ACL highlights describe the care approach rather than claiming athlete-return
 totals. Do not add unverified outcome counts, mockup testimonials, or other clinics'
-reviews. AlterG availability differs by location: confirm availability
-with the practice before naming a clinic, rather than implying both have it.
+reviews. Confirm equipment availability with the practice before adding
+location-specific claims.
 
 ## FAQ page
 

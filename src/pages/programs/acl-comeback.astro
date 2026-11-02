@@ -51,7 +51,7 @@ const included = [
   "Progress reviews and clear explanations of your results.",
   "Communication with your surgeon, athletic trainer, and coaches, with your permission.",
   "Return-to-running and sport progression.",
-  "AlterG anti-gravity treadmill use during your session, where available.",
+  "AlterG anti-gravity treadmill use during your session.",
   "Between-visit support. Have a question? Don't wait: text us.",
 ];
 
@@ -79,7 +79,7 @@ const faqs = [
   },
   {
     question: "Which location should I visit?",
-    answer: "The ACL Comeback Program is available at both Centennial and Highlands Ranch through our full clinical team. All program services and equipment are available at both locations, with the exception of the AlterG. We'll help you choose the location and appointment that work best for you.",
+    answer: "The ACL Comeback Program is available at both Centennial and Highlands Ranch through our full clinical team. We'll help you choose the location and appointment that work best for you.",
   },
   {
     question: "Do you help athletes who have finished PT but still feel unprepared?",
@@ -157,7 +157,6 @@ const faqs = [
         <h2 id="acl-included-heading">What does our<br />program include?</h2>
         <p>Your plan connects the work in the clinic with the movement, training, and sport you're working toward.</p>
         <ul class="program-checklist">{included.map((item) => <li>{item}</li>)}</ul>
-        <p class="program-small">AlterG availability differs by location. Ask our team when choosing your clinic.</p>
       </div>
       <figure>
         <ProgramPhoto src={sportProgression} alt="An Overtime physical therapist guiding an athlete through a soccer change-of-direction drill." position="center 65%" />
