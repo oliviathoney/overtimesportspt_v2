@@ -120,6 +120,12 @@ and conditional gait-assessment guidance.
 Both heroes blend from the dark text area into a full-bleed photograph, matching
 the homepage treatment, with a vertical fade and stacked content on smaller screens.
 Both programs use the same wide hero frame and short dark-to-photo fade.
+They reuse the homepage's transparent hero navbar, with desktop photos extending
+behind it and a soft top gradient keeping menu text readable. The header uses
+the same height, mobile Get Started button, and dark blurred background on scroll
+as the homepage. Matching scrollbar styling avoids a horizontal header shift
+when navigating between these pages. Program mobile menus use the full space below the header;
+only the homepage reserves space for its fixed bottom action bar.
 The ACL hero uses the customer's horizontal crop (`acl-knee-assessment-hero.jpg`),
 top-aligned to keep the clinician and knee assessment in view. The original
 portrait remains in the source collection. The Running photo is shifted right

@@ -437,7 +437,8 @@ html:has(.home-hero) {
   }
 }
 
-html:has(.home-hero)::-webkit-scrollbar {
+html:has(.home-hero)::-webkit-scrollbar,
+html:has(.program-hero)::-webkit-scrollbar {
   display: none;
 }
 

@@ -36,6 +36,10 @@
 
 .site-nav.home-nav #mobile-navigation {
   top: 72px;
+  max-height: calc(100dvh - 72px);
+}
+
+body:has(.home-mobile-bar) .site-nav.home-nav #mobile-navigation {
   max-height: calc(100dvh - 150px);
 }
 
