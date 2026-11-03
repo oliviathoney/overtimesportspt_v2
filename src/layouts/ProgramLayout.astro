@@ -25,7 +25,6 @@ interface Props {
   heroImage: ImageMetadata;
   heroAlt: string;
   heroPosition?: string;
-  heroCaption: string;
   proof: string[];
   ctaLabel: string;
   closingHeading: string;
@@ -34,7 +33,7 @@ interface Props {
 
 const {
   title, description, programKey, programName, specialty, headline, accent,
-  lead, introduction, heroImage, heroAlt, heroPosition = "center", heroCaption,
+  lead, introduction, heroImage, heroAlt, heroPosition = "center",
   proof, ctaLabel, closingHeading, closingDescription,
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname.replace(/\/?$/, "/"), Astro.site);
@@ -61,7 +60,7 @@ const previewImage = new URL(socialImage.src, Astro.url.origin).href;
   <Navbar client:load />
   <div class="program-page">
     <section class="program-hero" aria-labelledby="program-heading">
-      <div class="program-container program-hero__grid">
+      <div class="program-container program-hero__inner">
         <div class="program-hero__content">
           <p class="block-subtitle">{specialty}</p>
           <p class="program-hero__name">{programName}</p>
@@ -74,10 +73,9 @@ const previewImage = new URL(socialImage.src, Astro.url.origin).href;
           </div>
           <p class="program-hero__note">Start with a free, 15-minute phone consultation.</p>
         </div>
-        <figure class="program-hero__photo">
-          <ProgramPhoto src={heroImage} alt={heroAlt} priority position={heroPosition} />
-          <figcaption>{heroCaption}</figcaption>
-        </figure>
+      </div>
+      <div class="program-hero__photo">
+        <ProgramPhoto src={heroImage} alt={heroAlt} priority position={heroPosition} sizes="(min-width: 1024px) 65vw, 100vw" />
       </div>
     </section>
     <div class="program-proof">

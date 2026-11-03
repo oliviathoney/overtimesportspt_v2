@@ -3,7 +3,7 @@ import ProgramLayout from "../../layouts/ProgramLayout.astro";
 import ProgramRoadmap, { type ProgramPhase } from "../../components/ProgramRoadmap.astro";
 import ProgramPhoto from "../../components/ProgramPhoto.astro";
 import { ProgramConsultationButton } from "../../components/ProgramConsultationButton.jsx";
-import kneeAssessment from "../../assets/images/programs/acl-knee-assessment.jpg";
+import kneeAssessment from "../../assets/images/programs/acl-knee-assessment-hero.jpg";
 import strengthResults from "../../assets/images/programs/acl-strength-results.jpg";
 import sportProgression from "../../assets/images/programs/acl-sport-progression.jpg";
 import personalSupport from "../../assets/images/programs/acl-personal-support.jpg";
@@ -100,11 +100,10 @@ const faqs = [
   introduction="Our one-on-one ACL rehab program helps you build the strength and confidence to get back to the demands of your sport."
   heroImage={kneeAssessment}
   heroAlt="An Overtime physical therapist assessing an athlete's knee during a one-on-one appointment."
-  heroPosition="center 65%"
-  heroCaption="One athlete. One Sports PT. A plan built around you."
-  proof={["Milestone-based progression", "60-minute, one-on-one sessions", "Full rehab + return-to-sport testing"]}
+  heroPosition="center top"
+  proof={["100s of athletes returned", "60-minute, one-on-one sessions", "Full rehab + return-to-sport testing"]}
   ctaLabel="Start your comeback"
-  closingHeading="Your next chapter starts here."
+  closingHeading="Your ACL Comeback starts here."
   closingDescription="Whether you're preparing for surgery, rebuilding strength, or ready to work toward your sport, start with a conversation about your comeback."
 >
   <section class="program-section" aria-labelledby="acl-start-heading">
@@ -115,8 +114,8 @@ const faqs = [
           <h2 id="acl-start-heading">We understand the athlete.<br />Not just the knee.</h2>
         </div>
         <div>
-          <p>Coming back from an ACL tear is as much mental as physical. From preparing for surgery to high-level return, we support the emotional side of recovery while rebuilding the strength and confidence to trust your knee.</p>
-          <p>We work with young athletes and experienced competitors in soccer, basketball, football, lacrosse, and more, coordinating each plan with your surgeon's protocol.</p>
+          <p>One of the hardest parts of ACL recovery is being away from your sport and wondering when you'll feel like yourself again. Wherever you are in rehab, we take the time to hear what's on your mind, show you how you're progressing, and work through the next step together.</p>
+          <p>From pre-op to game day, we build your rehab around your goals, your sport, and your surgeon's guidance. That means working toward the moments that matter to you, whether it's landing a rebound or changing direction at full speed.</p>
         </div>
       </div>
       <div class="program-starting-points">
@@ -196,7 +195,6 @@ const faqs = [
             <div><p>{faq.answer}</p>{faq.extra && <p>{faq.extra}</p>}</div>
           </details>
         ))}
-        <a class="program-text-link" href="/resources">More about visits &amp; payment options <span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>

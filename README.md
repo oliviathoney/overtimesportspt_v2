@@ -18,7 +18,7 @@ accents for readability.
 
 The navbar stays pinned for the first 200px of scrolling, then hides while
 scrolling down and returns while scrolling up. It stays visible near the top,
-while its mobile menu, Programs dropdown, or consultation dialog is open, and during keyboard focus
+while its mobile menu or consultation dialog is open, and during keyboard focus
 within the navigation. Small scroll movements are filtered to avoid flicker, and
 the slide animation respects reduced-motion preferences.
 All navbar "Get Started" buttons open the shared consultation dialog directly
@@ -102,11 +102,12 @@ Keep the visible service descriptions and metadata aligned with actual offerings
 
 ## Programs
 
-The Programs disclosure in the desktop and mobile navbar links to
-`/programs/acl-comeback/` and `/programs/running-comeback/`. Shared labels and
-routes live in `src/data/programs.js` and also populate the footer.
-The dropdown supports click/touch, hover, keyboard focus, Arrow Down, Escape,
-and outside-click dismissal. Mobile navigation scrolls within short viewports.
+The desktop and mobile navbar have separate "The ACL Comeback" and
+"The Running Comeback" links to `/programs/acl-comeback/` and
+`/programs/running-comeback/`, rather than a Programs dropdown. Shared labels
+and routes live in `src/data/programs.js` and also populate the footer.
+Desktop navigation uses compact spacing, logo, and CTA sizing to accommodate
+both names. Mobile navigation scrolls within short viewports.
 Do not add a link to `/programs/` without creating an index page.
 
 Both pages are prerendered, with page-specific canonical/search/social metadata
@@ -116,12 +117,19 @@ and sitemap entries. Edit their copy and phase arrays in `src/pages/programs/`.
 details and work without JavaScript. Keep the six ACL stages and five running
 stages sequential when editing, and preserve the milestone-based progression
 and conditional gait-assessment guidance.
+Both heroes blend from the dark text area into a full-bleed photograph, matching
+the homepage treatment, with a vertical fade and stacked content on smaller screens.
+Both programs use the same wide hero frame and short dark-to-photo fade.
+The ACL hero uses the customer's horizontal crop (`acl-knee-assessment-hero.jpg`),
+top-aligned to keep the clinician and knee assessment in view. The original
+portrait remains in the source collection. The Running photo is shifted right
+so both people remain visible.
 
 Program buttons open the existing consultation dialog, not a separate form.
 Analytics sources distinguish `acl_hero`, `acl_faq`, `acl_closing`,
 `running_hero`, and `running_closing`; the shared navbar retains `navigation`.
 
-The seven program photos in `src/assets/images/programs/` were selected from the
+The program photos in `src/assets/images/programs/` were selected from the
 client's supplied collection after visual comparison against existing site images.
 They use distinct photographs rather than renamed duplicates, responsive WebP
 outputs, and reserved dimensions. Original filenames map to source assets as follows:
@@ -135,15 +143,21 @@ outputs, and reserved dimensions. Original filenames map to source assets as fol
 | IMG_1985 2.JPG | running-comeback-confidence.jpg |
 | IMG_1991 2.JPG | running-strength-assessment.jpg |
 | OT-11.jpg | running-movement-rehab.jpg |
+| IMG_1930 2.JPG | running-personal-support.jpg |
 
+The Running hero intentionally reuses `src/assets/images/PT Home.jpg`, matching
+the customer's "PT Home.png" reference. Its closing support section uses
+`running-personal-support.jpg`; the previous confidence and movement photos
+remain available in the source collection.
 The Running page's AlterG section intentionally reuses
 `src/assets/images/services/alterG.png`, with a top-aligned square display crop
 to keep the runner and support enclosure visible. Gait assessment stays text-only
 until a suitable photo of an actual running assessment is available.
 
-The ACL highlights describe the care approach rather than claiming athlete-return
-totals. Do not add unverified outcome counts, mockup testimonials, or other clinics'
-reviews. Confirm equipment availability with the practice before adding
+The ACL banner's "100s of athletes returned" wording was explicitly requested by
+the customer and approved for restoration; it is not independently verified here.
+Do not copy mockup testimonials or other clinics' reviews.
+Confirm equipment availability with the practice before adding
 location-specific claims.
 
 ## FAQ page

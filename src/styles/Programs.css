@@ -43,11 +43,15 @@
 }
 
 .program-hero {
-  padding-block: 152px 48px;
-  background: radial-gradient(ellipse at 75% 30%, rgb(var(--accent) / 0.075), transparent 60%);
+  position: relative;
+  isolation: isolate;
+  background: rgb(var(--surface-night));
 }
 
-.program-hero__grid,
+.program-hero__inner {
+  padding-block: 152px 32px;
+}
+
 .program-split,
 .program-section__split-heading,
 .program-faq {
@@ -60,6 +64,10 @@
 .program-split > *,
 .program-faq > * {
   min-width: 0;
+}
+
+.program-hero__content {
+  max-width: 620px;
 }
 
 .program-hero__name {
@@ -172,7 +180,21 @@
 }
 
 .program-hero__photo .program-photo {
+  height: 100%;
   aspect-ratio: 4 / 3;
+  border-radius: 0;
+}
+
+.program-hero__photo {
+  position: relative;
+}
+
+.program-hero__photo::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgb(var(--surface-night)), transparent 90px);
 }
 
 .program-photo--alterg {
@@ -184,11 +206,6 @@
   color: rgb(var(--text-muted));
   font-size: 0.8125rem;
   line-height: 1.6;
-}
-
-.program-hero__photo figcaption {
-  padding-left: 12px;
-  border-left: 2px solid rgb(var(--accent));
 }
 
 .program-proof {
@@ -446,10 +463,6 @@
   font-size: 0.9375rem;
 }
 
-.program-faq .program-text-link {
-  margin-top: 20px;
-}
-
 .program-page .about-consultation__button {
   background: #4d734f;
 }
@@ -478,19 +491,6 @@
     width: min(1200px, calc(100% - 80px));
   }
 
-  .program-hero {
-    padding-block: 164px 64px;
-  }
-
-  .program-hero__grid {
-    grid-template-columns: 1.1fr 1fr;
-    gap: 48px;
-  }
-
-  .program-hero__photo .program-photo {
-    aspect-ratio: 4 / 5;
-  }
-
   .program-proof ul {
     justify-content: space-between;
   }
@@ -513,6 +513,42 @@
     grid-template-columns: 0.85fr 1.4fr;
     gap: 64px;
   }
+}
+
+@media (min-width: 1024px) {
+  .program-hero__inner {
+    display: flex;
+    align-items: center;
+    min-height: clamp(640px, 86svh, 860px);
+    padding-block: 152px 56px;
+  }
+
+  .program-hero__content {
+    width: 48%;
+  }
+
+  .program-hero h1 {
+    font-size: clamp(2.5rem, 3.8vw, 3.5rem);
+  }
+
+  .program-hero__photo {
+    position: absolute;
+    inset: 112px 0 0 auto;
+    z-index: -1;
+    width: 65%;
+  }
+
+  .program-hero__photo .program-photo {
+    position: absolute;
+    inset: 0;
+    aspect-ratio: auto;
+  }
+
+  .program-hero__photo::after {
+    left: -1px;
+    background: linear-gradient(to right, rgb(var(--surface-night)) 0%, rgb(var(--surface-night) / 0.98) 15%, rgb(var(--surface-night) / 0.85) 23%, rgb(var(--surface-night) / 0.25) 38%, transparent 55%);
+  }
+
 }
 
 @media (min-width: 1200px) {

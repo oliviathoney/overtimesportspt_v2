@@ -8,9 +8,13 @@ interface Props {
   className?: string;
   position?: string;
   priority?: boolean;
+  sizes?: string;
 }
 
-const { src, alt, className = "", position = "center", priority = false } = Astro.props;
+const {
+  src, alt, className = "", position = "center", priority = false,
+  sizes = "(min-width: 1200px) 560px, (min-width: 900px) 50vw, calc(100vw - 40px)",
+} = Astro.props;
 const width = Math.min(src.width, 1600);
 const widths = [...new Set([400, 800, 1200, width])].filter((size) => size <= width).sort((a, b) => a - b);
 ---
@@ -22,7 +26,7 @@ const widths = [...new Set([400, 800, 1200, width])].filter((size) => size <= wi
   style={{ objectPosition: position }}
   width={width}
   widths={widths}
-  sizes="(min-width: 1200px) 560px, (min-width: 900px) 50vw, calc(100vw - 40px)"
+  sizes={sizes}
   format="webp"
   quality={85}
   loading={priority ? "eager" : "lazy"}
