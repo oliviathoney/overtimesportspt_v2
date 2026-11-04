@@ -1,0 +1,184 @@
+---
+import ProgramLayout from "../../layouts/ProgramLayout.astro";
+import ProgramRoadmap, { type ProgramPhase } from "../../components/ProgramRoadmap.astro";
+import ProgramPhoto from "../../components/ProgramPhoto.astro";
+import runningHero from "../../assets/images/PT Home.jpg";
+import strengthAssessment from "../../assets/images/programs/running-strength-assessment.jpg";
+import personalSupport from "../../assets/images/programs/acl-personal-support.jpg";
+import alterG from "../../assets/images/services/alterG.png";
+
+export const prerender = true;
+
+const phases: ProgramPhase[] = [
+  {
+    stage: "Assess and restore",
+    title: "Find the starting point.",
+    description: "Understand your injury, current restrictions, and running goals while respecting healing and medical guidance.",
+    items: ["Reduce pain and improve tolerance.", "Assess strength and movement.", "Establish a clear starting point for your comeback."],
+  },
+  {
+    stage: "Rebuild capacity",
+    title: "Build the foundation for impact.",
+    description: "Progressively load the calf, hip, and lower extremity to rebuild strength and single-leg control.",
+    items: [
+      "Clinician-supervised BFR training to support muscle growth and help manage pain when appropriate.",
+      "Single-leg tasks and pre-plyometric exercises.",
+      "Objective benchmarks to guide your next step.",
+    ],
+  },
+  {
+    stage: "Prepare for impact",
+    title: "Learn to absorb and produce forces.",
+    description: "Connect single-leg strength with the ability to handle repeated impact. Introduce loading appropriate for your healing and readiness.",
+    items: ["Progress from pre-plyometric to plyometric exercises.", "Build force-absorption tolerance.", "Prepare for the repeated demands of running."],
+  },
+  {
+    stage: "Reintroduction to running",
+    title: "Reconnect with your stride.",
+    description: "Introduce running gradually, using the AlterG when appropriate to build exposure with adjustable body-weight support.",
+    items: ["Connect strength and force absorption to running.", "Adjust running exposure to your response.", "Build toward land running with confidence."],
+  },
+  {
+    stage: "Rebuild your miles",
+    title: "Return to the running that matters to you.",
+    description: "Progress land running and increase mileage based on training and recovery responses, not a calendar alone.",
+    items: [
+      "Frequent testing and retesting to identify asymmetries and compensations.",
+      "Adjust your plan as distance, frequency, and intensity evolve.",
+      "Running gait assessment when necessary to answer a specific question.",
+    ],
+  },
+];
+---
+
+<ProgramLayout
+  title="Running Comeback Program | Centennial & Highlands Ranch | Overtime"
+  description="Return to running with one-on-one Sports PT, strength testing, and personalized progression at Overtime in Centennial and Highlands Ranch."
+  programKey="running"
+  programName="The Running Comeback Program"
+  specialty="Running athlete experts in Centennial + Highlands Ranch, CO"
+  headline="Your comeback."
+  accent="One stride at a time."
+  lead="A clear plan. Measurable progress. Confidence for the next mile. With support every step of the way."
+  introduction="One-on-one Sports PT that connects strength, plyometrics, force-absorption tolerance, and a personalized return to running, with support at every stage."
+  heroImage={runningHero}
+  heroAlt="An Overtime physical therapist guiding an athlete through a single-leg resistance-band exercise."
+  heroPosition="center"
+  proof={["One-on-one Sports PT", "Objective benchmarks", "Personalized return-to-running plan"]}
+  ctaLabel="Start your running comeback"
+  closingHeading="Get back to the miles that matter to you."
+  closingDescription="From those first runs back to the routes, distances, and races you miss, let's talk about where you are now and where you want to go. Start with a free, 15-minute phone consultation."
+>
+  <section class="program-section" aria-labelledby="running-start-heading">
+    <div class="program-container program-section__split-heading">
+      <div>
+        <p class="block-subtitle">Sidelined from running. Still a runner.</p>
+        <h2 id="running-start-heading">You miss more<br />than the miles.</h2>
+      </div>
+      <div>
+        <p>The morning routine. Your training partners. The feeling of finding your stride.</p>
+        <p>Whether you're coming back from a bone stress reaction, fracture, or another running injury, it's hard to know how much is enough, when to progress, or what a symptom means.</p>
+        <p>We build a plan around your injury, your readiness, and your goals, so the next step feels less uncertain.</p>
+      </div>
+    </div>
+  </section>
+
+  <ProgramRoadmap eyebrow="The comeback roadmap" heading="Build the foundation for your next mile." phases={phases} />
+
+  <section class="program-section" aria-labelledby="running-foundation-heading">
+    <div class="program-container program-split">
+      <figure>
+        <ProgramPhoto src={strengthAssessment} alt="An Overtime physical therapist using a handheld dynamometer to assess an athlete's lower-leg strength." position="center 65%" />
+        <figcaption>Build capacity. Measure it. Put it to work.</figcaption>
+      </figure>
+      <div>
+        <p class="block-subtitle">The work behind the comeback</p>
+        <h2 id="running-foundation-heading">Running is the goal.<br />The foundation matters.</h2>
+        <p>Rebuilding your miles starts with rebuilding what supports them: strength, control, and the ability to tolerate repeated impact.</p>
+        <dl class="program-measures">
+          <div><dt>Strength &amp; single-leg control</dt><dd>Build the capacity your calf, hip, and lower extremity need for running.</dd></div>
+          <div><dt>Plyometrics &amp; force absorption</dt><dd>Prepare to handle landing and push-off demands as healing and tolerance allow.</dd></div>
+          <div><dt>Objective progress</dt><dd>Test and retest to understand your progress, not just how a single run feels.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="program-section program-section--surface" aria-labelledby="running-alterg-heading">
+    <div class="program-container program-split">
+      <div>
+        <p class="block-subtitle">AlterG anti-gravity treadmill</p>
+        <h2 id="running-alterg-heading">Your first miles back.<br />With less body weight.</h2>
+        <p>Adjustable body-weight support helps introduce running gradually with less impact on joints and bones.</p>
+        <p>The AlterG uses an air-pressure system that can support up to 80% of your body weight. We tailor support, speed, and duration to your injury and response, then adjust as your tolerance grows.</p>
+        <p>A controlled place to reconnect with running&mdash;and build toward full-body-weight miles.</p>
+      </div>
+      <figure>
+        <ProgramPhoto src={alterG} alt="An athlete running in an AlterG anti-gravity treadmill with a body-weight support enclosure." className="program-photo--alterg" position="top" />
+        <figcaption>Up to 80% body-weight support. Adjusted with your Sports PT.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="program-section" aria-labelledby="running-land-heading">
+    <div class="program-container">
+      <header class="program-section__intro">
+        <p class="block-subtitle">Transition to land running</p>
+        <h2 id="running-land-heading">Less uncertainty.<br />More direction.</h2>
+        <p>The plan connects your in-clinic progress with what happens between visits.</p>
+      </header>
+      <div class="program-card-grid">
+        <article class="program-card">
+          <span class="program-card__number">01</span>
+          <h3>A starting point that fits.</h3>
+          <p>Begin with walk-run intervals or an appropriate entry point for you, with clear effort and recovery guidance.</p>
+        </article>
+        <article class="program-card">
+          <span class="program-card__number">02</span>
+          <h3>A plan that responds to you.</h3>
+          <p>Review how you feel during and after running. Adjust duration, frequency, terrain, and eventually speed as your capacity grows.</p>
+        </article>
+        <article class="program-card">
+          <span class="program-card__number">03</span>
+          <h3>Support when questions come up.</h3>
+          <p>Know when to modify or progress, and text your PT when you're unsure. Your next run shouldn't depend on guesswork.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="program-section program-section--surface" aria-labelledby="running-gait-heading">
+    <div class="program-container program-split">
+      <div>
+        <p class="block-subtitle">Running gait assessment</p>
+        <h2 id="running-gait-heading">Understand<br />your stride.</h2>
+        <p>When there's a specific question to answer, slow-motion video can help us look more closely at your running.</p>
+        <p>We consider what we see alongside your symptoms, strength, history, and goals. That information helps guide exercises, running-load changes, or cues we test together.</p>
+      </div>
+      <aside class="program-gait-note">
+        <p class="block-subtitle">Useful information. Not perfect form.</p>
+        <h3>You don't need to chase a perfect stride.</h3>
+        <p>Running comfortably and progressing well? A formal gait assessment may not add value. We use it when it can help your plan, not as a requirement for every runner.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="program-section" aria-labelledby="running-care-heading">
+    <div class="program-container program-split">
+      <figure>
+        <ProgramPhoto src={personalSupport} alt="An athlete and an Overtime physical therapist sharing a hug after a clinic session." />
+      </figure>
+      <div>
+        <p class="block-subtitle">Support every step of the way</p>
+        <h2 id="running-care-heading">A plan you understand.<br />A team you can reach.</h2>
+        <dl class="program-measures">
+          <div><dt>Your work between visits</dt><dd>Leave with a clear home program and running guidance, so you know what to work on next.</dd></div>
+          <div><dt>Frequent retesting and reassessing</dt><dd>Revisit strength, movement, and running tolerance as you progress, and adjust the plan based on what changes.</dd></div>
+          <div><dt>Connected care</dt><dd>Reach your PT by text, phone, or email. With your permission, we'll coordinate with your coach or medical team.</dd></div>
+        </dl>
+        <p class="program-callout">For bone stress injuries, we also consider training changes, fueling, recovery, and bone health, with referral or coordination when needed.</p>
+        <a class="program-text-link" href="/about#team-heading">Meet your Sports PTs <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+</ProgramLayout>

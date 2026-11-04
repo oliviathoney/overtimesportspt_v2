@@ -1,0 +1,201 @@
+---
+import ProgramLayout from "../../layouts/ProgramLayout.astro";
+import ProgramRoadmap, { type ProgramPhase } from "../../components/ProgramRoadmap.astro";
+import ProgramPhoto from "../../components/ProgramPhoto.astro";
+import { ProgramConsultationButton } from "../../components/ProgramConsultationButton.jsx";
+import kneeAssessment from "../../assets/images/programs/acl-treatment-hero.jpg";
+import strengthResults from "../../assets/images/programs/acl-strength-results.jpg";
+import sportProgression from "../../assets/images/programs/acl-sport-progression.jpg";
+import personalSupport from "../../assets/images/programs/running-personal-support.jpg";
+
+export const prerender = true;
+
+const phases: ProgramPhase[] = [
+  {
+    stage: "Pre-op",
+    title: "Prepare for your comeback.",
+    description: "Restore range of motion, build strength, and improve knee control to establish a foundation before surgery.",
+  },
+  {
+    stage: "Post-op",
+    title: "Restore movement. Rebuild your foundation.",
+    description: "Reduce swelling, restore range of motion, activate your quads, and regain a normal walking pattern.",
+  },
+  {
+    stage: "Early phase",
+    title: "Rebuild strength. Regain control.",
+    description: "Progressively strengthen both legs and improve movement control, using objective testing to measure progress and identify strength deficits and asymmetries.",
+  },
+  {
+    stage: "Mid-phase",
+    title: "Single-leg strength. Single-leg confidence.",
+    description: "Build single-leg strength and stability, develop controlled landings, and prepare for the demands of running and jumping. Learn to absorb forces appropriately and become confident doing so.",
+  },
+  {
+    stage: "Late phase",
+    title: "Power and plyometrics. Prepare for your game.",
+    description: "Develop explosiveness, refine landing and cutting mechanics, and build confidence through reactive, sport-specific movement.",
+  },
+  {
+    stage: "Test & return",
+    title: "Measure readiness. Plan your return.",
+    description: "Combine strength and force-plate testing with movement assessment, confidence, and sport demands to guide a gradual return to training and competition.",
+  },
+];
+
+const included = [
+  "Initial evaluation and an individualized plan.",
+  "60-minute, one-on-one treatment sessions.",
+  "Exercise programming between appointments.",
+  "Planned reassessments at appropriate milestones.",
+  "Progress reviews and clear explanations of your results.",
+  "Communication with your surgeon, athletic trainer, and coaches, with your permission.",
+  "Return-to-running and sport progression.",
+  "AlterG anti-gravity treadmill use during your session.",
+  "Between-visit support. Have a question? Don't wait: text us.",
+];
+
+const faqs = [
+  {
+    question: "Can I start before ACL surgery?",
+    answer: "Yes! A preoperative assessment can help establish your starting point and prepare you for the rehabilitation ahead. We'll discuss your surgery plan and what is appropriate for your situation.",
+  },
+  {
+    question: "Can I come in if I started rehab elsewhere?",
+    answer: "Yes. We offer both full ACL rehabilitation and late-stage rehabilitation/testing. You can join at your current stage, including after completing earlier rehabilitation elsewhere. If you're continuing care with another physical therapist, we coordinate with them, with your permission, to clarify roles and keep your plan consistent.",
+  },
+  {
+    question: "How long will my comeback take?",
+    answer: "Recovery varies with your procedure, healing, symptoms, physical capacity, and sport. We use clinical milestones alongside appropriate healing time to guide progression rather than promising a fixed return date.",
+  },
+  {
+    question: "How do you assess readiness for sport?",
+    answer: "We consider strength, jumping and landing, movement, symptoms, confidence, and preparation for your sport. We use force-plate testing and objective strength data to measure strength and identify deficits.",
+  },
+  {
+    question: "What does care cost? Do you take insurance?",
+    answer: "Overtime is an out-of-network, private-pay clinic. During your free phone consultation, we'll explain evaluation and session pricing and discuss the care options appropriate for your goals before you book treatment. Superbills can be provided for you to submit to your insurer; reimbursement depends on your plan and is not guaranteed.",
+    extra: "Why? Your care is our priority. Our out-of-network model allows us to provide 60-minute, one-on-one sessions and build your treatment plan around your needs, progress, and goals, without relying on insurance authorization to determine your visit schedule.",
+  },
+  {
+    question: "Which location should I visit?",
+    answer: "The ACL Comeback Program is available at both Centennial and Highlands Ranch through our full clinical team. We'll help you choose the location and appointment that work best for you.",
+  },
+  {
+    question: "Do you help athletes who have finished PT but still feel unprepared?",
+    answer: "Absolutely. Finishing physical therapy doesn't always mean you feel ready for the demands of your sport. Our late-stage ACL rehab bridges that gap. We assess your strength, power, movement, and confidence to identify what still needs work. From there, we build a personalized plan focused on running, jumping, cutting, and sport-specific preparation.",
+  },
+];
+---
+
+<ProgramLayout
+  title="ACL Comeback Program | Centennial & Highlands Ranch | Overtime"
+  description="One-on-one ACL rehabilitation from pre-op to return to sport. Objective testing, purposeful progression, and support at Overtime Sports PT in Centennial and Highlands Ranch."
+  programKey="acl"
+  programName="The ACL Comeback Program"
+  specialty="ACL rehab specialists. Return to sport specialists."
+  headline="Your comeback."
+  accent="Built with intent."
+  lead="A clear plan. Measurable progress. Support at every stage."
+  introduction="Our one-on-one ACL rehab program helps you build the strength and confidence to get back to the demands of your sport."
+  heroImage={kneeAssessment}
+  heroAlt="An Overtime physical therapist assessing an athlete's knee during a one-on-one appointment."
+  heroPosition="center top"
+  proof={["100s of athletes returned", "60-minute, one-on-one sessions", "Full rehab + return-to-sport testing"]}
+  ctaLabel="Start your comeback"
+  closingHeading="Your ACL Comeback starts here."
+  closingDescription="Whether you're preparing for surgery, rebuilding strength, or ready to work toward your sport, start with a conversation about your comeback."
+>
+  <section class="program-section" aria-labelledby="acl-start-heading">
+    <div class="program-container">
+      <div class="program-section__split-heading">
+        <div>
+          <p class="block-subtitle">A starting point for every stage</p>
+          <h2 id="acl-start-heading">We understand the athlete.<br />Not just the knee.</h2>
+        </div>
+        <div>
+          <p>One of the hardest parts of ACL recovery is being away from your sport and wondering when you'll feel like yourself again. Wherever you are in rehab, we take the time to hear what's on your mind, show you how you're progressing, and work through the next step together.</p>
+          <p>From pre-op to game day, we build your rehab around your goals, your sport, and your surgeon's guidance. That means working toward the moments that matter to you, whether it's landing a rebound or changing direction at full speed.</p>
+        </div>
+      </div>
+      <div class="program-starting-points">
+        <article><span>01</span><h3>Before surgery</h3><p>Build a foundation for the rehabilitation ahead.</p></article>
+        <article><span>02</span><h3>During rehabilitation</h3><p>Know what you're working toward and why it matters.</p></article>
+        <article><span>03</span><h3>After finishing PT</h3><p>Bridge the gap between feeling better and feeling ready for sport.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <ProgramRoadmap eyebrow="The comeback roadmap" heading="From pre-op to game day." phases={phases} />
+
+  <section class="program-section" aria-labelledby="acl-testing-heading">
+    <div class="program-container program-split">
+      <figure>
+        <ProgramPhoto src={strengthResults} alt="An Overtime physical therapist reviewing a strength-test summary on a phone beside a dynamometer." />
+        <figcaption>A closer look at the data. A clearer picture of your progress.</figcaption>
+      </figure>
+      <div>
+        <p class="block-subtitle">Assessing, not guessing</p>
+        <h2 id="acl-testing-heading">See the progress.<br />Understand the plan.</h2>
+        <p>Strength dynamometry and force-plate testing help turn questions into useful information about your recovery.</p>
+        <dl class="program-measures">
+          <div><dt>Strength</dt><dd>What capacity have you rebuilt, and what still needs work?</dd></div>
+          <div><dt>Power &amp; landing</dt><dd>How do you produce and absorb force?</dd></div>
+          <div><dt>Movement</dt><dd>How do you handle more demanding tasks?</dd></div>
+          <div><dt>Readiness</dt><dd>How do physical capacity, confidence, and sport preparation come together?</dd></div>
+        </dl>
+        <p class="program-callout">Our objective goal is symmetry between both legs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="program-section program-section--surface" aria-labelledby="acl-included-heading">
+    <div class="program-container program-split">
+      <div>
+        <p class="block-subtitle">The work behind the comeback</p>
+        <h2 id="acl-included-heading">What does our<br />program include?</h2>
+        <p>Your plan connects the work in the clinic with the movement, training, and sport you're working toward.</p>
+        <ul class="program-checklist">{included.map((item) => <li>{item}</li>)}</ul>
+      </div>
+      <figure>
+        <ProgramPhoto src={sportProgression} alt="An Overtime physical therapist guiding an athlete through a soccer change-of-direction drill." position="center 65%" />
+        <figcaption>Build toward the moments that matter to you: your first run, a confident change of direction, and the demands of your game.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="program-section" aria-labelledby="acl-support-heading">
+    <div class="program-container program-split">
+      <figure>
+        <ProgramPhoto src={personalSupport} alt="An athlete and an Overtime physical therapist sharing a hug in the clinic." position="center 40%" />
+      </figure>
+      <div>
+        <p class="block-subtitle">Your team, beyond the appointment</p>
+        <h2 id="acl-support-heading">Your support doesn't end when the session does.</h2>
+        <p>Leave each appointment knowing what to work on and what comes next. Connect with your physical therapist by text, phone, or email between visits.</p>
+        <p>With your permission, we keep parents, coaches, athletic trainers, and your surgeon informed so your recovery team stays aligned.</p>
+        <a class="program-text-link" href="/about#team-heading">Meet your Sports PTs <span aria-hidden="true">&rarr;</span></a>
+        <a class="program-text-link" href="https://maps.app.goo.gl/Ng3fLwf8KgRr15k29" target="_blank" rel="noopener noreferrer">Read our Google reviews <span aria-hidden="true">&#8599;</span><span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="program-section program-section--surface" aria-labelledby="acl-faq-heading">
+    <div class="program-container program-faq">
+      <header>
+        <p class="block-subtitle">Before you get started</p>
+        <h2 id="acl-faq-heading">Good questions.<br />Clear answers.</h2>
+        <p>Have a question about your situation? Let's talk through it.</p>
+        <ProgramConsultationButton label="Ask about your comeback" source="acl_faq" variant="text" client:load />
+      </header>
+      <div>
+        {faqs.map((faq) => (
+          <details class="program-question">
+            <summary><h3>{faq.question}</h3><span aria-hidden="true">+</span></summary>
+            <div><p>{faq.answer}</p>{faq.extra && <p>{faq.extra}</p>}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</ProgramLayout>

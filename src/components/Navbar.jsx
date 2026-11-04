@@ -4,13 +4,16 @@ import { getImage } from "astro:assets";
 
 import { InstagramIcon } from "../assets/icons/InstagramIcon";
 import { ConsultationModal } from "./ConsultationModal";
+import { programLinks } from "../data/programs";
 import logo from "../assets/images/logo.png";
+import "../styles/Navigation.css";
 const optLogo = await getImage({ src: logo })
 
 const navbarLinks = [
   { label: "Home", href: "/#home", ariaLabel: "Home" },
   { label: "About", href: "/about", ariaLabel: "About" },
   { label: "Services", href: "/services", ariaLabel: "Services" },
+  ...programLinks,
   { label: "FAQ", href: "/resources", ariaLabel: "FAQ" },
   { label: "Blog", href: "/blog", ariaLabel: "Blog" },
 ];
@@ -23,10 +26,23 @@ export const Navbar = ({ hero = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const shouldHide = isHidden && !isOpen && !isConsultationOpen;
 
-  const openConsultation = () => {
+  const closeNavigation = () => {
     setIsOpen(false);
+  };
+
+  const openConsultation = () => {
+    closeNavigation();
     setIsConsultationOpen(true);
   };
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeMenus = () => {
+      setIsOpen(false);
+    };
+    desktop.addEventListener("change", closeMenus);
+    return () => desktop.removeEventListener("change", closeMenus);
+  }, []);
 
   useEffect(() => {
     const scrollPosition = () => Math.max(
@@ -97,7 +113,7 @@ export const Navbar = ({ hero = false }) => {
       data-scrolled={isScrolled}
       onFocusCapture={() => setIsHidden(false)}
     >
-      <div className="2xl:w-[1280px] xl:w-10/12 w-11/12 flex justify-between items-center relative">
+      <div className="site-nav__inner 2xl:w-[1280px] xl:w-10/12 w-11/12 flex justify-between items-center relative">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -123,10 +139,10 @@ export const Navbar = ({ hero = false }) => {
           transition={{ duration: 0.3 }}
           exit={{ opacity: 0 }}
         >
-          <div className="hidden lg:flex h-full pl-4 pb-2">
+          <div className="site-nav__links hidden lg:flex h-full">
             {navbarLinks.map(({ href, label, ariaLabel }) => (
               <a
-                className="text-primaryText lg:text-base text-2xl leading-6 mx-2 2xl:mx-4 cursor-pointer font-normal lg:font-medium hover:scale-110 transition h-full pt-2"
+                className="site-nav__link"
                 href={href}
                 aria-label={ariaLabel}
                 key={label}
@@ -143,7 +159,7 @@ export const Navbar = ({ hero = false }) => {
           transition={{ duration: 0.3 }}
           exit={{ opacity: 0 }}
         >
-          <div className="grow basis-0 justify-end hidden lg:flex m-auto">
+          <div className="site-nav__actions hidden lg:flex">
             <a
               className="items-center pt-2.5"
               href="https://www.instagram.com/overtimesportspt?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
@@ -177,7 +193,9 @@ export const Navbar = ({ hero = false }) => {
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
           aria-controls="mobile-navigation"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
         >
           <div className="w-5 h-0.5 bg-gray-500  mb-1"></div>
           <div className="w-5 h-0.5 bg-gray-500  mb-1"></div>
@@ -204,7 +222,7 @@ export const Navbar = ({ hero = false }) => {
                   key={href}
                   className="text-primaryText lg:text-base text-2xl leading-6 mr-4 ml-4 2xl:mr-6 2xl:ml-6 cursor-pointer font-normal lg:font-medium hover:scale-110 transition duration-300 h-full pt-2"
                   href={href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={closeNavigation}
                   aria-label={ariaLabel}
                 >
                   {label}

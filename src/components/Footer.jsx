@@ -1,6 +1,7 @@
 import { getImage } from "astro:assets";
 import { InstagramIcon } from "../assets/icons/InstagramIcon";
 import logo from "../assets/images/logo.png";
+import { programLinks } from "../data/programs";
 import "../styles/Footer.css";
 
 const optLogo = await getImage({ src: logo, width: 480, format: "webp" });
@@ -8,6 +9,7 @@ const optLogo = await getImage({ src: logo, width: 480, format: "webp" });
 const links = [
   { label: "About Us", href: "/about" },
   { label: "Our Services", href: "/services" },
+  ...programLinks,
   { label: "FAQ", href: "/resources" },
   { label: "Blog", href: "/blog" },
   { label: "Schedule Appointment", href: "https://overtimesportspt.janeapp.com/", external: true },

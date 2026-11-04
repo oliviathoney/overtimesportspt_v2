@@ -100,6 +100,81 @@ has local search copy, a production canonical URL, and page-specific search
 and social metadata in `src/constants/siteData.json` and `src/pages/services.astro`.
 Keep the visible service descriptions and metadata aligned with actual offerings.
 
+## Programs
+
+The desktop and mobile navbar have separate "The ACL Comeback" and
+"The Running Comeback" links to `/programs/acl-comeback/` and
+`/programs/running-comeback/`, rather than a Programs dropdown. Shared labels
+and routes live in `src/data/programs.js` and also populate the footer.
+Desktop navigation uses compact spacing, logo, and CTA sizing to accommodate
+both names. Mobile navigation scrolls within short viewports.
+Do not add a link to `/programs/` without creating an index page.
+
+The homepage introduces both programs inside `GetStarted.jsx`, in the existing
+"Your comeback starts here" section. Compact program links sit below the three
+steps and above the unchanged consultation button. They use the labels, routes,
+and short descriptions in `src/data/programs.js`, render in the server HTML,
+sit side by side on larger screens, and stack on mobile.
+
+Both pages are prerendered, with page-specific canonical/search/social metadata
+and sitemap entries. Edit their copy and phase arrays in `src/pages/programs/`.
+`ProgramLayout.astro`, `ProgramRoadmap.astro`, `ProgramPhoto.astro`, and
+`src/styles/Programs.css` keep their presentation consistent. ACL FAQs use native
+details and work without JavaScript. Keep the six ACL stages and five running
+stages sequential when editing, and preserve the milestone-based progression
+and conditional gait-assessment guidance.
+Both heroes blend from the dark text area into a full-bleed photograph, matching
+the homepage treatment, with a vertical fade and stacked content on smaller screens.
+Both programs use the same wide hero frame and short dark-to-photo fade.
+They reuse the homepage's transparent hero navbar, with desktop photos extending
+behind it and a soft top gradient keeping menu text readable. The header uses
+the same height, mobile Get Started button, and dark blurred background on scroll
+as the homepage. Matching scrollbar styling avoids a horizontal header shift
+when navigating between these pages. Program mobile menus use the full space below the header;
+only the homepage reserves space for its fixed bottom action bar.
+The ACL hero uses the customer's supplied `ACL.jpg` (`acl-treatment-hero.jpg`),
+top-aligned and horizontally centered to retain the therapist and knee treatment
+across screen sizes. Previous ACL photos and crops
+remain in the source collection. The Running photo is shifted right
+so both people remain visible.
+
+Program buttons open the existing consultation dialog, not a separate form.
+Analytics sources distinguish `acl_hero`, `acl_faq`, `acl_closing`,
+`running_hero`, and `running_closing`; the shared navbar retains `navigation`.
+
+The program photos in `src/assets/images/programs/` were selected from the
+client's supplied collection after visual comparison against existing site images.
+They use distinct photographs rather than renamed duplicates, responsive WebP
+outputs, and reserved dimensions. Original filenames map to source assets as follows:
+
+| Supplied photo | Program asset |
+| --- | --- |
+| IMG_1928 2.JPG | acl-knee-assessment.jpg |
+| IMG_1934 2.JPG | acl-strength-results.jpg |
+| IMG_1965 2.JPG | acl-sport-progression.jpg |
+| IMG_1933 2.JPG | acl-personal-support.jpg |
+| IMG_1985 2.JPG | running-comeback-confidence.jpg |
+| IMG_1991 2.JPG | running-strength-assessment.jpg |
+| OT-11.jpg | running-movement-rehab.jpg |
+| IMG_1930 2.JPG | running-personal-support.jpg |
+
+The Running hero intentionally reuses `src/assets/images/PT Home.jpg`, matching
+the customer's "PT Home.png" reference. At the customer's request, the closing
+support photos are swapped: Running uses `acl-personal-support.jpg` (the man),
+and ACL uses `running-personal-support.jpg` (the woman), retaining that photo's
+40% vertical crop. Asset filenames retain their original intake names.
+The previous confidence and movement photos remain available in the source collection.
+The Running page's AlterG section intentionally reuses
+`src/assets/images/services/alterG.png`, with a top-aligned square display crop
+to keep the runner and support enclosure visible. Gait assessment stays text-only
+until a suitable photo of an actual running assessment is available.
+
+The ACL banner's "100s of athletes returned" wording was explicitly requested by
+the customer and approved for restoration; it is not independently verified here.
+Do not copy mockup testimonials or other clinics' reviews.
+Confirm equipment availability with the practice before adding
+location-specific claims.
+
 ## FAQ page
 
 The navigation's FAQ tab keeps the existing `/resources` URL. This page contains
