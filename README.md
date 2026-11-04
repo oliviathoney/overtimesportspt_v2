@@ -110,6 +110,12 @@ Desktop navigation uses compact spacing, logo, and CTA sizing to accommodate
 both names. Mobile navigation scrolls within short viewports.
 Do not add a link to `/programs/` without creating an index page.
 
+The homepage introduces both programs inside `GetStarted.jsx`, in the existing
+"Your comeback starts here" section. Compact program links sit below the three
+steps and above the unchanged consultation button. They use the labels, routes,
+and short descriptions in `src/data/programs.js`, render in the server HTML,
+sit side by side on larger screens, and stack on mobile.
+
 Both pages are prerendered, with page-specific canonical/search/social metadata
 and sitemap entries. Edit their copy and phase arrays in `src/pages/programs/`.
 `ProgramLayout.astro`, `ProgramRoadmap.astro`, `ProgramPhoto.astro`, and
@@ -126,9 +132,10 @@ the same height, mobile Get Started button, and dark blurred background on scrol
 as the homepage. Matching scrollbar styling avoids a horizontal header shift
 when navigating between these pages. Program mobile menus use the full space below the header;
 only the homepage reserves space for its fixed bottom action bar.
-The ACL hero uses the customer's horizontal crop (`acl-knee-assessment-hero.jpg`),
-top-aligned to keep the clinician and knee assessment in view. The original
-portrait remains in the source collection. The Running photo is shifted right
+The ACL hero uses the customer's supplied `ACL.jpg` (`acl-treatment-hero.jpg`),
+top-aligned and horizontally centered to retain the therapist and knee treatment
+across screen sizes. Previous ACL photos and crops
+remain in the source collection. The Running photo is shifted right
 so both people remain visible.
 
 Program buttons open the existing consultation dialog, not a separate form.
@@ -152,9 +159,11 @@ outputs, and reserved dimensions. Original filenames map to source assets as fol
 | IMG_1930 2.JPG | running-personal-support.jpg |
 
 The Running hero intentionally reuses `src/assets/images/PT Home.jpg`, matching
-the customer's "PT Home.png" reference. Its closing support section uses
-`running-personal-support.jpg`; the previous confidence and movement photos
-remain available in the source collection.
+the customer's "PT Home.png" reference. At the customer's request, the closing
+support photos are swapped: Running uses `acl-personal-support.jpg` (the man),
+and ACL uses `running-personal-support.jpg` (the woman), retaining that photo's
+40% vertical crop. Asset filenames retain their original intake names.
+The previous confidence and movement photos remain available in the source collection.
 The Running page's AlterG section intentionally reuses
 `src/assets/images/services/alterG.png`, with a top-aligned square display crop
 to keep the runner and support enclosure visible. Gait assessment stays text-only

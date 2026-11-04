@@ -3,10 +3,10 @@ import ProgramLayout from "../../layouts/ProgramLayout.astro";
 import ProgramRoadmap, { type ProgramPhase } from "../../components/ProgramRoadmap.astro";
 import ProgramPhoto from "../../components/ProgramPhoto.astro";
 import { ProgramConsultationButton } from "../../components/ProgramConsultationButton.jsx";
-import kneeAssessment from "../../assets/images/programs/acl-knee-assessment-hero.jpg";
+import kneeAssessment from "../../assets/images/programs/acl-treatment-hero.jpg";
 import strengthResults from "../../assets/images/programs/acl-strength-results.jpg";
 import sportProgression from "../../assets/images/programs/acl-sport-progression.jpg";
-import personalSupport from "../../assets/images/programs/acl-personal-support.jpg";
+import personalSupport from "../../assets/images/programs/running-personal-support.jpg";
 
 export const prerender = true;
 
@@ -167,7 +167,7 @@ const faqs = [
   <section class="program-section" aria-labelledby="acl-support-heading">
     <div class="program-container program-split">
       <figure>
-        <ProgramPhoto src={personalSupport} alt="An athlete and an Overtime physical therapist sharing a hug in the clinic." />
+        <ProgramPhoto src={personalSupport} alt="An athlete and an Overtime physical therapist sharing a hug in the clinic." position="center 40%" />
       </figure>
       <div>
         <p class="block-subtitle">Your team, beyond the appointment</p>

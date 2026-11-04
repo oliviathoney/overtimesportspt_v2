@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ConsultationModal } from "./ConsultationModal";
+import { programLinks } from "../data/programs";
 
 const steps = [
   {
@@ -48,6 +49,22 @@ export const GetStarted = () => {
             </li>
           ))}
         </ol>
+        <div className="home-roadmap__programs" aria-labelledby="home-programs-heading">
+          <h3 id="home-programs-heading">Explore our comeback programs.</h3>
+          <ul className="home-roadmap__program-list">
+            {programLinks.map(({ label, href, description }) => (
+              <li key={href}>
+                <a className="home-roadmap__program" href={href}>
+                  <span className="home-roadmap__program-title">
+                    <span>{label}</span>
+                    <span aria-hidden="true">{"\u2192"}</span>
+                  </span>
+                  <p>{description}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
         <div className="home-roadmap__action">
           <button
             type="button"
